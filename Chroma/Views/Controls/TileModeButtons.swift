@@ -52,28 +52,27 @@ struct TileModeButtons: View {
             } label: {
                 Text("Horizontal").expandWidth(alignment: .leading)
                 TileModeButtons.horizontal.fill(.white).frame(width: 18, height: 18)
-            }.tint(tileMode.wrappedValue == .horizontal ? .accentColor : .secondary)
+            }.active(tileMode.wrappedValue == .horizontal)
             
             Button {
                 tileMode.wrappedValue = .vertical
             } label: {
                 Text("Vertical").expandWidth(alignment: .leading)
                 TileModeButtons.vertical.fill(.white).frame(width: 18, height: 18)
-            }.tint(tileMode.wrappedValue == .vertical ? .accentColor : .secondary)
+            }.active(tileMode.wrappedValue == .vertical)
             
             Button {
                 tileMode.wrappedValue = .both
             } label: {
                 Text("Both").expandWidth(alignment: .leading)
                 TileModeButtons.both.fill(.white).frame(width: 18, height: 18)
-            }.tint(tileMode.wrappedValue == .both ? .accentColor : .secondary)
+            }.active(tileMode.wrappedValue == .both)
             
             Button {
                 tileMode.wrappedValue = .none
             } label: {
                 Text("None").expandWidth(alignment: .leading)
-            }.clipped()
-                .tint(tileMode.wrappedValue == .none ? .accentColor : .secondary)
+            }.active(tileMode.wrappedValue == .none)
         }
         .frame(width: 130)
         .composableButtonStyle(

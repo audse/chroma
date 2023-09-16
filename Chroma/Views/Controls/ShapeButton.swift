@@ -22,6 +22,7 @@ struct ShapeButton: View {
                 .frame(width: 50, height: 50)
                 .animation(.easeInOut(duration: 0.3), value: drawSettings.rotation)
         }.buttonStyle(.plain)
+            .background(Color.almostClear)
             .frame(width: 50, height: 50)
             .help(shape.id)
             

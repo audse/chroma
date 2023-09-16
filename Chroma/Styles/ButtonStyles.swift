@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+extension Color {
+    static var primaryBackground: Color {
+        return Color(hue: 0.75, saturation: 0.1, brightness: 0.3, opacity: 0.7)
+    }
+    static var almostClear: Color {
+        return Color(white: 1, opacity: 0.001)
+    }
+}
+
+
 typealias ButtonStyleClosure<A: View, B: View> = (ButtonStyleConfiguration, A) -> B
 
 precedencegroup ForwardComposition {
@@ -45,6 +55,12 @@ extension Button {
 extension View {
     func composableButtonStyle<B: View>(_ buttonStyleClosure: @escaping ButtonStyleClosure<ButtonStyleConfiguration.Label, B>) -> some View {
         return self.buttonStyle(ComposableButtonStyle(buttonStyleClosure))
+    }
+}
+
+extension View {
+    func active(_ isActive: Bool = true) -> some View {
+        return tint(isActive ? .accentColor : .primaryBackground)
     }
 }
 

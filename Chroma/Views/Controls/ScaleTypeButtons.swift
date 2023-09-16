@@ -16,12 +16,12 @@ struct ScaleTypeButtons: View {
                 drawSettings.scaleType = .even
             } label: {
                 Label("2", systemImage: "divide")
-            }.tint(drawSettings.scaleType == .even ? .accentColor : .primary)
+            }.active(drawSettings.scaleType == .even)
             Button {
                 drawSettings.scaleType = .odd
             } label: {
                 Label("3", systemImage: "divide")
-            }.tint(drawSettings.scaleType == .odd ? .accentColor : .primary)
+            }.active(drawSettings.scaleType == .odd)
         }
     }
 }

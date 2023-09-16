@@ -18,7 +18,7 @@ struct ZoomButtons: View {
             Button { zoom.wrappedValue += 0.25 } label: {
                 Image(systemName: "plus.magnifyingglass")
             }.help("Zoom In")
-        }.tint(.primary)
+        }.tint(.primaryBackground)
             .labelStyle(.iconOnly)
     }
 }

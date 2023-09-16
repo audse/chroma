@@ -11,45 +11,52 @@ struct PixelCursor: View {
     @EnvironmentObject var drawSettings: DrawSettings
     
     var body: some View {
-        ZStack {
+        let size: CGFloat = drawSettings.getPixelSize()
+        if drawSettings.tool == .draw {
             Pixel(
-                shape: drawSettings.tool == .draw
-                    ? drawSettings.shape
-                    : SquareShape,
-                color: drawSettings.tool == .draw
-                    ? drawSettings.color
-                    : .clear,
-                size: drawSettings.getPixelSize(),
-                rotation: drawSettings.tool == .draw
-                    ? drawSettings.rotation
-                    : Angle()
+                shape: drawSettings.shape,
+                color: drawSettings.color,
+                size: size,
+                rotation: drawSettings.rotation
             ).getView()
                 .opacity(0.25)
                 .animation(.easeInOut(duration: 0.2), value: drawSettings.rotation)
                 .animation(.easeInOut(duration: 0.2), value: drawSettings.pixelSize)
-            Pixel(
-                shape: SquareShape,
-                color: Color.clear,
-                size: drawSettings.getPixelSize() - 2
-            ).getShape()
-                .stroke(.black, style: StrokeStyle(
-                    lineWidth: drawSettings.tool == .erase ? 1 : 0,
+                .frame(width: size, height: size)
+                .allowsHitTesting(false)
+        } else if drawSettings.tool == .erase {
+            Square()
+                .size(width: size - 2, height: size - 2)
+                .stroke(.white, style: StrokeStyle(
+                    lineWidth: 3,
                     lineCap: .round,
-                    dash: [2, 4]
+                    lineJoin: .round
                 ))
-                .position(
-                    x: drawSettings.getPixelSize() / 2 + 1,
-                    y: drawSettings.getPixelSize() / 2 + 1
-                )
-        }.frame(
-            width: drawSettings.getPixelSize(),
-            height: drawSettings.getPixelSize()
-        )
+                .overlay(
+                    Pixel(
+                        shape: SquareShape,
+                        color: Color.clear,
+                        size: drawSettings.getPixelSize() - 2
+                    ).getShape()
+                    .stroke(.black, style: StrokeStyle(
+                        lineWidth: 2,
+                        lineCap: .round,
+                        lineJoin: .round,
+                        dash: [2, 4]
+                    ))
+            )
+                .position(x: size / 2 + 1, y: size / 2 + 1)
+                .frame(width: size, height: size)
+                .allowsHitTesting(false)
+        }
     }
 }
 
 struct PixelCursor_Previews: PreviewProvider {
     static var previews: some View {
-        PixelCursor().environmentObject(DrawSettings())
+        VStack {
+            PixelCursor().environmentObject(DrawSettings())
+            PixelCursor().environmentObject(DrawSettings().tool(.erase))
+        }
     }
 }

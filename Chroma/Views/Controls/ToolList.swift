@@ -17,14 +17,14 @@ struct ToolList: View {
             } label: {
                 Image(systemName: "paintbrush.fill")
             }
-            .tint(drawSettings.tool == Tool.draw ? Color.accentColor : Color.primary)
+            .active(drawSettings.tool == Tool.draw)
             .help("Draw Tool")
             Button {
                 drawSettings.tool = Tool.erase
             } label: {
                 Image(systemName: "eraser.fill")
             }
-            .tint(drawSettings.tool == Tool.erase ? Color.accentColor : Color.primary)
+            .active(drawSettings.tool == Tool.erase)
             .help("Erase Tool")
         }
         .labelStyle(.iconOnly)

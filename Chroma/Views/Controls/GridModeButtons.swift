@@ -21,7 +21,7 @@ struct GridModeButtons: View {
             Button("Lines") {
                 gridMode.wrappedValue = .lines
             }
-        }).frame(width: 130)
+        }).frame(width: 130).tint(.primaryBackground)
     }
     
     func getText() -> String {

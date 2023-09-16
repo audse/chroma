@@ -19,12 +19,17 @@ enum ScaleType {
 
 class DrawSettings: ObservableObject {
     @Published var rotation = Angle(degrees: 0)
-    @Published var tool = Tool.draw
+    @Published var tool: Tool = .draw
     @Published var shape = SquareShape
     @Published var color = Color.black
     @Published var scaleType = ScaleType.even
     @Published var pixelSize: CGFloat = 5
     @Published var precisionSize: CGFloat = 1
+    
+    func tool(_ value: Tool) -> DrawSettings {
+        self.tool = value
+        return self
+    }
     
     func snapped(_ point: CGPoint) -> CGPoint {
         let x = round(point.x / (getPixelSize() * precisionSize))
