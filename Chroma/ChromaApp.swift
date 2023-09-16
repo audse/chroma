@@ -9,9 +9,50 @@ import SwiftUI
 
 @main
 struct ChromaApp: App {
+    @StateObject var drawSettings = DrawSettings()
+    @StateObject var canvasPixels = CanvasPixels()
+    @StateObject var history = History()
+    
+    @State var zoom: CGFloat = 1.0
+    @State var startTranslation = CGSize(width: 550, height: 350)
+    @State var currentTranslation = CGSize(width: 550, height: 350)
+    @State var tileMode: TileMode = .none
+    
     var body: some Scene {
-        WindowGroup {
+        WindowGroup("Chroma") {
             ContentView()
+                .environmentObject(drawSettings)
+                .environmentObject(canvasPixels)
+                .environmentObject(history)
+                .environment(\.zoom, $zoom)
+                .environment(\.startTranslation, $startTranslation)
+                .environment(\.currentTranslation, $currentTranslation)
+                .environment(\.tileMode, $tileMode)
+                .frame(idealWidth: 2000, idealHeight: 800)
+                .toolbar {
+                    ToolbarItemGroup {
+                        Button {} label: {
+                            Image(systemName: "chevron.left")
+                        }.buttonStyle(.plain)
+                        Spacer()
+                        Text("New Canvas")
+                        Spacer()
+                        ZoomButtons()
+                            .environment(\.zoom, $zoom)
+                    }
+                }
         }
+        .windowToolbarStyle(.unifiedCompact(showsTitle: false))
+            .commands {
+                CommandMenu("Export") {
+                    Button("Export as PNG...") {
+                        if let url = makeSavePanel([.png]) {
+                            savePng(view: CanvasBase().environmentObject(canvasPixels), url: url)
+                        }
+                    }
+                    Button("Export as SVG...") {}
+                        .disabled(true)
+                }
+            }
     }
 }
