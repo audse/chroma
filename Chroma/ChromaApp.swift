@@ -13,6 +13,7 @@ struct ChromaApp: App {
     @StateObject var canvasPixels = CanvasPixels()
     @StateObject var history = History()
     
+    @State var canvasSize = CGSize(512)
     @State var canvasBgColor: Color = .white
     @State var zoom: CGFloat = 1.0
     @State var startTranslation = CGSize(width: 550, height: 350)
@@ -30,6 +31,7 @@ struct ChromaApp: App {
                 .environment(\.currentTranslation, $currentTranslation)
                 .environment(\.tileMode, $tileMode)
                 .environment(\.canvasBgColor, $canvasBgColor)
+                .environment(\.canvasSize, $canvasSize)
                 .frame(idealWidth: 2000, idealHeight: 800)
                 .toolbar {
                     ToolbarItemGroup {
@@ -52,7 +54,8 @@ struct ChromaApp: App {
                             savePng(
                                 view: CanvasBase()
                                         .environmentObject(canvasPixels)
-                                        .environment(\.canvasBgColor, $canvasBgColor),
+                                        .environment(\.canvasBgColor, $canvasBgColor)
+                                        .environment(\.canvasSize, $canvasSize),
                                 url: url
                             )
                         }

@@ -13,12 +13,13 @@ struct CanvasSettingsPanel: View {
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded.animation(.easeInOut(duration: 0.2))) {
             VStack {
+                CanvasSizeControl()
                 HStack {
                     Text("Background")
                     Spacer()
                     BackgroundColorControl()
                 }
-            }
+            }.padding(Edge.Set.top, 8)
         } label: {
             HStack { Text("Canvas").expandWidth() }
                 .background(Color.almostClear)
