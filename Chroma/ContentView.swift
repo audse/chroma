@@ -28,7 +28,10 @@ struct ContentView: View {
                         }.panel()
                     }
                     Spacer()
-                    ViewSettingsPanel().expandHeight(alignment: .top)
+                    VStack {
+                        ViewSettingsPanel()
+                        CanvasSettingsPanel()
+                    }.expandHeight(alignment: .top)
                 }
             }
             .padding()

@@ -43,7 +43,7 @@ struct EditableCanvas: View {
                     .animation(.easeInOut(duration: 0.1), value: mouseLocation)
             }
         }
-        .frame(width: canvasSize.width, height: canvasSize.height)
+        .frame(width: canvasSize.wrappedValue.width, height: canvasSize.wrappedValue.height)
         .clipped()
         .scaleEffect(currentZoom.wrappedValue)
         .animation(.easeInOut(duration: 0.2), value: currentZoom.wrappedValue)

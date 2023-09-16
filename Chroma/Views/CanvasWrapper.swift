@@ -53,7 +53,7 @@ struct CanvasWrapper: View {
             .fixedSize()
             .environment(
                 \.currentTranslation,
-                 .constant(currentTranslation.wrappedValue + size * CGSize(width: w, height: h) * currentZoom.wrappedValue)
+                 .constant(currentTranslation.wrappedValue + size.wrappedValue * CGSize(width: w, height: h) * currentZoom.wrappedValue)
             )
             .opacity(0.5)
     }

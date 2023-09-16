@@ -40,11 +40,11 @@ private struct CanvasPixelsKey: EnvironmentKey {
 }
 
 private struct CanvasSizeKey: EnvironmentKey {
-    static var defaultValue = CGSize(512)
+    static var defaultValue = Binding.constant(CGSize(512))
 }
 
 private struct CanvasBgColorKey: EnvironmentKey {
-    static var defaultValue = Color.white
+    static var defaultValue = Binding.constant(Color.white)
 }
 
 extension EnvironmentValues {
@@ -52,11 +52,11 @@ extension EnvironmentValues {
         get { self[CanvasPixelsKey.self] }
         set { self[CanvasPixelsKey.self] = newValue }
     }
-    var canvasSize: CGSize {
+    var canvasSize: Binding<CGSize> {
         get { self[CanvasSizeKey.self] }
         set { self[CanvasSizeKey.self] = newValue }
     }
-    var canvasBgColor: Color {
+    var canvasBgColor: Binding<Color> {
         get { self[CanvasBgColorKey.self] }
         set { self[CanvasBgColorKey.self] = newValue }
     }

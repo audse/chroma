@@ -22,7 +22,7 @@ struct Minimap: View {
     }
     
     func getSize() -> CGSize {
-        return canvasSize / Minimap.SCALE
+        return canvasSize.wrappedValue / Minimap.SCALE
     }
 }
 

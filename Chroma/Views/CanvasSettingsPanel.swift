@@ -1,22 +1,26 @@
 //
-//  ViewSettingsPanel.swift
+//  CanvasSettingsPanel.swift
 //  Chroma
 //
-//  Created by Audrey Serene on 9/15/23.
+//  Created by Audrey Serene on 9/16/23.
 //
 
 import SwiftUI
 
-struct ViewSettingsPanel: View {
+struct CanvasSettingsPanel: View {
     @State var isExpanded: Bool = true
+    
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded.animation(.easeInOut(duration: 0.2))) {
             VStack {
-                TileModeButtons()
-                GridModeButtons()
+                HStack {
+                    Text("Background")
+                    Spacer()
+                    BackgroundColorControl()
+                }
             }
         } label: {
-            HStack { Text("View").expandWidth() }
+            HStack { Text("Canvas").expandWidth() }
                 .background(Color.almostClear)
                 .onTapGesture {
                     withAnimation(.easeInOut(duration: 0.2)) {
@@ -28,8 +32,8 @@ struct ViewSettingsPanel: View {
     }
 }
 
-struct ViewSettingsPanel_Previews: PreviewProvider {
+struct CanvasSettingsPanel_Previews: PreviewProvider {
     static var previews: some View {
-        ViewSettingsPanel()
+        CanvasSettingsPanel()
     }
 }

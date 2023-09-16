@@ -13,6 +13,7 @@ struct ChromaApp: App {
     @StateObject var canvasPixels = CanvasPixels()
     @StateObject var history = History()
     
+    @State var canvasBgColor: Color = .white
     @State var zoom: CGFloat = 1.0
     @State var startTranslation = CGSize(width: 550, height: 350)
     @State var currentTranslation = CGSize(width: 550, height: 350)
@@ -28,6 +29,7 @@ struct ChromaApp: App {
                 .environment(\.startTranslation, $startTranslation)
                 .environment(\.currentTranslation, $currentTranslation)
                 .environment(\.tileMode, $tileMode)
+                .environment(\.canvasBgColor, $canvasBgColor)
                 .frame(idealWidth: 2000, idealHeight: 800)
                 .toolbar {
                     ToolbarItemGroup {
@@ -47,7 +49,12 @@ struct ChromaApp: App {
                 CommandMenu("Export") {
                     Button("Export as PNG...") {
                         if let url = makeSavePanel([.png]) {
-                            savePng(view: CanvasBase().environmentObject(canvasPixels), url: url)
+                            savePng(
+                                view: CanvasBase()
+                                        .environmentObject(canvasPixels)
+                                        .environment(\.canvasBgColor, $canvasBgColor),
+                                url: url
+                            )
                         }
                     }
                     Button("Export as SVG...") {}

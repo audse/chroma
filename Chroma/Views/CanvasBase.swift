@@ -16,15 +16,15 @@ struct CanvasBase: View {
         Canvas() { context, size in
             context.fill(
                 Rectangle().path(in: CGRect(origin: CGPoint(0), size: size)),
-                with: .color(canvasBgColor)
+                with: .color(canvasBgColor.wrappedValue)
             )
             for pixel in canvasPixels.pixels {
                 pixel.draw(context)
             }
         }
         .frame(
-            width: canvasSize.width,
-            height: canvasSize.height
+            width: canvasSize.wrappedValue.width,
+            height: canvasSize.wrappedValue.height
         )
         .fixedSize()
     }
