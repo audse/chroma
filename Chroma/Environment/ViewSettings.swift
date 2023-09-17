@@ -36,6 +36,26 @@ private struct TintColorKey: EnvironmentKey {
     static var defaultValue: Color = .accentColor
 }
 
+enum WorkspaceBgColor: Equatable {
+    case followColorScheme
+    case custom(Color)
+    
+    static let defaultDark = Color(hue: 0.8, saturation: 0.05, brightness: 0.3)
+    static let defaultLight = Color(hue: 0.8, saturation: 0.025, brightness: 0.8)
+    
+    static func ==(lhs: WorkspaceBgColor, rhs: WorkspaceBgColor) -> Bool {
+        switch (lhs, rhs) {
+            case (let .custom(a), let .custom(b)): return a == b
+            case (.followColorScheme, .followColorScheme): return true
+            default: return false
+        }
+    }
+}
+
+private struct WorkspaceBgColorKey: EnvironmentKey {
+    static var defaultValue: WorkspaceBgColor = .followColorScheme
+}
+
 extension EnvironmentValues {
     var zoom: Binding<CGFloat> {
         get { self[ZoomKey.self] }
@@ -52,6 +72,10 @@ extension EnvironmentValues {
     var tint: Color {
         get { self[TintColorKey.self] }
         set { self[TintColorKey.self] = newValue }
+    }
+    var workspaceBgColor: WorkspaceBgColor {
+        get { self[WorkspaceBgColorKey.self] }
+        set { self[WorkspaceBgColorKey.self] = newValue }
     }
 }
 

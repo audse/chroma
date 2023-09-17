@@ -13,6 +13,7 @@ import SwiftUI
 
 struct CanvasWrapper: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.workspaceBgColor) var workspaceBgcolor
     @Environment(\.zoom) var currentZoom
     @Environment(\.canvasSize) var size
     @Environment(\.tileMode) var tileMode
@@ -22,9 +23,7 @@ struct CanvasWrapper: View {
         ScrollView(Axis.Set([.horizontal, .vertical]), showsIndicators: false) {
             ZStack {
                 Rectangle()
-                    .fill(colorScheme == .dark
-                          ? Color(hue: 0.8, saturation: 0.05, brightness: 0.3)
-                          : Color(hue: 0.8, saturation: 0.025, brightness: 0.8))
+                    .fill(getWorkspaceBgColor())
                     .ignoresSafeArea()
                 if tileMode.wrappedValue == .both || tileMode.wrappedValue == .horizontal {
                     makeCanvas(w: -1, h: 0) // Left
@@ -50,6 +49,15 @@ struct CanvasWrapper: View {
                 .fixedSize()
                 .zoomable(zoom: currentZoom)
         }.background(Color.accentColor)
+    }
+    
+    func getWorkspaceBgColor() -> Color {
+        switch workspaceBgcolor {
+            case .followColorScheme: return colorScheme == .dark
+                ? WorkspaceBgColor.defaultDark
+                : WorkspaceBgColor.defaultLight
+            case .custom(let color): return color
+        }
     }
     
     func makeCanvas(w: CGFloat = 1.0, h: CGFloat = 1.0) -> some View {

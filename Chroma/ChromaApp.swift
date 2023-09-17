@@ -21,6 +21,7 @@ struct ChromaApp: App {
     
     @State private var showingSettings = false
     @State private var isDarkMode = true
+    @State private var workspaceBgColor = WorkspaceBgColor.followColorScheme
     
     var body: some Scene {
         WindowGroup("Chroma") {
@@ -36,6 +37,7 @@ struct ChromaApp: App {
                 .environment(\.tileMode, $tileMode)
                 .environment(\.canvasBgColor, $canvasBgColor)
                 .environment(\.canvasSize, $canvasSize)
+                .environment(\.workspaceBgColor, workspaceBgColor)
                 .frame(idealWidth: 2000, idealHeight: 800)
                 .toolbar {
                     ToolbarItemGroup {
@@ -55,7 +57,7 @@ struct ChromaApp: App {
                     }
                 }
                 .sheet(isPresented: $showingSettings) {
-                    Settings(showing: $showingSettings, isDarkMode: $isDarkMode)
+                    Settings(showing: $showingSettings, isDarkMode: $isDarkMode, workspaceBgColor: $workspaceBgColor)
                 }
         }
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
