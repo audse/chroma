@@ -9,75 +9,53 @@ import SwiftUI
 
 class Action: Identifiable {
     var id = UUID()
-    func undo(
-        drawSettings: DrawSettings?,
-        canvasPixels: CanvasPixels?
-    ) {}
-    func redo(
-        drawSettings: DrawSettings?,
-        canvasPixels: CanvasPixels?
-    ) {}
+    func undo() {}
+    func redo() {}
 }
 
 class DrawAction: Action {
     var pixel: Pixel
     var index: Int = -1
+    var layer: Layer
     
-    init(_ pixelValue: Pixel) {
+    init(_ pixelValue: Pixel, _ layerValue: Layer) {
         pixel = pixelValue
+        layer = layerValue
     }
     
-    override func undo(
-        drawSettings: DrawSettings?,
-        canvasPixels: CanvasPixels?
-    ) {
-        if case Optional.some(let canvasPixels) = canvasPixels {
-            index = canvasPixels.findPixel(pixel)
-            if index != -1 {
-                canvasPixels.pixels.remove(at: index)
-            }
+    override func undo() {
+        index = layer.findPixel(pixel)
+        if index != -1 {
+            _ = layer.removePixel(index)
         }
     }
     
-    override func redo(
-        drawSettings: DrawSettings?,
-        canvasPixels: CanvasPixels?
-    ) {
-        if case Optional.some(let canvasPixels) = canvasPixels {
-            if index != -1 {
-                canvasPixels.pixels.insert(pixel, at: index)
-            }
+    override func redo() {
+        if index != -1 {
+            layer.insertPixel(pixel, at: index)
         }
     }
 }
 
 class EraseAction: Action {
     var pixel: Pixel
-    var index: Int = -1
+    var index: Int
+    var layer: Layer
     
-    init(_ pixelValue: Pixel, _ indexValue: Int) {
+    init(_ pixelValue: Pixel, _ indexValue: Int, _ layerValue: Layer) {
         pixel = pixelValue
         index = indexValue
+        layer = layerValue
     }
     
-    override func undo(
-        drawSettings: DrawSettings?,
-        canvasPixels: CanvasPixels?
-    ) {
-        if case Optional.some(let canvasPixels) = canvasPixels {
-            if index != -1 {
-                canvasPixels.pixels.insert(pixel, at: index)
-            }
+    override func undo() {
+        if index != -1 {
+            layer.insertPixel(pixel, at: index)
         }
     }
     
-    override func redo(
-        drawSettings: DrawSettings?,
-        canvasPixels: CanvasPixels?
-    ) {
-        if case Optional.some(let canvasPixels) = canvasPixels {
-            canvasPixels.pixels.remove(at: index)
-        }
+    override func redo() {
+        _ = layer.removePixel(index)
     }
 }
 
@@ -100,13 +78,9 @@ class History: ObservableObject {
         undoHistory.removeAll()
     }
     
-    func undoUntil(
-        _ action: Action,
-        drawSettings: DrawSettings? = nil,
-        canvasPixels: CanvasPixels?
-    ) {
-        while case Optional.some(let currentAction) = history.popLast() {
-            currentAction.undo(drawSettings: drawSettings, canvasPixels: canvasPixels)
+    func undoUntil(_ action: Action) {
+        while let currentAction = history.popLast() {
+            currentAction.undo()
             undoHistory.append(currentAction)
             if currentAction.id == action.id {
                 break
@@ -114,13 +88,9 @@ class History: ObservableObject {
         }
     }
     
-    func redoUntil(
-        _ action: Action,
-        drawSettings: DrawSettings? = nil,
-        canvasPixels: CanvasPixels?
-    ) {
-        while case Optional.some(let currentAction) = undoHistory.popLast() {
-            currentAction.redo(drawSettings: drawSettings, canvasPixels: canvasPixels)
+    func redoUntil(_ action: Action) {
+        while let currentAction = undoHistory.popLast() {
+            currentAction.redo()
             history.append(currentAction)
             if currentAction.id == action.id {
                 break
@@ -128,27 +98,17 @@ class History: ObservableObject {
         }
     }
     
-    func undo(
-        drawSettings: DrawSettings? = nil,
-        canvasPixels: CanvasPixels?
-    ) {
-        switch history.popLast() {
-            case Optional.some(let action):
-                action.undo(drawSettings: drawSettings, canvasPixels: canvasPixels)
-                undoHistory.append(action)
-            default: break
+    func undo() {
+        if let action = history.popLast() {
+            action.undo()
+            undoHistory.append(action)
         }
     }
     
-    func redo(
-        drawSettings: DrawSettings? = nil,
-        canvasPixels: CanvasPixels?
-    ) {
-        switch undoHistory.popLast() {
-            case Optional.some(let action):
-                action.redo(drawSettings: drawSettings, canvasPixels: canvasPixels)
-                history.append(action)
-            default: break
+    func redo() {
+        if let action = undoHistory.popLast() {
+            action.redo()
+            history.append(action)
         }
     }
 }

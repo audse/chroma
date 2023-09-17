@@ -9,19 +9,19 @@ import SwiftUI
 
 struct HistoryButtons: View {
     @EnvironmentObject var history: History
-    @EnvironmentObject var canvasPixels: CanvasPixels
+    @EnvironmentObject var currentCanvas: CurrentCanvas
     
     var body: some View {
         HStack {
             Button {
-                history.undo(canvasPixels: canvasPixels)
+                history.undo()
             } label: {
                 Image(systemName: "arrow.uturn.backward")
             }
             .disabled(history.history.isEmpty)
             .help("Undo")
             Button {
-                history.redo(canvasPixels: canvasPixels)
+                history.redo()
             } label: {
                 Image(systemName: "arrow.uturn.forward")
             }
@@ -34,7 +34,7 @@ struct HistoryButtons: View {
 struct HistoryButtons_Previews: PreviewProvider {
     static var previews: some View {
         HistoryButtons()
-            .environmentObject(CanvasPixels())
+            .environmentObject(CurrentCanvas())
             .environmentObject(History())
     }
 }

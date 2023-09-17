@@ -60,7 +60,7 @@ struct CanvasWrapper: View {
 struct CanvasWrapper_Previews: PreviewProvider {
     static var previews: some View {
         CanvasWrapper()
-            .environmentObject(CanvasPixels())
+            .environmentObject(CurrentCanvas().withNewLayer())
             .environmentObject(DrawSettings())
             .environmentObject(History())
             .environment(\.tileMode, .constant(TileMode.vertical))

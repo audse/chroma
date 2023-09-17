@@ -16,7 +16,6 @@ struct BackgroundColorControl: View {
         ColorPicker("Background", selection: $color)
             .labelsHidden()
             .onChange(of: color) { color in
-                print("Changed bg color!")
                 canvasBgColor.wrappedValue = color
             }
     }

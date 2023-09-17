@@ -54,6 +54,7 @@
 		7554D1A62AB63BBA008CEB87 /* BackgroundColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A52AB63BBA008CEB87 /* BackgroundColorControl.swift */; };
 		7554D1A82AB63E7C008CEB87 /* CanvasSizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A72AB63E7C008CEB87 /* CanvasSizeControl.swift */; };
 		7554D1AA2AB63EB3008CEB87 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */; };
+		7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		7554D1A52AB63BBA008CEB87 /* BackgroundColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorControl.swift; sourceTree = "<group>"; };
 		7554D1A72AB63E7C008CEB87 /* CanvasSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasSizeControl.swift; sourceTree = "<group>"; };
 		7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
+		7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 				7554D1A52AB63BBA008CEB87 /* BackgroundColorControl.swift */,
 				7554D1A72AB63E7C008CEB87 /* CanvasSizeControl.swift */,
 				7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */,
+				7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				7554D1602AAFF3C9008CEB87 /* ShapeButton.swift in Sources */,
 				7554D10E2AAFB6B8008CEB87 /* ContentView.swift in Sources */,
 				7554D1A62AB63BBA008CEB87 /* BackgroundColorControl.swift in Sources */,
+				7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */,
 				7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */,
 				7554D17C2AB29BAB008CEB87 /* ZoomButtons.swift in Sources */,
 				7554D1892AB4BC12008CEB87 /* InverseQuadrant.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryActionListItem: View {
     @EnvironmentObject var history: History
-    @EnvironmentObject var canvasPixels: CanvasPixels
+    @EnvironmentObject var currentCanvas: CurrentCanvas
     
     @State var action: Action
     @State var isUndone = false
@@ -17,8 +17,8 @@ struct HistoryActionListItem: View {
     var body: some View {
         Button {
             switch isUndone {
-                case false: history.undoUntil(action, canvasPixels: canvasPixels)
-                case true: history.redoUntil(action, canvasPixels: canvasPixels)
+                case false: history.undoUntil(action)
+                case true: history.redoUntil(action)
             }
         } label: {
             Label(getText(), systemImage: getIcon())
@@ -52,7 +52,7 @@ struct HistoryActionListItem: View {
 
 struct HistoryList: View {
     @EnvironmentObject var history: History
-    @EnvironmentObject var canvasPixels: CanvasPixels
+    @EnvironmentObject var currentCanvas: CurrentCanvas
     
     var body: some View {
         ScrollView {
@@ -69,19 +69,19 @@ struct HistoryList: View {
 
 struct HistoryList_Previews: PreviewProvider {
     static var drawSettings = DrawSettings()
-    static var canvasPixels = CanvasPixels()
+    static var currentCanvas = CurrentCanvas().withNewLayer()
     static var previews: some View {
         HistoryList()
             .environmentObject(History()
                 .history([
-                    DrawAction(drawSettings.createPixel()),
-                    EraseAction(drawSettings.createPixel(), 1),
-                    DrawAction(drawSettings.createPixel()),
+                    DrawAction(drawSettings.createPixel(), currentCanvas.currentLayer!),
+                    EraseAction(drawSettings.createPixel(), 1, currentCanvas.currentLayer!),
+                    DrawAction(drawSettings.createPixel(), currentCanvas.currentLayer!),
                 ])
                 .undoHistory([
-                    DrawAction(drawSettings.createPixel()),
-                    EraseAction(drawSettings.createPixel(), 2),
+                    DrawAction(drawSettings.createPixel(), currentCanvas.currentLayer!),
+                    EraseAction(drawSettings.createPixel(), 2, currentCanvas.currentLayer!),
                 ]))
-            .environmentObject(canvasPixels)
+            .environmentObject(currentCanvas)
     }
 }

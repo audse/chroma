@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Minimap: View {
-    @EnvironmentObject var canvasPixels: CanvasPixels
+    @EnvironmentObject var currentCanvas: CurrentCanvas
     @Environment(\.canvasSize) var canvasSize
     
     static let SCALE: CGFloat = 5.0
@@ -27,14 +27,15 @@ struct Minimap: View {
 }
 
 struct Minimap_Previews: PreviewProvider {
-    private static var canvasPixels = CanvasPixels().pixels([
+    private static var currentCanvas = CurrentCanvas().withNewLayer([
         Pixel(shape: SquareShape),
         Pixel(shape: CircleShape, position: CGPoint(250)),
         Pixel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
     ])
+    
     static var previews: some View {
         Minimap()
-            .environmentObject(canvasPixels)
+            .environmentObject(currentCanvas)
             .environmentObject(DrawSettings())
             .environmentObject(History())
     }

@@ -19,6 +19,7 @@ struct CanvasSettingsPanel: View {
                     Spacer()
                     BackgroundColorControl()
                 }
+                LayerList()
             }.padding(Edge.Set.top, 8)
         } label: {
             HStack { Text("Canvas").expandWidth() }
@@ -28,7 +29,7 @@ struct CanvasSettingsPanel: View {
                         isExpanded = !isExpanded
                     }
                 }
-        }.frame(width: 150)
+        }.frame(width: 200)
         .panel()
     }
 }
@@ -36,5 +37,6 @@ struct CanvasSettingsPanel: View {
 struct CanvasSettingsPanel_Previews: PreviewProvider {
     static var previews: some View {
         CanvasSettingsPanel()
+            .environmentObject(CurrentCanvas().withNewLayer())
     }
 }

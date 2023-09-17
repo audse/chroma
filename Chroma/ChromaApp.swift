@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct ChromaApp: App {
     @StateObject var drawSettings = DrawSettings()
-    @StateObject var canvasPixels = CanvasPixels()
+    @StateObject var currentCanvas = CurrentCanvas().withNewLayer()
     @StateObject var history = History()
     
     @State var canvasSize = CGSize(512)
@@ -22,7 +22,7 @@ struct ChromaApp: App {
         WindowGroup("Chroma") {
             ContentView()
                 .environmentObject(drawSettings)
-                .environmentObject(canvasPixels)
+                .environmentObject(currentCanvas)
                 .environmentObject(history)
                 .environment(\.zoom, $zoom)
                 .environment(\.tileMode, $tileMode)
@@ -49,7 +49,7 @@ struct ChromaApp: App {
                         if let url = makeSavePanel([.png]) {
                             savePng(
                                 view: CanvasBase()
-                                        .environmentObject(canvasPixels)
+                                        .environmentObject(currentCanvas)
                                         .environment(\.canvasBgColor, $canvasBgColor)
                                         .environment(\.canvasSize, $canvasSize),
                                 url: url

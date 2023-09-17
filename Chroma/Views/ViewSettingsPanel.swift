@@ -23,7 +23,7 @@ struct ViewSettingsPanel: View {
                         isExpanded = !isExpanded
                     }
                 }
-        }.frame(width: 150)
+        }.frame(width: 200)
         .panel()
     }
 }

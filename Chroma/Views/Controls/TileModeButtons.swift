@@ -45,8 +45,8 @@ struct TileModeButtons: View {
     ])
     
     var body: some View {
-        VStack {
-            Text("Tile Mode").foregroundColor(.primary)
+        VStack(spacing: 4) {
+            Text("Tile Mode").foregroundColor(.primary).expandWidth(alignment: .leading)
             Button {
                 tileMode.wrappedValue = .horizontal
             } label: {
@@ -74,7 +74,6 @@ struct TileModeButtons: View {
                 Text("None").expandWidth(alignment: .leading)
             }.active(tileMode.wrappedValue == .none)
         }
-        .frame(width: 130)
         .composableButtonStyle(
             Btn.defaultPadding
             |> Btn.hStack

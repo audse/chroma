@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditableCanvas: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    @EnvironmentObject var canvasPixels: CanvasPixels
+    @EnvironmentObject var currentCanvas: CurrentCanvas
     @EnvironmentObject var history: History
     
     @Environment(\.canvasSize) var canvasSize
@@ -48,22 +48,26 @@ struct EditableCanvas: View {
     }
     
     func draw(_ location: CGPoint) {
-        let pixel = drawSettings.createPixel(location)
-        canvasPixels.pixels.append(pixel)
-        history.add(DrawAction(pixel))
+        if let layer = currentCanvas.currentLayer {
+            let pixel = drawSettings.createPixel(location)
+            layer.addPixel(pixel)
+            history.add(DrawAction(pixel, layer))
+        }
     }
     
     func erase(_ location: CGPoint) {
-        let idx: Int = canvasPixels.findPixel(location)
-        if idx != -1 {
-            let pixel = canvasPixels.pixels.remove(at: idx)
-            history.add(EraseAction(pixel, idx))
+        if let layer = currentCanvas.currentLayer {
+            let idx: Int = layer.findPixel(location)
+            if idx != -1 {
+                let pixel = layer.removePixel(idx)
+                history.add(EraseAction(pixel, idx, layer))
+            }
         }
     }
 }
 
 struct EditableCanvas_Previews: PreviewProvider {
-    private static var canvasPixels = CanvasPixels().pixels([
+    private static var currentCanvas = CurrentCanvas().withNewLayer([
         Pixel(shape: SquareShape),
         Pixel(shape: CircleShape, position: CGPoint(250)),
         Pixel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
@@ -71,7 +75,7 @@ struct EditableCanvas_Previews: PreviewProvider {
     
     static var previews: some View {
         EditableCanvas(mouseLocation: CGPoint(x: 33, y: 31))
-            .environmentObject(canvasPixels)
+            .environmentObject(currentCanvas)
             .environmentObject(DrawSettings())
             .environmentObject(History())
     }
