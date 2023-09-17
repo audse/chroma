@@ -10,34 +10,26 @@ import SwiftUI
 @main
 struct ChromaApp: App {
     @Environment(\.colorScheme) var colorScheme
+    @StateObject private var appSettings = AppSettingsModel()
     @StateObject private var drawSettings = DrawSettings()
-    @StateObject private var currentCanvas = CurrentCanvas().withNewLayer()
+    @StateObject private var workspaceSettings = WorkspaceSettingsModel()
+    @StateObject private var currentArtboard = CurrentArtboardViewModel().withNewLayer()
     @StateObject private var history = History()
     
-    @State private var canvasSize = CGSize(512)
-    @State private var canvasBgColor: Color = .white
-    @State private var zoom: CGFloat = 1.0
-    @State private var tileMode: TileMode = .none
-    
     @State private var showingSettings = false
-    @State private var isDarkMode = true
-    @State private var workspaceBgColor = WorkspaceBgColor.followColorScheme
     
     var body: some Scene {
         WindowGroup("Chroma") {
-            ContentView(colorScheme: isDarkMode ? .dark : .light)
+            ContentView()
 //                .onAppear {
 //                    isDarkMode = colorScheme == .dark
 //                }
-                .colorScheme(isDarkMode ? .dark : .light)
+                .environmentObject(appSettings)
                 .environmentObject(drawSettings)
-                .environmentObject(currentCanvas)
+                .environmentObject(workspaceSettings)
+                .environmentObject(currentArtboard)
                 .environmentObject(history)
-                .environment(\.zoom, $zoom)
-                .environment(\.tileMode, $tileMode)
-                .environment(\.canvasBgColor, $canvasBgColor)
-                .environment(\.canvasSize, $canvasSize)
-                .environment(\.workspaceBgColor, workspaceBgColor)
+                .colorScheme(appSettings.colorSchemeValue)
                 .frame(idealWidth: 2000, idealHeight: 800)
                 .toolbar {
                     ToolbarItemGroup {
@@ -47,8 +39,7 @@ struct ChromaApp: App {
                         Spacer()
                         Text("New Canvas")
                         Spacer()
-                        ZoomButtons()
-                            .environment(\.zoom, $zoom)
+                        ZoomButtons().environmentObject(workspaceSettings)
                         Button {
                             showingSettings = true
                         } label: {
@@ -57,19 +48,24 @@ struct ChromaApp: App {
                     }
                 }
                 .sheet(isPresented: $showingSettings) {
-                    Settings(showing: $showingSettings, isDarkMode: $isDarkMode, workspaceBgColor: $workspaceBgColor)
+                    AppSettings(
+                        showing: $showingSettings
+                    ).environmentObject(workspaceSettings)
+                        .environmentObject(appSettings)
                 }
         }
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
             .commands {
+                CommandGroup(after: .appSettings) {
+                    Button("Settings") {
+                        showingSettings.toggle()
+                    }
+                }
                 CommandMenu("Export") {
                     Button("Export as PNG...") {
                         if let url = makeSavePanel([.png]) {
                             savePng(
-                                view: CanvasBase()
-                                        .environmentObject(currentCanvas)
-                                        .environment(\.canvasBgColor, $canvasBgColor)
-                                        .environment(\.canvasSize, $canvasSize),
+                                view: Artboard().environmentObject(currentArtboard),
                                 url: url
                             )
                         }

@@ -14,10 +14,10 @@
 		7554D11E2AAFB6B9008CEB87 /* ChromaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D11D2AAFB6B9008CEB87 /* ChromaTests.swift */; };
 		7554D1282AAFB6B9008CEB87 /* ChromaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1272AAFB6B9008CEB87 /* ChromaUITests.swift */; };
 		7554D12A2AAFB6B9008CEB87 /* ChromaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1292AAFB6B9008CEB87 /* ChromaUITestsLaunchTests.swift */; };
-		7554D1392AAFB81C008CEB87 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1382AAFB81C008CEB87 /* Canvas.swift */; };
+		7554D1392AAFB81C008CEB87 /* EditableArtboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1382AAFB81C008CEB87 /* EditableArtboard.swift */; };
 		7554D13D2AAFBA49008CEB87 /* Minimap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D13C2AAFBA49008CEB87 /* Minimap.swift */; };
 		7554D13F2AAFBD7E008CEB87 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D13E2AAFBD7E008CEB87 /* Pixel.swift */; };
-		7554D1432AAFC0DA008CEB87 /* PixelShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1422AAFC0DA008CEB87 /* PixelShape.swift */; };
+		7554D1432AAFC0DA008CEB87 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1422AAFC0DA008CEB87 /* DrawShape.swift */; };
 		7554D14E2AAFD4DD008CEB87 /* ToolList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D14D2AAFD4DD008CEB87 /* ToolList.swift */; };
 		7554D1502AAFE61D008CEB87 /* ShapeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D14F2AAFE61D008CEB87 /* ShapeList.swift */; };
 		7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1512AAFE994008CEB87 /* PixelSizeControl.swift */; };
@@ -29,36 +29,60 @@
 		7554D1622AAFF880008CEB87 /* ColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1612AAFF880008CEB87 /* ColorControl.swift */; };
 		7554D1662AB0D508008CEB87 /* RotationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1652AB0D508008CEB87 /* RotationControl.swift */; };
 		7554D1682AB0D55B008CEB87 /* DrawSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1672AB0D55B008CEB87 /* DrawSettings.swift */; };
-		7554D16A2AB10288008CEB87 /* ExpandModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1692AB10288008CEB87 /* ExpandModifier.swift */; };
+		7554D16A2AB10288008CEB87 /* Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1692AB10288008CEB87 /* Expand.swift */; };
 		7554D16D2AB119FD008CEB87 /* PixelCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D16C2AB119FD008CEB87 /* PixelCursor.swift */; };
-		7554D16F2AB25EFD008CEB87 /* CanvasSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D16E2AB25EFD008CEB87 /* CanvasSettings.swift */; };
-		7554D1732AB2775B008CEB87 /* PanelModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1722AB2775B008CEB87 /* PanelModifier.swift */; };
-		7554D1752AB2888C008CEB87 /* GesturesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1742AB2888C008CEB87 /* GesturesModifier.swift */; };
-		7554D1772AB28F3E008CEB87 /* OperatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1762AB28F3E008CEB87 /* OperatorExtension.swift */; };
-		7554D1792AB29A3D008CEB87 /* ViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1782AB29A3D008CEB87 /* ViewSettings.swift */; };
+		7554D1732AB2775B008CEB87 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1722AB2775B008CEB87 /* Panel.swift */; };
+		7554D1752AB2888C008CEB87 /* ZoomGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1742AB2888C008CEB87 /* ZoomGesture.swift */; };
+		7554D1772AB28F3E008CEB87 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1762AB28F3E008CEB87 /* CGPoint.swift */; };
+		7554D1792AB29A3D008CEB87 /* TintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1782AB29A3D008CEB87 /* TintModel.swift */; };
 		7554D17C2AB29BAB008CEB87 /* ZoomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D17B2AB29BAB008CEB87 /* ZoomButtons.swift */; };
-		7554D17E2AB358EE008CEB87 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D17D2AB358EE008CEB87 /* History.swift */; };
 		7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D17F2AB3600B008CEB87 /* HistoryButtons.swift */; };
 		7554D1822AB3657D008CEB87 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1812AB3657D008CEB87 /* HistoryList.swift */; };
-		7554D1842AB3ABA0008CEB87 /* LabelStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1832AB3ABA0008CEB87 /* LabelStyles.swift */; };
 		7554D1872AB3D1D4008CEB87 /* ScaleTypeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1862AB3D1D4008CEB87 /* ScaleTypeButtons.swift */; };
 		7554D1892AB4BC12008CEB87 /* InverseQuadrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1882AB4BC12008CEB87 /* InverseQuadrant.swift */; };
-		7554D1912AB4EB12008CEB87 /* CanvasBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1902AB4EB12008CEB87 /* CanvasBase.swift */; };
-		7554D1952AB50B42008CEB87 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1942AB50B42008CEB87 /* Utils.swift */; };
-		7554D1972AB52262008CEB87 /* CanvasWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1962AB52262008CEB87 /* CanvasWrapper.swift */; };
+		7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1902AB4EB12008CEB87 /* Artboard.swift */; };
+		7554D1952AB50B42008CEB87 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1942AB50B42008CEB87 /* Color.swift */; };
+		7554D1972AB52262008CEB87 /* ArtboardWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1962AB52262008CEB87 /* ArtboardWrapper.swift */; };
 		7554D1992AB53D11008CEB87 /* TileModeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1982AB53D11008CEB87 /* TileModeButtons.swift */; };
-		7554D19B2AB54187008CEB87 /* ViewSettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D19A2AB54187008CEB87 /* ViewSettingsPanel.swift */; };
+		7554D19B2AB54187008CEB87 /* WorkspaceSettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D19A2AB54187008CEB87 /* WorkspaceSettingsPanel.swift */; };
 		7554D19D2AB5424B008CEB87 /* GridModeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D19C2AB5424B008CEB87 /* GridModeButtons.swift */; };
-		7554D19F2AB60CE6008CEB87 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D19E2AB60CE6008CEB87 /* ButtonStyles.swift */; };
-		7554D1A42AB63B55008CEB87 /* CanvasSettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A32AB63B55008CEB87 /* CanvasSettingsPanel.swift */; };
-		7554D1A62AB63BBA008CEB87 /* BackgroundColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A52AB63BBA008CEB87 /* BackgroundColorControl.swift */; };
-		7554D1A82AB63E7C008CEB87 /* CanvasSizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A72AB63E7C008CEB87 /* CanvasSizeControl.swift */; };
+		7554D19F2AB60CE6008CEB87 /* ButtonColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D19E2AB60CE6008CEB87 /* ButtonColorStyle.swift */; };
+		7554D1A42AB63B55008CEB87 /* ArtboardSettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A32AB63B55008CEB87 /* ArtboardSettingsPanel.swift */; };
+		7554D1A62AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A52AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift */; };
+		7554D1A82AB63E7C008CEB87 /* ArtboardSizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A72AB63E7C008CEB87 /* ArtboardSizeControl.swift */; };
 		7554D1AA2AB63EB3008CEB87 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */; };
 		7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */; };
 		7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1AD2AB6C5CB008CEB87 /* PrecisionControl.swift */; };
-		7554D1B02AB6C903008CEB87 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1AF2AB6C903008CEB87 /* Settings.swift */; };
-		7554D1B22AB76EEB008CEB87 /* ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1B12AB76EEB008CEB87 /* ConditionalModifier.swift */; };
-		7554D1B42AB77477008CEB87 /* ActiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1B32AB77477008CEB87 /* ActiveModifier.swift */; };
+		7554D1B02AB6C903008CEB87 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1AF2AB6C903008CEB87 /* AppSettings.swift */; };
+		7554D1B22AB76EEB008CEB87 /* Conditional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1B12AB76EEB008CEB87 /* Conditional.swift */; };
+		7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1B32AB77477008CEB87 /* ActiveTint.swift */; };
+		7554D1BB2AB789BC008CEB87 /* HistoryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1BA2AB789BC008CEB87 /* HistoryAction.swift */; };
+		7554D1BD2AB789FF008CEB87 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1BC2AB789FF008CEB87 /* History.swift */; };
+		7554D1C22AB78A7B008CEB87 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1C12AB78A7B008CEB87 /* Layer.swift */; };
+		7554D1C72AB78AFF008CEB87 /* TileMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1C62AB78AFF008CEB87 /* TileMode.swift */; };
+		7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1C82AB78B48008CEB87 /* GridMode.swift */; };
+		7554D1D52AB78C32008CEB87 /* WorkspaceBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1D42AB78C32008CEB87 /* WorkspaceBackgroundColor.swift */; };
+		7554D1F12AB78DDC008CEB87 /* DrawTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1F02AB78DDC008CEB87 /* DrawTool.swift */; };
+		7554D1F32AB78E61008CEB87 /* DrawScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1F22AB78E61008CEB87 /* DrawScaleType.swift */; };
+		7554D2092AB78FC7008CEB87 /* ArtboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2082AB78FC7008CEB87 /* ArtboardModel.swift */; };
+		7554D20C2AB7904B008CEB87 /* ArtboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D20B2AB7904B008CEB87 /* ArtboardViewModel.swift */; };
+		7554D20E2AB79099008CEB87 /* CurrentArtboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D20D2AB79099008CEB87 /* CurrentArtboardModel.swift */; };
+		7554D2102AB790C7008CEB87 /* CurrentArtboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D20F2AB790C7008CEB87 /* CurrentArtboardViewModel.swift */; };
+		7554D21B2AB79901008CEB87 /* Well.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D21A2AB79901008CEB87 /* Well.swift */; };
+		7554D21F2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D21E2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift */; };
+		7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2202AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift */; };
+		7554D2232AB79BB7008CEB87 /* ComposableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2222AB79BB7008CEB87 /* ComposableButtonStyle.swift */; };
+		7554D2252AB79C29008CEB87 /* ButtonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2242AB79C29008CEB87 /* ButtonColor.swift */; };
+		7554D2292AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2282AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift */; };
+		7554D22C2AB7A39E008CEB87 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D22B2AB7A39E008CEB87 /* CGRect.swift */; };
+		7554D22E2AB7A3BC008CEB87 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D22D2AB7A3BC008CEB87 /* CGSize.swift */; };
+		7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D22F2AB7A3D7008CEB87 /* CGFloat.swift */; };
+		7554D2332AB7A41F008CEB87 /* MakeSavePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2322AB7A41F008CEB87 /* MakeSavePanel.swift */; };
+		7554D2352AB7A444008CEB87 /* SavePng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2342AB7A444008CEB87 /* SavePng.swift */; };
+		7554D2372AB7A495008CEB87 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2362AB7A495008CEB87 /* Font.swift */; };
+		7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D23A2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift */; };
+		7554D23E2AB7ABCA008CEB87 /* AppSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D23D2AB7ABCA008CEB87 /* AppSettingsModel.swift */; };
+		7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D23F2AB7AF7B008CEB87 /* ColorSchemeControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,10 +114,10 @@
 		7554D1232AAFB6B9008CEB87 /* ChromaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChromaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7554D1272AAFB6B9008CEB87 /* ChromaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaUITests.swift; sourceTree = "<group>"; };
 		7554D1292AAFB6B9008CEB87 /* ChromaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7554D1382AAFB81C008CEB87 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		7554D1382AAFB81C008CEB87 /* EditableArtboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableArtboard.swift; sourceTree = "<group>"; };
 		7554D13C2AAFBA49008CEB87 /* Minimap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minimap.swift; sourceTree = "<group>"; };
 		7554D13E2AAFBD7E008CEB87 /* Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
-		7554D1422AAFC0DA008CEB87 /* PixelShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelShape.swift; sourceTree = "<group>"; };
+		7554D1422AAFC0DA008CEB87 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
 		7554D14D2AAFD4DD008CEB87 /* ToolList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolList.swift; sourceTree = "<group>"; };
 		7554D14F2AAFE61D008CEB87 /* ShapeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeList.swift; sourceTree = "<group>"; };
 		7554D1512AAFE994008CEB87 /* PixelSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelSizeControl.swift; sourceTree = "<group>"; };
@@ -105,36 +129,60 @@
 		7554D1612AAFF880008CEB87 /* ColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorControl.swift; sourceTree = "<group>"; };
 		7554D1652AB0D508008CEB87 /* RotationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationControl.swift; sourceTree = "<group>"; };
 		7554D1672AB0D55B008CEB87 /* DrawSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSettings.swift; sourceTree = "<group>"; };
-		7554D1692AB10288008CEB87 /* ExpandModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandModifier.swift; sourceTree = "<group>"; };
+		7554D1692AB10288008CEB87 /* Expand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expand.swift; sourceTree = "<group>"; };
 		7554D16C2AB119FD008CEB87 /* PixelCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelCursor.swift; sourceTree = "<group>"; };
-		7554D16E2AB25EFD008CEB87 /* CanvasSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasSettings.swift; sourceTree = "<group>"; };
-		7554D1722AB2775B008CEB87 /* PanelModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelModifier.swift; sourceTree = "<group>"; };
-		7554D1742AB2888C008CEB87 /* GesturesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesModifier.swift; sourceTree = "<group>"; };
-		7554D1762AB28F3E008CEB87 /* OperatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorExtension.swift; sourceTree = "<group>"; };
-		7554D1782AB29A3D008CEB87 /* ViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSettings.swift; sourceTree = "<group>"; };
+		7554D1722AB2775B008CEB87 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		7554D1742AB2888C008CEB87 /* ZoomGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomGesture.swift; sourceTree = "<group>"; };
+		7554D1762AB28F3E008CEB87 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		7554D1782AB29A3D008CEB87 /* TintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintModel.swift; sourceTree = "<group>"; };
 		7554D17B2AB29BAB008CEB87 /* ZoomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomButtons.swift; sourceTree = "<group>"; };
-		7554D17D2AB358EE008CEB87 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		7554D17F2AB3600B008CEB87 /* HistoryButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryButtons.swift; sourceTree = "<group>"; };
 		7554D1812AB3657D008CEB87 /* HistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
-		7554D1832AB3ABA0008CEB87 /* LabelStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyles.swift; sourceTree = "<group>"; };
 		7554D1862AB3D1D4008CEB87 /* ScaleTypeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleTypeButtons.swift; sourceTree = "<group>"; };
 		7554D1882AB4BC12008CEB87 /* InverseQuadrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InverseQuadrant.swift; sourceTree = "<group>"; };
-		7554D1902AB4EB12008CEB87 /* CanvasBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasBase.swift; sourceTree = "<group>"; };
-		7554D1942AB50B42008CEB87 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		7554D1962AB52262008CEB87 /* CanvasWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasWrapper.swift; sourceTree = "<group>"; };
+		7554D1902AB4EB12008CEB87 /* Artboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artboard.swift; sourceTree = "<group>"; };
+		7554D1942AB50B42008CEB87 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		7554D1962AB52262008CEB87 /* ArtboardWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardWrapper.swift; sourceTree = "<group>"; };
 		7554D1982AB53D11008CEB87 /* TileModeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileModeButtons.swift; sourceTree = "<group>"; };
-		7554D19A2AB54187008CEB87 /* ViewSettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSettingsPanel.swift; sourceTree = "<group>"; };
+		7554D19A2AB54187008CEB87 /* WorkspaceSettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceSettingsPanel.swift; sourceTree = "<group>"; };
 		7554D19C2AB5424B008CEB87 /* GridModeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridModeButtons.swift; sourceTree = "<group>"; };
-		7554D19E2AB60CE6008CEB87 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
-		7554D1A32AB63B55008CEB87 /* CanvasSettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasSettingsPanel.swift; sourceTree = "<group>"; };
-		7554D1A52AB63BBA008CEB87 /* BackgroundColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorControl.swift; sourceTree = "<group>"; };
-		7554D1A72AB63E7C008CEB87 /* CanvasSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasSizeControl.swift; sourceTree = "<group>"; };
+		7554D19E2AB60CE6008CEB87 /* ButtonColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColorStyle.swift; sourceTree = "<group>"; };
+		7554D1A32AB63B55008CEB87 /* ArtboardSettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardSettingsPanel.swift; sourceTree = "<group>"; };
+		7554D1A52AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardBackgroundColorControl.swift; sourceTree = "<group>"; };
+		7554D1A72AB63E7C008CEB87 /* ArtboardSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardSizeControl.swift; sourceTree = "<group>"; };
 		7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerList.swift; sourceTree = "<group>"; };
 		7554D1AD2AB6C5CB008CEB87 /* PrecisionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecisionControl.swift; sourceTree = "<group>"; };
-		7554D1AF2AB6C903008CEB87 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		7554D1B12AB76EEB008CEB87 /* ConditionalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalModifier.swift; sourceTree = "<group>"; };
-		7554D1B32AB77477008CEB87 /* ActiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveModifier.swift; sourceTree = "<group>"; };
+		7554D1AF2AB6C903008CEB87 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		7554D1B12AB76EEB008CEB87 /* Conditional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conditional.swift; sourceTree = "<group>"; };
+		7554D1B32AB77477008CEB87 /* ActiveTint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTint.swift; sourceTree = "<group>"; };
+		7554D1BA2AB789BC008CEB87 /* HistoryAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAction.swift; sourceTree = "<group>"; };
+		7554D1BC2AB789FF008CEB87 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		7554D1C12AB78A7B008CEB87 /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		7554D1C62AB78AFF008CEB87 /* TileMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileMode.swift; sourceTree = "<group>"; };
+		7554D1C82AB78B48008CEB87 /* GridMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridMode.swift; sourceTree = "<group>"; };
+		7554D1D42AB78C32008CEB87 /* WorkspaceBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceBackgroundColor.swift; sourceTree = "<group>"; };
+		7554D1F02AB78DDC008CEB87 /* DrawTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawTool.swift; sourceTree = "<group>"; };
+		7554D1F22AB78E61008CEB87 /* DrawScaleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawScaleType.swift; sourceTree = "<group>"; };
+		7554D2082AB78FC7008CEB87 /* ArtboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardModel.swift; sourceTree = "<group>"; };
+		7554D20B2AB7904B008CEB87 /* ArtboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardViewModel.swift; sourceTree = "<group>"; };
+		7554D20D2AB79099008CEB87 /* CurrentArtboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentArtboardModel.swift; sourceTree = "<group>"; };
+		7554D20F2AB790C7008CEB87 /* CurrentArtboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentArtboardViewModel.swift; sourceTree = "<group>"; };
+		7554D21A2AB79901008CEB87 /* Well.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Well.swift; sourceTree = "<group>"; };
+		7554D21E2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingIconLabelStyle.swift; sourceTree = "<group>"; };
+		7554D2202AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacedTrailingIconLabelStyle.swift; sourceTree = "<group>"; };
+		7554D2222AB79BB7008CEB87 /* ComposableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableButtonStyle.swift; sourceTree = "<group>"; };
+		7554D2242AB79C29008CEB87 /* ButtonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColor.swift; sourceTree = "<group>"; };
+		7554D2282AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceBackgroundColorControl.swift; sourceTree = "<group>"; };
+		7554D22B2AB7A39E008CEB87 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		7554D22D2AB7A3BC008CEB87 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		7554D22F2AB7A3D7008CEB87 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		7554D2322AB7A41F008CEB87 /* MakeSavePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeSavePanel.swift; sourceTree = "<group>"; };
+		7554D2342AB7A444008CEB87 /* SavePng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePng.swift; sourceTree = "<group>"; };
+		7554D2362AB7A495008CEB87 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		7554D23A2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceSettingsModel.swift; sourceTree = "<group>"; };
+		7554D23D2AB7ABCA008CEB87 /* AppSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsModel.swift; sourceTree = "<group>"; };
+		7554D23F2AB7AF7B008CEB87 /* ColorSchemeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,18 +233,12 @@
 		7554D10A2AAFB6B8008CEB87 /* Chroma */ = {
 			isa = PBXGroup;
 			children = (
-				7554D1852AB3ABB9008CEB87 /* Styles */,
-				7554D16B2AB10318008CEB87 /* Modifiers */,
-				7554D1542AAFEC70008CEB87 /* Shapes */,
-				7554D1442AAFCBE7008CEB87 /* Environment */,
-				7554D1362AAFB7A6008CEB87 /* Views */,
-				7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */,
-				7554D10D2AAFB6B8008CEB87 /* ContentView.swift */,
 				7554D10F2AAFB6B9008CEB87 /* Assets.xcassets */,
 				7554D1112AAFB6B9008CEB87 /* Chroma.entitlements */,
+				7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */,
+				7554D10D2AAFB6B8008CEB87 /* ContentView.swift */,
+				7554D1B52AB7883E008CEB87 /* Features */,
 				7554D1122AAFB6B9008CEB87 /* Preview Content */,
-				7554D1762AB28F3E008CEB87 /* OperatorExtension.swift */,
-				7554D1942AB50B42008CEB87 /* Utils.swift */,
 			);
 			path = Chroma;
 			sourceTree = "<group>";
@@ -229,54 +271,10 @@
 		7554D1362AAFB7A6008CEB87 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7554D1532AAFEC54008CEB87 /* Controls */,
-				7554D1382AAFB81C008CEB87 /* Canvas.swift */,
-				7554D1902AB4EB12008CEB87 /* CanvasBase.swift */,
-				7554D13C2AAFBA49008CEB87 /* Minimap.swift */,
-				7554D13E2AAFBD7E008CEB87 /* Pixel.swift */,
-				7554D1422AAFC0DA008CEB87 /* PixelShape.swift */,
-				7554D16C2AB119FD008CEB87 /* PixelCursor.swift */,
-				7554D1962AB52262008CEB87 /* CanvasWrapper.swift */,
-				7554D19A2AB54187008CEB87 /* ViewSettingsPanel.swift */,
-				7554D1A32AB63B55008CEB87 /* CanvasSettingsPanel.swift */,
-				7554D1AF2AB6C903008CEB87 /* Settings.swift */,
+				7554D1AF2AB6C903008CEB87 /* AppSettings.swift */,
+				7554D23F2AB7AF7B008CEB87 /* ColorSchemeControl.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		7554D1442AAFCBE7008CEB87 /* Environment */ = {
-			isa = PBXGroup;
-			children = (
-				7554D17D2AB358EE008CEB87 /* History.swift */,
-				7554D1672AB0D55B008CEB87 /* DrawSettings.swift */,
-				7554D16E2AB25EFD008CEB87 /* CanvasSettings.swift */,
-				7554D1782AB29A3D008CEB87 /* ViewSettings.swift */,
-			);
-			path = Environment;
-			sourceTree = "<group>";
-		};
-		7554D1532AAFEC54008CEB87 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				7554D14D2AAFD4DD008CEB87 /* ToolList.swift */,
-				7554D14F2AAFE61D008CEB87 /* ShapeList.swift */,
-				7554D1512AAFE994008CEB87 /* PixelSizeControl.swift */,
-				7554D15F2AAFF3C9008CEB87 /* ShapeButton.swift */,
-				7554D1612AAFF880008CEB87 /* ColorControl.swift */,
-				7554D1652AB0D508008CEB87 /* RotationControl.swift */,
-				7554D17B2AB29BAB008CEB87 /* ZoomButtons.swift */,
-				7554D17F2AB3600B008CEB87 /* HistoryButtons.swift */,
-				7554D1812AB3657D008CEB87 /* HistoryList.swift */,
-				7554D1862AB3D1D4008CEB87 /* ScaleTypeButtons.swift */,
-				7554D1982AB53D11008CEB87 /* TileModeButtons.swift */,
-				7554D19C2AB5424B008CEB87 /* GridModeButtons.swift */,
-				7554D1A52AB63BBA008CEB87 /* BackgroundColorControl.swift */,
-				7554D1A72AB63E7C008CEB87 /* CanvasSizeControl.swift */,
-				7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */,
-				7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */,
-				7554D1AD2AB6C5CB008CEB87 /* PrecisionControl.swift */,
-			);
-			path = Controls;
 			sourceTree = "<group>";
 		};
 		7554D1542AAFEC70008CEB87 /* Shapes */ = {
@@ -294,22 +292,600 @@
 		7554D16B2AB10318008CEB87 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				7554D1692AB10288008CEB87 /* ExpandModifier.swift */,
-				7554D1722AB2775B008CEB87 /* PanelModifier.swift */,
-				7554D1742AB2888C008CEB87 /* GesturesModifier.swift */,
-				7554D1B12AB76EEB008CEB87 /* ConditionalModifier.swift */,
-				7554D1B32AB77477008CEB87 /* ActiveModifier.swift */,
+				7554D1692AB10288008CEB87 /* Expand.swift */,
+				7554D1722AB2775B008CEB87 /* Panel.swift */,
+				7554D1742AB2888C008CEB87 /* ZoomGesture.swift */,
+				7554D1B12AB76EEB008CEB87 /* Conditional.swift */,
+				7554D1B32AB77477008CEB87 /* ActiveTint.swift */,
+				7554D21A2AB79901008CEB87 /* Well.swift */,
+				7554D19E2AB60CE6008CEB87 /* ButtonColorStyle.swift */,
+				7554D2222AB79BB7008CEB87 /* ComposableButtonStyle.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
-		7554D1852AB3ABB9008CEB87 /* Styles */ = {
+		7554D1B52AB7883E008CEB87 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				7554D1832AB3ABA0008CEB87 /* LabelStyles.swift */,
-				7554D19E2AB60CE6008CEB87 /* ButtonStyles.swift */,
+				7554D2382AB7A538008CEB87 /* AppSettings */,
+				7554D2142AB797F3008CEB87 /* Common */,
+				7554D2002AB78F34008CEB87 /* Artboard */,
+				7554D1F42AB78E7F008CEB87 /* DrawSettings */,
+				7554D1B62AB78844008CEB87 /* History */,
+				7554D1BE2AB78A4B008CEB87 /* Layers */,
+				7554D2112AB791E6008CEB87 /* Pixel */,
+				7554D1F62AB78E96008CEB87 /* WorkspaceSettings */,
 			);
-			path = Styles;
+			path = Features;
+			sourceTree = "<group>";
+		};
+		7554D1B62AB78844008CEB87 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1B82AB78961008CEB87 /* Models */,
+				7554D1B72AB78856008CEB87 /* Views */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		7554D1B72AB78856008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D17F2AB3600B008CEB87 /* HistoryButtons.swift */,
+				7554D1812AB3657D008CEB87 /* HistoryList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1B82AB78961008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1BA2AB789BC008CEB87 /* HistoryAction.swift */,
+				7554D1BC2AB789FF008CEB87 /* History.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1BE2AB78A4B008CEB87 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1C02AB78A62008CEB87 /* Models */,
+				7554D1BF2AB78A5D008CEB87 /* Views */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		7554D1BF2AB78A5D008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1C02AB78A62008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1C12AB78A7B008CEB87 /* Layer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1C32AB78AB0008CEB87 /* WorkspaceTileMode */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1C52AB78AEB008CEB87 /* Models */,
+				7554D1C42AB78AE7008CEB87 /* Views */,
+			);
+			path = WorkspaceTileMode;
+			sourceTree = "<group>";
+		};
+		7554D1C42AB78AE7008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1982AB53D11008CEB87 /* TileModeButtons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1C52AB78AEB008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1C62AB78AFF008CEB87 /* TileMode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1CA2AB78B4E008CEB87 /* WorkspaceGridMode */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1CB2AB78B54008CEB87 /* Models */,
+				7554D1CC2AB78B59008CEB87 /* Views */,
+			);
+			path = WorkspaceGridMode;
+			sourceTree = "<group>";
+		};
+		7554D1CB2AB78B54008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1C82AB78B48008CEB87 /* GridMode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1CC2AB78B59008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D19C2AB5424B008CEB87 /* GridModeButtons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1D12AB78C0A008CEB87 /* WorkspaceBackgroundColor */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1D32AB78C1E008CEB87 /* Models */,
+				7554D1D22AB78C19008CEB87 /* Views */,
+			);
+			path = WorkspaceBackgroundColor;
+			sourceTree = "<group>";
+		};
+		7554D1D22AB78C19008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2282AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1D32AB78C1E008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1D42AB78C32008CEB87 /* WorkspaceBackgroundColor.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1D62AB78C5E008CEB87 /* WorkspaceZoom */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1D72AB78C65008CEB87 /* Models */,
+				7554D1D82AB78C6B008CEB87 /* Views */,
+			);
+			path = WorkspaceZoom;
+			sourceTree = "<group>";
+		};
+		7554D1D72AB78C65008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1D82AB78C6B008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D17B2AB29BAB008CEB87 /* ZoomButtons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1DB2AB78CE2008CEB87 /* DrawTool */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1E52AB78D74008CEB87 /* Models */,
+				7554D1E42AB78D6F008CEB87 /* Views */,
+			);
+			path = DrawTool;
+			sourceTree = "<group>";
+		};
+		7554D1DC2AB78CE9008CEB87 /* DrawShape */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1E72AB78D7C008CEB87 /* Models */,
+				7554D1E62AB78D78008CEB87 /* Views */,
+			);
+			path = DrawShape;
+			sourceTree = "<group>";
+		};
+		7554D1DD2AB78CEF008CEB87 /* DrawSize */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1E92AB78D85008CEB87 /* Models */,
+				7554D1E82AB78D80008CEB87 /* Views */,
+			);
+			path = DrawSize;
+			sourceTree = "<group>";
+		};
+		7554D1DE2AB78CF4008CEB87 /* DrawRotation */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1EB2AB78D8E008CEB87 /* Models */,
+				7554D1EA2AB78D89008CEB87 /* Views */,
+			);
+			path = DrawRotation;
+			sourceTree = "<group>";
+		};
+		7554D1DF2AB78CF9008CEB87 /* DrawScaleType */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1ED2AB78D96008CEB87 /* Models */,
+				7554D1EC2AB78D92008CEB87 /* Views */,
+			);
+			path = DrawScaleType;
+			sourceTree = "<group>";
+		};
+		7554D1E02AB78D03008CEB87 /* DrawPrecision */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1EF2AB78D9E008CEB87 /* Models */,
+				7554D1EE2AB78D99008CEB87 /* Views */,
+			);
+			path = DrawPrecision;
+			sourceTree = "<group>";
+		};
+		7554D1E12AB78D0F008CEB87 /* DrawColor */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1E32AB78D56008CEB87 /* Models */,
+				7554D1E22AB78D50008CEB87 /* Views */,
+			);
+			path = DrawColor;
+			sourceTree = "<group>";
+		};
+		7554D1E22AB78D50008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1612AAFF880008CEB87 /* ColorControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1E32AB78D56008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1E42AB78D6F008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D14D2AAFD4DD008CEB87 /* ToolList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1E52AB78D74008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1F02AB78DDC008CEB87 /* DrawTool.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1E62AB78D78008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D15F2AAFF3C9008CEB87 /* ShapeButton.swift */,
+				7554D14F2AAFE61D008CEB87 /* ShapeList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1E72AB78D7C008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1422AAFC0DA008CEB87 /* DrawShape.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1E82AB78D80008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1512AAFE994008CEB87 /* PixelSizeControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1E92AB78D85008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1EA2AB78D89008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1652AB0D508008CEB87 /* RotationControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1EB2AB78D8E008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1EC2AB78D92008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1862AB3D1D4008CEB87 /* ScaleTypeButtons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1ED2AB78D96008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1F22AB78E61008CEB87 /* DrawScaleType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1EE2AB78D99008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1AD2AB6C5CB008CEB87 /* PrecisionControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D1EF2AB78D9E008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D1F42AB78E7F008CEB87 /* DrawSettings */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1F92AB78EBE008CEB87 /* Models */,
+				7554D1F72AB78EAA008CEB87 /* Features */,
+			);
+			path = DrawSettings;
+			sourceTree = "<group>";
+		};
+		7554D1F62AB78E96008CEB87 /* WorkspaceSettings */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2392AB7A77A008CEB87 /* Models */,
+				7554D2192AB79889008CEB87 /* Views */,
+				7554D1F82AB78EB4008CEB87 /* Features */,
+			);
+			path = WorkspaceSettings;
+			sourceTree = "<group>";
+		};
+		7554D1F72AB78EAA008CEB87 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1E12AB78D0F008CEB87 /* DrawColor */,
+				7554D1E02AB78D03008CEB87 /* DrawPrecision */,
+				7554D1DF2AB78CF9008CEB87 /* DrawScaleType */,
+				7554D1DE2AB78CF4008CEB87 /* DrawRotation */,
+				7554D1DD2AB78CEF008CEB87 /* DrawSize */,
+				7554D1DC2AB78CE9008CEB87 /* DrawShape */,
+				7554D1DB2AB78CE2008CEB87 /* DrawTool */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		7554D1F82AB78EB4008CEB87 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1D62AB78C5E008CEB87 /* WorkspaceZoom */,
+				7554D1D12AB78C0A008CEB87 /* WorkspaceBackgroundColor */,
+				7554D1C32AB78AB0008CEB87 /* WorkspaceTileMode */,
+				7554D1CA2AB78B4E008CEB87 /* WorkspaceGridMode */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		7554D1F92AB78EBE008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1672AB0D55B008CEB87 /* DrawSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D2002AB78F34008CEB87 /* Artboard */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2012AB78F3B008CEB87 /* Models */,
+				7554D2032AB78F88008CEB87 /* Views */,
+				7554D20A2AB79009008CEB87 /* ViewModels */,
+			);
+			path = Artboard;
+			sourceTree = "<group>";
+		};
+		7554D2012AB78F3B008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2082AB78FC7008CEB87 /* ArtboardModel.swift */,
+				7554D20D2AB79099008CEB87 /* CurrentArtboardModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D2032AB78F88008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1A32AB63B55008CEB87 /* ArtboardSettingsPanel.swift */,
+				7554D1A52AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift */,
+				7554D1A72AB63E7C008CEB87 /* ArtboardSizeControl.swift */,
+				7554D1382AAFB81C008CEB87 /* EditableArtboard.swift */,
+				7554D1902AB4EB12008CEB87 /* Artboard.swift */,
+				7554D1962AB52262008CEB87 /* ArtboardWrapper.swift */,
+				7554D13C2AAFBA49008CEB87 /* Minimap.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D20A2AB79009008CEB87 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7554D20B2AB7904B008CEB87 /* ArtboardViewModel.swift */,
+				7554D20F2AB790C7008CEB87 /* CurrentArtboardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7554D2112AB791E6008CEB87 /* Pixel */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2132AB791FA008CEB87 /* Models */,
+				7554D2122AB791F7008CEB87 /* Views */,
+			);
+			path = Pixel;
+			sourceTree = "<group>";
+		};
+		7554D2122AB791F7008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D13E2AAFBD7E008CEB87 /* Pixel.swift */,
+				7554D16C2AB119FD008CEB87 /* PixelCursor.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D2132AB791FA008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D2142AB797F3008CEB87 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2312AB7A414008CEB87 /* Misc */,
+				7554D22A2AB7A38C008CEB87 /* Extensions */,
+				7554D2262AB7A170008CEB87 /* Views */,
+				7554D21D2AB799A4008CEB87 /* ShapeStyles */,
+				7554D21C2AB7999D008CEB87 /* LabelStyles */,
+				7554D1542AAFEC70008CEB87 /* Shapes */,
+				7554D16B2AB10318008CEB87 /* Modifiers */,
+				7554D2152AB79825008CEB87 /* Features */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7554D2152AB79825008CEB87 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2162AB7982C008CEB87 /* Tint */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		7554D2162AB7982C008CEB87 /* Tint */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2172AB79831008CEB87 /* Models */,
+				7554D2182AB79837008CEB87 /* Views */,
+			);
+			path = Tint;
+			sourceTree = "<group>";
+		};
+		7554D2172AB79831008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1782AB29A3D008CEB87 /* TintModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D2182AB79837008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D2192AB79889008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D19A2AB54187008CEB87 /* WorkspaceSettingsPanel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D21C2AB7999D008CEB87 /* LabelStyles */ = {
+			isa = PBXGroup;
+			children = (
+				7554D21E2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift */,
+				7554D2202AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift */,
+			);
+			path = LabelStyles;
+			sourceTree = "<group>";
+		};
+		7554D21D2AB799A4008CEB87 /* ShapeStyles */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2242AB79C29008CEB87 /* ButtonColor.swift */,
+			);
+			path = ShapeStyles;
+			sourceTree = "<group>";
+		};
+		7554D2262AB7A170008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D22A2AB7A38C008CEB87 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1942AB50B42008CEB87 /* Color.swift */,
+				7554D1762AB28F3E008CEB87 /* CGPoint.swift */,
+				7554D22B2AB7A39E008CEB87 /* CGRect.swift */,
+				7554D22D2AB7A3BC008CEB87 /* CGSize.swift */,
+				7554D22F2AB7A3D7008CEB87 /* CGFloat.swift */,
+				7554D2362AB7A495008CEB87 /* Font.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7554D2312AB7A414008CEB87 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2322AB7A41F008CEB87 /* MakeSavePanel.swift */,
+				7554D2342AB7A444008CEB87 /* SavePng.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		7554D2382AB7A538008CEB87 /* AppSettings */ = {
+			isa = PBXGroup;
+			children = (
+				7554D23C2AB7ABC1008CEB87 /* Models */,
+				7554D1362AAFB7A6008CEB87 /* Views */,
+			);
+			path = AppSettings;
+			sourceTree = "<group>";
+		};
+		7554D2392AB7A77A008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D23A2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D23C2AB7ABC1008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D23D2AB7ABCA008CEB87 /* AppSettingsModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,53 +1018,77 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7554D16A2AB10288008CEB87 /* ExpandModifier.swift in Sources */,
-				7554D19B2AB54187008CEB87 /* ViewSettingsPanel.swift in Sources */,
+				7554D2092AB78FC7008CEB87 /* ArtboardModel.swift in Sources */,
+				7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */,
+				7554D2102AB790C7008CEB87 /* CurrentArtboardViewModel.swift in Sources */,
+				7554D16A2AB10288008CEB87 /* Expand.swift in Sources */,
+				7554D19B2AB54187008CEB87 /* WorkspaceSettingsPanel.swift in Sources */,
 				7554D1AA2AB63EB3008CEB87 /* NumberTextField.swift in Sources */,
-				7554D1792AB29A3D008CEB87 /* ViewSettings.swift in Sources */,
+				7554D1792AB29A3D008CEB87 /* TintModel.swift in Sources */,
 				7554D1592AAFECB2008CEB87 /* SemiCircle.swift in Sources */,
+				7554D2252AB79C29008CEB87 /* ButtonColor.swift in Sources */,
 				7554D16D2AB119FD008CEB87 /* PixelCursor.swift in Sources */,
 				7554D1602AAFF3C9008CEB87 /* ShapeButton.swift in Sources */,
 				7554D10E2AAFB6B8008CEB87 /* ContentView.swift in Sources */,
-				7554D1A62AB63BBA008CEB87 /* BackgroundColorControl.swift in Sources */,
+				7554D1A62AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift in Sources */,
 				7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */,
 				7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */,
 				7554D17C2AB29BAB008CEB87 /* ZoomButtons.swift in Sources */,
 				7554D1892AB4BC12008CEB87 /* InverseQuadrant.swift in Sources */,
+				7554D20E2AB79099008CEB87 /* CurrentArtboardModel.swift in Sources */,
 				7554D1872AB3D1D4008CEB87 /* ScaleTypeButtons.swift in Sources */,
-				7554D1B42AB77477008CEB87 /* ActiveModifier.swift in Sources */,
-				7554D19F2AB60CE6008CEB87 /* ButtonStyles.swift in Sources */,
+				7554D1BB2AB789BC008CEB87 /* HistoryAction.swift in Sources */,
+				7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */,
+				7554D19F2AB60CE6008CEB87 /* ButtonColorStyle.swift in Sources */,
+				7554D1C22AB78A7B008CEB87 /* Layer.swift in Sources */,
+				7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */,
+				7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */,
 				7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */,
+				7554D2372AB7A495008CEB87 /* Font.swift in Sources */,
 				7554D1502AAFE61D008CEB87 /* ShapeList.swift in Sources */,
-				7554D16F2AB25EFD008CEB87 /* CanvasSettings.swift in Sources */,
-				7554D1842AB3ABA0008CEB87 /* LabelStyles.swift in Sources */,
+				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
+				7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */,
+				7554D22E2AB7A3BC008CEB87 /* CGSize.swift in Sources */,
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
-				7554D1912AB4EB12008CEB87 /* CanvasBase.swift in Sources */,
+				7554D21B2AB79901008CEB87 /* Well.swift in Sources */,
+				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,
-				7554D1772AB28F3E008CEB87 /* OperatorExtension.swift in Sources */,
-				7554D1B02AB6C903008CEB87 /* Settings.swift in Sources */,
+				7554D1772AB28F3E008CEB87 /* CGPoint.swift in Sources */,
+				7554D1B02AB6C903008CEB87 /* AppSettings.swift in Sources */,
 				7554D1822AB3657D008CEB87 /* HistoryList.swift in Sources */,
-				7554D1A42AB63B55008CEB87 /* CanvasSettingsPanel.swift in Sources */,
-				7554D1432AAFC0DA008CEB87 /* PixelShape.swift in Sources */,
+				7554D1A42AB63B55008CEB87 /* ArtboardSettingsPanel.swift in Sources */,
+				7554D1432AAFC0DA008CEB87 /* DrawShape.swift in Sources */,
 				7554D1682AB0D55B008CEB87 /* DrawSettings.swift in Sources */,
-				7554D1972AB52262008CEB87 /* CanvasWrapper.swift in Sources */,
+				7554D1972AB52262008CEB87 /* ArtboardWrapper.swift in Sources */,
 				7554D13F2AAFBD7E008CEB87 /* Pixel.swift in Sources */,
 				7554D19D2AB5424B008CEB87 /* GridModeButtons.swift in Sources */,
-				7554D1752AB2888C008CEB87 /* GesturesModifier.swift in Sources */,
+				7554D23E2AB7ABCA008CEB87 /* AppSettingsModel.swift in Sources */,
+				7554D1F32AB78E61008CEB87 /* DrawScaleType.swift in Sources */,
+				7554D1752AB2888C008CEB87 /* ZoomGesture.swift in Sources */,
 				7554D1622AAFF880008CEB87 /* ColorControl.swift in Sources */,
-				7554D1A82AB63E7C008CEB87 /* CanvasSizeControl.swift in Sources */,
+				7554D2232AB79BB7008CEB87 /* ComposableButtonStyle.swift in Sources */,
+				7554D21F2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift in Sources */,
+				7554D1A82AB63E7C008CEB87 /* ArtboardSizeControl.swift in Sources */,
+				7554D1BD2AB789FF008CEB87 /* History.swift in Sources */,
 				7554D15C2AAFEEE8008CEB87 /* Quadrant.swift in Sources */,
 				7554D1662AB0D508008CEB87 /* RotationControl.swift in Sources */,
-				7554D17E2AB358EE008CEB87 /* History.swift in Sources */,
-				7554D1392AAFB81C008CEB87 /* Canvas.swift in Sources */,
+				7554D1392AAFB81C008CEB87 /* EditableArtboard.swift in Sources */,
 				7554D14E2AAFD4DD008CEB87 /* ToolList.swift in Sources */,
+				7554D1F12AB78DDC008CEB87 /* DrawTool.swift in Sources */,
 				7554D1992AB53D11008CEB87 /* TileModeButtons.swift in Sources */,
-				7554D1952AB50B42008CEB87 /* Utils.swift in Sources */,
+				7554D2332AB7A41F008CEB87 /* MakeSavePanel.swift in Sources */,
+				7554D1952AB50B42008CEB87 /* Color.swift in Sources */,
 				7554D1562AAFEC7E008CEB87 /* Square.swift in Sources */,
-				7554D1B22AB76EEB008CEB87 /* ConditionalModifier.swift in Sources */,
-				7554D1732AB2775B008CEB87 /* PanelModifier.swift in Sources */,
+				7554D2292AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift in Sources */,
+				7554D1B22AB76EEB008CEB87 /* Conditional.swift in Sources */,
+				7554D20C2AB7904B008CEB87 /* ArtboardViewModel.swift in Sources */,
+				7554D1732AB2775B008CEB87 /* Panel.swift in Sources */,
 				7554D13D2AAFBA49008CEB87 /* Minimap.swift in Sources */,
+				7554D2352AB7A444008CEB87 /* SavePng.swift in Sources */,
+				7554D1C72AB78AFF008CEB87 /* TileMode.swift in Sources */,
+				7554D1D52AB78C32008CEB87 /* WorkspaceBackgroundColor.swift in Sources */,
+				7554D22C2AB7A39E008CEB87 /* CGRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

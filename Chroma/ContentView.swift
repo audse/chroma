@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    var colorScheme: ColorScheme
+    @EnvironmentObject var appSettings: AppSettingsModel
     
     var body: some View {
         ZStack {
-            CanvasWrapper()
+            ArtboardWrapper()
             HStack {
                 VStack(spacing: 8) {
                     PixelSizeControl().panel()
@@ -31,8 +31,8 @@ struct ContentView: View {
                 }.expandHeight(alignment: .top)
                 Spacer()
                 VStack(alignment: .trailing) {
-                    ViewSettingsPanel()
-                    CanvasSettingsPanel()
+                    WorkspaceSettingsPanel()
+                    ArtboardSettingsPanel()
                     Spacer()
                     Minimap()
                         .shadow(color: Color(hue: 0, saturation: 0, brightness: 0, opacity: 0.1), radius: 4, y: 2)
@@ -48,15 +48,16 @@ struct ContentView: View {
             |> Btn.rounded
             |> Btn.scaled
         )
-        .preferredColorScheme(colorScheme)
+        .preferredColorScheme(appSettings.colorSchemeValue)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(colorScheme: .dark)
+        ContentView()
+            .environmentObject(AppSettingsModel())
             .environmentObject(DrawSettings())
-            .environmentObject(CurrentCanvas().withNewLayer())
+            .environmentObject(CurrentArtboardViewModel().withNewLayer())
             .environmentObject(History())
     }
 }
