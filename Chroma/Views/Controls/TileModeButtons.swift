@@ -46,7 +46,7 @@ struct TileModeButtons: View {
     
     var body: some View {
         VStack(spacing: 4) {
-            Text("Tile Mode").foregroundColor(.primary).expandWidth(alignment: .leading)
+            Text("Tile mode").foregroundColor(.primary).expandWidth(alignment: .leading)
             Button {
                 tileMode.wrappedValue = .horizontal
             } label: {

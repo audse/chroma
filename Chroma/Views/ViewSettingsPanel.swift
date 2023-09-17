@@ -12,6 +12,7 @@ struct ViewSettingsPanel: View {
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded.animation(.easeInOut(duration: 0.2))) {
             VStack {
+                PrecisionControl().expandWidth(alignment: .leading)
                 TileModeButtons()
                 GridModeButtons()
             }
@@ -31,5 +32,6 @@ struct ViewSettingsPanel: View {
 struct ViewSettingsPanel_Previews: PreviewProvider {
     static var previews: some View {
         ViewSettingsPanel()
+            .environmentObject(DrawSettings())
     }
 }

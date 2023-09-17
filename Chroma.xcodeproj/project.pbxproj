@@ -55,6 +55,7 @@
 		7554D1A82AB63E7C008CEB87 /* CanvasSizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A72AB63E7C008CEB87 /* CanvasSizeControl.swift */; };
 		7554D1AA2AB63EB3008CEB87 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */; };
 		7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */; };
+		7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1AD2AB6C5CB008CEB87 /* PrecisionControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		7554D1A72AB63E7C008CEB87 /* CanvasSizeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasSizeControl.swift; sourceTree = "<group>"; };
 		7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerList.swift; sourceTree = "<group>"; };
+		7554D1AD2AB6C5CB008CEB87 /* PrecisionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecisionControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 				7554D1A72AB63E7C008CEB87 /* CanvasSizeControl.swift */,
 				7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */,
 				7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */,
+				7554D1AD2AB6C5CB008CEB87 /* PrecisionControl.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
 				7554D1912AB4EB12008CEB87 /* CanvasBase.swift in Sources */,
+				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,
 				7554D1772AB28F3E008CEB87 /* OperatorExtension.swift in Sources */,
 				7554D1822AB3657D008CEB87 /* HistoryList.swift in Sources */,
 				7554D1A42AB63B55008CEB87 /* CanvasSettingsPanel.swift in Sources */,
