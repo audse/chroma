@@ -11,14 +11,6 @@ private struct ZoomKey: EnvironmentKey {
     static var defaultValue: Binding<CGFloat> = .constant(1.0)
 }
 
-private struct TranslationKey: EnvironmentKey {
-    static var defaultValue: Binding<CGSize> = .constant(CGSize())
-}
-
-private struct StartTranslationKey: EnvironmentKey {
-    static var defaultValue: Binding<CGSize> = .constant(CGSize())
-}
-
 enum TileMode {
     case horizontal
     case vertical
@@ -44,14 +36,6 @@ extension EnvironmentValues {
     var zoom: Binding<CGFloat> {
         get { self[ZoomKey.self] }
         set { self[ZoomKey.self] = newValue }
-    }
-    var currentTranslation: Binding<CGSize> {
-        get { self[TranslationKey.self] }
-        set { self[TranslationKey.self] = newValue }
-    }
-    var startTranslation: Binding<CGSize> {
-        get { self[StartTranslationKey.self] }
-        set { self[StartTranslationKey.self] = newValue }
     }
     var tileMode: Binding<TileMode> {
         get { self[TileModeKey.self] }

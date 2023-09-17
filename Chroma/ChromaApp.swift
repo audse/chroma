@@ -16,8 +16,6 @@ struct ChromaApp: App {
     @State var canvasSize = CGSize(512)
     @State var canvasBgColor: Color = .white
     @State var zoom: CGFloat = 1.0
-    @State var startTranslation = CGSize(width: 550, height: 350)
-    @State var currentTranslation = CGSize(width: 550, height: 350)
     @State var tileMode: TileMode = .none
     
     var body: some Scene {
@@ -27,8 +25,6 @@ struct ChromaApp: App {
                 .environmentObject(canvasPixels)
                 .environmentObject(history)
                 .environment(\.zoom, $zoom)
-                .environment(\.startTranslation, $startTranslation)
-                .environment(\.currentTranslation, $currentTranslation)
                 .environment(\.tileMode, $tileMode)
                 .environment(\.canvasBgColor, $canvasBgColor)
                 .environment(\.canvasSize, $canvasSize)

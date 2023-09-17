@@ -12,49 +12,47 @@ import SwiftUI
 // live in EditableCanvas because that messes up the mouseLocation code.
 
 struct CanvasWrapper: View {
-    @Environment(\.currentTranslation) var currentTranslation
-    @Environment(\.startTranslation) var startTranslation
     @Environment(\.zoom) var currentZoom
     @Environment(\.canvasSize) var size
     @Environment(\.tileMode) var tileMode
+    @Environment(\.canvasSize) var canvasSize
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color(hue: 0.7, saturation: 0.1, brightness: 0.25))
-                .ignoresSafeArea()
-            
-            if tileMode.wrappedValue == .both || tileMode.wrappedValue == .horizontal {
-                makeCanvas(w: -1, h: 0) // Left
-                makeCanvas(w: 1, h: 0) // Right
-            }
-            
-            if tileMode.wrappedValue == .both || tileMode.wrappedValue == .vertical {
-                makeCanvas(w: 0, h: -1) // Top
-                makeCanvas(w: 0, h: 1) // Bottom
-            }
-            
-            if tileMode.wrappedValue == .both {
-                makeCanvas(w: 1, h: 1) // Bottom right
-                makeCanvas(w: 1, h: -1) // Top right
-                makeCanvas(w: -1, h: -1) // Top left
-                makeCanvas(w: -1, h: 1) // Bottom left
-            }
-            EditableCanvas().fixedSize()
-        }.expand()
-        .zoomable(zoom: currentZoom)
-        .pannable(start: startTranslation.wrappedValue, onChanged: { value in
-            currentTranslation.wrappedValue = value
-        })
+        ScrollView(Axis.Set([.horizontal, .vertical]), showsIndicators: false) {
+            ZStack {
+                Rectangle()
+                    .fill(Color(hue: 0.7, saturation: 0.1, brightness: 0.25))
+                    .ignoresSafeArea()
+                if tileMode.wrappedValue == .both || tileMode.wrappedValue == .horizontal {
+                    makeCanvas(w: -1, h: 0) // Left
+                    makeCanvas(w: 1, h: 0) // Right
+                }
+                
+                if tileMode.wrappedValue == .both || tileMode.wrappedValue == .vertical {
+                    makeCanvas(w: 0, h: -1) // Top
+                    makeCanvas(w: 0, h: 1) // Bottom
+                }
+                
+                if tileMode.wrappedValue == .both {
+                    makeCanvas(w: 1, h: 1) // Bottom right
+                    makeCanvas(w: 1, h: -1) // Top right
+                    makeCanvas(w: -1, h: -1) // Top left
+                    makeCanvas(w: -1, h: 1) // Bottom left
+                }
+                EditableCanvas().fixedSize()
+            }.frame(
+                    width: canvasSize.wrappedValue.width * 6,
+                    height: canvasSize.wrappedValue.height * 6
+                )
+                .fixedSize()
+                .zoomable(zoom: currentZoom)
+        }.background(Color.accentColor)
     }
     
     func makeCanvas(w: CGFloat = 1.0, h: CGFloat = 1.0) -> some View {
         EditableCanvas()
             .fixedSize()
-            .environment(
-                \.currentTranslation,
-                 .constant(currentTranslation.wrappedValue + size.wrappedValue * CGSize(width: w, height: h) * currentZoom.wrappedValue)
-            )
+            .offset(x: size.wrappedValue.width * w * currentZoom.wrappedValue, y: size.wrappedValue.height * h * currentZoom.wrappedValue)
             .opacity(0.5)
     }
 }

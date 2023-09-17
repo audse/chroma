@@ -56,7 +56,5 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(DrawSettings())
             .environmentObject(CanvasPixels())
             .environmentObject(History())
-            .environment(\.startTranslation, .constant(CGSize(300)))
-            .environment(\.currentTranslation, .constant(CGSize(300)))
     }
 }

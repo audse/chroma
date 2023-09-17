@@ -13,8 +13,6 @@ struct EditableCanvas: View {
     @EnvironmentObject var history: History
     
     @Environment(\.canvasSize) var canvasSize
-    @Environment(\.currentTranslation) var currentTranslation
-    @Environment(\.startTranslation) var startTranslation
     @Environment(\.zoom) var currentZoom
     
     @State var isHovering = true
@@ -47,8 +45,6 @@ struct EditableCanvas: View {
         .clipped()
         .scaleEffect(currentZoom.wrappedValue)
         .animation(.easeInOut(duration: 0.2), value: currentZoom.wrappedValue)
-        .animation(.easeInOut(duration: 0.2), value: currentTranslation.wrappedValue)
-        .position(x: currentTranslation.wrappedValue.width, y: currentTranslation.wrappedValue.height)
     }
     
     func draw(_ location: CGPoint) {
@@ -78,7 +74,5 @@ struct EditableCanvas_Previews: PreviewProvider {
             .environmentObject(canvasPixels)
             .environmentObject(DrawSettings())
             .environmentObject(History())
-            .environment(\.startTranslation, .constant(CGSize(300)))
-            .environment(\.currentTranslation, .constant(CGSize(300)))
     }
 }
