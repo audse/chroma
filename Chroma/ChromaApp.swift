@@ -9,18 +9,26 @@ import SwiftUI
 
 @main
 struct ChromaApp: App {
-    @StateObject var drawSettings = DrawSettings()
-    @StateObject var currentCanvas = CurrentCanvas().withNewLayer()
-    @StateObject var history = History()
+    @Environment(\.colorScheme) var colorScheme
+    @StateObject private var drawSettings = DrawSettings()
+    @StateObject private var currentCanvas = CurrentCanvas().withNewLayer()
+    @StateObject private var history = History()
     
-    @State var canvasSize = CGSize(512)
-    @State var canvasBgColor: Color = .white
-    @State var zoom: CGFloat = 1.0
-    @State var tileMode: TileMode = .none
+    @State private var canvasSize = CGSize(512)
+    @State private var canvasBgColor: Color = .white
+    @State private var zoom: CGFloat = 1.0
+    @State private var tileMode: TileMode = .none
+    
+    @State private var showingSettings = false
+    @State private var isDarkMode = true
     
     var body: some Scene {
         WindowGroup("Chroma") {
-            ContentView()
+            ContentView(colorScheme: isDarkMode ? .dark : .light)
+//                .onAppear {
+//                    isDarkMode = colorScheme == .dark
+//                }
+                .colorScheme(isDarkMode ? .dark : .light)
                 .environmentObject(drawSettings)
                 .environmentObject(currentCanvas)
                 .environmentObject(history)
@@ -39,7 +47,15 @@ struct ChromaApp: App {
                         Spacer()
                         ZoomButtons()
                             .environment(\.zoom, $zoom)
+                        Button {
+                            showingSettings = true
+                        } label: {
+                            Image(systemName: "gear")
+                        }
                     }
+                }
+                .sheet(isPresented: $showingSettings) {
+                    Settings(showing: $showingSettings, isDarkMode: $isDarkMode)
                 }
         }
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))

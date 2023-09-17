@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ToolList: View {
     @EnvironmentObject var drawSettings: DrawSettings
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {

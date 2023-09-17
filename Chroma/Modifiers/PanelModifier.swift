@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PanelModifier: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
     var padding: EdgeInsets
     var cornerRadius: CGFloat
     
@@ -17,24 +18,39 @@ struct PanelModifier: ViewModifier {
             .background(.thinMaterial)
             .cornerRadius(cornerRadius)
             .foregroundStyle(.primary)
-            .shadow(radius: cornerRadius / 2)
+            .shadow(color: colorScheme == .dark ? .black.opacity(0.3) : .black.opacity(0.1), radius: cornerRadius / 2)
+            .if(colorScheme == .light) { view in
+                view.overlay(RoundedRectangle(cornerRadius: cornerRadius - 1).stroke(.black.opacity(0.05), lineWidth: 1))
+            }
     }
 }
 
 struct WellModifier: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
     var padding: EdgeInsets
     var cornerRadius: CGFloat
+    
+    var shadowColor: Color {
+        return Color.black
+    }
     
     func body(content: Content) -> some View {
         content
             .padding(padding)
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .foregroundStyle(.shadow(.inner(color: Color.black.opacity(0.2), radius: cornerRadius)))
-                    .blendMode(.multiply)
+                    .foregroundStyle(.linearGradient(Gradient(
+                        colors: [Color(white: 0.9), Color(white: 0.975), .white]),
+                        startPoint: .top,
+                        endPoint: UnitPoint(x: 0.5, y: 0.5)
+                    ))
                     .allowsHitTesting(false)
+                    .blendMode(.multiply)
             )
-            .background(Color.black.opacity(0.1))
+            .if(colorScheme == .light) { view in
+                view.overlay(RoundedRectangle(cornerRadius: cornerRadius - 1).stroke(.black.opacity(0.05), lineWidth: 1))
+            }
+            .background(.black.opacity(0.1))
             .cornerRadius(cornerRadius)
             .foregroundStyle(.primary)
     }

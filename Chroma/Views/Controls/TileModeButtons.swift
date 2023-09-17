@@ -51,21 +51,21 @@ struct TileModeButtons: View {
                 tileMode.wrappedValue = .horizontal
             } label: {
                 Text("Horizontal").expandWidth(alignment: .leading)
-                TileModeButtons.horizontal.fill(.white).frame(width: 18, height: 18)
+                TileModeButtons.horizontal.fill(.secondary).frame(width: 18, height: 18)
             }.active(tileMode.wrappedValue == .horizontal)
             
             Button {
                 tileMode.wrappedValue = .vertical
             } label: {
                 Text("Vertical").expandWidth(alignment: .leading)
-                TileModeButtons.vertical.fill(.white).frame(width: 18, height: 18)
+                TileModeButtons.vertical.fill(.secondary).frame(width: 18, height: 18)
             }.active(tileMode.wrappedValue == .vertical)
             
             Button {
                 tileMode.wrappedValue = .both
             } label: {
                 Text("Both").expandWidth(alignment: .leading)
-                TileModeButtons.both.fill(.white).frame(width: 18, height: 18)
+                TileModeButtons.both.fill(.secondary).frame(width: 18, height: 18)
             }.active(tileMode.wrappedValue == .both)
             
             Button {
@@ -77,7 +77,7 @@ struct TileModeButtons: View {
         .composableButtonStyle(
             Btn.defaultPadding
             |> Btn.hStack
-            |> Btn.tinted
+            |> Btn.filledAccent
             |> Btn.rounded
             |> Btn.scaled
         )

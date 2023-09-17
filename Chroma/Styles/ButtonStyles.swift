@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-extension Color {
-    static var primaryBackground: Color {
-        return Color(hue: 0.75, saturation: 0.1, brightness: 0.3, opacity: 0.7)
-    }
-    static var almostClear: Color {
-        return Color(white: 1, opacity: 0.001)
-    }
-}
-
-
 typealias ButtonStyleClosure<A: View, B: View> = (ButtonStyleConfiguration, A) -> B
 
 precedencegroup ForwardComposition {
@@ -31,6 +21,88 @@ func |> <A: View, B: View, C: View>(
 ) -> ButtonStyleClosure<A, C> {
     return { configuration, a in
         g(configuration, f(configuration, a))
+    }
+}
+
+enum ButtonColorStyleType {
+    case filled
+    case outlined
+    case subtle
+    case text
+}
+
+struct ButtonColorStyle: ShapeStyle {
+    var type: ButtonColorStyleType
+    var baseColor: Color
+    
+    var backgroundColor: Color {
+        switch type {
+            case .filled: return baseColor
+            case .outlined, .text: return .clear
+            case .subtle: return baseColor.opacity(0.2)
+        }
+    }
+    
+    var foregroundColor: Color {
+        switch type {
+            case .filled: return contrasting
+            default: return baseColor
+        }
+    }
+    
+    var borderColor: Color {
+        switch type {
+            case .outlined: return baseColor.opacity(0.4)
+            default: return .clear
+        }
+    }
+    
+    var contrasting: Color {
+        return baseColor.isDark ? .white.opacity(0.9) : .black.opacity(0.9)
+    }
+    
+    init(_ type: ButtonColorStyleType, _ baseColor: Color) {
+        self.type = type
+        self.baseColor = baseColor
+    }
+}
+
+struct ButtonColorStyleModifier: ViewModifier {
+    var colorStyle: ButtonColorStyle
+    
+    init(_ type: ButtonColorStyleType, _ baseColor: Color) {
+        self.colorStyle = ButtonColorStyle(type, baseColor)
+    }
+    
+    func body(content: Content) -> some View {
+        content.background(colorStyle.backgroundColor)
+            .border(colorStyle.borderColor)
+            .foregroundColor(colorStyle.foregroundColor)
+    }
+}
+
+struct ButtonAccentStyleModifier: ViewModifier {
+    @Environment(\.tint) var tint
+    var type: ButtonColorStyleType
+    
+    init(_ type: ButtonColorStyleType) {
+        self.type = type
+    }
+    
+    func body(content: Content) -> some View {
+        let colorStyle = ButtonColorStyle(type, tint)
+        content.background(colorStyle.backgroundColor)
+            .border(colorStyle.borderColor)
+            .foregroundColor(colorStyle.foregroundColor)
+    }
+}
+
+extension View {
+    func buttonColorStyle(_ type: ButtonColorStyleType, _ baseColor: Color) -> some View {
+        modifier(ButtonColorStyleModifier(type, baseColor))
+    }
+    func buttonAccentStyle(_ type: ButtonColorStyleType) -> some View {
+        modifier(ButtonAccentStyleModifier(type))
     }
 }
 
@@ -58,17 +130,6 @@ extension View {
     }
 }
 
-extension View {
-    func active(_ isActive: Bool = true) -> some View {
-        return tint(isActive ? .accentColor : .primaryBackground)
-    }
-}
-
-struct ButtonStateColors {
-    let pressed: Color
-    let notPressed: Color
-}
-
 struct Btn {
     
     static func scaled<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
@@ -84,10 +145,6 @@ struct Btn {
     static func defaultPadding<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return view.padding(EdgeInsets(top: 3, leading: 9, bottom: 3, trailing: 9))
     }
-    
-    static func tinted<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
-        return view.background(.tint)
-    }
 
     static func hStack<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return HStack(spacing: 0) { view }
@@ -96,60 +153,20 @@ struct Btn {
     static func vStack<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return VStack(spacing: 0) { view }
     }
-}
-
-func scaledButtonStyle<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
-    return view
-        .scaleEffect(configuration.isPressed ? 0.98 : 1)
-        .animation(.spring(response: 0.2, dampingFraction: 0.5, blendDuration: 0.5), value: configuration.isPressed)
-}
-
-func roundedButtonStyle<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
-    return view.cornerRadius(8)
-}
-
-func defaultPaddingButtonStyle<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
-    return view.padding(EdgeInsets(top: 3, leading: 9, bottom: 3, trailing: 9))
-}
-
-func coloredButtonStyle<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
-    let backgroundColors = ButtonStateColors(
-        pressed: Color.white,
-        notPressed: Color.gray
-    )
-    let foregroundColors = ButtonStateColors(
-        pressed: Color.black,
-        notPressed: Color.black
-    )
-    return view
-        .background(configuration.isPressed ? backgroundColors.pressed : backgroundColors.notPressed)
-        .foregroundColor(configuration.isPressed ? foregroundColors.pressed : foregroundColors.notPressed)
-}
-
-func tintBackgroundButtonStyle<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
-    return view
-        .background(.tint)
-}
-
-func hStackButtonStyle<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
-    return HStack(spacing: 0) { view }
-}
-
-func vStackButtonStyle<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
-    return VStack(spacing: 0) { view }
-}
-
-struct DefaultButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        HStack(spacing: 0) {
-            Spacer()
-            configuration.label
-            Spacer()
-        }
-            .padding(EdgeInsets(top: 4, leading: 6, bottom: 4, trailing: 6))
-            .background(.tint)
-            .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 4))
-            .scaleEffect(configuration.isPressed ? 0.975 : 1)
+    
+    static func filledAccent<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
+        return view.buttonAccentStyle(.filled)
+    }
+    
+    static func outlinedAccent<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
+        return view.buttonAccentStyle(.outlined)
+    }
+    
+    static func subtleAccent<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
+        return view.buttonAccentStyle(.subtle)
+    }
+    
+    static func textAccent<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
+        return view.buttonAccentStyle(.text)
     }
 }

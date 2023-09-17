@@ -12,6 +12,7 @@ import SwiftUI
 // live in EditableCanvas because that messes up the mouseLocation code.
 
 struct CanvasWrapper: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.zoom) var currentZoom
     @Environment(\.canvasSize) var size
     @Environment(\.tileMode) var tileMode
@@ -21,7 +22,9 @@ struct CanvasWrapper: View {
         ScrollView(Axis.Set([.horizontal, .vertical]), showsIndicators: false) {
             ZStack {
                 Rectangle()
-                    .fill(Color(hue: 0.7, saturation: 0.1, brightness: 0.25))
+                    .fill(colorScheme == .dark
+                          ? Color(hue: 0.8, saturation: 0.05, brightness: 0.3)
+                          : Color(hue: 0.8, saturation: 0.025, brightness: 0.8))
                     .ignoresSafeArea()
                 if tileMode.wrappedValue == .both || tileMode.wrappedValue == .horizontal {
                     makeCanvas(w: -1, h: 0) // Left

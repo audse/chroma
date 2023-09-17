@@ -23,7 +23,7 @@ struct RotationControl: View {
                 Image(systemName: "rotate.right.fill")
             }.help("Rotate Right")
         }.labelStyle(.iconOnly)
-            .tint(.primaryBackground)
+            .active(false)
     }
 }
 

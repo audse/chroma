@@ -27,7 +27,7 @@ struct HistoryButtons: View {
             }
             .disabled(history.undoHistory.isEmpty)
             .help("Redo")
-        }.labelStyle(.iconOnly).tint(.primaryBackground)
+        }.labelStyle(.iconOnly).active(false)
     }
 }
 

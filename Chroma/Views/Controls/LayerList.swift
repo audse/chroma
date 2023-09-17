@@ -28,7 +28,7 @@ struct LayerListItem: View {
         }.composableButtonStyle(
             Btn.defaultPadding
             |> Btn.hStack
-            |> Btn.tinted
+            |> Btn.filledAccent
             |> Btn.rounded
             |> Btn.scaled
         )

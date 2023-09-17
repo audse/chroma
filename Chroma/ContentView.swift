@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    var colorScheme: ColorScheme
+    
     var body: some View {
         ZStack {
             CanvasWrapper()
@@ -42,16 +44,17 @@ struct ContentView: View {
         .composableButtonStyle(
             Btn.defaultPadding
             |> Btn.hStack
-            |> Btn.tinted
+            |> Btn.filledAccent
             |> Btn.rounded
             |> Btn.scaled
         )
+        .preferredColorScheme(colorScheme)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(colorScheme: .dark)
             .environmentObject(DrawSettings())
             .environmentObject(CurrentCanvas().withNewLayer())
             .environmentObject(History())

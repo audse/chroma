@@ -32,6 +32,10 @@ private struct GridModeKey: EnvironmentKey {
     static var defaultValue: Binding<GridMode> = .constant(.dots)
 }
 
+private struct TintColorKey: EnvironmentKey {
+    static var defaultValue: Color = .accentColor
+}
+
 extension EnvironmentValues {
     var zoom: Binding<CGFloat> {
         get { self[ZoomKey.self] }
@@ -44,5 +48,27 @@ extension EnvironmentValues {
     var gridMode: Binding<GridMode> {
         get { self[GridModeKey.self] }
         set { self[GridModeKey.self] = newValue }
+    }
+    var tint: Color {
+        get { self[TintColorKey.self] }
+        set { self[TintColorKey.self] = newValue }
+    }
+}
+
+struct TintModifier: ViewModifier {
+    var tintColor: Color
+    
+    init(_ color: Color) {
+        self.tintColor = color
+    }
+    
+    func body(content: Content) -> some View {
+        content.tint(tintColor).environment(\.tint, tintColor)
+    }
+}
+
+extension View {
+    func tinted(_ color: Color) -> some View {
+        modifier(TintModifier(color))
     }
 }
