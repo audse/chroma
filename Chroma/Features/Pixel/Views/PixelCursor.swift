@@ -13,12 +13,12 @@ struct PixelCursor: View {
     var body: some View {
         let size: CGFloat = drawSettings.getPixelSize()
         if drawSettings.tool == .draw {
-            Pixel(
+            Pixel(PixelModel(
                 shape: drawSettings.shape,
                 color: drawSettings.color,
                 size: size,
                 rotation: drawSettings.rotation
-            ).getView()
+            )).getView()
                 .opacity(0.25)
                 .animation(.easeInOut(duration: 0.2), value: drawSettings.rotation)
                 .animation(.easeInOut(duration: 0.2), value: drawSettings.pixelSize)
@@ -33,11 +33,11 @@ struct PixelCursor: View {
                     lineJoin: .round
                 ))
                 .overlay(
-                    Pixel(
+                    Pixel(PixelModel(
                         shape: SquareShape,
                         color: Color.clear,
                         size: drawSettings.getPixelSize() - 2
-                    ).getShape()
+                    )).getShape()
                     .stroke(.black, style: StrokeStyle(
                         lineWidth: 2,
                         lineCap: .round,

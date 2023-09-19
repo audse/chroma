@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ArtboardBackgroundColorControl: View {
-    @EnvironmentObject var currentArtboard: CurrentArtboardViewModel
+    @EnvironmentObject var currentArtboard: ArtboardViewModel
     
     @State var color = Color.white
     
@@ -24,6 +24,6 @@ struct ArtboardBackgroundColorControl: View {
 struct ArtboardBackgroundColorControl_Previews: PreviewProvider {
     static var previews: some View {
         ArtboardBackgroundColorControl()
-            .environmentObject(CurrentArtboardViewModel())
+            .environmentObject(ArtboardViewModel())
     }
 }

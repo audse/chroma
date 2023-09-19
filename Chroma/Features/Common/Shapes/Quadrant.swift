@@ -7,26 +7,21 @@
 
 import SwiftUI
 
-struct Quadrant: InsettableShape {
-    var insetAmount: CGFloat = 0
-    
-    func inset(by amount: CGFloat) -> some InsettableShape {
-        var shape = self
-        shape.insetAmount = amount
-        return shape
-    }
-    
+struct Quadrant: Shape, Identifiable {
+    var id = UUID()
     func path(in rect: CGRect) -> Path {
-        let sideLength = min(rect.width, rect.height) - (insetAmount * 2)
+        let sideLength = min(rect.width, rect.height)
         var p = Path()
-        p.move(to: rect.bottomLeft + CGPoint(x: insetAmount, y: -insetAmount))
-        p.addRelativeArc(
-            center: CGPoint(x: rect.width, y: rect.height) - CGPoint(insetAmount),
+        p.move(to: rect.end)
+        p.addArc(
+            center: rect.end,
             radius: sideLength,
-            startAngle: Angle(degrees: 180),
-            delta: Angle(degrees: 90)
+            startAngle: Angle(degrees: 270),
+            endAngle: Angle(degrees: 180),
+            clockwise: true
         )
-        p.addLine(to: rect.end - CGPoint(insetAmount))
+        p.addLine(to: rect.end)
+        p.addLine(to: rect.bottomLeft)
         p.closeSubpath()
         return p
     }

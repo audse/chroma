@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ArtboardModel {
-    let id = UUID()
-    var layers: [Layer] = []
+    var id: UUID = UUID()
+    var name: String? = nil
     var size: CGSize = CGSize(512)
     var backgroundColor: Color = .white
+    var layers: [LayerModel] = []
 }

@@ -59,6 +59,11 @@ class History: ObservableObject {
             history.append(action)
         }
     }
+    
+    func clear() {
+        history.removeAll()
+        undoHistory.removeAll()
+    }
 }
 
 private struct HistoryKey: EnvironmentKey {

@@ -22,6 +22,12 @@ enum AppColorScheme {
 
 class AppSettingsModel: ObservableObject {
     @Published var colorScheme: AppColorScheme = .custom(.dark)
+    @Published var showingSettings: Bool = false
+    
+    lazy var showingSettingsBinding: Binding<Bool> = Binding(
+        get: { self.showingSettings },
+        set: { newValue in self.showingSettings = newValue }
+    )
     
     var colorSchemeValue: ColorScheme {
         switch colorScheme {

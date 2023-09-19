@@ -10,7 +10,7 @@ import SwiftUI
 struct EditableArtboard: View {
     @EnvironmentObject var drawSettings: DrawSettings
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
-    @EnvironmentObject var currentArtboard: CurrentArtboardViewModel
+    @EnvironmentObject var currentArtboard: ArtboardViewModel
     @EnvironmentObject var history: History
     
     @State var isHovering = true
@@ -18,7 +18,7 @@ struct EditableArtboard: View {
     
     var body: some View {
         ZStack {
-            Artboard()
+            Artboard(artboard: currentArtboard)
                 .onTapGesture { location in
                     switch drawSettings.tool {
                     case .draw: draw(location - drawSettings.getPixelSize() / 2.0)
@@ -46,7 +46,7 @@ struct EditableArtboard: View {
     }
     
     func draw(_ location: CGPoint) {
-        if let layer = currentArtboard.currentLayer {
+        if let layer = currentArtboard.layer {
             let pixel = drawSettings.createPixel(location)
             layer.addPixel(pixel)
             history.add(DrawAction(pixel, layer))
@@ -54,7 +54,7 @@ struct EditableArtboard: View {
     }
     
     func erase(_ location: CGPoint) {
-        if let layer = currentArtboard.currentLayer {
+        if let layer = currentArtboard.layer {
             let idx: Int = layer.findPixel(location)
             if idx != -1 {
                 let pixel = layer.removePixel(idx)
@@ -65,10 +65,10 @@ struct EditableArtboard: View {
 }
 
 struct EditableCanvas_Previews: PreviewProvider {
-    private static var currentArtboard = CurrentArtboardViewModel().withNewLayer([
-        Pixel(shape: SquareShape),
-        Pixel(shape: CircleShape, position: CGPoint(250)),
-        Pixel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
+    private static var currentArtboard = ArtboardViewModel().withNewLayer([
+        PixelModel(shape: SquareShape),
+        PixelModel(shape: CircleShape, position: CGPoint(250)),
+        PixelModel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
     ])
     
     static var previews: some View {

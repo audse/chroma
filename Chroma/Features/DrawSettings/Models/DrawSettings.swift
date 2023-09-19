@@ -28,13 +28,13 @@ class DrawSettings: ObservableObject {
     }
     
     func createPixel(_ point: CGPoint = CGPoint()) -> Pixel {
-        return Pixel(
+        return Pixel(PixelModel(
             shape: shape,
             color: color,
             size: getPixelSize(),
             rotation: rotation,
             position: snapped(point)
-        )
+        ))
     }
     
     func getPixelSize() -> CGFloat {

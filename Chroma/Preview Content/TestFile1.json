@@ -1,0 +1,53 @@
+{
+    "id": "a7ac7cc3-ece8-4435-b28b-fdc1d11e3232",
+    "name": "My File 1",
+    "artboard": {
+        "id": "e774bc16-7678-41b1-b42f-52bf3e719cd8",
+        "name": "Untitled",
+        "size": {
+            "width": 512.0,
+            "height": 512.0
+        },
+        "backgroundColor": {
+            "hex": "#ffffff"
+        },
+        "layers": [
+            {
+                "id": "2e968c9d-fa05-4f89-8bce-35898abcee20",
+                "name": "Layer 1",
+                "pixels": [
+                    {
+                        "id": "4471195b-17d4-493e-9bfb-f8b1abdef3fa",
+                        "shapeId": "Square",
+                        "color": {
+                            "hex": "#ff0000"
+                        },
+                        "size": 64.0,
+                        "rotation": {
+                            "degrees": 0.0
+                        },
+                        "position": {
+                            "x": 256.0,
+                            "y": 256.0
+                        }
+                    },
+                    {
+                        "id": "d5a56202-3b80-4f7a-9299-ee8030a19a1e",
+                        "shapeId": "Circle",
+                        "color": {
+                            "hex": "#00aaff"
+                        },
+                        "size": 32.0,
+                        "rotation": {
+                            "degrees": 0.0
+                        },
+                        "position": {
+                            "x": 128.0,
+                            "y": 128.0
+                        }
+                    },
+                ]
+            }
+        ]
+    }
+}

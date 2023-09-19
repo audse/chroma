@@ -57,7 +57,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(AppSettingsModel())
             .environmentObject(DrawSettings())
-            .environmentObject(CurrentArtboardViewModel().withNewLayer())
+            .environmentObject(ArtboardViewModel().withNewLayer())
             .environmentObject(History())
     }
 }

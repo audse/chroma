@@ -65,9 +65,7 @@
 		7554D1F12AB78DDC008CEB87 /* DrawTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1F02AB78DDC008CEB87 /* DrawTool.swift */; };
 		7554D1F32AB78E61008CEB87 /* DrawScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1F22AB78E61008CEB87 /* DrawScaleType.swift */; };
 		7554D2092AB78FC7008CEB87 /* ArtboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2082AB78FC7008CEB87 /* ArtboardModel.swift */; };
-		7554D20C2AB7904B008CEB87 /* ArtboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D20B2AB7904B008CEB87 /* ArtboardViewModel.swift */; };
-		7554D20E2AB79099008CEB87 /* CurrentArtboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D20D2AB79099008CEB87 /* CurrentArtboardModel.swift */; };
-		7554D2102AB790C7008CEB87 /* CurrentArtboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D20F2AB790C7008CEB87 /* CurrentArtboardViewModel.swift */; };
+		7554D2102AB790C7008CEB87 /* ArtboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D20F2AB790C7008CEB87 /* ArtboardViewModel.swift */; };
 		7554D21B2AB79901008CEB87 /* Well.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D21A2AB79901008CEB87 /* Well.swift */; };
 		7554D21F2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D21E2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift */; };
 		7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2202AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift */; };
@@ -83,6 +81,28 @@
 		7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D23A2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift */; };
 		7554D23E2AB7ABCA008CEB87 /* AppSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D23D2AB7ABCA008CEB87 /* AppSettingsModel.swift */; };
 		7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D23F2AB7AF7B008CEB87 /* ColorSchemeControl.swift */; };
+		7554D2452AB7B584008CEB87 /* FilePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2442AB7B584008CEB87 /* FilePreview.swift */; };
+		7554D2472AB7B9E8008CEB87 /* FilePreviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2462AB7B9E8008CEB87 /* FilePreviewList.swift */; };
+		7554D24A2AB7BC74008CEB87 /* FilesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2492AB7BC74008CEB87 /* FilesPage.swift */; };
+		7554D24C2AB8BF0B008CEB87 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D24B2AB8BF0B008CEB87 /* FileModel.swift */; };
+		7554D24E2AB8C06A008CEB87 /* PixelJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D24D2AB8C06A008CEB87 /* PixelJson.swift */; };
+		7554D2522AB8C13C008CEB87 /* SizeJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2512AB8C13C008CEB87 /* SizeJson.swift */; };
+		7554D2542AB8C169008CEB87 /* PointJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2532AB8C169008CEB87 /* PointJson.swift */; };
+		7554D2562AB8C1F5008CEB87 /* AngleJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2552AB8C1F5008CEB87 /* AngleJson.swift */; };
+		7554D2582AB8C378008CEB87 /* ColorJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2572AB8C378008CEB87 /* ColorJson.swift */; };
+		7554D25A2AB8C4B9008CEB87 /* PixelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2592AB8C4B9008CEB87 /* PixelModel.swift */; };
+		7554D25D2AB8C6CE008CEB87 /* LayerJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D25C2AB8C6CE008CEB87 /* LayerJson.swift */; };
+		7554D25F2AB8C73B008CEB87 /* LayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D25E2AB8C73B008CEB87 /* LayerModel.swift */; };
+		7554D2632AB8CDC0008CEB87 /* ArtboardHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2622AB8CDC0008CEB87 /* ArtboardHelpers.swift */; };
+		7554D2662AB8D2D1008CEB87 /* PixelHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2652AB8D2D1008CEB87 /* PixelHelpers.swift */; };
+		7554D2682AB90573008CEB87 /* ArtboardJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2672AB90573008CEB87 /* ArtboardJson.swift */; };
+		7554D26A2AB906F8008CEB87 /* TestFile1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7554D2692AB906F8008CEB87 /* TestFile1.json */; };
+		7554D26D2AB912B8008CEB87 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D26C2AB912B8008CEB87 /* JsonHelper.swift */; };
+		7554D26F2AB91310008CEB87 /* FileJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D26E2AB91310008CEB87 /* FileJson.swift */; };
+		7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2712AB9423E008CEB87 /* ExportPage.swift */; };
+		7554D2742AB9429F008CEB87 /* ExportTypeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */; };
+		7554D27A2AB942D4008CEB87 /* ExportSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2792AB942D4008CEB87 /* ExportSettings.swift */; };
+		7554D27C2AB944AB008CEB87 /* ExportUrlControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D27B2AB944AB008CEB87 /* ExportUrlControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,9 +185,7 @@
 		7554D1F02AB78DDC008CEB87 /* DrawTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawTool.swift; sourceTree = "<group>"; };
 		7554D1F22AB78E61008CEB87 /* DrawScaleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawScaleType.swift; sourceTree = "<group>"; };
 		7554D2082AB78FC7008CEB87 /* ArtboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardModel.swift; sourceTree = "<group>"; };
-		7554D20B2AB7904B008CEB87 /* ArtboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardViewModel.swift; sourceTree = "<group>"; };
-		7554D20D2AB79099008CEB87 /* CurrentArtboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentArtboardModel.swift; sourceTree = "<group>"; };
-		7554D20F2AB790C7008CEB87 /* CurrentArtboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentArtboardViewModel.swift; sourceTree = "<group>"; };
+		7554D20F2AB790C7008CEB87 /* ArtboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardViewModel.swift; sourceTree = "<group>"; };
 		7554D21A2AB79901008CEB87 /* Well.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Well.swift; sourceTree = "<group>"; };
 		7554D21E2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingIconLabelStyle.swift; sourceTree = "<group>"; };
 		7554D2202AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacedTrailingIconLabelStyle.swift; sourceTree = "<group>"; };
@@ -183,6 +201,28 @@
 		7554D23A2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceSettingsModel.swift; sourceTree = "<group>"; };
 		7554D23D2AB7ABCA008CEB87 /* AppSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsModel.swift; sourceTree = "<group>"; };
 		7554D23F2AB7AF7B008CEB87 /* ColorSchemeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeControl.swift; sourceTree = "<group>"; };
+		7554D2442AB7B584008CEB87 /* FilePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreview.swift; sourceTree = "<group>"; };
+		7554D2462AB7B9E8008CEB87 /* FilePreviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreviewList.swift; sourceTree = "<group>"; };
+		7554D2492AB7BC74008CEB87 /* FilesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesPage.swift; sourceTree = "<group>"; };
+		7554D24B2AB8BF0B008CEB87 /* FileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
+		7554D24D2AB8C06A008CEB87 /* PixelJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelJson.swift; sourceTree = "<group>"; };
+		7554D2512AB8C13C008CEB87 /* SizeJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeJson.swift; sourceTree = "<group>"; };
+		7554D2532AB8C169008CEB87 /* PointJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointJson.swift; sourceTree = "<group>"; };
+		7554D2552AB8C1F5008CEB87 /* AngleJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleJson.swift; sourceTree = "<group>"; };
+		7554D2572AB8C378008CEB87 /* ColorJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorJson.swift; sourceTree = "<group>"; };
+		7554D2592AB8C4B9008CEB87 /* PixelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelModel.swift; sourceTree = "<group>"; };
+		7554D25C2AB8C6CE008CEB87 /* LayerJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerJson.swift; sourceTree = "<group>"; };
+		7554D25E2AB8C73B008CEB87 /* LayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerModel.swift; sourceTree = "<group>"; };
+		7554D2622AB8CDC0008CEB87 /* ArtboardHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardHelpers.swift; sourceTree = "<group>"; };
+		7554D2652AB8D2D1008CEB87 /* PixelHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelHelpers.swift; sourceTree = "<group>"; };
+		7554D2672AB90573008CEB87 /* ArtboardJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardJson.swift; sourceTree = "<group>"; };
+		7554D2692AB906F8008CEB87 /* TestFile1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestFile1.json; sourceTree = "<group>"; };
+		7554D26C2AB912B8008CEB87 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
+		7554D26E2AB91310008CEB87 /* FileJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileJson.swift; sourceTree = "<group>"; };
+		7554D2712AB9423E008CEB87 /* ExportPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportPage.swift; sourceTree = "<group>"; };
+		7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportTypeControl.swift; sourceTree = "<group>"; };
+		7554D2792AB942D4008CEB87 /* ExportSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportSettings.swift; sourceTree = "<group>"; };
+		7554D27B2AB944AB008CEB87 /* ExportUrlControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportUrlControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				7554D1132AAFB6B9008CEB87 /* Preview Assets.xcassets */,
+				7554D2692AB906F8008CEB87 /* TestFile1.json */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -307,6 +348,9 @@
 		7554D1B52AB7883E008CEB87 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				7554D2752AB942BB008CEB87 /* Export */,
+				7554D24F2AB8C12D008CEB87 /* Json */,
+				7554D2412AB7B53D008CEB87 /* FileIO */,
 				7554D2382AB7A538008CEB87 /* AppSettings */,
 				7554D2142AB797F3008CEB87 /* Common */,
 				7554D2002AB78F34008CEB87 /* Artboard */,
@@ -351,6 +395,7 @@
 			children = (
 				7554D1C02AB78A62008CEB87 /* Models */,
 				7554D1BF2AB78A5D008CEB87 /* Views */,
+				7554D2602AB8C74B008CEB87 /* ViewModels */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -366,7 +411,8 @@
 		7554D1C02AB78A62008CEB87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7554D1C12AB78A7B008CEB87 /* Layer.swift */,
+				7554D25C2AB8C6CE008CEB87 /* LayerJson.swift */,
+				7554D25E2AB8C73B008CEB87 /* LayerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -700,6 +746,7 @@
 				7554D2012AB78F3B008CEB87 /* Models */,
 				7554D2032AB78F88008CEB87 /* Views */,
 				7554D20A2AB79009008CEB87 /* ViewModels */,
+				7554D2612AB8CDA3008CEB87 /* Helpers */,
 			);
 			path = Artboard;
 			sourceTree = "<group>";
@@ -707,8 +754,8 @@
 		7554D2012AB78F3B008CEB87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7554D2672AB90573008CEB87 /* ArtboardJson.swift */,
 				7554D2082AB78FC7008CEB87 /* ArtboardModel.swift */,
-				7554D20D2AB79099008CEB87 /* CurrentArtboardModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -730,8 +777,7 @@
 		7554D20A2AB79009008CEB87 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7554D20B2AB7904B008CEB87 /* ArtboardViewModel.swift */,
-				7554D20F2AB790C7008CEB87 /* CurrentArtboardViewModel.swift */,
+				7554D20F2AB790C7008CEB87 /* ArtboardViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -741,6 +787,8 @@
 			children = (
 				7554D2132AB791FA008CEB87 /* Models */,
 				7554D2122AB791F7008CEB87 /* Views */,
+				7554D25B2AB8C59A008CEB87 /* ViewModels */,
+				7554D2642AB8D2C0008CEB87 /* Helpers */,
 			);
 			path = Pixel;
 			sourceTree = "<group>";
@@ -748,7 +796,6 @@
 		7554D2122AB791F7008CEB87 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7554D13E2AAFBD7E008CEB87 /* Pixel.swift */,
 				7554D16C2AB119FD008CEB87 /* PixelCursor.swift */,
 			);
 			path = Views;
@@ -757,6 +804,8 @@
 		7554D2132AB791FA008CEB87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7554D24D2AB8C06A008CEB87 /* PixelJson.swift */,
+				7554D2592AB8C4B9008CEB87 /* PixelModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -888,6 +937,137 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7554D2412AB7B53D008CEB87 /* FileIO */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2432AB7B54E008CEB87 /* Models */,
+				7554D2422AB7B548008CEB87 /* Views */,
+			);
+			path = FileIO;
+			sourceTree = "<group>";
+		};
+		7554D2422AB7B548008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2482AB7BC62008CEB87 /* Pages */,
+				7554D2442AB7B584008CEB87 /* FilePreview.swift */,
+				7554D2462AB7B9E8008CEB87 /* FilePreviewList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D2432AB7B54E008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D26E2AB91310008CEB87 /* FileJson.swift */,
+				7554D24B2AB8BF0B008CEB87 /* FileModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D2482AB7BC62008CEB87 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2492AB7BC74008CEB87 /* FilesPage.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		7554D24F2AB8C12D008CEB87 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2502AB8C132008CEB87 /* Models */,
+				7554D26B2AB912AD008CEB87 /* Helpers */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		7554D2502AB8C132008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2512AB8C13C008CEB87 /* SizeJson.swift */,
+				7554D2532AB8C169008CEB87 /* PointJson.swift */,
+				7554D2552AB8C1F5008CEB87 /* AngleJson.swift */,
+				7554D2572AB8C378008CEB87 /* ColorJson.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D25B2AB8C59A008CEB87 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7554D13E2AAFBD7E008CEB87 /* Pixel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7554D2602AB8C74B008CEB87 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7554D1C12AB78A7B008CEB87 /* Layer.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7554D2612AB8CDA3008CEB87 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2622AB8CDC0008CEB87 /* ArtboardHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7554D2642AB8D2C0008CEB87 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2652AB8D2D1008CEB87 /* PixelHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7554D26B2AB912AD008CEB87 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7554D26C2AB912B8008CEB87 /* JsonHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7554D2752AB942BB008CEB87 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2782AB942CA008CEB87 /* Models */,
+				7554D2762AB942C0008CEB87 /* Pages */,
+				7554D2772AB942C4008CEB87 /* Views */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		7554D2762AB942C0008CEB87 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2712AB9423E008CEB87 /* ExportPage.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		7554D2772AB942C4008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */,
+				7554D27B2AB944AB008CEB87 /* ExportUrlControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D2782AB942CA008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2792AB942D4008CEB87 /* ExportSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -994,6 +1174,7 @@
 			files = (
 				7554D1142AAFB6B9008CEB87 /* Preview Assets.xcassets in Resources */,
 				7554D1102AAFB6B9008CEB87 /* Assets.xcassets in Resources */,
+				7554D26A2AB906F8008CEB87 /* TestFile1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,42 +1201,56 @@
 			files = (
 				7554D2092AB78FC7008CEB87 /* ArtboardModel.swift in Sources */,
 				7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */,
-				7554D2102AB790C7008CEB87 /* CurrentArtboardViewModel.swift in Sources */,
+				7554D2102AB790C7008CEB87 /* ArtboardViewModel.swift in Sources */,
 				7554D16A2AB10288008CEB87 /* Expand.swift in Sources */,
+				7554D2662AB8D2D1008CEB87 /* PixelHelpers.swift in Sources */,
 				7554D19B2AB54187008CEB87 /* WorkspaceSettingsPanel.swift in Sources */,
 				7554D1AA2AB63EB3008CEB87 /* NumberTextField.swift in Sources */,
+				7554D2742AB9429F008CEB87 /* ExportTypeControl.swift in Sources */,
 				7554D1792AB29A3D008CEB87 /* TintModel.swift in Sources */,
 				7554D1592AAFECB2008CEB87 /* SemiCircle.swift in Sources */,
+				7554D26D2AB912B8008CEB87 /* JsonHelper.swift in Sources */,
 				7554D2252AB79C29008CEB87 /* ButtonColor.swift in Sources */,
 				7554D16D2AB119FD008CEB87 /* PixelCursor.swift in Sources */,
 				7554D1602AAFF3C9008CEB87 /* ShapeButton.swift in Sources */,
+				7554D2562AB8C1F5008CEB87 /* AngleJson.swift in Sources */,
 				7554D10E2AAFB6B8008CEB87 /* ContentView.swift in Sources */,
 				7554D1A62AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift in Sources */,
 				7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */,
+				7554D24A2AB7BC74008CEB87 /* FilesPage.swift in Sources */,
 				7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */,
+				7554D2522AB8C13C008CEB87 /* SizeJson.swift in Sources */,
+				7554D24C2AB8BF0B008CEB87 /* FileModel.swift in Sources */,
 				7554D17C2AB29BAB008CEB87 /* ZoomButtons.swift in Sources */,
 				7554D1892AB4BC12008CEB87 /* InverseQuadrant.swift in Sources */,
-				7554D20E2AB79099008CEB87 /* CurrentArtboardModel.swift in Sources */,
 				7554D1872AB3D1D4008CEB87 /* ScaleTypeButtons.swift in Sources */,
 				7554D1BB2AB789BC008CEB87 /* HistoryAction.swift in Sources */,
 				7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */,
 				7554D19F2AB60CE6008CEB87 /* ButtonColorStyle.swift in Sources */,
 				7554D1C22AB78A7B008CEB87 /* Layer.swift in Sources */,
 				7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */,
+				7554D24E2AB8C06A008CEB87 /* PixelJson.swift in Sources */,
+				7554D2682AB90573008CEB87 /* ArtboardJson.swift in Sources */,
+				7554D2542AB8C169008CEB87 /* PointJson.swift in Sources */,
 				7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */,
 				7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */,
 				7554D2372AB7A495008CEB87 /* Font.swift in Sources */,
+				7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */,
 				7554D1502AAFE61D008CEB87 /* ShapeList.swift in Sources */,
+				7554D2632AB8CDC0008CEB87 /* ArtboardHelpers.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
+				7554D2582AB8C378008CEB87 /* ColorJson.swift in Sources */,
 				7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */,
 				7554D22E2AB7A3BC008CEB87 /* CGSize.swift in Sources */,
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
 				7554D21B2AB79901008CEB87 /* Well.swift in Sources */,
+				7554D25D2AB8C6CE008CEB87 /* LayerJson.swift in Sources */,
 				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,
 				7554D1772AB28F3E008CEB87 /* CGPoint.swift in Sources */,
 				7554D1B02AB6C903008CEB87 /* AppSettings.swift in Sources */,
+				7554D2452AB7B584008CEB87 /* FilePreview.swift in Sources */,
 				7554D1822AB3657D008CEB87 /* HistoryList.swift in Sources */,
 				7554D1A42AB63B55008CEB87 /* ArtboardSettingsPanel.swift in Sources */,
 				7554D1432AAFC0DA008CEB87 /* DrawShape.swift in Sources */,
@@ -1072,9 +1267,14 @@
 				7554D1A82AB63E7C008CEB87 /* ArtboardSizeControl.swift in Sources */,
 				7554D1BD2AB789FF008CEB87 /* History.swift in Sources */,
 				7554D15C2AAFEEE8008CEB87 /* Quadrant.swift in Sources */,
+				7554D27A2AB942D4008CEB87 /* ExportSettings.swift in Sources */,
+				7554D27C2AB944AB008CEB87 /* ExportUrlControl.swift in Sources */,
 				7554D1662AB0D508008CEB87 /* RotationControl.swift in Sources */,
 				7554D1392AAFB81C008CEB87 /* EditableArtboard.swift in Sources */,
+				7554D25F2AB8C73B008CEB87 /* LayerModel.swift in Sources */,
 				7554D14E2AAFD4DD008CEB87 /* ToolList.swift in Sources */,
+				7554D2472AB7B9E8008CEB87 /* FilePreviewList.swift in Sources */,
+				7554D25A2AB8C4B9008CEB87 /* PixelModel.swift in Sources */,
 				7554D1F12AB78DDC008CEB87 /* DrawTool.swift in Sources */,
 				7554D1992AB53D11008CEB87 /* TileModeButtons.swift in Sources */,
 				7554D2332AB7A41F008CEB87 /* MakeSavePanel.swift in Sources */,
@@ -1082,9 +1282,9 @@
 				7554D1562AAFEC7E008CEB87 /* Square.swift in Sources */,
 				7554D2292AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift in Sources */,
 				7554D1B22AB76EEB008CEB87 /* Conditional.swift in Sources */,
-				7554D20C2AB7904B008CEB87 /* ArtboardViewModel.swift in Sources */,
 				7554D1732AB2775B008CEB87 /* Panel.swift in Sources */,
 				7554D13D2AAFBA49008CEB87 /* Minimap.swift in Sources */,
+				7554D26F2AB91310008CEB87 /* FileJson.swift in Sources */,
 				7554D2352AB7A444008CEB87 /* SavePng.swift in Sources */,
 				7554D1C72AB78AFF008CEB87 /* TileMode.swift in Sources */,
 				7554D1D52AB78C32008CEB87 /* WorkspaceBackgroundColor.swift in Sources */,

@@ -8,38 +8,26 @@
 import SwiftUI
 
 struct Artboard: View {
-    @EnvironmentObject var currentArtboard: CurrentArtboardViewModel
+    @ObservedObject var artboard: ArtboardViewModel
     
     var body: some View {
         Canvas() { context, size in
             context.fill(
                 Rectangle().path(in: CGRect(origin: CGPoint(0), size: size)),
-                with: .color(currentArtboard.backgroundColor)
+                with: .color(artboard.backgroundColor)
             )
-            for layer in currentArtboard.layers {
-                if layer.isVisible {
-                    for pixel in layer.pixels {
-                        pixel.draw(context)
-                    }
-                }
-            }
+            artboard.layers.forEach { layer in layer.draw(context) }
         }
         .frame(
-            width: currentArtboard.size.width,
-            height: currentArtboard.size.height
+            width: artboard.size.width,
+            height: artboard.size.height
         )
         .fixedSize()
     }
 }
 
 struct Artboard_Previews: PreviewProvider {
-    private static var currentArtboard = CurrentArtboardViewModel().withNewLayer([
-        Pixel(shape: SquareShape),
-        Pixel(shape: CircleShape, position: CGPoint(250)),
-        Pixel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
-    ])
     static var previews: some View {
-        Artboard()
-            .environmentObject(currentArtboard)
+        Artboard(artboard: ArtboardViewModel(PreviewArtboardModelBuilder().build()))
     }
 }

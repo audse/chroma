@@ -67,18 +67,18 @@ struct HistoryList: View {
 
 struct HistoryList_Previews: PreviewProvider {
     static var drawSettings = DrawSettings()
-    static var currentArtboard = CurrentArtboardViewModel().withNewLayer()
+    static var currentArtboard = ArtboardViewModel().withNewLayer()
     static var previews: some View {
         HistoryList()
             .environmentObject(History()
                 .history([
-                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
-                    EraseAction(drawSettings.createPixel(), 1, currentArtboard.currentLayer!),
-                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
+                    DrawAction(drawSettings.createPixel(), currentArtboard.layer!),
+                    EraseAction(drawSettings.createPixel(), 1, currentArtboard.layer!),
+                    DrawAction(drawSettings.createPixel(), currentArtboard.layer!),
                 ])
                 .undoHistory([
-                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
-                    EraseAction(drawSettings.createPixel(), 2, currentArtboard.currentLayer!),
+                    DrawAction(drawSettings.createPixel(), currentArtboard.layer!),
+                    EraseAction(drawSettings.createPixel(), 2, currentArtboard.layer!),
                 ]))
             .environmentObject(currentArtboard)
     }

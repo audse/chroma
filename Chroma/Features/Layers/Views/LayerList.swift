@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LayerListItem: View {
-    @EnvironmentObject var currentArtboard: CurrentArtboardViewModel
+    @EnvironmentObject var currentArtboard: ArtboardViewModel
     @State var layer: Layer
     var body: some View {
         Button {
@@ -17,7 +17,7 @@ struct LayerListItem: View {
             HStack {
                 Text("\(currentArtboard.getIndex(layer) ?? 0)").opacity(0.5)
                 Spacer()
-                Text(layer.name)
+                Text(layer.model.name)
                 Spacer()
                 Button {
                     layer.toggle()
@@ -32,18 +32,18 @@ struct LayerListItem: View {
             |> Btn.rounded
             |> Btn.scaled
         )
-            .tint(layer.id == currentArtboard.currentLayer?.id ? Color.accentColor : Color.clear)
+            .tinted(layer.id == currentArtboard.layer?.id ? Color.accentColor : Color.clear)
     }
 }
 
 struct LayerList: View {
-    @EnvironmentObject var currentArtboard: CurrentArtboardViewModel
+    @EnvironmentObject var currentArtboard: ArtboardViewModel
     var body: some View {
         VStack(spacing: 0) {
             HStack {
                 Text("Layers")
                 Spacer()
-                if let layer = currentArtboard.currentLayer {
+                if let layer = currentArtboard.layer {
                     Button(
                         role: .destructive,
                         action: {
@@ -79,6 +79,6 @@ struct LayerList: View {
 struct LayerList_Previews: PreviewProvider {
     static var previews: some View {
         LayerList()
-            .environmentObject(CurrentArtboardViewModel().withNewLayer().withNewLayer().withNewLayer())
+            .environmentObject(ArtboardViewModel().withNewLayer().withNewLayer().withNewLayer())
     }
 }

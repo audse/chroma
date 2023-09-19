@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct Minimap: View {
-    @EnvironmentObject var currentArtboard: CurrentArtboardViewModel
+    @EnvironmentObject var currentArtboard: ArtboardViewModel
     
     static let SCALE: CGFloat = 5.0
     
     var body: some View {
-        Artboard()
+        Artboard(artboard: currentArtboard)
             .allowsHitTesting(false)
             .scaleEffect(CGSize(1.0 / Minimap.SCALE))
             .frame(width: getSize().width, height: getSize().height)
@@ -26,10 +26,10 @@ struct Minimap: View {
 }
 
 struct Minimap_Previews: PreviewProvider {
-    private static var currentArtboard = CurrentArtboardViewModel().withNewLayer([
-        Pixel(shape: SquareShape),
-        Pixel(shape: CircleShape, position: CGPoint(250)),
-        Pixel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
+    private static var currentArtboard = ArtboardViewModel().withNewLayer([
+        PixelModel(shape: SquareShape),
+        PixelModel(shape: CircleShape, position: CGPoint(250)),
+        PixelModel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
     ])
     
     static var previews: some View {
