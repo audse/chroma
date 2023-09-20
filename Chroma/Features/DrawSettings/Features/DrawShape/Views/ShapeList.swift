@@ -8,19 +8,10 @@
 import SwiftUI
 
 struct ShapeList: View {
-    static let Shapes: [DrawShape] = [
-        SquareShape,
-        CircleShape,
-        SemiCircleShape,
-        QuadrantShape,
-        RightTriangleShape,
-        InverseQuadrantShape
-    ]
-    
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(ShapeList.Shapes, id: \.id) { shape in
+                ForEach(AllDrawShapes.shapes, id: \.id) { shape in
                     ShapeButton(shape: shape)
                 }
             }

@@ -20,6 +20,7 @@ struct ToolList: View {
             }
             .active(drawSettings.tool == Tool.draw)
             .help("Draw Tool")
+            .keyboardShortcut("p", modifiers: [])
             Button {
                 drawSettings.tool = Tool.erase
             } label: {
@@ -27,6 +28,7 @@ struct ToolList: View {
             }
             .active(drawSettings.tool == Tool.erase)
             .help("Erase Tool")
+            .keyboardShortcut("e", modifiers: [])
         }
         .labelStyle(.iconOnly)
     }

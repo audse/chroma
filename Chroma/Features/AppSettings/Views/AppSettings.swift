@@ -40,6 +40,7 @@ struct AppSettings: View {
                     } label: {
                         Text("Done").fontWeight(.semibold)
                     }
+                    .keyboardShortcut(.return, modifiers: [])
                     .composableButtonStyle(
                         Btn.defaultPadding
                         |> Btn.hStack

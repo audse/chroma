@@ -42,7 +42,9 @@ struct ExportPage: View {
                             case .chroma: isChromaExporterPresented = true
                             case .png: isPngExporterPresented = true
                         }
-                    }.tinted(.accentColor)
+                    }
+                    .keyboardShortcut(.return, modifiers: [])
+                    .tinted(.accentColor)
                 }.composableButtonStyle(
                     Btn.defaultPadding
                     |> Btn.filledAccent

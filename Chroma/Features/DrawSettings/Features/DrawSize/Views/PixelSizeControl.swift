@@ -20,7 +20,8 @@ struct PixelSizeControl: View {
             rounded: true,
             onChangeValue: { newValue in
                 drawSettings.pixelSize = newValue
-            }
+            },
+            keyboardShortcuts: ("[", "]")
         ).frame(width: 30)
     }
 }

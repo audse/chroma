@@ -15,6 +15,7 @@ struct NumberTextField: View {
     @State var rounded: Bool = false
     @State var formatter: NumberFormatter = NumberFormatter()
     @State var onChangeValue: ((CGFloat) -> Void)?
+    @State var keyboardShortcuts: (KeyEquivalent, KeyEquivalent)? = nil
     
     var body: some View {
         HStack(spacing: 0) {
@@ -25,17 +26,28 @@ struct NumberTextField: View {
                 Text("")
             } onIncrement: {
                 releaseFocus()
-                if let newValue = getFormatter().format(value + getStep()) {
-                    value = newValue
-                    onChange()
-                }
+                setValue(value + getStep())
             } onDecrement: {
                 releaseFocus()
-                if let newValue = getFormatter().format(value - getStep()) {
-                    value = newValue
-                    onChange()
-                }
+                setValue(value - getStep())
             }.labelsHidden()
+            if let shortcuts = keyboardShortcuts {
+                Button("") {
+                    setValue(value - getStep())
+                }.keyboardShortcut(shortcuts.0, modifiers: [])
+                    .buttonStyle(.plain)
+                Button("") {
+                    setValue(value + getStep())
+                }.keyboardShortcut(shortcuts.1, modifiers: [])
+                    .buttonStyle(.plain)
+            }
+        }
+    }
+    
+    func setValue(_ newValue: Double) {
+        if let newValue = getFormatter().format(newValue) {
+            value = newValue
+            onChange()
         }
     }
     
@@ -60,6 +72,6 @@ struct NumberTextField: View {
 
 struct NumberTextField_Previews: PreviewProvider {
     static var previews: some View {
-        NumberTextField(value: Binding.constant(0))
+        NumberTextField(value: Binding.constant(0), keyboardShortcuts: ("[", "]"))
     }
 }

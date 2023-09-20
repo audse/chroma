@@ -110,17 +110,19 @@ struct ChromaApp: App {
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
             .commands {
                 CommandGroup(after: .appSettings) {
-                    Button("Settings") { appSettings.showingSettings.toggle() }
+                    Button("Settings") {
+                        appSettings.showingSettings.toggle()
+                    }.keyboardShortcut(",", modifiers: .command)
                 }
                 CommandGroup(after: .newItem) {
                     Button("Open...") {
                         appSettings.showingImport.toggle()
-                    }
+                    }.keyboardShortcut("o", modifiers: .command)
                 }
                 CommandGroup(after: .importExport) {
                     Button("Export...") {
                         appSettings.showingExport.toggle()
-                    }
+                    }.keyboardShortcut("e", modifiers: .command)
                 }
             }
     }

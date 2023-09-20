@@ -21,7 +21,7 @@ let InverseQuadrantShape = DrawShape(id: "Inverse Quadrant", shape: AnyShape(Inv
 
 
 struct AllDrawShapes {
-    static private var shapes: [DrawShape] = [
+    static var shapes: [DrawShape] = [
         SquareShape,
         CircleShape,
         SemiCircleShape,
