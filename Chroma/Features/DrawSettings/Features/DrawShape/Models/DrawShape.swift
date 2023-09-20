@@ -10,14 +10,39 @@ import SwiftUI
 struct DrawShape: Identifiable {
     public var id: String
     public var shape: AnyShape
+    public var keyboardShortcut: KeyEquivalent?
 }
 
-let SquareShape = DrawShape(id: "Square", shape: AnyShape(Square()))
-let CircleShape = DrawShape(id: "Circle", shape: AnyShape(Circle()))
-let SemiCircleShape = DrawShape(id: "Semi Circle", shape: AnyShape(SemiCircle()))
-let QuadrantShape = DrawShape(id: "Quadrant", shape: AnyShape(Quadrant()))
-let RightTriangleShape = DrawShape(id: "Right Triangle", shape: AnyShape(RightTriangle()))
-let InverseQuadrantShape = DrawShape(id: "Inverse Quadrant", shape: AnyShape(InverseQuadrant()))
+let SquareShape = DrawShape(
+    id: "Square",
+    shape: AnyShape(Square()),
+    keyboardShortcut: "1"
+)
+let CircleShape = DrawShape(
+    id: "Circle",
+    shape: AnyShape(Circle()),
+    keyboardShortcut: "2"
+)
+let SemiCircleShape = DrawShape(
+    id: "Semi Circle",
+    shape: AnyShape(SemiCircle()),
+    keyboardShortcut: "3"
+)
+let QuadrantShape = DrawShape(
+    id: "Quadrant",
+    shape: AnyShape(Quadrant()),
+    keyboardShortcut: "4"
+)
+let RightTriangleShape = DrawShape(
+    id: "Right Triangle",
+    shape: AnyShape(RightTriangle()),
+    keyboardShortcut: "5"
+)
+let InverseQuadrantShape = DrawShape(
+    id: "Inverse Quadrant",
+    shape: AnyShape(InverseQuadrant()),
+    keyboardShortcut: "6"
+)
 
 
 struct AllDrawShapes {

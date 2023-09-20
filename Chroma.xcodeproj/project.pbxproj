@@ -108,6 +108,8 @@
 		7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D28C2ABA6080008CEB87 /* PngDocument.swift */; };
 		7554D28F2ABA6207008CEB87 /* ExportScaleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D28E2ABA6207008CEB87 /* ExportScaleControl.swift */; };
 		7554D2912ABA7599008CEB87 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2902ABA7598008CEB87 /* NumberFormatter.swift */; };
+		7554D2932ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2922ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift */; };
+		7554D2972ABB7FA3008CEB87 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2962ABB7FA3008CEB87 /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +235,8 @@
 		7554D28C2ABA6080008CEB87 /* PngDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PngDocument.swift; sourceTree = "<group>"; };
 		7554D28E2ABA6207008CEB87 /* ExportScaleControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportScaleControl.swift; sourceTree = "<group>"; };
 		7554D2902ABA7598008CEB87 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		7554D2922ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseFocusOnTap.swift; sourceTree = "<group>"; };
+		7554D2962ABB7FA3008CEB87 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +357,7 @@
 				7554D21A2AB79901008CEB87 /* Well.swift */,
 				7554D19E2AB60CE6008CEB87 /* ButtonColorStyle.swift */,
 				7554D2222AB79BB7008CEB87 /* ComposableButtonStyle.swift */,
+				7554D2922ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 		7554D1B52AB7883E008CEB87 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				7554D2942ABB7F89008CEB87 /* Events */,
 				7554D2752AB942BB008CEB87 /* Export */,
 				7554D24F2AB8C12D008CEB87 /* Json */,
 				7554D2412AB7B53D008CEB87 /* File */,
@@ -1092,6 +1098,22 @@
 			path = FileDocuments;
 			sourceTree = "<group>";
 		};
+		7554D2942ABB7F89008CEB87 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2952ABB7F96008CEB87 /* Models */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		7554D2952ABB7F96008CEB87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2962ABB7FA3008CEB87 /* Event.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1269,6 +1291,7 @@
 				7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */,
 				7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */,
 				7554D2372AB7A495008CEB87 /* Font.swift in Sources */,
+				7554D2972ABB7FA3008CEB87 /* Event.swift in Sources */,
 				7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */,
 				7554D1502AAFE61D008CEB87 /* ShapeList.swift in Sources */,
 				7554D2632AB8CDC0008CEB87 /* ArtboardHelpers.swift in Sources */,
@@ -1292,6 +1315,7 @@
 				7554D1432AAFC0DA008CEB87 /* DrawShape.swift in Sources */,
 				7554D1682AB0D55B008CEB87 /* DrawSettings.swift in Sources */,
 				7554D1972AB52262008CEB87 /* ArtboardWrapper.swift in Sources */,
+				7554D2932ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift in Sources */,
 				7554D13F2AAFBD7E008CEB87 /* Pixel.swift in Sources */,
 				7554D19D2AB5424B008CEB87 /* GridModeButtons.swift in Sources */,
 				7554D23E2AB7ABCA008CEB87 /* AppSettingsModel.swift in Sources */,

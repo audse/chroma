@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-func releaseFocus() {
-    NSApp.keyWindow?.makeFirstResponder(nil)
-}
-
 struct Editor: View {
     @EnvironmentObject private var appSettings: AppSettingsModel
     @EnvironmentObject private var workspaceSettings: WorkspaceSettingsModel
@@ -29,13 +25,13 @@ struct Editor: View {
             .colorScheme(appSettings.colorSchemeValue)
             .frame(idealWidth: 2000, idealHeight: 800)
             .toolbar { toolbar() }
-            .sheet(isPresented: appSettings.showingSettingsBinding) {
-                AppSettings(showing: appSettings.showingSettingsBinding)
+            .sheet(isPresented: $appSettings.showingSettings) {
+                AppSettings(showing: $appSettings.showingSettings)
                     .environmentObject(workspaceSettings)
                     .environmentObject(appSettings)
             }
-            .sheet(isPresented: appSettings.showingExportBinding) {
-                ExportPage(showing: appSettings.showingExportBinding)
+            .sheet(isPresented: $appSettings.showingExport) {
+                ExportPage(showing: $appSettings.showingExport)
                     .environmentObject(file)
                     .environmentObject(appSettings)
                     .environmentObject(file.artboard)
@@ -92,6 +88,7 @@ struct ChromaApp: App {
     @Environment(\.colorScheme) var colorScheme
     @StateObject private var appSettings = AppSettingsModel()
     @StateObject private var workspaceSettings = WorkspaceSettingsModel()
+    @StateObject private var history = History()
     
     var body: some Scene {
         WindowGroup("Chroma") {
@@ -123,6 +120,16 @@ struct ChromaApp: App {
                     Button("Export...") {
                         appSettings.showingExport.toggle()
                     }.keyboardShortcut("e", modifiers: .command)
+                }
+                CommandGroup(replacing: .undoRedo) {
+                    Button("Undo") {
+                        RequestUndoEvent.emit(())
+                    }
+                    .keyboardShortcut("z", modifiers: [.command])
+                    Button("Redo") {
+                        RequestRedoEvent.emit(())
+                    }
+                    .keyboardShortcut("z", modifiers: [.command, .shift])
                 }
             }
     }

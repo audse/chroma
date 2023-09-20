@@ -16,12 +16,16 @@ struct RotationControl: View {
                 drawSettings.rotation -= Angle(degrees: 90)
             } label: {
                 Image(systemName: "rotate.left.fill")
-            }.help("Rotate Left")
+            }
+            .help("Rotate Left")
+            .keyboardShortcut(",", modifiers: [])
             Button {
                 drawSettings.rotation += Angle(degrees: 90)
             } label: {
                 Image(systemName: "rotate.right.fill")
-            }.help("Rotate Right")
+            }
+            .help("Rotate Right")
+            .keyboardShortcut(".", modifiers: [])
         }.labelStyle(.iconOnly)
             .active(false)
     }

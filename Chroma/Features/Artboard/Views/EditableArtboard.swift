@@ -21,8 +21,8 @@ struct EditableArtboard: View {
             Artboard(artboard: currentArtboard)
                 .onTapGesture { location in
                     switch drawSettings.tool {
-                    case .draw: draw(location - drawSettings.getPixelSize() / 2.0)
-                    case .erase: erase(location - drawSettings.getPixelSize() / 2.0)
+                        case .draw: draw(location - drawSettings.getPixelSize() / 2.0)
+                        case .erase: erase(location - drawSettings.getPixelSize() / 2.0)
                     }
                 }
                 .onHover { isHoveringValue in
@@ -33,6 +33,7 @@ struct EditableArtboard: View {
                         mouseLocation = location
                     }
                 })
+                .releaseFocusOnTap()
             if isHovering {
                 PixelCursor()
                     .position(drawSettings.snapped(mouseLocation - drawSettings.getPixelSize() / 2.0) + drawSettings.getPixelSize() / 2.0)

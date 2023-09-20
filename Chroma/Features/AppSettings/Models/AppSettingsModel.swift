@@ -26,16 +26,6 @@ class AppSettingsModel: ObservableObject {
     @Published var showingImport: Bool = false
     @Published var showingExport: Bool = false
     
-    lazy var showingSettingsBinding: Binding<Bool> = Binding(
-        get: { self.showingSettings },
-        set: { newValue in self.showingSettings = newValue }
-    )
-    
-    lazy var showingExportBinding: Binding<Bool> = Binding(
-        get: { self.showingExport },
-        set: { newValue in self.showingExport = newValue }
-    )
-    
     var colorSchemeValue: ColorScheme {
         switch colorScheme {
             case .custom(let value): return value

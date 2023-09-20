@@ -24,6 +24,7 @@ struct ArtboardWrapper: View {
                 Rectangle()
                     .fill(getWorkspaceBgColor())
                     .ignoresSafeArea()
+                    .releaseFocusOnTap()
                 if workspaceSettings.tileMode == .both || workspaceSettings.tileMode == .horizontal {
                     makeArtboard(w: -1, h: 0) // Left
                     makeArtboard(w: 1, h: 0) // Right

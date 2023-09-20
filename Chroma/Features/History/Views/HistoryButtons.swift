@@ -19,6 +19,7 @@ struct HistoryButtons: View {
             }
             .disabled(history.history.isEmpty)
             .help("Undo")
+            .keyboardShortcut("z", modifiers: [.command])
             Button {
                 history.redo()
             } label: {
@@ -26,6 +27,7 @@ struct HistoryButtons: View {
             }
             .disabled(history.undoHistory.isEmpty)
             .help("Redo")
+            .keyboardShortcut("z", modifiers: [.command, .shift])
         }.labelStyle(.iconOnly).active(false)
     }
 }

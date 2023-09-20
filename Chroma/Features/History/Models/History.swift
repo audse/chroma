@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+let RequestUndoEvent = EmptyChromaEvent("Request Undo")
+let RequestRedoEvent = EmptyChromaEvent("Request Redo")
+
 class History: ObservableObject {
     @Published var history: [Action] = []
     @Published var undoHistory: [Action] = []
+    
+    init() {
+        _ = RequestUndoEvent.subscribe { _ in self.undo() }
+        _ = RequestRedoEvent.subscribe { _ in self.redo() }
+    }
     
     func history(_ value: [Action]) -> History {
         history.append(contentsOf: value)

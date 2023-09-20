@@ -49,15 +49,19 @@ struct ContentView: View {
             |> Btn.scaled
         )
         .preferredColorScheme(appSettings.colorSchemeValue)
+        .onAppear { Task {
+            releaseFocus()
+        } }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static var artboard = ArtboardModel()
     static var previews: some View {
         ContentView()
             .environmentObject(AppSettingsModel())
             .environmentObject(DrawSettings())
-            .environmentObject(ArtboardViewModel().withNewLayer())
+            .environmentObject(FileViewModel(FileModel(artboard: artboard)))
             .environmentObject(History())
     }
 }
