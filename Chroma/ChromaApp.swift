@@ -23,7 +23,6 @@ struct Editor: View {
             .environmentObject(history)
             .environmentObject(file)
             .colorScheme(appSettings.colorSchemeValue)
-            .frame(idealWidth: 2000, idealHeight: 800)
             .toolbar { toolbar() }
             .sheet(isPresented: $appSettings.showingSettings) {
                 AppSettings(showing: $appSettings.showingSettings)
@@ -104,6 +103,7 @@ struct ChromaApp: App {
             .environmentObject(appSettings)
             .environmentObject(workspaceSettings)
         }
+        .windowResizability(.automatic)
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
             .commands {
                 CommandGroup(after: .appSettings) {

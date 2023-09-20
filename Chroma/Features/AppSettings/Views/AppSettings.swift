@@ -20,20 +20,24 @@ struct AppSettings: View {
                 ColorSchemeControl()
                 
                 Spacer(minLength: 12)
-                Text("Workspace").font(.title2)
                 
-                WorkspaceBackgroundColorControl()
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Grid mode").font(.label).foregroundColor(.secondary)
-                    GridModeButtons()
-                        .frame(width: 130)
-                        .fixedSize()
+                Group {
+                    Text("Workspace").font(.title2)
+                    WorkspaceBackgroundColorControl()
+                    HStack(spacing: 24) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Grid mode").font(.label).foregroundColor(.secondary)
+                            GridModeButtons()
+                                .frame(width: 130)
+                                .fixedSize()
+                        }
+                        WorkspaceGridColorControl()
+                        WorkspaceGridThicknessControl()
+                    }
                 }
                 
                 Spacer(minLength: 24)
                 Divider()
-                
                 HStack {
                     Button {
                         showing = false

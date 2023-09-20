@@ -110,6 +110,12 @@
 		7554D2912ABA7599008CEB87 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2902ABA7598008CEB87 /* NumberFormatter.swift */; };
 		7554D2932ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2922ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift */; };
 		7554D2972ABB7FA3008CEB87 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2962ABB7FA3008CEB87 /* Event.swift */; };
+		7554D29C2ABB8E8E008CEB87 /* Shapes in Frameworks */ = {isa = PBXBuildFile; productRef = 7554D29B2ABB8E8E008CEB87 /* Shapes */; };
+		7554D29E2ABB8EB7008CEB87 /* LinesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D29D2ABB8EB7008CEB87 /* LinesGridView.swift */; };
+		7554D2A02ABB9573008CEB87 /* DotsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D29F2ABB9573008CEB87 /* DotsGridView.swift */; };
+		7554D2A22ABB97BF008CEB87 /* DotsGridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2A12ABB97BF008CEB87 /* DotsGridPattern.swift */; };
+		7554D2A72ABB986C008CEB87 /* WorkspaceGridColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2A62ABB986C008CEB87 /* WorkspaceGridColorControl.swift */; };
+		7554D2AB2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2AA2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +243,11 @@
 		7554D2902ABA7598008CEB87 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		7554D2922ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseFocusOnTap.swift; sourceTree = "<group>"; };
 		7554D2962ABB7FA3008CEB87 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		7554D29D2ABB8EB7008CEB87 /* LinesGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesGridView.swift; sourceTree = "<group>"; };
+		7554D29F2ABB9573008CEB87 /* DotsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsGridView.swift; sourceTree = "<group>"; };
+		7554D2A12ABB97BF008CEB87 /* DotsGridPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsGridPattern.swift; sourceTree = "<group>"; };
+		7554D2A62ABB986C008CEB87 /* WorkspaceGridColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceGridColorControl.swift; sourceTree = "<group>"; };
+		7554D2AA2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceGridThicknessControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7554D29C2ABB8E8E008CEB87 /* Shapes in Frameworks */,
 				7554D27F2AB94A53008CEB87 /* SwiftUILib.DocumentPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +354,7 @@
 				7554D15B2AAFEEE8008CEB87 /* Quadrant.swift */,
 				7554D15D2AAFF149008CEB87 /* RightTriangle.swift */,
 				7554D1882AB4BC12008CEB87 /* InverseQuadrant.swift */,
+				7554D2A12ABB97BF008CEB87 /* DotsGridPattern.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -481,6 +494,8 @@
 			isa = PBXGroup;
 			children = (
 				7554D19C2AB5424B008CEB87 /* GridModeButtons.swift */,
+				7554D29D2ABB8EB7008CEB87 /* LinesGridView.swift */,
+				7554D29F2ABB9573008CEB87 /* DotsGridView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -746,6 +761,8 @@
 				7554D1D12AB78C0A008CEB87 /* WorkspaceBackgroundColor */,
 				7554D1C32AB78AB0008CEB87 /* WorkspaceTileMode */,
 				7554D1CA2AB78B4E008CEB87 /* WorkspaceGridMode */,
+				7554D2A32ABB983D008CEB87 /* WorkspaceGridColor */,
+				7554D2A82ABB9945008CEB87 /* WorkspaceGridThickness */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1114,6 +1131,38 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7554D2A32ABB983D008CEB87 /* WorkspaceGridColor */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2A42ABB9854008CEB87 /* Views */,
+			);
+			path = WorkspaceGridColor;
+			sourceTree = "<group>";
+		};
+		7554D2A42ABB9854008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2A62ABB986C008CEB87 /* WorkspaceGridColorControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7554D2A82ABB9945008CEB87 /* WorkspaceGridThickness */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2A92ABB9954008CEB87 /* Views */,
+			);
+			path = WorkspaceGridThickness;
+			sourceTree = "<group>";
+		};
+		7554D2A92ABB9954008CEB87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2AA2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1132,6 +1181,7 @@
 			name = Chroma;
 			packageProductDependencies = (
 				7554D27E2AB94A53008CEB87 /* SwiftUILib.DocumentPicker */,
+				7554D29B2ABB8E8E008CEB87 /* Shapes */,
 			);
 			productName = Chroma;
 			productReference = 7554D1082AAFB6B8008CEB87 /* Chroma.app */;
@@ -1207,6 +1257,7 @@
 			mainGroup = 7554D0FF2AAFB6B8008CEB87;
 			packageReferences = (
 				7554D27D2AB94A53008CEB87 /* XCRemoteSwiftPackageReference "document-picker" */,
+				7554D29A2ABB8E8E008CEB87 /* XCRemoteSwiftPackageReference "swiftui-shapes" */,
 			);
 			productRefGroup = 7554D1092AAFB6B8008CEB87 /* Products */;
 			projectDirPath = "";
@@ -1300,6 +1351,7 @@
 				7554D2582AB8C378008CEB87 /* ColorJson.swift in Sources */,
 				7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */,
 				7554D22E2AB7A3BC008CEB87 /* CGSize.swift in Sources */,
+				7554D2A22ABB97BF008CEB87 /* DotsGridPattern.swift in Sources */,
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
 				7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
@@ -1329,8 +1381,11 @@
 				7554D1BD2AB789FF008CEB87 /* History.swift in Sources */,
 				7554D15C2AAFEEE8008CEB87 /* Quadrant.swift in Sources */,
 				7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */,
+				7554D2A02ABB9573008CEB87 /* DotsGridView.swift in Sources */,
 				7554D1662AB0D508008CEB87 /* RotationControl.swift in Sources */,
+				7554D29E2ABB8EB7008CEB87 /* LinesGridView.swift in Sources */,
 				7554D1392AAFB81C008CEB87 /* EditableArtboard.swift in Sources */,
+				7554D2A72ABB986C008CEB87 /* WorkspaceGridColorControl.swift in Sources */,
 				7554D25F2AB8C73B008CEB87 /* LayerModel.swift in Sources */,
 				7554D14E2AAFD4DD008CEB87 /* ToolList.swift in Sources */,
 				7554D2472AB7B9E8008CEB87 /* FilePreviewList.swift in Sources */,
@@ -1343,6 +1398,7 @@
 				7554D1B22AB76EEB008CEB87 /* Conditional.swift in Sources */,
 				7554D1732AB2775B008CEB87 /* Panel.swift in Sources */,
 				7554D13D2AAFBA49008CEB87 /* Minimap.swift in Sources */,
+				7554D2AB2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift in Sources */,
 				7554D26F2AB91310008CEB87 /* FileJson.swift in Sources */,
 				7554D1C72AB78AFF008CEB87 /* TileMode.swift in Sources */,
 				7554D1D52AB78C32008CEB87 /* WorkspaceBackgroundColor.swift in Sources */,
@@ -1712,6 +1768,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		7554D29A2ABB8E8E008CEB87 /* XCRemoteSwiftPackageReference "swiftui-shapes" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-shapes.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1719,6 +1783,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7554D27D2AB94A53008CEB87 /* XCRemoteSwiftPackageReference "document-picker" */;
 			productName = SwiftUILib.DocumentPicker;
+		};
+		7554D29B2ABB8E8E008CEB87 /* Shapes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7554D29A2ABB8E8E008CEB87 /* XCRemoteSwiftPackageReference "swiftui-shapes" */;
+			productName = Shapes;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

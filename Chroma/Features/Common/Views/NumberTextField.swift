@@ -59,6 +59,9 @@ struct NumberTextField: View {
         formatter.minimum = min as NSNumber
         formatter.maximum = max as NSNumber
         formatter.allowsFloats = !rounded
+        if !rounded {
+            formatter.maximumFractionDigits = 2
+        }
         return formatter
     }
     

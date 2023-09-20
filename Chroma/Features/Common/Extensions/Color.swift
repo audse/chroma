@@ -64,6 +64,10 @@ extension Color {
         )
     }
     
+    var contrasting: Color {
+        return isDark ? lighten(0.7) : darken(0.7)
+    }
+    
     func contrast(with other: Color) -> CGFloat {
         return other.luminance - self.luminance
     }

@@ -10,7 +10,7 @@ import SwiftUI
 struct EditableArtboard: View {
     @EnvironmentObject var drawSettings: DrawSettings
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
-    @EnvironmentObject var currentArtboard: ArtboardViewModel
+    @EnvironmentObject var file: FileViewModel
     @EnvironmentObject var history: History
     
     @State var isHovering = true
@@ -18,7 +18,7 @@ struct EditableArtboard: View {
     
     var body: some View {
         ZStack {
-            Artboard(artboard: currentArtboard)
+            Artboard(artboard: file.artboard)
                 .onTapGesture { location in
                     switch drawSettings.tool {
                         case .draw: draw(location - drawSettings.getPixelSize() / 2.0)
@@ -39,15 +39,21 @@ struct EditableArtboard: View {
                     .position(drawSettings.snapped(mouseLocation - drawSettings.getPixelSize() / 2.0) + drawSettings.getPixelSize() / 2.0)
                     .animation(.easeInOut(duration: 0.1), value: mouseLocation)
             }
+            if workspaceSettings.gridMode == .dots {
+                DotsGridView()
+            }
+            if workspaceSettings.gridMode == .lines {
+                LinesGridView()
+            }
         }
-        .frame(width: currentArtboard.size.width, height: currentArtboard.size.height)
+        .frame(width: file.artboard.size.width, height: file.artboard.size.height)
         .clipped()
         .scaleEffect(workspaceSettings.zoom)
         .animation(.easeInOut(duration: 0.2), value: workspaceSettings.zoom)
     }
     
     func draw(_ location: CGPoint) {
-        if let layer = currentArtboard.layer {
+        if let layer = file.artboard.layer {
             let pixel = drawSettings.createPixel(location)
             layer.addPixel(pixel)
             history.add(DrawAction(pixel, layer))
@@ -55,7 +61,7 @@ struct EditableArtboard: View {
     }
     
     func erase(_ location: CGPoint) {
-        if let layer = currentArtboard.layer {
+        if let layer = file.artboard.layer {
             let idx: Int = layer.findPixel(location)
             if idx != -1 {
                 let pixel = layer.removePixel(idx)
@@ -66,16 +72,13 @@ struct EditableArtboard: View {
 }
 
 struct EditableCanvas_Previews: PreviewProvider {
-    private static var currentArtboard = ArtboardViewModel().withNewLayer([
-        PixelModel(shape: SquareShape),
-        PixelModel(shape: CircleShape, position: CGPoint(250)),
-        PixelModel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
-    ])
-    
     static var previews: some View {
         EditableArtboard(mouseLocation: CGPoint(x: 33, y: 31))
-            .environmentObject(currentArtboard)
+            .environmentObject(FileViewModel(
+                FileModel(artboard: PreviewArtboardModelBuilder().build())
+            ))
             .environmentObject(DrawSettings())
             .environmentObject(History())
+            .environmentObject(WorkspaceSettingsModel())
     }
 }
