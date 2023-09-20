@@ -21,9 +21,10 @@ struct ExportPage: View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Export").font(.title)
-                Spacer()
                 ExportTypeControl(exportType: $exportType)
-                ExportScaleControl(exportScale: $exportScale)
+                if exportType == .png {
+                    ExportScaleControl(exportScale: $exportScale)
+                }
                 JsonExporter(
                     isPresented: $isChromaExporterPresented,
                     onCompletion: { isSuccess in showing = !isSuccess }

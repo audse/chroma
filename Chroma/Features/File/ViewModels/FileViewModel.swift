@@ -22,6 +22,14 @@ class FileViewModel: ObservableObject {
             self.objectWillChange.send()
         })
     }
+    
+    func setFile(_ file: FileModel) {
+        self.file = file
+        self.artboard = ArtboardViewModel(file.artboard)
+        self._cancellable = self.artboard.objectWillChange.sink(receiveValue: {
+            self.objectWillChange.send()
+        })
+    }
 }
 
 private struct FileKey: EnvironmentKey {

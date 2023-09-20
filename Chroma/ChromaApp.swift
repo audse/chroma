@@ -40,6 +40,19 @@ struct Editor: View {
                     .environmentObject(appSettings)
                     .environmentObject(file.artboard)
             }
+            .fileImporter(
+                isPresented: $appSettings.showingImport,
+                allowedContentTypes: [.chroma, .json],
+                allowsMultipleSelection: false,
+                onCompletion: { result in
+                    switch result {
+                        case .success(let url):
+                            let newFile: FileJson? = load(url[0])
+                            if let newFile = newFile { file.setFile(FileModel(newFile)) }
+                        case .failure(let error): print(error)
+                    }
+                }
+            )
     }
     
     @ToolbarContentBuilder
@@ -57,7 +70,6 @@ struct Editor: View {
                 }).expand()
                     .colorScheme(appSettings.colorSchemeValue)
                     .environmentObject(file)
-                
             } label: {
                 Label("Files", systemImage: "folder.fill")
                     .labelStyle(.titleAndIcon)
@@ -100,7 +112,12 @@ struct ChromaApp: App {
                 CommandGroup(after: .appSettings) {
                     Button("Settings") { appSettings.showingSettings.toggle() }
                 }
-                CommandMenu("Export") {
+                CommandGroup(after: .newItem) {
+                    Button("Open...") {
+                        appSettings.showingImport.toggle()
+                    }
+                }
+                CommandGroup(after: .importExport) {
                     Button("Export...") {
                         appSettings.showingExport.toggle()
                     }

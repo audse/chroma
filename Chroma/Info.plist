@@ -41,5 +41,27 @@
 			</dict>
 		</dict>
 	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>json</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Chroma File</string>
+			<key>UTTypeIcons</key>
+			<dict/>
+			<key>UTTypeIdentifier</key>
+			<string>chroma</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>chroma</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

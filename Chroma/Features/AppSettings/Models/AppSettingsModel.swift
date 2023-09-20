@@ -23,6 +23,7 @@ enum AppColorScheme {
 class AppSettingsModel: ObservableObject {
     @Published var colorScheme: AppColorScheme = .custom(.dark)
     @Published var showingSettings: Bool = false
+    @Published var showingImport: Bool = false
     @Published var showingExport: Bool = false
     
     lazy var showingSettingsBinding: Binding<Bool> = Binding(
