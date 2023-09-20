@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ArtboardJson: Identifiable, Decodable {
+struct ArtboardJson: Identifiable, Codable {
     var id: UUID
     var name: String?
     var size: SizeJson

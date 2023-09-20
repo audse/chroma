@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Chroma</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>chroma</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string></string>
+		</dict>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>json</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Chroma File</string>
+			<key>UTTypeIcons</key>
+			<dict/>
+			<key>UTTypeIdentifier</key>
+			<string>chroma</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>chroma</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

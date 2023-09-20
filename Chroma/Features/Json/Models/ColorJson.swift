@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ColorJson: Decodable {
+struct ColorJson: Codable {
     var hex: String? = nil
     var rgba: [Double]? = nil
     

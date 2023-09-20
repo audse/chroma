@@ -7,28 +7,25 @@
 
 import SwiftUI
 
+func releaseFocus() {
+    NSApp.keyWindow?.makeFirstResponder(nil)
+}
+
 struct Editor: View {
     @EnvironmentObject private var appSettings: AppSettingsModel
     @EnvironmentObject private var workspaceSettings: WorkspaceSettingsModel
     
-    var file: FileModel
-    var artboard: ArtboardViewModel
-    
+    @StateObject var file: FileViewModel    
     @StateObject private var drawSettings = DrawSettings()
     @StateObject private var history = History()
-    
-    init(_ file: FileModel) {
-        self.file = file
-        self.artboard = ArtboardViewModel(file.artboard)
-    }
     
     var body: some View {
         ContentView()
             .environmentObject(drawSettings)
             .environmentObject(workspaceSettings)
-            .environmentObject(artboard)
+            .environmentObject(file.artboard)
             .environmentObject(history)
-            .environment(\.file, file)
+            .environmentObject(file)
             .colorScheme(appSettings.colorSchemeValue)
             .frame(idealWidth: 2000, idealHeight: 800)
             .toolbar { toolbar() }
@@ -36,6 +33,12 @@ struct Editor: View {
                 AppSettings(showing: appSettings.showingSettingsBinding)
                     .environmentObject(workspaceSettings)
                     .environmentObject(appSettings)
+            }
+            .sheet(isPresented: appSettings.showingExportBinding) {
+                ExportPage(showing: appSettings.showingExportBinding)
+                    .environmentObject(file)
+                    .environmentObject(appSettings)
+                    .environmentObject(file.artboard)
             }
     }
     
@@ -48,19 +51,19 @@ struct Editor: View {
                     FileModel(name: "Random 2", artboard: PreviewArtboardModelBuilder().build()),
                     FileModel(name: "Random 3", artboard: PreviewArtboardModelBuilder().build()),
                     FileModel(name: "Random 4", artboard: PreviewArtboardModelBuilder().build()),
-                ], onSelectFile: { file in
+                ], onSelectFile: { newFile in
                     history.clear()
-                    artboard.setModel(file.artboard)
+                    file.artboard.setModel(newFile.artboard)
                 }).expand()
                     .colorScheme(appSettings.colorSchemeValue)
-                    .environmentObject(artboard)
+                    .environmentObject(file)
                 
             } label: {
                 Label("Files", systemImage: "folder.fill")
                     .labelStyle(.titleAndIcon)
             }
             Spacer()
-            Text(file.name)
+            Text(file.file.name)
             Spacer()
             ZoomButtons().environmentObject(workspaceSettings)
             Button {
@@ -81,11 +84,13 @@ struct ChromaApp: App {
     var body: some Scene {
         WindowGroup("Chroma") {
             NavigationStack {
-                Editor(FileModel(
+                Editor(file: FileViewModel(FileModel(
                     id: UUID(),
                     name: "New Artboard",
-                    artboard: ArtboardModel()
-                ))
+                    artboard: ArtboardModel(
+                        layers: [LayerModel()]
+                    )
+                )))
             }
             .environmentObject(appSettings)
             .environmentObject(workspaceSettings)
@@ -96,16 +101,9 @@ struct ChromaApp: App {
                     Button("Settings") { appSettings.showingSettings.toggle() }
                 }
                 CommandMenu("Export") {
-                    Button("Export as PNG...") {
-                        if let url = makeSavePanel([.png]) {
-//                            savePng(
-//                                view: Artboard(artboard: ArtboardViewModel(file.artboard)),
-//                                url: url
-//                            )
-                        }
+                    Button("Export...") {
+                        appSettings.showingExport.toggle()
                     }
-                    Button("Export as SVG...") {}
-                        .disabled(true)
                 }
             }
     }

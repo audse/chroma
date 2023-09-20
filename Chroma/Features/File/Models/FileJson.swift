@@ -8,7 +8,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct FileJson: Identifiable, Decodable {
+struct FileJson: Identifiable, Codable {
     var id: UUID
     var name: String
     var artboard: ArtboardJson

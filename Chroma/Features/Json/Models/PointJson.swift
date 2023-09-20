@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PointJson: Decodable {
+struct PointJson: Codable {
     var x: Double
     var y: Double
     

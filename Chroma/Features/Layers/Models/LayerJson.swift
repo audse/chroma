@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LayerJson: Identifiable, Decodable {
+struct LayerJson: Identifiable, Codable {
     var id = UUID()
     var name = "Layer"
     var pixels: [PixelJson] = []

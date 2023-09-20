@@ -24,7 +24,7 @@ struct FilePreviewList: View {
             LazyVGrid(columns: columns, spacing: 12) {
                 ForEach(files, id: \.id) { file in
                     NavigationLink {
-                        Editor(file)
+                        Editor(file: FileViewModel(file))
                     } label: {
                         FilePreview(file: file).expand()
                     }.buttonStyle(.plain)

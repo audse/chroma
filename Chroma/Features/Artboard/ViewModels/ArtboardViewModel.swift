@@ -15,12 +15,14 @@ class ArtboardViewModel: ObservableObject, Identifiable {
     init(_ model: ArtboardModel = ArtboardModel()) {
         self.artboard = model
         self.layers = model.layers.map { layerModel in Layer(layerModel, artboard: self) }
+        self.layer = self.layers.first
     }
     
     func setModel(_ model: ArtboardModel) {
         self.artboard = model
         self.layers = model.layers.map { layerModel in Layer(layerModel, artboard: self) }
         self.layer = self.layers.count > 0 ? self.layers[0] : nil
+        self.layer = self.layers.first
     }
     
     func withNewLayer(_ pixels: [PixelModel] = []) -> ArtboardViewModel {

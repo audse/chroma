@@ -75,8 +75,6 @@
 		7554D22C2AB7A39E008CEB87 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D22B2AB7A39E008CEB87 /* CGRect.swift */; };
 		7554D22E2AB7A3BC008CEB87 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D22D2AB7A3BC008CEB87 /* CGSize.swift */; };
 		7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D22F2AB7A3D7008CEB87 /* CGFloat.swift */; };
-		7554D2332AB7A41F008CEB87 /* MakeSavePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2322AB7A41F008CEB87 /* MakeSavePanel.swift */; };
-		7554D2352AB7A444008CEB87 /* SavePng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2342AB7A444008CEB87 /* SavePng.swift */; };
 		7554D2372AB7A495008CEB87 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2362AB7A495008CEB87 /* Font.swift */; };
 		7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D23A2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift */; };
 		7554D23E2AB7ABCA008CEB87 /* AppSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D23D2AB7ABCA008CEB87 /* AppSettingsModel.swift */; };
@@ -101,8 +99,15 @@
 		7554D26F2AB91310008CEB87 /* FileJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D26E2AB91310008CEB87 /* FileJson.swift */; };
 		7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2712AB9423E008CEB87 /* ExportPage.swift */; };
 		7554D2742AB9429F008CEB87 /* ExportTypeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */; };
-		7554D27A2AB942D4008CEB87 /* ExportSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2792AB942D4008CEB87 /* ExportSettings.swift */; };
-		7554D27C2AB944AB008CEB87 /* ExportUrlControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D27B2AB944AB008CEB87 /* ExportUrlControl.swift */; };
+		7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2792AB942D4008CEB87 /* ExportType.swift */; };
+		7554D27F2AB94A53008CEB87 /* SwiftUILib.DocumentPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 7554D27E2AB94A53008CEB87 /* SwiftUILib.DocumentPicker */; };
+		7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2802ABA0F8F008CEB87 /* JsonDocument.swift */; };
+		7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2822ABA5684008CEB87 /* PngExporter.swift */; };
+		7554D2862ABA5759008CEB87 /* JsonExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2852ABA5759008CEB87 /* JsonExporter.swift */; };
+		7554D28A2ABA5E83008CEB87 /* FileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2892ABA5E83008CEB87 /* FileViewModel.swift */; };
+		7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D28C2ABA6080008CEB87 /* PngDocument.swift */; };
+		7554D28F2ABA6207008CEB87 /* ExportScaleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D28E2ABA6207008CEB87 /* ExportScaleControl.swift */; };
+		7554D2912ABA7599008CEB87 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2902ABA7598008CEB87 /* NumberFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,8 +200,6 @@
 		7554D22B2AB7A39E008CEB87 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		7554D22D2AB7A3BC008CEB87 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		7554D22F2AB7A3D7008CEB87 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
-		7554D2322AB7A41F008CEB87 /* MakeSavePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeSavePanel.swift; sourceTree = "<group>"; };
-		7554D2342AB7A444008CEB87 /* SavePng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePng.swift; sourceTree = "<group>"; };
 		7554D2362AB7A495008CEB87 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		7554D23A2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceSettingsModel.swift; sourceTree = "<group>"; };
 		7554D23D2AB7ABCA008CEB87 /* AppSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsModel.swift; sourceTree = "<group>"; };
@@ -221,8 +224,15 @@
 		7554D26E2AB91310008CEB87 /* FileJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileJson.swift; sourceTree = "<group>"; };
 		7554D2712AB9423E008CEB87 /* ExportPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportPage.swift; sourceTree = "<group>"; };
 		7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportTypeControl.swift; sourceTree = "<group>"; };
-		7554D2792AB942D4008CEB87 /* ExportSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportSettings.swift; sourceTree = "<group>"; };
-		7554D27B2AB944AB008CEB87 /* ExportUrlControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportUrlControl.swift; sourceTree = "<group>"; };
+		7554D2792AB942D4008CEB87 /* ExportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportType.swift; sourceTree = "<group>"; };
+		7554D2802ABA0F8F008CEB87 /* JsonDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDocument.swift; sourceTree = "<group>"; };
+		7554D2822ABA5684008CEB87 /* PngExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PngExporter.swift; sourceTree = "<group>"; };
+		7554D2852ABA5759008CEB87 /* JsonExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonExporter.swift; sourceTree = "<group>"; };
+		7554D2872ABA5AEA008CEB87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7554D2892ABA5E83008CEB87 /* FileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
+		7554D28C2ABA6080008CEB87 /* PngDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PngDocument.swift; sourceTree = "<group>"; };
+		7554D28E2ABA6207008CEB87 /* ExportScaleControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportScaleControl.swift; sourceTree = "<group>"; };
+		7554D2902ABA7598008CEB87 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7554D27F2AB94A53008CEB87 /* SwiftUILib.DocumentPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +284,7 @@
 		7554D10A2AAFB6B8008CEB87 /* Chroma */ = {
 			isa = PBXGroup;
 			children = (
+				7554D2872ABA5AEA008CEB87 /* Info.plist */,
 				7554D10F2AAFB6B9008CEB87 /* Assets.xcassets */,
 				7554D1112AAFB6B9008CEB87 /* Chroma.entitlements */,
 				7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */,
@@ -350,7 +362,7 @@
 			children = (
 				7554D2752AB942BB008CEB87 /* Export */,
 				7554D24F2AB8C12D008CEB87 /* Json */,
-				7554D2412AB7B53D008CEB87 /* FileIO */,
+				7554D2412AB7B53D008CEB87 /* File */,
 				7554D2382AB7A538008CEB87 /* AppSettings */,
 				7554D2142AB797F3008CEB87 /* Common */,
 				7554D2002AB78F34008CEB87 /* Artboard */,
@@ -813,8 +825,8 @@
 		7554D2142AB797F3008CEB87 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				7554D2312AB7A414008CEB87 /* Misc */,
 				7554D22A2AB7A38C008CEB87 /* Extensions */,
+				7554D28B2ABA6068008CEB87 /* FileDocuments */,
 				7554D2262AB7A170008CEB87 /* Views */,
 				7554D21D2AB799A4008CEB87 /* ShapeStyles */,
 				7554D21C2AB7999D008CEB87 /* LabelStyles */,
@@ -899,17 +911,9 @@
 				7554D22D2AB7A3BC008CEB87 /* CGSize.swift */,
 				7554D22F2AB7A3D7008CEB87 /* CGFloat.swift */,
 				7554D2362AB7A495008CEB87 /* Font.swift */,
+				7554D2902ABA7598008CEB87 /* NumberFormatter.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		7554D2312AB7A414008CEB87 /* Misc */ = {
-			isa = PBXGroup;
-			children = (
-				7554D2322AB7A41F008CEB87 /* MakeSavePanel.swift */,
-				7554D2342AB7A444008CEB87 /* SavePng.swift */,
-			);
-			path = Misc;
 			sourceTree = "<group>";
 		};
 		7554D2382AB7A538008CEB87 /* AppSettings */ = {
@@ -937,13 +941,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7554D2412AB7B53D008CEB87 /* FileIO */ = {
+		7554D2412AB7B53D008CEB87 /* File */ = {
 			isa = PBXGroup;
 			children = (
 				7554D2432AB7B54E008CEB87 /* Models */,
 				7554D2422AB7B548008CEB87 /* Views */,
+				7554D2882ABA5E75008CEB87 /* ViewModels */,
 			);
-			path = FileIO;
+			path = File;
 			sourceTree = "<group>";
 		};
 		7554D2422AB7B548008CEB87 /* Views */ = {
@@ -1055,7 +1060,9 @@
 			isa = PBXGroup;
 			children = (
 				7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */,
-				7554D27B2AB944AB008CEB87 /* ExportUrlControl.swift */,
+				7554D28E2ABA6207008CEB87 /* ExportScaleControl.swift */,
+				7554D2822ABA5684008CEB87 /* PngExporter.swift */,
+				7554D2852ABA5759008CEB87 /* JsonExporter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1063,9 +1070,26 @@
 		7554D2782AB942CA008CEB87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7554D2792AB942D4008CEB87 /* ExportSettings.swift */,
+				7554D2792AB942D4008CEB87 /* ExportType.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7554D2882ABA5E75008CEB87 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2892ABA5E83008CEB87 /* FileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7554D28B2ABA6068008CEB87 /* FileDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				7554D2802ABA0F8F008CEB87 /* JsonDocument.swift */,
+				7554D28C2ABA6080008CEB87 /* PngDocument.swift */,
+			);
+			path = FileDocuments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1084,6 +1108,9 @@
 			dependencies = (
 			);
 			name = Chroma;
+			packageProductDependencies = (
+				7554D27E2AB94A53008CEB87 /* SwiftUILib.DocumentPicker */,
+			);
 			productName = Chroma;
 			productReference = 7554D1082AAFB6B8008CEB87 /* Chroma.app */;
 			productType = "com.apple.product-type.application";
@@ -1156,6 +1183,9 @@
 				Base,
 			);
 			mainGroup = 7554D0FF2AAFB6B8008CEB87;
+			packageReferences = (
+				7554D27D2AB94A53008CEB87 /* XCRemoteSwiftPackageReference "document-picker" */,
+			);
 			productRefGroup = 7554D1092AAFB6B8008CEB87 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1199,6 +1229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7554D2862ABA5759008CEB87 /* JsonExporter.swift in Sources */,
 				7554D2092AB78FC7008CEB87 /* ArtboardModel.swift in Sources */,
 				7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */,
 				7554D2102AB790C7008CEB87 /* ArtboardViewModel.swift in Sources */,
@@ -1211,6 +1242,7 @@
 				7554D1592AAFECB2008CEB87 /* SemiCircle.swift in Sources */,
 				7554D26D2AB912B8008CEB87 /* JsonHelper.swift in Sources */,
 				7554D2252AB79C29008CEB87 /* ButtonColor.swift in Sources */,
+				7554D2912ABA7599008CEB87 /* NumberFormatter.swift in Sources */,
 				7554D16D2AB119FD008CEB87 /* PixelCursor.swift in Sources */,
 				7554D1602AAFF3C9008CEB87 /* ShapeButton.swift in Sources */,
 				7554D2562AB8C1F5008CEB87 /* AngleJson.swift in Sources */,
@@ -1231,6 +1263,8 @@
 				7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */,
 				7554D24E2AB8C06A008CEB87 /* PixelJson.swift in Sources */,
 				7554D2682AB90573008CEB87 /* ArtboardJson.swift in Sources */,
+				7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */,
+				7554D28A2ABA5E83008CEB87 /* FileViewModel.swift in Sources */,
 				7554D2542AB8C169008CEB87 /* PointJson.swift in Sources */,
 				7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */,
 				7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */,
@@ -1238,11 +1272,13 @@
 				7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */,
 				7554D1502AAFE61D008CEB87 /* ShapeList.swift in Sources */,
 				7554D2632AB8CDC0008CEB87 /* ArtboardHelpers.swift in Sources */,
+				7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
 				7554D2582AB8C378008CEB87 /* ColorJson.swift in Sources */,
 				7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */,
 				7554D22E2AB7A3BC008CEB87 /* CGSize.swift in Sources */,
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
+				7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
 				7554D21B2AB79901008CEB87 /* Well.swift in Sources */,
 				7554D25D2AB8C6CE008CEB87 /* LayerJson.swift in Sources */,
@@ -1261,14 +1297,14 @@
 				7554D23E2AB7ABCA008CEB87 /* AppSettingsModel.swift in Sources */,
 				7554D1F32AB78E61008CEB87 /* DrawScaleType.swift in Sources */,
 				7554D1752AB2888C008CEB87 /* ZoomGesture.swift in Sources */,
+				7554D28F2ABA6207008CEB87 /* ExportScaleControl.swift in Sources */,
 				7554D1622AAFF880008CEB87 /* ColorControl.swift in Sources */,
 				7554D2232AB79BB7008CEB87 /* ComposableButtonStyle.swift in Sources */,
 				7554D21F2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift in Sources */,
 				7554D1A82AB63E7C008CEB87 /* ArtboardSizeControl.swift in Sources */,
 				7554D1BD2AB789FF008CEB87 /* History.swift in Sources */,
 				7554D15C2AAFEEE8008CEB87 /* Quadrant.swift in Sources */,
-				7554D27A2AB942D4008CEB87 /* ExportSettings.swift in Sources */,
-				7554D27C2AB944AB008CEB87 /* ExportUrlControl.swift in Sources */,
+				7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */,
 				7554D1662AB0D508008CEB87 /* RotationControl.swift in Sources */,
 				7554D1392AAFB81C008CEB87 /* EditableArtboard.swift in Sources */,
 				7554D25F2AB8C73B008CEB87 /* LayerModel.swift in Sources */,
@@ -1277,7 +1313,6 @@
 				7554D25A2AB8C4B9008CEB87 /* PixelModel.swift in Sources */,
 				7554D1F12AB78DDC008CEB87 /* DrawTool.swift in Sources */,
 				7554D1992AB53D11008CEB87 /* TileModeButtons.swift in Sources */,
-				7554D2332AB7A41F008CEB87 /* MakeSavePanel.swift in Sources */,
 				7554D1952AB50B42008CEB87 /* Color.swift in Sources */,
 				7554D1562AAFEC7E008CEB87 /* Square.swift in Sources */,
 				7554D2292AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift in Sources */,
@@ -1285,7 +1320,6 @@
 				7554D1732AB2775B008CEB87 /* Panel.swift in Sources */,
 				7554D13D2AAFBA49008CEB87 /* Minimap.swift in Sources */,
 				7554D26F2AB91310008CEB87 /* FileJson.swift in Sources */,
-				7554D2352AB7A444008CEB87 /* SavePng.swift in Sources */,
 				7554D1C72AB78AFF008CEB87 /* TileMode.swift in Sources */,
 				7554D1D52AB78C32008CEB87 /* WorkspaceBackgroundColor.swift in Sources */,
 				7554D22C2AB7A39E008CEB87 /* CGRect.swift in Sources */,
@@ -1447,6 +1481,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Chroma/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save the created images.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -1486,6 +1521,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Chroma/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save the created images.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -1642,6 +1678,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7554D27D2AB94A53008CEB87 /* XCRemoteSwiftPackageReference "document-picker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftuilib/document-picker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7554D27E2AB94A53008CEB87 /* SwiftUILib.DocumentPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7554D27D2AB94A53008CEB87 /* XCRemoteSwiftPackageReference "document-picker" */;
+			productName = SwiftUILib.DocumentPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7554D1002AAFB6B8008CEB87 /* Project object */;
 }

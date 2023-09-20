@@ -7,62 +7,52 @@
 
 import SwiftUI
 
-private func toText(_ rounded: Bool, _ value: CGFloat) -> String {
-    return rounded
-        ? String("\(value)".split(separator: ".")[0])
-        : String("\(value)")
-}
-
 struct NumberTextField: View {
-    var value: Binding<CGFloat>
-    @State var min: CGFloat = -.infinity
-    @State var max: CGFloat = .infinity
-    @State var step: CGFloat = 0
+    @Binding var value: Double
+    @State var min: Double = -.infinity
+    @State var max: Double = .infinity
+    @State var step: Double = 1
     @State var rounded: Bool = false
+    @State var formatter: NumberFormatter = NumberFormatter()
     @State var onChangeValue: ((CGFloat) -> Void)?
-    
-    @State var textValue: String
-    
-    init(
-        value: Binding<CGFloat>,
-        min: CGFloat = -.infinity,
-        max: CGFloat = .infinity,
-        step: CGFloat = 0,
-        rounded: Bool = false,
-        onChangeValue: ((CGFloat) -> Void)? = nil
-    ) {
-        self.value = value
-        self.min = min
-        self.max = max
-        self.step = step
-        self.rounded = rounded
-        self.onChangeValue = onChangeValue
-        self.textValue = toText(rounded, value.wrappedValue)
-    }
     
     var body: some View {
         HStack(spacing: 0) {
-            TextField("Value", text: $textValue).onChange(of: textValue) { newValue in
-                if let val = Double(newValue) {
-                    setValue(CGFloat(val))
+            TextField(value: $value, formatter: getFormatter(), label: {
+                Text("Value")
+            }).onSubmit { onChange() }
+            Stepper {
+                Text("")
+            } onIncrement: {
+                releaseFocus()
+                if let newValue = getFormatter().format(value + getStep()) {
+                    value = newValue
+                    onChange()
                 }
-            }
-            Stepper(
-                "",
-                value: value,
-                in: min...max,
-                step: step
-            ).onChange(of: value.wrappedValue) { newValue in
-                setValue(newValue)
-                textValue = toText(rounded, value.wrappedValue)
+            } onDecrement: {
+                releaseFocus()
+                if let newValue = getFormatter().format(value - getStep()) {
+                    value = newValue
+                    onChange()
+                }
             }.labelsHidden()
         }
     }
     
-    func setValue(_ newValue: CGFloat) {
-        value.wrappedValue = rounded ? round(newValue.clamp(low: min, high: max)) : newValue.clamp(low: min, high: max)
+    func getStep() -> Double {
+        return rounded ? round(Swift.max(step, 1)) : step
+    }
+    
+    func getFormatter() -> NumberFormatter {
+        formatter.minimum = min as NSNumber
+        formatter.maximum = max as NSNumber
+        formatter.allowsFloats = !rounded
+        return formatter
+    }
+    
+    func onChange() {
         if let onChangeValue = self.onChangeValue {
-            onChangeValue(value.wrappedValue)
+            onChangeValue(value)
         }
     }
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PixelSizeControl: View {
     @EnvironmentObject private var drawSettings: DrawSettings
-    @State private var value: CGFloat = 5
+    @State private var value: Double = 5
     
     var body: some View {
         NumberTextField(

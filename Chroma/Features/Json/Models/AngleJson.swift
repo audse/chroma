@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AngleJson: Decodable {
+struct AngleJson: Codable {
     var degrees: Double? = nil
     var radians: Double? = nil
     

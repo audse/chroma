@@ -10,8 +10,8 @@ import SwiftUI
 struct ArtboardSizeControl: View {
     @EnvironmentObject var currentArtboard: ArtboardViewModel
     
-    @State var width: CGFloat = 512
-    @State var height: CGFloat = 512
+    @State var width: Double = 512
+    @State var height: Double = 512
     
     var body: some View {
         HStack {

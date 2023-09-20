@@ -25,25 +25,25 @@ struct ArtboardWrapper: View {
                     .fill(getWorkspaceBgColor())
                     .ignoresSafeArea()
                 if workspaceSettings.tileMode == .both || workspaceSettings.tileMode == .horizontal {
-                    makeCanvas(w: -1, h: 0) // Left
-                    makeCanvas(w: 1, h: 0) // Right
+                    makeArtboard(w: -1, h: 0) // Left
+                    makeArtboard(w: 1, h: 0) // Right
                 }
                 
                 if workspaceSettings.tileMode == .both || workspaceSettings.tileMode == .vertical {
-                    makeCanvas(w: 0, h: -1) // Top
-                    makeCanvas(w: 0, h: 1) // Bottom
+                    makeArtboard(w: 0, h: -1) // Top
+                    makeArtboard(w: 0, h: 1) // Bottom
                 }
                 
                 if workspaceSettings.tileMode == .both {
-                    makeCanvas(w: 1, h: 1) // Bottom right
-                    makeCanvas(w: 1, h: -1) // Top right
-                    makeCanvas(w: -1, h: -1) // Top left
-                    makeCanvas(w: -1, h: 1) // Bottom left
+                    makeArtboard(w: 1, h: 1) // Bottom right
+                    makeArtboard(w: 1, h: -1) // Top right
+                    makeArtboard(w: -1, h: -1) // Top left
+                    makeArtboard(w: -1, h: 1) // Bottom left
                 }
                 EditableArtboard().fixedSize()
             }.frame(
-                width: currentArtboard.size.width * 6,
-                height: currentArtboard.size.height * 6
+                width: max(currentArtboard.size.width * 6, 2000),
+                height: max(currentArtboard.size.height * 6, 1400)
             )
             .fixedSize()
             .zoomable(zoom: $currentZoom, onChanged: { newValue in
@@ -61,7 +61,7 @@ struct ArtboardWrapper: View {
         }
     }
     
-    func makeCanvas(w: CGFloat = 1.0, h: CGFloat = 1.0) -> some View {
+    func makeArtboard(w: CGFloat = 1.0, h: CGFloat = 1.0) -> some View {
         EditableArtboard()
             .fixedSize()
             .offset(x: currentArtboard.size.width * w *  workspaceSettings.zoom, y: currentArtboard.size.height * h * workspaceSettings.zoom)

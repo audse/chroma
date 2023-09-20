@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExportTypeControl: View {
-    @EnvironmentObject var exportSettings: ExportSettingsModel
+    @Binding var exportType: ExportType
     
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -16,25 +16,22 @@ struct ExportTypeControl: View {
                 .font(.label)
                 .foregroundColor(.secondary)
             MenuButton(getText()) {
-                Button("PNG") {
-                    exportSettings.type = .png
-                }
+                Button("Chroma") { exportType = .chroma }
+                Button("PNG") { exportType = .png }
             }.frame(width: 100).fixedSize()
         }
     }
     
     func getText() -> String {
-        switch exportSettings.type {
+        switch exportType {
+            case .chroma: return "Chroma"
             case .png: return "PNG"
-//            default: return "Image"
         }
     }
-                
 }
 
 struct ExportTypeControl_Previews: PreviewProvider {
     static var previews: some View {
-        ExportTypeControl()
-            .environmentObject(ExportSettingsModel())
+        ExportTypeControl(exportType: .constant(.chroma))
     }
 }

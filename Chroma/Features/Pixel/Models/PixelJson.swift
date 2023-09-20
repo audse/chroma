@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PixelJson: Identifiable, Decodable {
+struct PixelJson: Identifiable, Codable {
     var id: UUID
     var shapeId: String
     var color: ColorJson

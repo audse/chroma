@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SizeJson: Decodable {
+struct SizeJson: Codable {
     var width: Double
     var height: Double
     
