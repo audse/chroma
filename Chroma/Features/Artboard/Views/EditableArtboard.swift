@@ -16,42 +16,27 @@ struct EditableArtboard: View {
     @State var isHovering = true
     @State var mouseLocation = CGPoint()
     
-    @State var lineGhostPixels: [PixelModel] = []
+    @State var ghostPixels: [PixelModel] = []
     
     var body: some View {
         ZStack {
             Artboard(artboard: file.artboard)
-                .onTapGesture { location in
-                    let adjustedLocation = location - drawSettings.getPixelSize() / 2.0
-                    switch drawSettings.tool {
-                        case .draw: draw(adjustedLocation)
-                        case .erase: erase(adjustedLocation)
-                        case .fill: fill(adjustedLocation)
-                        case .eyedropper: eyedrop(adjustedLocation)
-                        case .line: line(adjustedLocation)
-                    }
-                }
+                .onTapGesture(perform: onTap)
                 .onHover { isHoveringValue in
                     isHovering = isHoveringValue
                 }
-                .onContinuousHover(perform: { phase in
-                    if case .active(let location) = phase {
-                        mouseLocation = location
-                        
-                        if drawSettings.tool == .line {
-                            if let pointA = drawSettings.multiClickState.first {
-                                lineGhostPixels = drawSettings.createPixelsBetweenPoints(pointA, location - drawSettings.getPixelSize() / 2.0)
-                            }
-                        }
-                    }
-                })
+                .onContinuousHover(perform: onContinuousHover)
+                .onChange(of: drawSettings.tool) { _ in
+                    ghostPixels.removeAll()
+                }
                 .releaseFocusOnTap()
-            if drawSettings.tool == .line {
-                DrawLineGhost(ghostPixels: $lineGhostPixels)
+            if [.line, .rect].contains(drawSettings.tool) {
+                CancelToolButton(ghostPixels: $ghostPixels)
+                DrawGhost(ghostPixels: $ghostPixels)
             }
             if isHovering {
                 PixelCursor()
-                    .position(drawSettings.snapped(mouseLocation - drawSettings.getPixelSize() / 2.0) + drawSettings.getPixelSize() / 2.0)
+                    .position(drawSettings.snapped(mouseLocation) + drawSettings.getPixelSize() / 2.0)
                     .animation(.easeInOut(duration: 0.1), value: mouseLocation)
             }
             if workspaceSettings.gridMode == .dots {
@@ -65,6 +50,45 @@ struct EditableArtboard: View {
         .clipped()
         .scaleEffect(workspaceSettings.zoom)
         .animation(.easeInOut(duration: 0.2), value: workspaceSettings.zoom)
+    }
+    
+    func adjust(_ location: CGPoint) -> CGPoint {
+        return location - drawSettings.getPixelSize() / 2.0
+    }
+    
+    func onTap(_ location: CGPoint) {
+        let adjustedLocation = adjust(location)
+        switch drawSettings.tool {
+            case .draw: draw(adjustedLocation)
+            case .erase: erase(adjustedLocation)
+            case .fill: fill(adjustedLocation)
+            case .eyedropper: eyedrop(adjustedLocation)
+            case .line: line(adjustedLocation)
+            case .rect: rect(adjustedLocation)
+        }
+    }
+        
+    func onContinuousHover(_ phase: HoverPhase) {
+        if case .active(let location) = phase {
+            mouseLocation = adjust(location)
+            ghostPixels = getGhostPixels(location)
+        }
+    }
+    
+    func getGhostPixels(_ location: CGPoint) -> [PixelModel] {
+        switch drawSettings.tool {
+            case .line:
+                switch drawSettings.multiClickState.first {
+                    case .some(let pointA): return drawSettings.createPixelLine(pointA, adjust(location))
+                    case .none: return []
+                }
+            case .rect:
+                switch drawSettings.multiClickState.first {
+                    case .some(let pointA): return drawSettings.createPixelRect(pointA, adjust(location))
+                    case .none: return []
+                }
+            default: return []
+        }
     }
     
     func draw(_ location: CGPoint) {
@@ -104,7 +128,7 @@ struct EditableArtboard: View {
         for layer in file.artboard.visibleLayers.reversed() {
             if let pixel: PixelModel = layer.findPixel(location) {
                 drawSettings.color = pixel.color
-                drawSettings.tool = .draw
+                drawSettings.setTool(.draw)
                 return
             }
         }
@@ -114,9 +138,22 @@ struct EditableArtboard: View {
         if let pointA = drawSettings.multiClickState.first {
             if let layer = file.artboard.currentLayer {
                 drawSettings.multiClickState.removeAll()
-                let pixels: [PixelModel] = drawSettings.createPixelsBetweenPoints(pointA, location)
+                let pixels = drawSettings.createPixelLine(pointA, location)
                 pixels.forEach(layer.addPixel)
                 history.add(LineAction(pixels, layer))
+            }
+        } else {
+            drawSettings.multiClickState = [location]
+        }
+    }
+    
+    func rect(_ location: CGPoint) {
+        if let pointA = drawSettings.multiClickState.first {
+            if let layer = file.artboard.currentLayer {
+                drawSettings.multiClickState.removeAll()
+                let pixels = drawSettings.createPixelRect(pointA, location)
+                pixels.forEach(layer.addPixel)
+                history.add(RectAction(pixels, layer))
             }
         } else {
             drawSettings.multiClickState = [location]

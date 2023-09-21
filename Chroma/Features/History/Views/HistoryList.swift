@@ -20,7 +20,7 @@ struct HistoryActionListItem: View {
                 case true: history.redoUntil(action)
             }
         } label: {
-            Label(getText(), systemImage: getIcon())
+            Label(action.getText(), systemImage: getIcon())
         }.foregroundColor(isUndone ? .secondary : .primary)
             .labelStyle(SpacedTrailingIconLabelStyle())
             .help(getHelpText())
@@ -28,18 +28,8 @@ struct HistoryActionListItem: View {
     
     func getHelpText() -> String {
         switch isUndone {
-            case false: return "Undo \(getText())"
-            case true: return "Redo \(getText())"
-        }
-    }
-    
-    func getText() -> String {
-        switch action {
-            case is DrawAction: return "Draw"
-            case is EraseAction: return "Erase"
-            case is FillAction: return "Fill"
-            case is LineAction: return "Line"
-            default: return "Action"
+            case false: return "Undo \(action.getText())"
+            case true: return "Redo \(action.getText())"
         }
     }
     

@@ -13,4 +13,16 @@ enum Tool {
     case fill
     case eyedropper
     case line
+    case rect
+    
+    var name: String {
+        switch self {
+            case .draw: return "Draw"
+            case .erase: return "Erase"
+            case .fill: return "Fill"
+            case .eyedropper: return "Eyedropper"
+            case .line: return "Line"
+            case .rect: return "Rect"
+        }
+    }
 }

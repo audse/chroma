@@ -9,6 +9,9 @@ import SwiftUI
 
 class Action: Identifiable {
     var id = UUID()
+    func getText() -> String {
+        return "Action"
+    }
     func undo() {}
     func redo() {}
 }
@@ -21,6 +24,10 @@ class DrawAction: Action {
     init(_ pixelValue: PixelModel, _ layerValue: LayerModel) {
         pixel = pixelValue
         layer = layerValue
+    }
+    
+    override func getText() -> String {
+        return "Draw"
     }
     
     override func undo() {
@@ -48,6 +55,10 @@ class EraseAction: Action {
         layer = layerValue
     }
     
+    override func getText() -> String {
+        return "Erase"
+    }
+    
     override func undo() {
         if index != -1 {
             layer.insertPixel(pixel, at: index)
@@ -70,6 +81,10 @@ class FillAction: Action {
         self.newColor =  newColor
     }
     
+    override func getText() -> String {
+        return "Fill"
+    }
+    
     override func undo() {
         pixels.forEach { pixel in pixel.setColor(originalColor) }
     }
@@ -79,7 +94,7 @@ class FillAction: Action {
     }
 }
 
-class LineAction: Action {
+class DrawMultipleAction: Action {
     var pixels: [PixelModel] = []
     var layer: LayerModel
     var indices: [Int] = []
@@ -98,5 +113,17 @@ class LineAction: Action {
         indices.sorted().enumerated().forEach { (i, index) in
             layer.insertPixel(pixels[i], at: index)
         }
+    }
+}
+
+class LineAction: DrawMultipleAction {
+    override func getText() -> String {
+        return "Line"
+    }
+}
+
+class RectAction: DrawMultipleAction {
+    override func getText() -> String {
+        return "Rect"
     }
 }

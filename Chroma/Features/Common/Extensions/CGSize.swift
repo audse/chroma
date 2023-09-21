@@ -12,6 +12,10 @@ extension CGSize {
         self = CGSize(width: number, height: number)
     }
     
+    init(_ width: CGFloat, _ height: CGFloat) {
+        self = CGSize(width: width, height: height)
+    }
+    
     // Operators
     
     static func +(lhs: CGSize, rhs: CGSize) -> CGSize {

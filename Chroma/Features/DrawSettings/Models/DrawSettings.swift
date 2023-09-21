@@ -9,7 +9,7 @@ import SwiftUI
 
 class DrawSettings: ObservableObject {
     @Published var rotation = Angle(degrees: 0)
-    @Published var tool: Tool = .draw
+    @Published private(set) var tool: Tool = .draw
     @Published var shape = SquareShape
     @Published var color = Color.black
     @Published var scaleType = ScaleType.even
@@ -24,6 +24,11 @@ class DrawSettings: ObservableObject {
     func tool(_ value: Tool) -> DrawSettings {
         self.tool = value
         return self
+    }
+    
+    func setTool(_ value: Tool) {
+        self.tool = value
+        self.multiClickState.removeAll()
     }
     
     func snapped(_ point: CGPoint) -> CGPoint {
@@ -57,7 +62,7 @@ class DrawSettings: ObservableObject {
         return CGPoint(getPixelSize())
     }
     
-    func createPixelsBetweenPoints(_ pointA: CGPoint, _ pointB: CGPoint) -> [PixelModel] {
+    func createPixelLine(_ pointA: CGPoint, _ pointB: CGPoint) -> [PixelModel] {
         var pixels: [PixelModel] = []
         let a = snapped(pointA)
         let b = snapped(pointB)
@@ -67,6 +72,23 @@ class DrawSettings: ObservableObject {
         while abs(position.distance(to: b)) > increment / 2 {
             position = position.moveToward(b, by: increment)
             pixels.append(createPixel(position))
+        }
+        return pixels
+    }
+    
+    func createPixelRect(_ pointA: CGPoint, _ pointB: CGPoint) -> [PixelModel] {
+        var pixels: [PixelModel] = []
+        let a = snapped(pointA), b = snapped(pointB)
+        let aX = min(a.x, b.x), bX = max(a.x, b.x), aY = min(a.y, b.y), bY = max(a.y, b.y)
+        let increment: CGFloat = getPixelSize()
+        var xPos: CGFloat = aX
+        while xPos < bX + increment {
+            var yPos: CGFloat = aY
+            while yPos < bY + increment {
+                pixels.append(createPixel(CGPoint(xPos, yPos)))
+                yPos += increment
+            }
+            xPos += increment
         }
         return pixels
     }

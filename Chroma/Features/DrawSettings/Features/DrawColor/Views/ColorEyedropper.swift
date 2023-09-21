@@ -12,7 +12,7 @@ struct ColorEyedropper: View {
     
     var body: some View {
         Button {
-            drawSettings.tool = .eyedropper
+            drawSettings.setTool(.eyedropper)
         } label: {
             Image(systemName: "eyedropper.halffull")
         }
