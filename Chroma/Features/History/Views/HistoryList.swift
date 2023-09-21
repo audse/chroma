@@ -38,6 +38,7 @@ struct HistoryActionListItem: View {
             case is DrawAction: return "Draw"
             case is EraseAction: return "Erase"
             case is FillAction: return "Fill"
+            case is LineAction: return "Line"
             default: return "Action"
         }
     }
@@ -76,6 +77,7 @@ struct HistoryList_Previews: PreviewProvider {
                 .history([
                     DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
                     EraseAction(drawSettings.createPixel(), 1, currentArtboard.currentLayer!),
+                    LineAction([drawSettings.createPixel()], currentArtboard.currentLayer!),
                     DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
                 ])
                 .undoHistory([

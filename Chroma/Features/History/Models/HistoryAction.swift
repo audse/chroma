@@ -78,3 +78,25 @@ class FillAction: Action {
         pixels.forEach { pixel in pixel.setColor(newColor) }
     }
 }
+
+class LineAction: Action {
+    var pixels: [PixelModel] = []
+    var layer: LayerModel
+    var indices: [Int] = []
+    
+    init(_ pixels: [PixelModel], _ layer: LayerModel) {
+        self.pixels = pixels
+        self.layer = layer
+        self.indices = pixels.map(layer.findPixel)
+    }
+    
+    override func undo() {
+        indices.sorted().reversed().forEach { index in _ = layer.removePixel(index) }
+    }
+    
+    override func redo() {
+        indices.sorted().enumerated().forEach { (i, index) in
+            layer.insertPixel(pixels[i], at: index)
+        }
+    }
+}

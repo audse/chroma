@@ -16,6 +16,8 @@ struct EditableArtboard: View {
     @State var isHovering = true
     @State var mouseLocation = CGPoint()
     
+    @State var lineGhostPixels: [PixelModel] = []
+    
     var body: some View {
         ZStack {
             Artboard(artboard: file.artboard)
@@ -26,6 +28,7 @@ struct EditableArtboard: View {
                         case .erase: erase(adjustedLocation)
                         case .fill: fill(adjustedLocation)
                         case .eyedropper: eyedrop(adjustedLocation)
+                        case .line: line(adjustedLocation)
                     }
                 }
                 .onHover { isHoveringValue in
@@ -34,9 +37,18 @@ struct EditableArtboard: View {
                 .onContinuousHover(perform: { phase in
                     if case .active(let location) = phase {
                         mouseLocation = location
+                        
+                        if drawSettings.tool == .line {
+                            if let pointA = drawSettings.multiClickState.first {
+                                lineGhostPixels = drawSettings.createPixelsBetweenPoints(pointA, location - drawSettings.getPixelSize() / 2.0)
+                            }
+                        }
                     }
                 })
                 .releaseFocusOnTap()
+            if drawSettings.tool == .line {
+                DrawLineGhost(ghostPixels: $lineGhostPixels)
+            }
             if isHovering {
                 PixelCursor()
                     .position(drawSettings.snapped(mouseLocation - drawSettings.getPixelSize() / 2.0) + drawSettings.getPixelSize() / 2.0)
@@ -95,6 +107,19 @@ struct EditableArtboard: View {
                 drawSettings.tool = .draw
                 return
             }
+        }
+    }
+    
+    func line(_ location: CGPoint) {
+        if let pointA = drawSettings.multiClickState.first {
+            if let layer = file.artboard.currentLayer {
+                drawSettings.multiClickState.removeAll()
+                let pixels: [PixelModel] = drawSettings.createPixelsBetweenPoints(pointA, location)
+                pixels.forEach(layer.addPixel)
+                history.add(LineAction(pixels, layer))
+            }
+        } else {
+            drawSettings.multiClickState = [location]
         }
     }
 }

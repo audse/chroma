@@ -16,6 +16,11 @@ class DrawSettings: ObservableObject {
     @Published var pixelSize: CGFloat = 5
     @Published var precisionSize: CGFloat = 1
     
+    /**
+     Used for multi-click actions such as drawing lines, rectangles, etc.
+     */
+    @Published var multiClickState: [CGPoint] = []
+    
     func tool(_ value: Tool) -> DrawSettings {
         self.tool = value
         return self
@@ -45,11 +50,25 @@ class DrawSettings: ObservableObject {
     }
     
     func getPixelSize() -> CGSize {
-        return CGSize(width: getPixelSize(), height: getPixelSize())
+        return CGSize(getPixelSize())
     }
     
     func getPixelSize() -> CGPoint {
-        return CGPoint(x: getPixelSize(), y: getPixelSize())
+        return CGPoint(getPixelSize())
+    }
+    
+    func createPixelsBetweenPoints(_ pointA: CGPoint, _ pointB: CGPoint) -> [PixelModel] {
+        var pixels: [PixelModel] = []
+        let a = snapped(pointA)
+        let b = snapped(pointB)
+        let increment: CGFloat = getPixelSize()
+        var position = a
+        pixels.append(createPixel(position))
+        while abs(position.distance(to: b)) > increment / 2 {
+            position = position.moveToward(b, by: increment)
+            pixels.append(createPixel(position))
+        }
+        return pixels
     }
 }
 

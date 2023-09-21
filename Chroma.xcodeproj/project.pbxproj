@@ -114,6 +114,7 @@
 		7554D2AB2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2AA2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift */; };
 		7554D2AD2ABBEFCE008CEB87 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2AC2ABBEFCE008CEB87 /* Sequence.swift */; };
 		7554D2AF2ABBF568008CEB87 /* ColorEyedropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2AE2ABBF568008CEB87 /* ColorEyedropper.swift */; };
+		7554D2B12ABC098E008CEB87 /* DrawLineGhost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2B02ABC098E008CEB87 /* DrawLineGhost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +245,7 @@
 		7554D2AA2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceGridThicknessControl.swift; sourceTree = "<group>"; };
 		7554D2AC2ABBEFCE008CEB87 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		7554D2AE2ABBF568008CEB87 /* ColorEyedropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEyedropper.swift; sourceTree = "<group>"; };
+		7554D2B02ABC098E008CEB87 /* DrawLineGhost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawLineGhost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				7554D14D2AAFD4DD008CEB87 /* ToolList.swift */,
+				7554D2B02ABC098E008CEB87 /* DrawLineGhost.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1269,6 +1272,7 @@
 				7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */,
 				7554D16A2AB10288008CEB87 /* Expand.swift in Sources */,
 				7554D2662AB8D2D1008CEB87 /* PixelHelpers.swift in Sources */,
+				7554D2B12ABC098E008CEB87 /* DrawLineGhost.swift in Sources */,
 				7554D19B2AB54187008CEB87 /* WorkspaceSettingsPanel.swift in Sources */,
 				7554D1AA2AB63EB3008CEB87 /* NumberTextField.swift in Sources */,
 				7554D2742AB9429F008CEB87 /* ExportTypeControl.swift in Sources */,

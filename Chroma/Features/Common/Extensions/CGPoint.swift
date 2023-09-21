@@ -12,6 +12,20 @@ extension CGPoint {
         self = CGPoint(x: number, y: number)
     }
     
+    func distance(to point: CGPoint) -> CGFloat {
+        return sqrt((x - point.x) * (x - point.x) + (y - point.y) * (y - point.y))
+    }
+    
+    func moveToward(_ point: CGPoint, by delta: CGFloat) -> CGPoint {
+        let vd = point - self
+        let len = vd.length
+        return len <= delta || len < CGFLOAT_EPSILON ? point : (self + vd / CGPoint(len) * CGPoint(delta))
+    }
+    
+    var length: CGFloat {
+        return sqrt(x * x + y * y)
+    }
+    
     // Operators
     
     static func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
