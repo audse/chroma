@@ -11,4 +11,5 @@ enum Tool {
     case draw
     case erase
     case fill
+    case eyedropper
 }

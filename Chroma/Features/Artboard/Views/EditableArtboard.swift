@@ -25,6 +25,7 @@ struct EditableArtboard: View {
                         case .draw: draw(adjustedLocation)
                         case .erase: erase(adjustedLocation)
                         case .fill: fill(adjustedLocation)
+                        case .eyedropper: eyedrop(adjustedLocation)
                     }
                 }
                 .onHover { isHoveringValue in
@@ -83,6 +84,16 @@ struct EditableArtboard: View {
                     originalColor: originalColor,
                     newColor: drawSettings.color
                 ))
+            }
+        }
+    }
+    
+    func eyedrop(_ location: CGPoint) {
+        for layer in file.artboard.visibleLayers.reversed() {
+            if let pixel: PixelModel = layer.findPixel(location) {
+                drawSettings.color = pixel.color
+                drawSettings.tool = .draw
+                return
             }
         }
     }

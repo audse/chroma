@@ -85,4 +85,8 @@ class ArtboardModel: ObservableObject, Identifiable {
         self.size.width = width ?? self.size.width
         self.size.height = height ?? self.size.height
     }
+    
+    var visibleLayers: [LayerModel] {
+        return layers.filter { layer in layer.isVisible }
+    }
 }

@@ -10,14 +10,12 @@ import SwiftUI
 struct ColorControl: View {
     @EnvironmentObject private var drawSettings: DrawSettings
     
-    @State var color = Color.black
-    
     var body: some View {
-        ColorPicker("Color", selection: $color)
-            .labelsHidden()
-            .onChange(of: color) { color in
-                drawSettings.color = color
-            }
+        HStack(spacing: 2) {
+            ColorPicker("Color", selection: $drawSettings.color)
+                .labelsHidden()
+            ColorEyedropper()
+        }
     }
 }
 

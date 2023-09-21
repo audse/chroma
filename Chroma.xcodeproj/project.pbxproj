@@ -113,6 +113,7 @@
 		7554D2A72ABB986C008CEB87 /* WorkspaceGridColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2A62ABB986C008CEB87 /* WorkspaceGridColorControl.swift */; };
 		7554D2AB2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2AA2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift */; };
 		7554D2AD2ABBEFCE008CEB87 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2AC2ABBEFCE008CEB87 /* Sequence.swift */; };
+		7554D2AF2ABBF568008CEB87 /* ColorEyedropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2AE2ABBF568008CEB87 /* ColorEyedropper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,6 +243,7 @@
 		7554D2A62ABB986C008CEB87 /* WorkspaceGridColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceGridColorControl.swift; sourceTree = "<group>"; };
 		7554D2AA2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceGridThicknessControl.swift; sourceTree = "<group>"; };
 		7554D2AC2ABBEFCE008CEB87 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		7554D2AE2ABBF568008CEB87 /* ColorEyedropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEyedropper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -609,6 +611,7 @@
 			isa = PBXGroup;
 			children = (
 				7554D1612AAFF880008CEB87 /* ColorControl.swift */,
+				7554D2AE2ABBF568008CEB87 /* ColorEyedropper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1330,6 +1333,7 @@
 				7554D1F32AB78E61008CEB87 /* DrawScaleType.swift in Sources */,
 				7554D1752AB2888C008CEB87 /* ZoomGesture.swift in Sources */,
 				7554D28F2ABA6207008CEB87 /* ExportScaleControl.swift in Sources */,
+				7554D2AF2ABBF568008CEB87 /* ColorEyedropper.swift in Sources */,
 				7554D1622AAFF880008CEB87 /* ColorControl.swift in Sources */,
 				7554D2232AB79BB7008CEB87 /* ComposableButtonStyle.swift in Sources */,
 				7554D21F2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift in Sources */,

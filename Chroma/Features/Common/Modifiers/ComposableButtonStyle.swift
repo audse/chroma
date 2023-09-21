@@ -70,4 +70,8 @@ struct Btn {
     static func vStack<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return VStack(spacing: 0) { view }
     }
+    
+    static func padding<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
+        return view.padding(4)
+    }
 }

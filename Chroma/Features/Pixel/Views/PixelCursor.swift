@@ -39,24 +39,35 @@ struct PixelCursor: View {
                         color: Color.clear,
                         size: drawSettings.getPixelSize() - 2
                     ).getShape()
-                    .stroke(.black, style: StrokeStyle(
-                        lineWidth: 2,
-                        lineCap: .round,
-                        lineJoin: .round,
-                        dash: [2, 4]
-                    ))
-            )
+                        .stroke(.black, style: StrokeStyle(
+                            lineWidth: 2,
+                            lineCap: .round,
+                            lineJoin: .round,
+                            dash: [2, 4]
+                        ))
+                )
                 .position(x: size / 2 + 1, y: size / 2 + 1)
                 .frame(width: size, height: size)
                 .allowsHitTesting(false)
         case .fill:
             Circle()
-                .size(width: size - 2, height: size - 2)
+                .size(width: size, height: size)
                 .fill(drawSettings.color)
-                .position(x: size / 2 + 1, y: size / 2 + 1)
+                .position(x: size / 2, y: size / 2)
                 .frame(width: size, height: size)
                 .allowsHitTesting(false)
                 .opacity(0.5)
+        case .eyedropper:
+            Image(systemName: "eyedropper.halffull")
+                .font(.system(size: size * 0.75))
+                .foregroundColor(.black)
+                .position(x: size / 2, y: size / 2)
+                .frame(width: size, height: size)
+                .allowsHitTesting(false)
+                .shadow(color: .white, radius: 0, x: 1, y: 1)
+                .shadow(color: .white, radius: 0, x: -1, y: -1)
+                .shadow(color: .white, radius: 0, x: 1, y: -1)
+                .shadow(color: .white, radius: 0, x: -1, y: 1)
         }
     }
 }
@@ -67,6 +78,7 @@ struct PixelCursor_Previews: PreviewProvider {
             PixelCursor().environmentObject(DrawSettings())
             PixelCursor().environmentObject(DrawSettings().tool(.erase))
             PixelCursor().environmentObject(DrawSettings().tool(.fill))
+            PixelCursor().environmentObject(DrawSettings().tool(.eyedropper))
         }
     }
 }
