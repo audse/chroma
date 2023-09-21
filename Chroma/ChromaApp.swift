@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+public func getSavedProperty<T>(key: String, defaultValue: T) -> T where T: Codable {
+    if let data = UserDefaults.standard.data(forKey: key) {
+        if let decoded = try? JSONDecoder().decode(T.self, from: data) {
+            return decoded
+        }
+    }
+    return defaultValue
+}
+
+public func saveProperty<T>(key: String, value: T) where T: Codable {
+    if let encoded = try? JSONEncoder().encode(value) {
+        UserDefaults.standard.set(encoded, forKey: key)
+    }
+}
+
 struct Editor: View {
     @EnvironmentObject private var appSettings: AppSettingsModel
     @EnvironmentObject private var workspaceSettings: WorkspaceSettingsModel

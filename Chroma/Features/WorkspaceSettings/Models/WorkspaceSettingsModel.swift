@@ -8,25 +8,35 @@
 import SwiftUI
 
 class WorkspaceSettingsModel: ObservableObject {
-    @Published var gridMode: GridMode = .dots
-    @Published var gridColor: Color = .gray.opacity(0.2)
-    @Published var gridThickness: Double = 1.0
-    @Published var backgroundColor: WorkspaceBackgroundColor = .followColorScheme
+    @Published var gridMode: GridMode = .dots {
+        didSet { saveProperty(key: "gridMode", value: gridMode) }
+    }
+    @Published var gridColor: Color = .gray.opacity(0.2) {
+        didSet { saveProperty(key: "gridColor", value: ColorJson(gridColor)) }
+    }
+    @Published var gridThickness: Double = 1.0 {
+        didSet { saveProperty(key: "gridThickness", value: gridThickness) }
+    }
+    @Published var backgroundColor: WorkspaceBackgroundColor = .followColorScheme {
+        didSet { saveProperty(key: "backgroundColor", value: backgroundColor) }
+    }
     @Published var tileMode: TileMode = .none
     @Published var zoom: CGFloat = 1.0
-
+                                   
     init(
-        gridMode: GridMode = .dots,
-        gridColor: Color = .gray.opacity(0.2),
-        gridThickness: Double = 1.0,
-        backgroundColor: WorkspaceBackgroundColor = .followColorScheme,
+        gridMode: GridMode? = nil,
+        gridColor: Color? = nil,
+        gridThickness: Double? = nil,
+        backgroundColor: WorkspaceBackgroundColor? = nil,
         tileMode: TileMode = .none,
         zoom: CGFloat = 1.0
     ) {
-        self.gridMode = gridMode
+        self.gridMode = gridMode ?? getSavedProperty(key: "gridMode", defaultValue: .dots)
+        self.gridThickness = gridThickness ?? getSavedProperty(key: "gridThickness", defaultValue: 1.0)
         self.gridColor = gridColor
-        self.gridThickness = gridThickness
+            ?? Color(getSavedProperty(key: "gridColor", defaultValue: ColorJson(.gray.opacity(0.2))))
         self.backgroundColor = backgroundColor
+            ?? getSavedProperty(key: "backgroundColor", defaultValue: .followColorScheme)
         self.tileMode = tileMode
         self.zoom = zoom
     }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum WorkspaceBackgroundColor: Equatable {
+enum WorkspaceBackgroundColor: Equatable, Codable {
     case followColorScheme
     case custom(Color)
 

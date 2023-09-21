@@ -1,6 +1,7 @@
 disabled_rules:
     - large_tuple
     - orphaned_doc_comment
+    - trailing_whitespace
 
 identifier_name:
     validates_start_with_lowercase: warning

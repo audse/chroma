@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum GridMode {
+enum GridMode: Codable {
     case dots
     case lines
     case none

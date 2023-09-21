@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "document-picker",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swiftuilib/document-picker",
-      "state" : {
-        "revision" : "dca7adf7c1ff5355b696ba2da7aebf6ffa9bb15d",
-        "version" : "1.0.0"
-      }
-    },
-    {
       "identity" : "swiftui-shapes",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/spacenation/swiftui-shapes.git",

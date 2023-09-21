@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum AppColorScheme {
+enum AppColorScheme: Codable {
     case followSystem
     case custom(ColorScheme)
 
@@ -21,10 +21,20 @@ enum AppColorScheme {
 }
 
 class AppSettingsModel: ObservableObject {
-    @Published var colorScheme: AppColorScheme = .custom(.dark)
+    @Published var colorScheme: AppColorScheme = .followSystem {
+        didSet { save() }
+    }
     @Published var showingSettings: Bool = false
     @Published var showingImport: Bool = false
     @Published var showingExport: Bool = false
+    
+    init() {
+        self.colorScheme = getSavedProperty(key: "colorScheme", defaultValue: AppColorScheme.followSystem)
+    }
+    
+    func save() {
+        saveProperty(key: "colorScheme", value: colorScheme)
+    }
 
     var colorSchemeValue: ColorScheme {
         switch colorScheme {

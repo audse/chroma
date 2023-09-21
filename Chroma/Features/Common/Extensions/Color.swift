@@ -81,3 +81,24 @@ extension Color {
         return Color(red: r - amount, green: g - amount, blue: b - amount, opacity: o)
     }
 }
+
+extension Color: Codable {
+    var json: ColorJson {
+        return ColorJson(self)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case json
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let colorJson: ColorJson = try values.decode(ColorJson.self, forKey: .json)
+        self.init(colorJson)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.json, forKey: CodingKeys.json)
+    }
+}

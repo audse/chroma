@@ -97,7 +97,6 @@
 		7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2712AB9423E008CEB87 /* ExportPage.swift */; };
 		7554D2742AB9429F008CEB87 /* ExportTypeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */; };
 		7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2792AB942D4008CEB87 /* ExportType.swift */; };
-		7554D27F2AB94A53008CEB87 /* SwiftUILib.DocumentPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 7554D27E2AB94A53008CEB87 /* SwiftUILib.DocumentPicker */; };
 		7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2802ABA0F8F008CEB87 /* JsonDocument.swift */; };
 		7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2822ABA5684008CEB87 /* PngExporter.swift */; };
 		7554D2862ABA5759008CEB87 /* JsonExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2852ABA5759008CEB87 /* JsonExporter.swift */; };
@@ -124,6 +123,7 @@
 		7554D2C02ABCB072008CEB87 /* RectToolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2BF2ABCB072008CEB87 /* RectToolButton.swift */; };
 		7554D2C22ABCB883008CEB87 /* CancelToolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2C12ABCB883008CEB87 /* CancelToolButton.swift */; };
 		7554D2C52ABCBE3F008CEB87 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7554D2C42ABCBE3F008CEB87 /* .swiftlint.yml */; };
+		7554D2C72ABCCDAF008CEB87 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2C62ABCCDAF008CEB87 /* ColorScheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,6 +264,7 @@
 		7554D2BF2ABCB072008CEB87 /* RectToolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectToolButton.swift; sourceTree = "<group>"; };
 		7554D2C12ABCB883008CEB87 /* CancelToolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelToolButton.swift; sourceTree = "<group>"; };
 		7554D2C42ABCBE3F008CEB87 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		7554D2C62ABCCDAF008CEB87 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,7 +273,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7554D29C2ABB8E8E008CEB87 /* Shapes in Frameworks */,
-				7554D27F2AB94A53008CEB87 /* SwiftUILib.DocumentPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -951,6 +951,7 @@
 				7554D2362AB7A495008CEB87 /* Font.swift */,
 				7554D2902ABA7598008CEB87 /* NumberFormatter.swift */,
 				7554D2AC2ABBEFCE008CEB87 /* Sequence.swift */,
+				7554D2C62ABCCDAF008CEB87 /* ColorScheme.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1181,7 +1182,6 @@
 			);
 			name = Chroma;
 			packageProductDependencies = (
-				7554D27E2AB94A53008CEB87 /* SwiftUILib.DocumentPicker */,
 				7554D29B2ABB8E8E008CEB87 /* Shapes */,
 			);
 			productName = Chroma;
@@ -1257,7 +1257,6 @@
 			);
 			mainGroup = 7554D0FF2AAFB6B8008CEB87;
 			packageReferences = (
-				7554D27D2AB94A53008CEB87 /* XCRemoteSwiftPackageReference "document-picker" */,
 				7554D29A2ABB8E8E008CEB87 /* XCRemoteSwiftPackageReference "swiftui-shapes" */,
 			);
 			productRefGroup = 7554D1092AAFB6B8008CEB87 /* Products */;
@@ -1302,6 +1301,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		7554D2C32ABCBB9F008CEB87 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1352,6 +1352,7 @@
 				7554D24C2AB8BF0B008CEB87 /* FileModel.swift in Sources */,
 				7554D17C2AB29BAB008CEB87 /* ZoomButtons.swift in Sources */,
 				7554D1892AB4BC12008CEB87 /* InverseQuadrant.swift in Sources */,
+				7554D2C72ABCCDAF008CEB87 /* ColorScheme.swift in Sources */,
 				7554D1872AB3D1D4008CEB87 /* ScaleTypeButtons.swift in Sources */,
 				7554D1BB2AB789BC008CEB87 /* HistoryAction.swift in Sources */,
 				7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */,
@@ -1789,14 +1790,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7554D27D2AB94A53008CEB87 /* XCRemoteSwiftPackageReference "document-picker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swiftuilib/document-picker";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		7554D29A2ABB8E8E008CEB87 /* XCRemoteSwiftPackageReference "swiftui-shapes" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/spacenation/swiftui-shapes.git";
@@ -1808,11 +1801,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7554D27E2AB94A53008CEB87 /* SwiftUILib.DocumentPicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7554D27D2AB94A53008CEB87 /* XCRemoteSwiftPackageReference "document-picker" */;
-			productName = SwiftUILib.DocumentPicker;
-		};
 		7554D29B2ABB8E8E008CEB87 /* Shapes */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7554D29A2ABB8E8E008CEB87 /* XCRemoteSwiftPackageReference "swiftui-shapes" */;
