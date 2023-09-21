@@ -15,28 +15,28 @@ class DrawSettings: ObservableObject {
     @Published var scaleType = ScaleType.even
     @Published var pixelSize: CGFloat = 5
     @Published var precisionSize: CGFloat = 1
-    
+
     /**
      Used for multi-click actions such as drawing lines, rectangles, etc.
      */
     @Published var multiClickState: [CGPoint] = []
-    
+
     func tool(_ value: Tool) -> DrawSettings {
         self.tool = value
         return self
     }
-    
+
     func setTool(_ value: Tool) {
         self.tool = value
         self.multiClickState.removeAll()
     }
-    
+
     func snapped(_ point: CGPoint) -> CGPoint {
         let x = round(point.x / (getPixelSize() * precisionSize))
         let y = round(point.y / (getPixelSize() * precisionSize))
         return CGPoint(x: x * (getPixelSize() * precisionSize), y: y * (getPixelSize() * precisionSize))
     }
-    
+
     func createPixel(_ point: CGPoint = CGPoint()) -> PixelModel {
         return PixelModel(
             shape: self.shape,
@@ -46,22 +46,22 @@ class DrawSettings: ObservableObject {
             position: self.snapped(point)
         )
     }
-    
+
     func getPixelSize() -> CGFloat {
         switch scaleType {
-            case .even: return pow(2, pixelSize)
-            case .odd: return pow(2, pixelSize + 1) / 3
+        case .even: return pow(2, pixelSize)
+        case .odd: return pow(2, pixelSize + 1) / 3
         }
     }
-    
+
     func getPixelSize() -> CGSize {
         return CGSize(getPixelSize())
     }
-    
+
     func getPixelSize() -> CGPoint {
         return CGPoint(getPixelSize())
     }
-    
+
     func createPixelLine(_ pointA: CGPoint, _ pointB: CGPoint) -> [PixelModel] {
         var pixels: [PixelModel] = []
         let a = snapped(pointA)
@@ -75,16 +75,16 @@ class DrawSettings: ObservableObject {
         }
         return pixels
     }
-    
+
     func createPixelRect(_ pointA: CGPoint, _ pointB: CGPoint) -> [PixelModel] {
         var pixels: [PixelModel] = []
         let a = snapped(pointA), b = snapped(pointB)
-        let aX = min(a.x, b.x), bX = max(a.x, b.x), aY = min(a.y, b.y), bY = max(a.y, b.y)
+        let startX = min(a.x, b.x), endX = max(a.x, b.x), startY = min(a.y, b.y), endY = max(a.y, b.y)
         let increment: CGFloat = getPixelSize()
-        var xPos: CGFloat = aX
-        while xPos < bX + increment {
-            var yPos: CGFloat = aY
-            while yPos < bY + increment {
+        var xPos: CGFloat = startX
+        while xPos < endX + increment {
+            var yPos: CGFloat = startY
+            while yPos < endY + increment {
                 pixels.append(createPixel(CGPoint(xPos, yPos)))
                 yPos += increment
             }

@@ -14,7 +14,7 @@ class WorkspaceSettingsModel: ObservableObject {
     @Published var backgroundColor: WorkspaceBackgroundColor = .followColorScheme
     @Published var tileMode: TileMode = .none
     @Published var zoom: CGFloat = 1.0
-    
+
     init(
         gridMode: GridMode = .dots,
         gridColor: Color = .gray.opacity(0.2),

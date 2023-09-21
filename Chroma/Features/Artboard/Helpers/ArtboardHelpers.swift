@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-
 struct PreviewArtboardModelBuilder {
     var name: String? = "Untitled \(Int.random(in: 1...10))"
     var numberOfLayers: Int = Int.random(in: 1...3)
     var pixelsPerLayer: Int = Int.random(in: 3...10)
     var size: CGSize = CGSize(512)
     var backgroundColor: Color = .random.lighten(0.5)
-    
+
     func build() -> ArtboardModel {
-        var artboard = ArtboardModel(
+        let artboard = ArtboardModel(
             name: name,
             size: size,
             backgroundColor: backgroundColor

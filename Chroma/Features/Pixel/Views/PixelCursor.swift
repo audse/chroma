@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PixelCursor: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    
+
     var body: some View {
         let size: CGFloat = drawSettings.getPixelSize()
         switch drawSettings.tool {

@@ -10,9 +10,9 @@ import UniformTypeIdentifiers
 
 struct PngDocument: FileDocument {
     static var readableContentTypes: [UTType] = [.png]
-    
-    private var data: Data? = nil
-    
+
+    private var data: Data?
+
     init(_ cgImage: CGImage?) {
         if let cgImage = cgImage {
             let image = NSImage(cgImage: cgImage, size: .init(width: 512, height: 512))
@@ -21,13 +21,13 @@ struct PngDocument: FileDocument {
             self.data = imageRepresentation?.representation(using: .png, properties: [:])
         }
     }
-    
+
     init(configuration: ReadConfiguration) throws {
         if let data = configuration.file.regularFileContents {
             self.data = data
         }
     }
-    
+
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         return FileWrapper(regularFileWithContents: data ?? Data())
     }

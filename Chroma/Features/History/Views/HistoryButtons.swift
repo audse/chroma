@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryButtons: View {
     @EnvironmentObject var history: History
-    
+
     var body: some View {
         HStack {
             Button {

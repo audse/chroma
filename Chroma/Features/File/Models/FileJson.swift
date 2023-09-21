@@ -12,13 +12,14 @@ struct FileJson: Identifiable, Codable {
     var id: UUID
     var name: String
     var artboard: ArtboardJson
-    
+
     init(_ model: FileModel) {
         self.id = model.id
         self.name = model.name
         self.artboard = ArtboardJson(model.artboard)
     }
-    
+
+    // swiftlint:disable:next identifier_name
     static func Empty() -> FileJson {
         return FileJson(FileModel(
             id: UUID(),

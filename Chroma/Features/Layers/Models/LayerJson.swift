@@ -12,7 +12,7 @@ struct LayerJson: Identifiable, Codable {
     var name = "Layer"
     var pixels: [PixelJson] = []
     var isVisible: Bool = true
-    
+
     init(_ model: LayerModel) {
         self.id = model.id
         self.name = model.name

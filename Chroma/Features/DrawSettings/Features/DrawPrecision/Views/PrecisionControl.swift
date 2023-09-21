@@ -9,9 +9,9 @@ import SwiftUI
 
 struct PrecisionControl: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    
+
     @State var isOn: Bool = false
-    
+
     var body: some View {
         Toggle(isOn: $isOn, label: {
             HStack {
@@ -20,7 +20,7 @@ struct PrecisionControl: View {
             }
         })
             .toggleStyle(.switch)
-            .onChange(of: isOn) { value in
+            .onChange(of: isOn) { _ in
                 drawSettings.precisionSize = isOn ? 0.5 : 1.0
             }
     }

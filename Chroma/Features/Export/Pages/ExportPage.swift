@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ExportPage: View {
     @EnvironmentObject var file: FileModel
-    
+
     @State var exportType: ExportType = .chroma
     @State var exportScale: Double = 1
     @State var isChromaExporterPresented: Bool = false
     @State var isPngExporterPresented: Bool = false
-    
+
     @Binding var showing: Bool
-    
+
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 12) {
@@ -39,8 +39,8 @@ struct ExportPage: View {
                         .tinted(.primaryBackgroundDark)
                     Button("Export") {
                         switch exportType {
-                            case .chroma: isChromaExporterPresented = true
-                            case .png: isPngExporterPresented = true
+                        case .chroma: isChromaExporterPresented = true
+                        case .png: isPngExporterPresented = true
                         }
                     }
                     .keyboardShortcut(.return, modifiers: [])

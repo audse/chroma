@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var appSettings: AppSettingsModel
-    
+
     var body: some View {
         ZStack {
             ArtboardWrapper()

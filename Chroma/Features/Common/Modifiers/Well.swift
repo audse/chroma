@@ -11,11 +11,11 @@ struct WellModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     var padding: EdgeInsets
     var cornerRadius: CGFloat
-    
+
     var shadowColor: Color {
         return Color.black
     }
-    
+
     func body(content: Content) -> some View {
         content
             .padding(padding)
@@ -30,7 +30,10 @@ struct WellModifier: ViewModifier {
                     .blendMode(.multiply)
             )
             .if(colorScheme == .light) { view in
-                view.overlay(RoundedRectangle(cornerRadius: cornerRadius - 1).stroke(.black.opacity(0.05), lineWidth: 1))
+                view.overlay(
+                    RoundedRectangle(cornerRadius: cornerRadius - 1)
+                        .stroke(.black.opacity(0.05), lineWidth: 1)
+                )
             }
             .background(.black.opacity(0.1))
             .cornerRadius(cornerRadius)
@@ -39,7 +42,10 @@ struct WellModifier: ViewModifier {
 }
 
 extension View {
-    func well(padding: EdgeInsets = EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8), cornerRadius: CGFloat = 8) -> some View {
+    func well(
+        padding: EdgeInsets = EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8),
+        cornerRadius: CGFloat = 8
+    ) -> some View {
         modifier(WellModifier(padding: padding, cornerRadius: cornerRadius))
     }
 }

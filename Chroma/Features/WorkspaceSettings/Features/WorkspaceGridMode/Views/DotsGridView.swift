@@ -25,7 +25,7 @@ struct DotsGridView: View {
         .fixedSize()
         .allowsHitTesting(false)
     }
-    
+
     var width: CGFloat { file.artboard.size.width }
     var height: CGFloat { file.artboard.size.width }
 }

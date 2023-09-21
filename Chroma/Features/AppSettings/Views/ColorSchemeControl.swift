@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ColorSchemeControl: View {
     @EnvironmentObject var appSettings: AppSettingsModel
-    
+
     @State private var isFollowingSystem: Bool = false
     @State private var isDarkMode: Bool = true
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("Color scheme")
                 .font(.label)
                 .foregroundColor(.secondary)
-            
+
             HStack {
                 Toggle("Follow system", isOn: $isFollowingSystem)
                     .onChange(of: isFollowingSystem) { newValue in

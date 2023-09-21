@@ -1,0 +1,21 @@
+disabled_rules:
+    - large_tuple
+    - orphaned_doc_comment
+
+identifier_name:
+    validates_start_with_lowercase: warning
+    excluded:
+        - i
+        - id
+        - x
+        - y
+        - z
+        - w
+        - h
+        - a
+        - b
+        - c
+        - r
+        - g
+        - o
+    

@@ -8,8 +8,8 @@
 import SwiftUI
 
 func releaseFocus() {
-    #if os (iOS)
-    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+    #if os(iOS)
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     #elseif os(macOS)
     DispatchQueue.main.async {
         NSApp.keyWindow?.makeFirstResponder(nil)

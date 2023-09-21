@@ -13,7 +13,7 @@ struct ArtboardJson: Identifiable, Codable {
     var size: SizeJson
     var backgroundColor: ColorJson
     var layers: [LayerJson]
-    
+
     init(_ model: ArtboardModel) {
         self.id = model.id
         self.name = model.name

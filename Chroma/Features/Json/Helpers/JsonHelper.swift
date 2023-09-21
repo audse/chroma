@@ -12,7 +12,7 @@ func load<T: Decodable>(_ filename: String) -> T? {
         print("Couldn't find \(filename) in main bundle.")
         return nil
     }
-    
+
     return load(file)
 }
 

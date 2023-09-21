@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExportScaleControl: View {
     @Binding var exportScale: Double
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("Scale").font(.label).foregroundColor(.secondary)
@@ -21,7 +21,7 @@ struct ExportScaleControl: View {
             ).frame(maxWidth: 60)
         }
     }
-    
+
     func getFormatter() -> NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent

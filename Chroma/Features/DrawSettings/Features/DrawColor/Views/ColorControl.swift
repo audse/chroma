@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColorControl: View {
     @EnvironmentObject private var drawSettings: DrawSettings
-    
+
     var body: some View {
         HStack(spacing: 2) {
             ColorPicker("Color", selection: $drawSettings.color)

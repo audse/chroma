@@ -13,6 +13,8 @@ public struct DrawShape: Identifiable {
     public var keyboardShortcut: KeyEquivalent?
 }
 
+// swiftlint:disable identifier_name
+
 public let SquareShape = DrawShape(
     id: "Square",
     shape: AnyShape(Square()),
@@ -44,6 +46,7 @@ public let InverseQuadrantShape = DrawShape(
     keyboardShortcut: "6"
 )
 
+// swiftlint:enable identifier_name
 
 public struct AllDrawShapes {
     static public var shapes: [DrawShape] = [
@@ -54,17 +57,16 @@ public struct AllDrawShapes {
         RightTriangleShape,
         InverseQuadrantShape
     ]
-    
+
     public mutating func add(_ shape: DrawShape) {
         AllDrawShapes.shapes.append(shape)
     }
-    
+
     public static func find(by id: String) -> DrawShape? {
         return AllDrawShapes.shapes.first(where: { shape in shape.id == id })
     }
-    
+
     public static func random() -> DrawShape {
         return AllDrawShapes.shapes.randomElement() ?? SquareShape
     }
 }
-

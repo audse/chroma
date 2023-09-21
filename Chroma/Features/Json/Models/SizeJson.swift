@@ -10,7 +10,7 @@ import SwiftUI
 struct SizeJson: Codable {
     var width: Double
     var height: Double
-    
+
     init(_ cgSize: CGSize) {
         self.width = Double(cgSize.width)
         self.height = Double(cgSize.height)

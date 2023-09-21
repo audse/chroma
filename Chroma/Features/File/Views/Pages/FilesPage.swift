@@ -9,8 +9,8 @@ import SwiftUI
 
 struct FilesPage: View {
     @State var files: [FileModel]
-    var onSelectFile: ((FileModel) -> Void)? = nil
-    
+    var onSelectFile: ((FileModel) -> Void)?
+
     var body: some View {
         VStack(alignment: .leading) {
             Text("Recent files")

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkspaceGridThicknessControl: View {
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("Grid thickness")

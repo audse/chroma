@@ -9,9 +9,9 @@ import SwiftUI
 
 struct Minimap: View {
     @EnvironmentObject var currentArtboard: ArtboardModel
-    
+
     static let SCALE: CGFloat = 5.0
-    
+
     var body: some View {
         Artboard(artboard: currentArtboard)
             .allowsHitTesting(false)
@@ -19,7 +19,7 @@ struct Minimap: View {
             .frame(width: getSize().width, height: getSize().height)
             .fixedSize()
     }
-    
+
     func getSize() -> CGSize {
         return currentArtboard.size / Minimap.SCALE
     }
@@ -31,7 +31,7 @@ struct Minimap_Previews: PreviewProvider {
         PixelModel(shape: CircleShape, position: CGPoint(250)),
         PixelModel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
     ])
-    
+
     static var previews: some View {
         Minimap()
             .environmentObject(currentArtboard)

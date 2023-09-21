@@ -9,16 +9,16 @@ import SwiftUI
 
 struct FilePreviewList: View {
     @State var files: [FileModel]
-    @State var selectedFile: FileModel? = nil
-    var onSelectFile: ((FileModel) -> Void)? = nil
-    
+    @State var selectedFile: FileModel?
+    var onSelectFile: ((FileModel) -> Void)?
+
     var columns: [GridItem] = [
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12)
     ]
-    
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 12) {
@@ -47,7 +47,7 @@ struct FilePreviewList_Previews: PreviewProvider {
             FileModel(artboard: PreviewArtboardModelBuilder().build())
         ])
     }
-    
+
     static func loadFile() -> FileJson {
         return load("TestFile1.json") ?? FileJson.Empty()
     }

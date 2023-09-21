@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct AngleJson: Codable {
-    var degrees: Double? = nil
-    var radians: Double? = nil
-    
+    var degrees: Double?
+    var radians: Double?
+
     init(_ angle: Angle) {
         self.degrees = angle.degrees
         self.radians = angle.radians

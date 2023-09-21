@@ -14,7 +14,7 @@ struct PixelJson: Identifiable, Codable {
     var size: Double
     var rotation: AngleJson
     var position: PointJson
-    
+
     init(_ pixel: PixelModel) {
         id = pixel.id
         shapeId = pixel.shape.id

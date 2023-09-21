@@ -16,11 +16,11 @@ precedencegroup ForwardComposition {
 infix operator |>: ForwardComposition
 
 func |> <A: View, B: View, C: View>(
-    _ f: @escaping ButtonStyleClosure<A, B>,
-    _ g: @escaping ButtonStyleClosure<B, C>
+    _ funA: @escaping ButtonStyleClosure<A, B>,
+    _ funB: @escaping ButtonStyleClosure<B, C>
 ) -> ButtonStyleClosure<A, C> {
     return { configuration, a in
-        g(configuration, f(configuration, a))
+        funB(configuration, funA(configuration, a))
     }
 }
 
@@ -37,13 +37,17 @@ struct ComposableButtonStyle<B: View>: ButtonStyle {
 }
 
 extension Button {
-    func composableStyle<B: View>(_ buttonStyleClosure: @escaping ButtonStyleClosure<ButtonStyleConfiguration.Label, B>) -> some View {
+    func composableStyle<B: View>(
+        _ buttonStyleClosure: @escaping ButtonStyleClosure<ButtonStyleConfiguration.Label, B>
+    ) -> some View {
         return self.buttonStyle(ComposableButtonStyle(buttonStyleClosure))
     }
 }
 
 extension View {
-    func composableButtonStyle<B: View>(_ buttonStyleClosure: @escaping ButtonStyleClosure<ButtonStyleConfiguration.Label, B>) -> some View {
+    func composableButtonStyle<B: View>(
+        _ buttonStyleClosure: @escaping ButtonStyleClosure<ButtonStyleConfiguration.Label, B>
+    ) -> some View {
         return self.buttonStyle(ComposableButtonStyle(buttonStyleClosure))
     }
 }
@@ -54,11 +58,11 @@ struct Btn {
             .scaleEffect(configuration.isPressed ? 0.98 : 1)
             .animation(.spring(response: 0.2, dampingFraction: 0.5, blendDuration: 0.5), value: configuration.isPressed)
     }
-    
+
     static func rounded<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return view.cornerRadius(6)
     }
-    
+
     static func defaultPadding<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return view.padding(EdgeInsets(top: 3, leading: 9, bottom: 3, trailing: 9))
     }
@@ -70,7 +74,7 @@ struct Btn {
     static func vStack<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return VStack(spacing: 0) { view }
     }
-    
+
     static func padding<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return view.padding(4)
     }

@@ -10,7 +10,7 @@ import Foundation
 struct PointJson: Codable {
     var x: Double
     var y: Double
-    
+
     init(_ cgPoint: CGPoint) {
         self.x = cgPoint.x
         self.y = cgPoint.y

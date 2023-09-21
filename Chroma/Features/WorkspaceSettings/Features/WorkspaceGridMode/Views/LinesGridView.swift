@@ -12,7 +12,7 @@ struct LinesGridView: View {
     @EnvironmentObject var file: FileModel
     @EnvironmentObject var drawSettings: DrawSettings
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
-    
+
     var body: some View {
         let pixelSize: CGFloat = drawSettings.getPixelSize()
         let numLines = Int(round(width / pixelSize) + 1)
@@ -29,7 +29,7 @@ struct LinesGridView: View {
         .fixedSize()
         .allowsHitTesting(false)
     }
-    
+
     var width: CGFloat { file.artboard.size.width }
     var height: CGFloat { file.artboard.size.width }
 }

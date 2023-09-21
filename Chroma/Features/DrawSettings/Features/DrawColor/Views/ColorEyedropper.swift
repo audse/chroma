@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColorEyedropper: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    
+
     var body: some View {
         Button {
             drawSettings.setTool(.eyedropper)

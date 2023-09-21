@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilePreview: View {
     @State var file: FileModel
-    
+
     var body: some View {
         VStack {
             Image(

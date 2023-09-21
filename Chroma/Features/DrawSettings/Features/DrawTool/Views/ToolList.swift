@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ToolList: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    
+
     var body: some View {
         VStack(spacing: 4) {
             DrawToolButton()

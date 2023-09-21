@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ButtonColorStyleModifier: ViewModifier {
     var colorStyle: ButtonColorStyle
-    
+
     init(_ type: ButtonColorStyleType, _ baseColor: Color) {
         self.colorStyle = ButtonColorStyle(type, baseColor)
     }
-    
+
     func body(content: Content) -> some View {
         content.background(colorStyle.backgroundColor)
             .border(colorStyle.borderColor)
@@ -24,11 +24,11 @@ struct ButtonColorStyleModifier: ViewModifier {
 struct ButtonAccentStyleModifier: ViewModifier {
     @Environment(\.tint) var tint
     var type: ButtonColorStyleType
-    
+
     init(_ type: ButtonColorStyleType) {
         self.type = type
     }
-    
+
     func body(content: Content) -> some View {
         let colorStyle = ButtonColorStyle(type, tint)
         content.background(colorStyle.backgroundColor)
@@ -50,15 +50,15 @@ extension Btn {
     static func filledAccent<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return view.buttonAccentStyle(.filled)
     }
-    
+
     static func outlinedAccent<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return view.buttonAccentStyle(.outlined)
     }
-    
+
     static func subtleAccent<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return view.buttonAccentStyle(.subtle)
     }
-    
+
     static func textAccent<A: View>(_ configuration: ButtonStyleConfiguration, _ view: A) -> some View {
         return view.buttonAccentStyle(.text)
     }

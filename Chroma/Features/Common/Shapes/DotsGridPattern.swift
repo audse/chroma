@@ -12,14 +12,18 @@ public struct DotsGridPattern: InsettableShape {
     private let horizontalDots: Int
     private let verticalDots: Int
     private let radius: CGFloat
-    
+
     public func inset(by amount: CGFloat) -> DotsGridPattern {
-        DotsGridPattern(inset: self.inset + amount, horizontalDots: self.horizontalDots, verticalDots: self.verticalDots)
+        DotsGridPattern(
+            inset: self.inset + amount,
+            horizontalDots: self.horizontalDots,
+            verticalDots: self.verticalDots
+        )
     }
-    
+
     public func path(in rect: CGRect) -> Path {
         let rect = rect.insetBy(dx: self.inset, dy: self.inset)
-        
+
         return Path { path in
             /// Horizontal Lines
             if horizontalDots > 1 && verticalDots > 1 {
@@ -43,14 +47,14 @@ public struct DotsGridPattern: InsettableShape {
         }
         .offsetBy(dx: inset, dy: inset)
     }
-    
+
     private init(inset: CGFloat, horizontalDots: Int, verticalDots: Int, radius: CGFloat = 1) {
         self.inset = inset
         self.horizontalDots = horizontalDots
         self.verticalDots = verticalDots
         self.radius = radius
     }
-    
+
     public init(horizontalDots: Int = 0, verticalDots: Int = 0, radius: CGFloat = 1) {
         self.inset = 0
         self.horizontalDots = horizontalDots

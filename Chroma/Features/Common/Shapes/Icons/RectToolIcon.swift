@@ -48,7 +48,7 @@ struct RectToolIcon: Shape {
         path.addLine(to: rect.origin + CGPoint(x: 13, y: 7))
         return path
     }
-    
+
     static func getView() -> some View {
         RectToolIcon()
             .stroke(.white, style: StrokeStyle(

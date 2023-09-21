@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GridModeButtons: View {
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
-    
+
     var body: some View {
         MenuButton(label: Text(getText()), content: {
             Button("None") {
@@ -23,12 +23,12 @@ struct GridModeButtons: View {
             }
         }).active(false)
     }
-    
+
     func getText() -> String {
         switch workspaceSettings.gridMode {
-            case .dots: return "Dots"
-            case .lines: return "Lines"
-            case .none: return "None"
+        case .dots: return "Dots"
+        case .lines: return "Lines"
+        case .none: return "None"
         }
     }
 }

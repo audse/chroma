@@ -10,11 +10,11 @@ import SwiftUI
 struct Editor: View {
     @EnvironmentObject private var appSettings: AppSettingsModel
     @EnvironmentObject private var workspaceSettings: WorkspaceSettingsModel
-    
+
     @StateObject var file: FileModel
     @StateObject private var drawSettings = DrawSettings()
     @StateObject private var history = History()
-    
+
     var body: some View {
         ContentView()
             .environmentObject(drawSettings)
@@ -41,17 +41,17 @@ struct Editor: View {
                 allowsMultipleSelection: false,
                 onCompletion: { result in
                     switch result {
-                        case .success(let url):
-                            let newFile: FileJson? = load(url[0])
-                            if let newFile = newFile {
-                                file.setFile(FileModel(newFile))
-                            }
-                        case .failure(let error): print(error)
+                    case .success(let url):
+                        let newFile: FileJson? = load(url[0])
+                        if let newFile = newFile {
+                            file.setFile(FileModel(newFile))
+                        }
+                    case .failure(let error): print(error)
                     }
                 }
             )
     }
-    
+
     @ToolbarContentBuilder
     func toolbar() -> some ToolbarContent {
         ToolbarItemGroup {
@@ -60,7 +60,7 @@ struct Editor: View {
                     FileModel(name: "Random 1", artboard: PreviewArtboardModelBuilder().build()),
                     FileModel(name: "Random 2", artboard: PreviewArtboardModelBuilder().build()),
                     FileModel(name: "Random 3", artboard: PreviewArtboardModelBuilder().build()),
-                    FileModel(name: "Random 4", artboard: PreviewArtboardModelBuilder().build()),
+                    FileModel(name: "Random 4", artboard: PreviewArtboardModelBuilder().build())
                 ], onSelectFile: { newFile in
                     history.clear()
                     file.setFile(newFile)
@@ -90,9 +90,9 @@ struct ChromaApp: App {
     @StateObject private var appSettings = AppSettingsModel()
     @StateObject private var workspaceSettings = WorkspaceSettingsModel()
     @StateObject private var history = History()
-    
+
     @StateObject private var emptyFile = FileModel.Empty()
-    
+
     var body: some Scene {
         WindowGroup("Chroma") {
             NavigationStack {

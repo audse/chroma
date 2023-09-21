@@ -10,9 +10,9 @@ import SwiftUI
 struct DrawGhost: View {
     @EnvironmentObject var file: FileModel
     @EnvironmentObject var drawSettings: DrawSettings
-    
+
     @Binding var ghostPixels: [PixelModel]
-    
+
     var body: some View {
         Canvas { context, _ in
             for pixel in ghostPixels {

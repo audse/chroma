@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ZoomGestureModifier: ViewModifier {
     @Binding var totalZoom: CGFloat
-    var onChanged: ((_: CGFloat) -> Void)? = nil
+    var onChanged: ((_: CGFloat) -> Void)?
     @State private var currentZoom = 0.0
-    
+
     func body(content: Content) -> some View {
         content
             .gesture(
@@ -19,7 +19,7 @@ struct ZoomGestureModifier: ViewModifier {
                     .onChanged { value in
                         currentZoom = value.magnitude - 1
                     }
-                    .onEnded { value in
+                    .onEnded { _ in
                         totalZoom += currentZoom
                         if totalZoom < 0.1 { totalZoom = 0.1 }
                         currentZoom = 0

@@ -28,7 +28,7 @@ struct LineToolIcon: Shape {
         path.addLine(to: rect.end - CGPoint(6))
         return path
     }
-    
+
     static func getView() -> some View {
         LineToolIcon()
             .stroke(.white, style: StrokeStyle(

@@ -10,7 +10,7 @@ import SwiftUI
 struct ActiveTintModifier: ViewModifier {
     var isActive: Bool
     @Environment(\.colorScheme) private var colorScheme
-    
+
     func body(content: Content) -> some View {
         return content.tinted(isActive ? .accentColor : (
             colorScheme == .dark ? Color.primaryBackgroundDark : Color.primaryBackgroundLight

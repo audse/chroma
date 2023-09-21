@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ColorJson: Codable {
-    var rgba: [Double]? = nil
-    
+    var rgba: [Double]?
+
     init(_ color: Color) {
         let (r, g, b, o) = color.components
         self.rgba = [r, g, b, o]

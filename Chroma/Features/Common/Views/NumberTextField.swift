@@ -15,8 +15,8 @@ struct NumberTextField: View {
     @State var rounded: Bool = false
     @State var formatter: NumberFormatter = NumberFormatter()
     @State var onChangeValue: ((CGFloat) -> Void)?
-    @State var keyboardShortcuts: (KeyEquivalent, KeyEquivalent)? = nil
-    
+    @State var keyboardShortcuts: (KeyEquivalent, KeyEquivalent)?
+
     var body: some View {
         HStack(spacing: 0) {
             TextField(value: $value, formatter: getFormatter(), label: {
@@ -43,18 +43,18 @@ struct NumberTextField: View {
             }
         }
     }
-    
+
     func setValue(_ newValue: Double) {
         if let newValue = getFormatter().format(newValue) {
             value = newValue
             onChange()
         }
     }
-    
+
     func getStep() -> Double {
         return rounded ? round(Swift.max(step, 1)) : step
     }
-    
+
     func getFormatter() -> NumberFormatter {
         formatter.minimum = min as NSNumber
         formatter.maximum = max as NSNumber
@@ -64,13 +64,13 @@ struct NumberTextField: View {
         }
         return formatter
     }
-    
+
     func onChange() {
         if let onChangeValue = self.onChangeValue {
             onChangeValue(value)
         }
     }
-    
+
 }
 
 struct NumberTextField_Previews: PreviewProvider {

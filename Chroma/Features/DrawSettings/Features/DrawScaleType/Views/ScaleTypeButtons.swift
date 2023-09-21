@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScaleTypeButtons: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    
+
     var body: some View {
         HStack {
             Button {

@@ -11,8 +11,8 @@ struct PngExporter: View {
     @EnvironmentObject var file: FileModel
     @Binding var isPresented: Bool
     @Binding var exportScale: Double
-    var onCompletion: ((Bool) -> Void)? = nil
-    
+    var onCompletion: ((Bool) -> Void)?
+
     var body: some View {
         Spacer().fileExporter(
             isPresented: $isPresented,
@@ -22,14 +22,14 @@ struct PngExporter: View {
             onCompletion: { result in
                 if let onCompletion = onCompletion {
                     switch result {
-                        case .success: onCompletion(true)
-                        case .failure: onCompletion(false)
+                    case .success: onCompletion(true)
+                    case .failure: onCompletion(false)
                     }
                 }
             }
         )
     }
-    
+
     func getImage() -> CGImage? {
         let renderer = ImageRenderer(content: Artboard(artboard: file.artboard))
         renderer.scale = exportScale

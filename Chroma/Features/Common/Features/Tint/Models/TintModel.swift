@@ -20,11 +20,11 @@ extension EnvironmentValues {
 
 struct TintModifier: ViewModifier {
     var tintColor: Color
-    
+
     init(_ color: Color) {
         self.tintColor = color
     }
-    
+
     func body(content: Content) -> some View {
         content.tint(tintColor).environment(\.tint, tintColor)
     }

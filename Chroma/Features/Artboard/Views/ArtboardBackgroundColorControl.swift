@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ArtboardBackgroundColorControl: View {
     @EnvironmentObject var file: FileModel
-    
+
     @State var color = Color.white
-    
+
     var body: some View {
         ColorPicker("Background", selection: $color)
             .labelsHidden()

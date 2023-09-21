@@ -15,9 +15,9 @@ struct ArtboardWrapper: View {
     @EnvironmentObject var currentArtboard: ArtboardModel
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
     @Environment(\.colorScheme) var colorScheme
-    
+
     @State var currentZoom: CGFloat = 1.0
-    
+
     var body: some View {
         ScrollView(Axis.Set([.horizontal, .vertical]), showsIndicators: false) {
             ZStack {
@@ -29,12 +29,12 @@ struct ArtboardWrapper: View {
                     makeArtboard(w: -1, h: 0) // Left
                     makeArtboard(w: 1, h: 0) // Right
                 }
-                
+
                 if workspaceSettings.tileMode == .both || workspaceSettings.tileMode == .vertical {
                     makeArtboard(w: 0, h: -1) // Top
                     makeArtboard(w: 0, h: 1) // Bottom
                 }
-                
+
                 if workspaceSettings.tileMode == .both {
                     makeArtboard(w: 1, h: 1) // Bottom right
                     makeArtboard(w: 1, h: -1) // Top right
@@ -52,20 +52,23 @@ struct ArtboardWrapper: View {
             })
         }.background(Color.accentColor)
     }
-    
+
     func getWorkspaceBgColor() -> Color {
         switch workspaceSettings.backgroundColor {
-            case .followColorScheme: return colorScheme == .dark
-                ? WorkspaceBackgroundColor.defaultDark
-                : WorkspaceBackgroundColor.defaultLight
-            case .custom(let color): return color
+        case .followColorScheme: return colorScheme == .dark
+            ? WorkspaceBackgroundColor.defaultDark
+            : WorkspaceBackgroundColor.defaultLight
+        case .custom(let color): return color
         }
     }
-    
+
     func makeArtboard(w: CGFloat = 1.0, h: CGFloat = 1.0) -> some View {
         EditableArtboard()
             .fixedSize()
-            .offset(x: currentArtboard.size.width * w *  workspaceSettings.zoom, y: currentArtboard.size.height * h * workspaceSettings.zoom)
+            .offset(
+                x: currentArtboard.size.width * w *  workspaceSettings.zoom,
+                y: currentArtboard.size.height * h * workspaceSettings.zoom
+            )
             .opacity(0.5)
     }
 }

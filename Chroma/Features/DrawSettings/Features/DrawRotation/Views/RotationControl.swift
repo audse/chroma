@@ -9,10 +9,10 @@ import SwiftUI
 
 struct RotationControl: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    
+
     var body: some View {
         HStack {
-            Button{
+            Button {
                 drawSettings.rotation -= Angle(degrees: 90)
             } label: {
                 Image(systemName: "rotate.left.fill")

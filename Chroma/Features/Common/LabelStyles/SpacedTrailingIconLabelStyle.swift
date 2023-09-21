@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SpacedTrailingIconLabelStyle: LabelStyle {
     func makeBody(configuration: Configuration) -> some View {
-        HStack() {
+        HStack {
             configuration.title
             Spacer()
             configuration.icon

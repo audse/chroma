@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArtboardSettingsPanel: View {
     @State var isExpanded: Bool = true
-    
+
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded.animation(.easeInOut(duration: 0.2))) {
             VStack {

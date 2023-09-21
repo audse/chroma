@@ -10,10 +10,10 @@ import SwiftUI
 struct WorkspaceBackgroundColorControl: View {
     @EnvironmentObject var appSettings: AppSettingsModel
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
-    
+
     @State var followSystem: Bool = true
     @State var customColor: Color = .black
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Workspace background color")
@@ -35,20 +35,22 @@ struct WorkspaceBackgroundColorControl: View {
         }.onAppear {
             followSystem = isFollowingColorScheme()
             switch workspaceSettings.backgroundColor {
-                case .followColorScheme: customColor = (appSettings.colorSchemeValue == .dark ? WorkspaceBackgroundColor.defaultDark : WorkspaceBackgroundColor.defaultLight)
-                case .custom(let color): customColor = color
+            case .followColorScheme: customColor = appSettings.colorSchemeValue == .dark
+                ? WorkspaceBackgroundColor.defaultDark
+                : WorkspaceBackgroundColor.defaultLight
+            case .custom(let color): customColor = color
             }
         }
     }
-    
+
     func isFollowingColorScheme() -> Bool {
         return workspaceSettings.backgroundColor == .followColorScheme
     }
-    
+
     func setColor(_ color: Color? = nil) {
         switch color {
-            case .some(let value): workspaceSettings.backgroundColor = .custom(value)
-            case .none: workspaceSettings.backgroundColor = .followColorScheme
+        case .some(let value): workspaceSettings.backgroundColor = .custom(value)
+        case .none: workspaceSettings.backgroundColor = .followColorScheme
         }
     }
 }

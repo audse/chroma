@@ -13,7 +13,6 @@ import UIKit
 import AppKit
 #endif
 
-
 extension Color {
     static var random: Color {
         return Color(
@@ -31,7 +30,7 @@ extension Color {
     static var almostClear: Color {
         return Color(white: 1, opacity: 0.001)
     }
-    
+
     var components: (red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat) {
         var r: CGFloat = 0
         var g: CGFloat = 0
@@ -44,7 +43,7 @@ extension Color {
         #endif
         return (r, g, b, o)
     }
-    
+
     var luminance: CGFloat {
         let (r, g, b, _) = components
         return 0.2126 * r + 0.7152 * g + 0.0722 * b
@@ -53,7 +52,7 @@ extension Color {
     var isDark: Bool {
         return luminance < 0.5
     }
-    
+
     var hex: String {
         String(
             format: "#%02x%02x%02x%02x",
@@ -63,20 +62,20 @@ extension Color {
             Int(components.opacity * 255)
         )
     }
-    
+
     var contrasting: Color {
         return isDark ? lighten(0.7) : darken(0.7)
     }
-    
+
     func contrast(with other: Color) -> CGFloat {
         return other.luminance - self.luminance
     }
-    
+
     func lighten(_ amount: CGFloat) -> Color {
         let (r, g, b, o) = components
         return Color(red: r + amount, green: g + amount, blue: b + amount, opacity: o)
     }
-    
+
     func darken(_ amount: CGFloat) -> Color {
         let (r, g, b, o) = components
         return Color(red: r - amount, green: g - amount, blue: b - amount, opacity: o)

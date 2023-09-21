@@ -9,15 +9,15 @@ import SwiftUI
 
 struct HistoryActionListItem: View {
     @EnvironmentObject var history: History
-    
+
     @State var action: Action
     @State var isUndone = false
-    
+
     var body: some View {
         Button {
             switch isUndone {
-                case false: history.undoUntil(action)
-                case true: history.redoUntil(action)
+            case false: history.undoUntil(action)
+            case true: history.redoUntil(action)
             }
         } label: {
             Label(action.getText(), systemImage: getIcon())
@@ -25,25 +25,25 @@ struct HistoryActionListItem: View {
             .labelStyle(SpacedTrailingIconLabelStyle())
             .help(getHelpText())
     }
-    
+
     func getHelpText() -> String {
         switch isUndone {
-            case false: return "Undo \(action.getText())"
-            case true: return "Redo \(action.getText())"
+        case false: return "Undo \(action.getText())"
+        case true: return "Redo \(action.getText())"
         }
     }
-    
+
     func getIcon() -> String {
         switch isUndone {
-            case true: return "arrow.uturn.forward"
-            case false: return "arrow.uturn.backward"
+        case true: return "arrow.uturn.forward"
+        case false: return "arrow.uturn.backward"
         }
     }
 }
 
 struct HistoryList: View {
     @EnvironmentObject var history: History
-    
+
     var body: some View {
         ScrollView {
             ForEach(history.undoHistory, id: \.id) { action in
@@ -68,12 +68,12 @@ struct HistoryList_Previews: PreviewProvider {
                     DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
                     EraseAction(drawSettings.createPixel(), 1, currentArtboard.currentLayer!),
                     LineAction([drawSettings.createPixel()], currentArtboard.currentLayer!),
-                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
+                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!)
                 ])
                 .undoHistory([
                     DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
                     EraseAction(drawSettings.createPixel(), 2, currentArtboard.currentLayer!),
-                    FillAction([drawSettings.createPixel()], originalColor: .red, newColor: .black),
+                    FillAction([drawSettings.createPixel()], originalColor: .red, newColor: .black)
                 ]))
             .environmentObject(currentArtboard)
     }

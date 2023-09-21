@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExportTypeControl: View {
     @Binding var exportType: ExportType
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("File type")
@@ -21,11 +21,11 @@ struct ExportTypeControl: View {
             }.frame(width: 100).fixedSize()
         }
     }
-    
+
     func getText() -> String {
         switch exportType {
-            case .chroma: return "Chroma"
-            case .png: return "PNG"
+        case .chroma: return "Chroma"
+        case .png: return "PNG"
         }
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FillToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    
+
     var body: some View {
         Button {
             drawSettings.setTool(.fill)

@@ -9,18 +9,18 @@ import SwiftUI
 
 struct AppSettings: View {
     @EnvironmentObject var appSettings: AppSettingsModel
-    
+
     @Binding var showing: Bool
-    
+
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Settings").font(.title)
-                
+
                 ColorSchemeControl()
-                
+
                 Spacer(minLength: 12)
-                
+
                 Group {
                     Text("Workspace").font(.title2)
                     WorkspaceBackgroundColorControl()
@@ -35,7 +35,7 @@ struct AppSettings: View {
                         WorkspaceGridThicknessControl()
                     }
                 }
-                
+
                 Spacer(minLength: 24)
                 Divider()
                 HStack {

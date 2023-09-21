@@ -10,9 +10,9 @@ import SwiftUI
 struct JsonExporter: View {
     @EnvironmentObject var file: FileModel
     @Binding var isPresented: Bool
-    
-    var onCompletion: ((Bool) -> Void)? = nil
-    
+
+    var onCompletion: ((Bool) -> Void)?
+
     var body: some View {
         Spacer().fileExporter(
             isPresented: $isPresented,
@@ -22,14 +22,14 @@ struct JsonExporter: View {
             onCompletion: { result in
                 if let onCompletion = onCompletion {
                     switch result {
-                        case .success: onCompletion(true)
-                        case .failure: onCompletion(false)
+                    case .success: onCompletion(true)
+                    case .failure: onCompletion(false)
                     }
                 }
             }
         )
     }
-    
+
     func getJsonDocument() -> JsonDocument {
         do {
             let document = try JsonDocument(FileJson(file))

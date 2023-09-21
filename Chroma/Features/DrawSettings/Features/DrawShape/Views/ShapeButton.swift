@@ -10,13 +10,13 @@ import SwiftUI
 struct ShapeButton: View {
     @EnvironmentObject var appSettings: AppSettingsModel
     @EnvironmentObject private var drawSettings: DrawSettings
-    
+
     @State var shape: DrawShape
-    
+
     var isSelected: Bool {
         return drawSettings.shape.id == shape.id
     }
-    
+
     var body: some View {
         Button {
             drawSettings.shape = shape
@@ -47,7 +47,7 @@ struct ShapeButton: View {
             .if(shape.keyboardShortcut != nil) { view in
                 return view.keyboardShortcut(shape.keyboardShortcut.unsafelyUnwrapped, modifiers: [])
             }
-            
+
     }
 }
 

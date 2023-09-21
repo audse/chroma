@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EraseToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    
+
     var body: some View {
         Button {
             drawSettings.setTool(.erase)

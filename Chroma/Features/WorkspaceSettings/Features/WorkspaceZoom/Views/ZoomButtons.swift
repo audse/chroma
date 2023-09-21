@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ZoomButtons: View {
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
-    
+
     var body: some View {
         HStack {
             Button { workspaceSettings.zoom -= 0.25 } label: {
