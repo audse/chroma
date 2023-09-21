@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-class PixelModel: ObservableObject, Identifiable {
-    let id: UUID
-    @Published var shape: DrawShape = SquareShape
-    @Published var color: Color = .red
-    @Published var size: CGFloat = 32
-    @Published var rotation = Angle(degrees: 0)
-    @Published var position = CGPoint()
+public class PixelModel: ObservableObject, Identifiable {
+    public let id: UUID
+    @Published public var shape: DrawShape = SquareShape
+    @Published public var color: Color = .red
+    @Published public var size: CGFloat = 32
+    @Published public var rotation = Angle(degrees: 0)
+    @Published public var position = CGPoint()
     
-    init(
+    public init(
         id: UUID = UUID(),
         shape: DrawShape = SquareShape,
         color: Color = .red,
@@ -31,21 +31,21 @@ class PixelModel: ObservableObject, Identifiable {
         self.position = position
     }
     
-    func path(in rect: CGRect) -> Path {
+    public func path(in rect: CGRect) -> Path {
         return shape.shape.path(in: rect)
     }
     
-    func draw(_ ctx: GraphicsContext) {
+    public func draw(_ ctx: GraphicsContext) {
         ctx.fill(path(in: CGRect(origin: position, size: CGSize(size))).applying(CGAffineTransform(rotationAngle: rotation.radians)), with: .color(color))
     }
     
-    func getShape() -> some Shape {
+    public func getShape() -> some Shape {
         shape.shape
             .size(width: size, height: size)
             .rotation(rotation)
     }
     
-    func getView() -> some View {
+    public func getView() -> some View {
         getShape()
             .fill(color)
             .frame(
@@ -55,11 +55,11 @@ class PixelModel: ObservableObject, Identifiable {
             )
     }
     
-    func getSize() -> CGSize {
+    public func getSize() -> CGSize {
         return CGSize(width: size, height: size)
     }
     
-    func getRect() -> CGRect {
+    public func getRect() -> CGRect {
         return CGRect(
             origin: CGPoint(
                 x: position.x - (size / 2),
@@ -69,7 +69,7 @@ class PixelModel: ObservableObject, Identifiable {
         )
     }
     
-    func setColor(_ color: Color) {
+    public func setColor(_ color: Color) {
         self.color = color
     }
 }

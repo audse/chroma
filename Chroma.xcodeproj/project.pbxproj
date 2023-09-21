@@ -112,6 +112,7 @@
 		7554D2A22ABB97BF008CEB87 /* DotsGridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2A12ABB97BF008CEB87 /* DotsGridPattern.swift */; };
 		7554D2A72ABB986C008CEB87 /* WorkspaceGridColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2A62ABB986C008CEB87 /* WorkspaceGridColorControl.swift */; };
 		7554D2AB2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2AA2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift */; };
+		7554D2AD2ABBEFCE008CEB87 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2AC2ABBEFCE008CEB87 /* Sequence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +241,7 @@
 		7554D2A12ABB97BF008CEB87 /* DotsGridPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsGridPattern.swift; sourceTree = "<group>"; };
 		7554D2A62ABB986C008CEB87 /* WorkspaceGridColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceGridColorControl.swift; sourceTree = "<group>"; };
 		7554D2AA2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceGridThicknessControl.swift; sourceTree = "<group>"; };
+		7554D2AC2ABBEFCE008CEB87 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -916,6 +918,7 @@
 				7554D22F2AB7A3D7008CEB87 /* CGFloat.swift */,
 				7554D2362AB7A495008CEB87 /* Font.swift */,
 				7554D2902ABA7598008CEB87 /* NumberFormatter.swift */,
+				7554D2AC2ABBEFCE008CEB87 /* Sequence.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1302,6 +1305,7 @@
 				7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
 				7554D2582AB8C378008CEB87 /* ColorJson.swift in Sources */,
+				7554D2AD2ABBEFCE008CEB87 /* Sequence.swift in Sources */,
 				7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */,
 				7554D22E2AB7A3BC008CEB87 /* CGSize.swift in Sources */,
 				7554D2A22ABB97BF008CEB87 /* DotsGridPattern.swift in Sources */,

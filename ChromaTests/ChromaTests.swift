@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Chroma
 
 final class ChromaTests: XCTestCase {
 
@@ -32,4 +33,20 @@ final class ChromaTests: XCTestCase {
         }
     }
 
+}
+
+final class SequenceExtensionTest: XCTestCase {
+    func testContains() throws {
+        let a = PixelModel()
+        let items: [PixelModel] = [a, PixelModel(), PixelModel()]
+        XCTAssert(items.contains(a))
+        XCTAssert(!items.contains(PixelModel()))
+    }
+    
+    func testFilterOut() throws {
+        let a: [Int] = [1, 2, 3, 4]
+        let b: [Int] = [2, 4, 6, 8]
+        XCTAssert(a.filterOut({ el in el == 1 }).count == 3)
+        XCTAssert(a.filterOut(b.contains).elementsEqual([1, 3]))
+    }
 }

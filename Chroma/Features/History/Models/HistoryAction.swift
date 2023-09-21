@@ -62,19 +62,19 @@ class EraseAction: Action {
 class FillAction: Action {
     var originalColor: Color
     var newColor: Color
-    var pixel: PixelModel
+    var pixels: [PixelModel]
     
-    init(_ pixelValue: PixelModel, originalColor: Color, newColor: Color) {
-        pixel = pixelValue
+    init(_ pixels: [PixelModel], originalColor: Color, newColor: Color) {
+        self.pixels = pixels
         self.originalColor = originalColor
         self.newColor =  newColor
     }
     
     override func undo() {
-        pixel.setColor(originalColor)
+        pixels.forEach { pixel in pixel.setColor(originalColor) }
     }
     
     override func redo() {
-        pixel.setColor(newColor)
+        pixels.forEach { pixel in pixel.setColor(newColor) }
     }
 }

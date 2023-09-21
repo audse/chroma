@@ -81,7 +81,7 @@ struct HistoryList_Previews: PreviewProvider {
                 .undoHistory([
                     DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
                     EraseAction(drawSettings.createPixel(), 2, currentArtboard.currentLayer!),
-                    FillAction(drawSettings.createPixel(), originalColor: .red, newColor: .black),
+                    FillAction([drawSettings.createPixel()], originalColor: .red, newColor: .black),
                 ]))
             .environmentObject(currentArtboard)
     }

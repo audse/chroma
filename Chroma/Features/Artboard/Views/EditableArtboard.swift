@@ -74,12 +74,12 @@ struct EditableArtboard: View {
     
     func fill(_ location: CGPoint) {
         if let layer = file.artboard.currentLayer {
-            if let pixel: PixelModel = layer.findPixel(location) {
-                let originalColor = pixel.color
-                pixel.setColor(drawSettings.color)
-                file.artboard.objectWillChange.send()
+            let pixelsToFill = layer.getPixelsToFill(location)
+            if let startPixel = pixelsToFill.first {
+                let originalColor = startPixel.color
+                pixelsToFill.forEach { px in px.setColor(drawSettings.color) }
                 history.add(FillAction(
-                    pixel,
+                    pixelsToFill,
                     originalColor: originalColor,
                     newColor: drawSettings.color
                 ))

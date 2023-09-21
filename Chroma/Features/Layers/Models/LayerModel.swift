@@ -67,6 +67,32 @@ class LayerModel: ObservableObject, Identifiable {
         }
     }
     
+    /**
+     Returns all pixels that are:
+     1. Connected to the given point (either by overlapping or overlapping other filled pixels), and
+     2. The same color as the "start" pixel
+     */
+    func getPixelsToFill(_ point: CGPoint) -> [PixelModel] {
+        var pixelsToFill: [PixelModel] = []
+        if let startPixel: PixelModel = findPixel(point) {
+            pixelsToFill.append(startPixel)
+            mainLoop: for _ in 0...10 {
+                let unfilledPixels: [PixelModel] = pixels.filterOut(pixelsToFill.contains)
+                for foundPixel in pixelsToFill {
+                    let foundPixelRect = foundPixel.getRect().insetBy(dx: -1, dy: -1)
+                    for unfilledPixel in unfilledPixels {
+                        if foundPixelRect.intersects(unfilledPixel.getRect()) && unfilledPixel.color == startPixel.color {
+                            pixelsToFill.append(unfilledPixel)
+                            continue mainLoop
+                        }
+                    }
+                }
+                break
+            }
+        }
+        return pixelsToFill
+    }
+    
     func toggle() {
         isVisible.toggle()
     }
