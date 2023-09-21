@@ -16,22 +16,21 @@ struct PreviewArtboardModelBuilder {
     var backgroundColor: Color = .random.lighten(0.5)
     
     func build() -> ArtboardModel {
-        var layers: [LayerModel] = []
+        var artboard = ArtboardModel(
+            name: name,
+            size: size,
+            backgroundColor: backgroundColor
+        )
         for index in 0...numberOfLayers {
             var pixels: [PixelModel] = []
             for _ in 0...pixelsPerLayer {
                 pixels.append(PreviewPixelBuilder(artboardSize: size).build())
             }
-            layers.append(LayerModel(
+            artboard.addLayer(LayerModel(
                 name: "Layer \(index)",
                 pixels: pixels
             ))
         }
-        return ArtboardModel(
-            name: name,
-            size: size,
-            backgroundColor: backgroundColor,
-            layers: layers
-        )
+        return artboard
     }
 }

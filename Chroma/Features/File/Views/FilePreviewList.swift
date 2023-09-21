@@ -24,7 +24,7 @@ struct FilePreviewList: View {
             LazyVGrid(columns: columns, spacing: 12) {
                 ForEach(files, id: \.id) { file in
                     NavigationLink {
-                        Editor(file: FileViewModel(file))
+                        Editor(file: file)
                     } label: {
                         FilePreview(file: file).expand()
                     }.buttonStyle(.plain)
@@ -45,10 +45,10 @@ struct FilePreviewList_Previews: PreviewProvider {
             FileModel(artboard: PreviewArtboardModelBuilder().build()),
             FileModel(artboard: PreviewArtboardModelBuilder().build()),
             FileModel(artboard: PreviewArtboardModelBuilder().build())
-        ]).environmentObject(ArtboardViewModel())
+        ])
     }
     
     static func loadFile() -> FileJson {
-        return load("TestFile1.json") ?? FileJson()
+        return load("TestFile1.json") ?? FileJson.Empty()
     }
 }

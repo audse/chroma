@@ -24,13 +24,13 @@ struct ArtboardJson: Identifiable, Codable {
 }
 
 extension ArtboardModel {
-    init(_ json: ArtboardJson) {
+    convenience init(_ json: ArtboardJson) {
         self.init(
+            id: json.id,
             name: json.name,
             size: CGSize(json.size),
             backgroundColor: Color(json.backgroundColor),
             layers: json.layers.map { layer in LayerModel(layer) }
         )
-        self.id = json.id
     }
 }

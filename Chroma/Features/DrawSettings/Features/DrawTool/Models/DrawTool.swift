@@ -10,4 +10,5 @@ import Foundation
 enum Tool {
     case draw
     case erase
+    case fill
 }

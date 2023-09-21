@@ -13,23 +13,27 @@ struct FileJson: Identifiable, Codable {
     var name: String
     var artboard: ArtboardJson
     
-    init() {
-        id = UUID()
-        name = "Blank file"
-        artboard = ArtboardJson(ArtboardModel())
-    }
-    
     init(_ model: FileModel) {
         self.id = model.id
         self.name = model.name
         self.artboard = ArtboardJson(model.artboard)
     }
+    
+    static func Empty() -> FileJson {
+        return FileJson(FileModel(
+            id: UUID(),
+            name: "Untitled",
+            artboard: ArtboardModel()
+        ))
+    }
 }
 
 extension FileModel {
-    init(_ json: FileJson) {
-        self.id = json.id
-        self.name = json.name
-        self.artboard = ArtboardModel(json.artboard)
+    convenience init(_ json: FileJson) {
+        self.init(
+            id: json.id,
+            name: json.name,
+            artboard: ArtboardModel(json.artboard)
+        )
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ArtboardSizeControl: View {
-    @EnvironmentObject var currentArtboard: ArtboardViewModel
+    @EnvironmentObject var currentArtboard: ArtboardModel
     
     @State var width: Double = 512
     @State var height: Double = 512
@@ -43,6 +43,6 @@ struct ArtboardSizeControl: View {
 struct ArtboardSizeControl_Previews: PreviewProvider {
     static var previews: some View {
         ArtboardSizeControl()
-            .environmentObject(ArtboardViewModel())
+            .environmentObject(ArtboardModel())
     }
 }

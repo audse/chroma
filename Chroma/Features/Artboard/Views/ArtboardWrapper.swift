@@ -12,7 +12,7 @@ import SwiftUI
 // live in EditableCanvas because that messes up the mouseLocation code.
 
 struct ArtboardWrapper: View {
-    @EnvironmentObject var currentArtboard: ArtboardViewModel
+    @EnvironmentObject var currentArtboard: ArtboardModel
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
     @Environment(\.colorScheme) var colorScheme
     
@@ -73,7 +73,7 @@ struct ArtboardWrapper: View {
 struct ArtboardWrapper_Previews: PreviewProvider {
     static var previews: some View {
         ArtboardWrapper()
-            .environmentObject(ArtboardViewModel().withNewLayer([
+            .environmentObject(ArtboardModel().withNewLayer([
                 PixelModel(position: CGPoint(100))
             ]))
             .environmentObject(WorkspaceSettingsModel())

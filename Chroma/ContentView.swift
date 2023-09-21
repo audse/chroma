@@ -61,7 +61,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(AppSettingsModel())
             .environmentObject(DrawSettings())
-            .environmentObject(FileViewModel(FileModel(artboard: artboard)))
+            .environmentObject(FileModel(artboard: artboard))
             .environmentObject(History())
     }
 }

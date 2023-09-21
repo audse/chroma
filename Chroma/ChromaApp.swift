@@ -11,7 +11,7 @@ struct Editor: View {
     @EnvironmentObject private var appSettings: AppSettingsModel
     @EnvironmentObject private var workspaceSettings: WorkspaceSettingsModel
     
-    @StateObject var file: FileViewModel    
+    @StateObject var file: FileModel
     @StateObject private var drawSettings = DrawSettings()
     @StateObject private var history = History()
     
@@ -43,7 +43,9 @@ struct Editor: View {
                     switch result {
                         case .success(let url):
                             let newFile: FileJson? = load(url[0])
-                            if let newFile = newFile { file.setFile(FileModel(newFile)) }
+                            if let newFile = newFile {
+                                file.setFile(FileModel(newFile))
+                            }
                         case .failure(let error): print(error)
                     }
                 }
@@ -61,7 +63,7 @@ struct Editor: View {
                     FileModel(name: "Random 4", artboard: PreviewArtboardModelBuilder().build()),
                 ], onSelectFile: { newFile in
                     history.clear()
-                    file.artboard.setModel(newFile.artboard)
+                    file.setFile(newFile)
                 }).expand()
                     .colorScheme(appSettings.colorSchemeValue)
                     .environmentObject(file)
@@ -70,7 +72,7 @@ struct Editor: View {
                     .labelStyle(.titleAndIcon)
             }
             Spacer()
-            Text(file.file.name)
+            Text(file.name)
             Spacer()
             ZoomButtons().environmentObject(workspaceSettings)
             Button {
@@ -89,16 +91,12 @@ struct ChromaApp: App {
     @StateObject private var workspaceSettings = WorkspaceSettingsModel()
     @StateObject private var history = History()
     
+    @StateObject private var emptyFile = FileModel.Empty()
+    
     var body: some Scene {
         WindowGroup("Chroma") {
             NavigationStack {
-                Editor(file: FileViewModel(FileModel(
-                    id: UUID(),
-                    name: "New Artboard",
-                    artboard: ArtboardModel(
-                        layers: [LayerModel()]
-                    )
-                )))
+                Editor(file: emptyFile)
             }
             .environmentObject(appSettings)
             .environmentObject(workspaceSettings)

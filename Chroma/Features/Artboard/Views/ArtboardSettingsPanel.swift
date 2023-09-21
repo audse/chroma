@@ -37,6 +37,6 @@ struct ArtboardSettingsPanel: View {
 struct ArtboardSettingsPanel_Previews: PreviewProvider {
     static var previews: some View {
         ArtboardSettingsPanel()
-            .environmentObject(ArtboardViewModel().withNewLayer())
+            .environmentObject(ArtboardModel().withNewLayer())
     }
 }

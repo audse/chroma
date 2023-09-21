@@ -9,7 +9,7 @@ import SwiftUI
 import Shapes
 
 struct LinesGridView: View {
-    @EnvironmentObject var file: FileViewModel
+    @EnvironmentObject var file: FileModel
     @EnvironmentObject var drawSettings: DrawSettings
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
     
@@ -37,9 +37,7 @@ struct LinesGridView: View {
 struct LinesGridView_Previews: PreviewProvider {
     static var previews: some View {
         LinesGridView()
-            .environmentObject(
-                FileViewModel(FileModel(artboard: PreviewArtboardModelBuilder().build()))
-            )
+            .environmentObject(FileModel(artboard: PreviewArtboardModelBuilder().build()))
             .environmentObject(DrawSettings())
             .environmentObject(WorkspaceSettingsModel())
     }

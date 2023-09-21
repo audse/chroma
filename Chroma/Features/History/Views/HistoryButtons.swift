@@ -35,7 +35,7 @@ struct HistoryButtons: View {
 struct HistoryButtons_Previews: PreviewProvider {
     static var previews: some View {
         HistoryButtons()
-            .environmentObject(ArtboardViewModel())
+            .environmentObject(ArtboardModel())
             .environmentObject(History())
     }
 }

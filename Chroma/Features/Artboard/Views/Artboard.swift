@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Artboard: View {
-    @ObservedObject var artboard: ArtboardViewModel
+    @ObservedObject var artboard: ArtboardModel
     
     var body: some View {
         Canvas() { context, size in
@@ -28,6 +28,6 @@ struct Artboard: View {
 
 struct Artboard_Previews: PreviewProvider {
     static var previews: some View {
-        Artboard(artboard: ArtboardViewModel(PreviewArtboardModelBuilder().build()))
+        Artboard(artboard: PreviewArtboardModelBuilder().build())
     }
 }

@@ -22,7 +22,7 @@ struct HistoryActionListItem: View {
         } label: {
             Label(getText(), systemImage: getIcon())
         }.foregroundColor(isUndone ? .secondary : .primary)
-            .labelStyle(TrailingIconLabelStyle())
+            .labelStyle(SpacedTrailingIconLabelStyle())
             .help(getHelpText())
     }
     
@@ -37,6 +37,7 @@ struct HistoryActionListItem: View {
         switch action {
             case is DrawAction: return "Draw"
             case is EraseAction: return "Erase"
+            case is FillAction: return "Fill"
             default: return "Action"
         }
     }
@@ -62,23 +63,25 @@ struct HistoryList: View {
             }
         }
         .buttonStyle(.plain)
+        .frame(width: 70)
     }
 }
 
 struct HistoryList_Previews: PreviewProvider {
     static var drawSettings = DrawSettings()
-    static var currentArtboard = ArtboardViewModel().withNewLayer()
+    static var currentArtboard = ArtboardModel().withNewLayer()
     static var previews: some View {
         HistoryList()
             .environmentObject(History()
                 .history([
-                    DrawAction(drawSettings.createPixel(), currentArtboard.layer!),
-                    EraseAction(drawSettings.createPixel(), 1, currentArtboard.layer!),
-                    DrawAction(drawSettings.createPixel(), currentArtboard.layer!),
+                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
+                    EraseAction(drawSettings.createPixel(), 1, currentArtboard.currentLayer!),
+                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
                 ])
                 .undoHistory([
-                    DrawAction(drawSettings.createPixel(), currentArtboard.layer!),
-                    EraseAction(drawSettings.createPixel(), 2, currentArtboard.layer!),
+                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
+                    EraseAction(drawSettings.createPixel(), 2, currentArtboard.currentLayer!),
+                    FillAction(drawSettings.createPixel(), originalColor: .red, newColor: .black),
                 ]))
             .environmentObject(currentArtboard)
     }

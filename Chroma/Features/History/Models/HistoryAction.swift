@@ -5,7 +5,7 @@
 //  Created by Audrey Serene on 9/17/23.
 //
 
-import Foundation
+import SwiftUI
 
 class Action: Identifiable {
     var id = UUID()
@@ -14,11 +14,11 @@ class Action: Identifiable {
 }
 
 class DrawAction: Action {
-    var pixel: Pixel
+    var pixel: PixelModel
     var index: Int = -1
-    var layer: Layer
+    var layer: LayerModel
     
-    init(_ pixelValue: Pixel, _ layerValue: Layer) {
+    init(_ pixelValue: PixelModel, _ layerValue: LayerModel) {
         pixel = pixelValue
         layer = layerValue
     }
@@ -38,11 +38,11 @@ class DrawAction: Action {
 }
 
 class EraseAction: Action {
-    var pixel: Pixel
+    var pixel: PixelModel
     var index: Int
-    var layer: Layer
+    var layer: LayerModel
     
-    init(_ pixelValue: Pixel, _ indexValue: Int, _ layerValue: Layer) {
+    init(_ pixelValue: PixelModel, _ indexValue: Int, _ layerValue: LayerModel) {
         pixel = pixelValue
         index = indexValue
         layer = layerValue
@@ -56,5 +56,25 @@ class EraseAction: Action {
     
     override func redo() {
         _ = layer.removePixel(index)
+    }
+}
+
+class FillAction: Action {
+    var originalColor: Color
+    var newColor: Color
+    var pixel: PixelModel
+    
+    init(_ pixelValue: PixelModel, originalColor: Color, newColor: Color) {
+        pixel = pixelValue
+        self.originalColor = originalColor
+        self.newColor =  newColor
+    }
+    
+    override func undo() {
+        pixel.setColor(originalColor)
+    }
+    
+    override func redo() {
+        pixel.setColor(newColor)
     }
 }

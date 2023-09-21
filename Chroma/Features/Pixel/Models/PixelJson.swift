@@ -26,12 +26,14 @@ struct PixelJson: Identifiable, Codable {
 }
 
 extension PixelModel {
-    init(_ json: PixelJson) {
-        self.id = json.id
-        self.shape = AllDrawShapes.find(by: json.shapeId) ?? SquareShape
-        self.color = Color(json.color)
-        self.size = json.size
-        self.rotation = Angle(json.rotation)
-        self.position = CGPoint(json.position)
+    convenience init(_ json: PixelJson) {
+        self.init(
+            id: json.id,
+            shape: AllDrawShapes.find(by: json.shapeId) ?? SquareShape,
+            color: Color(json.color),
+            size: json.size,
+            rotation: Angle(json.rotation),
+            position: CGPoint(json.position)
+        )
     }
 }

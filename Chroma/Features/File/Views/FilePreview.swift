@@ -13,7 +13,7 @@ struct FilePreview: View {
     var body: some View {
         VStack {
             Image(
-                ImageRenderer(content: Artboard(artboard: ArtboardViewModel(file.artboard))
+                ImageRenderer(content: Artboard(artboard: file.artboard)
                     .fixedSize()).cgImage.unsafelyUnwrapped,
                 scale: 1.0,
                 orientation: .up,

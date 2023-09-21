@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExportPage: View {
-    @EnvironmentObject var file: FileViewModel
+    @EnvironmentObject var file: FileModel
     
     @State var exportType: ExportType = .chroma
     @State var exportScale: Double = 1
@@ -63,6 +63,6 @@ struct ExportPage_Previews: PreviewProvider {
     static var artboard = PreviewArtboardModelBuilder().build()
     static var previews: some View {
         ExportPage(showing: .constant(true))
-            .environmentObject(FileViewModel(FileModel(artboard: artboard)))
+            .environmentObject(FileModel(artboard: artboard))
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct EditableArtboard: View {
     @EnvironmentObject var drawSettings: DrawSettings
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
-    @EnvironmentObject var file: FileViewModel
+    @EnvironmentObject var file: FileModel
     @EnvironmentObject var history: History
     
     @State var isHovering = true
@@ -20,9 +20,11 @@ struct EditableArtboard: View {
         ZStack {
             Artboard(artboard: file.artboard)
                 .onTapGesture { location in
+                    let adjustedLocation = location - drawSettings.getPixelSize() / 2.0
                     switch drawSettings.tool {
-                        case .draw: draw(location - drawSettings.getPixelSize() / 2.0)
-                        case .erase: erase(location - drawSettings.getPixelSize() / 2.0)
+                        case .draw: draw(adjustedLocation)
+                        case .erase: erase(adjustedLocation)
+                        case .fill: fill(adjustedLocation)
                     }
                 }
                 .onHover { isHoveringValue in
@@ -53,7 +55,7 @@ struct EditableArtboard: View {
     }
     
     func draw(_ location: CGPoint) {
-        if let layer = file.artboard.layer {
+        if let layer = file.artboard.currentLayer {
             let pixel = drawSettings.createPixel(location)
             layer.addPixel(pixel)
             history.add(DrawAction(pixel, layer))
@@ -61,11 +63,26 @@ struct EditableArtboard: View {
     }
     
     func erase(_ location: CGPoint) {
-        if let layer = file.artboard.layer {
+        if let layer = file.artboard.currentLayer {
             let idx: Int = layer.findPixel(location)
             if idx != -1 {
                 let pixel = layer.removePixel(idx)
                 history.add(EraseAction(pixel, idx, layer))
+            }
+        }
+    }
+    
+    func fill(_ location: CGPoint) {
+        if let layer = file.artboard.currentLayer {
+            if let pixel: PixelModel = layer.findPixel(location) {
+                let originalColor = pixel.color
+                pixel.setColor(drawSettings.color)
+                file.artboard.objectWillChange.send()
+                history.add(FillAction(
+                    pixel,
+                    originalColor: originalColor,
+                    newColor: drawSettings.color
+                ))
             }
         }
     }
@@ -74,9 +91,9 @@ struct EditableArtboard: View {
 struct EditableCanvas_Previews: PreviewProvider {
     static var previews: some View {
         EditableArtboard(mouseLocation: CGPoint(x: 33, y: 31))
-            .environmentObject(FileViewModel(
+            .environmentObject(
                 FileModel(artboard: PreviewArtboardModelBuilder().build())
-            ))
+            )
             .environmentObject(DrawSettings())
             .environmentObject(History())
             .environmentObject(WorkspaceSettingsModel())

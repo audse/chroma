@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PngExporter: View {
-    @EnvironmentObject var file: FileViewModel
+    @EnvironmentObject var file: FileModel
     @Binding var isPresented: Bool
     @Binding var exportScale: Double
     var onCompletion: ((Bool) -> Void)? = nil
@@ -18,7 +18,7 @@ struct PngExporter: View {
             isPresented: $isPresented,
             document: PngDocument(getImage()),
             contentType: .png,
-            defaultFilename: "\(file.file.name).png",
+            defaultFilename: "\(file.name).png",
             onCompletion: { result in
                 if let onCompletion = onCompletion {
                     switch result {
@@ -41,6 +41,6 @@ struct PngExporter_Previews: PreviewProvider {
     static var artboard = PreviewArtboardModelBuilder().build()
     static var previews: some View {
         PngExporter(isPresented: .constant(false), exportScale: .constant(1))
-            .environmentObject(FileViewModel(FileModel(artboard: artboard)))
+            .environmentObject(FileModel(artboard: artboard))
     }
 }

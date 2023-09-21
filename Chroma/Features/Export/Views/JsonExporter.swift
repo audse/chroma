@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JsonExporter: View {
-    @EnvironmentObject var file: FileViewModel
+    @EnvironmentObject var file: FileModel
     @Binding var isPresented: Bool
     
     var onCompletion: ((Bool) -> Void)? = nil
@@ -18,7 +18,7 @@ struct JsonExporter: View {
             isPresented: $isPresented,
             document: getJsonDocument(),
             contentType: .chroma,
-            defaultFilename: "\(file.file.name).chroma",
+            defaultFilename: "\(file.name).chroma",
             onCompletion: { result in
                 if let onCompletion = onCompletion {
                     switch result {
@@ -32,7 +32,7 @@ struct JsonExporter: View {
     
     func getJsonDocument() -> JsonDocument {
         do {
-            let document = try JsonDocument(FileJson(file.file))
+            let document = try JsonDocument(FileJson(file))
             return document
         } catch {
             print("Error!! \(error)")
@@ -45,6 +45,6 @@ struct JsonExporter_Previews: PreviewProvider {
     static var artboard = PreviewArtboardModelBuilder().build()
     static var previews: some View {
         JsonExporter(isPresented: .constant(false))
-            .environmentObject(FileViewModel(FileModel(artboard: artboard)))
+            .environmentObject(FileModel(artboard: artboard))
     }
 }

@@ -22,7 +22,7 @@ struct LayerJson: Identifiable, Codable {
 }
 
 extension LayerModel {
-    init(_ json: LayerJson) {
+    convenience init(_ json: LayerJson) {
         self.init(
             id: json.id,
             name: json.name,

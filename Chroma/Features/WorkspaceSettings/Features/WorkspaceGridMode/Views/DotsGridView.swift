@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DotsGridView: View {
-    @EnvironmentObject var file: FileViewModel
+    @EnvironmentObject var file: FileModel
     @EnvironmentObject var drawSettings: DrawSettings
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
     var body: some View {
@@ -34,7 +34,7 @@ struct DotsGridView_Previews: PreviewProvider {
     static var previews: some View {
         DotsGridView()
             .environmentObject(
-                FileViewModel(FileModel(artboard: PreviewArtboardModelBuilder().build()))
+                FileModel(artboard: PreviewArtboardModelBuilder().build())
             )
             .environmentObject(DrawSettings())
             .environmentObject(WorkspaceSettingsModel())

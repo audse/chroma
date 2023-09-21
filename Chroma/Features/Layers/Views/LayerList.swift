@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct LayerListItem: View {
-    @EnvironmentObject var currentArtboard: ArtboardViewModel
-    @State var layer: Layer
+    @EnvironmentObject var currentArtboard: ArtboardModel
+    @State var layer: LayerModel
     var body: some View {
         Button {
-            currentArtboard.setLayer(layer)
+            currentArtboard.currentLayer = layer
         } label: {
             HStack {
                 Text("\(currentArtboard.getIndex(layer) ?? 0)").opacity(0.5)
                 Spacer()
-                Text(layer.model.name)
+                Text(layer.name)
                 Spacer()
                 Button {
                     layer.toggle()
@@ -32,18 +32,18 @@ struct LayerListItem: View {
             |> Btn.rounded
             |> Btn.scaled
         )
-            .tinted(layer.id == currentArtboard.layer?.id ? Color.accentColor : Color.clear)
+            .tinted(layer.id == currentArtboard.currentLayer?.id ? Color.accentColor : Color.clear)
     }
 }
 
 struct LayerList: View {
-    @EnvironmentObject var currentArtboard: ArtboardViewModel
+    @EnvironmentObject var currentArtboard: ArtboardModel
     var body: some View {
         VStack(spacing: 0) {
             HStack {
                 Text("Layers")
                 Spacer()
-                if let layer = currentArtboard.layer {
+                if let layer = currentArtboard.currentLayer {
                     Button(
                         role: .destructive,
                         action: {
@@ -60,7 +60,7 @@ struct LayerList: View {
                     .buttonStyle(.plain)
                 }
                 Button {
-                    currentArtboard.setLayer(currentArtboard.newLayer())
+                    currentArtboard.currentLayer = currentArtboard.newLayer()
                 } label: {
                     Image(systemName: "plus")
                 }
@@ -79,6 +79,6 @@ struct LayerList: View {
 struct LayerList_Previews: PreviewProvider {
     static var previews: some View {
         LayerList()
-            .environmentObject(ArtboardViewModel().withNewLayer().withNewLayer().withNewLayer())
+            .environmentObject(ArtboardModel().withNewLayer().withNewLayer().withNewLayer())
     }
 }

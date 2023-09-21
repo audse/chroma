@@ -12,19 +12,20 @@ struct PixelCursor: View {
     
     var body: some View {
         let size: CGFloat = drawSettings.getPixelSize()
-        if drawSettings.tool == .draw {
-            Pixel(PixelModel(
+        switch drawSettings.tool {
+        case .draw:
+            PixelModel(
                 shape: drawSettings.shape,
                 color: drawSettings.color,
                 size: size,
                 rotation: drawSettings.rotation
-            )).getView()
+            ).getView()
                 .opacity(0.25)
                 .animation(.easeInOut(duration: 0.2), value: drawSettings.rotation)
                 .animation(.easeInOut(duration: 0.2), value: drawSettings.pixelSize)
                 .frame(width: size, height: size)
                 .allowsHitTesting(false)
-        } else if drawSettings.tool == .erase {
+        case .erase:
             Square()
                 .size(width: size - 2, height: size - 2)
                 .stroke(.white, style: StrokeStyle(
@@ -33,11 +34,11 @@ struct PixelCursor: View {
                     lineJoin: .round
                 ))
                 .overlay(
-                    Pixel(PixelModel(
+                    PixelModel(
                         shape: SquareShape,
                         color: Color.clear,
                         size: drawSettings.getPixelSize() - 2
-                    )).getShape()
+                    ).getShape()
                     .stroke(.black, style: StrokeStyle(
                         lineWidth: 2,
                         lineCap: .round,
@@ -48,15 +49,24 @@ struct PixelCursor: View {
                 .position(x: size / 2 + 1, y: size / 2 + 1)
                 .frame(width: size, height: size)
                 .allowsHitTesting(false)
+        case .fill:
+            Circle()
+                .size(width: size - 2, height: size - 2)
+                .fill(drawSettings.color)
+                .position(x: size / 2 + 1, y: size / 2 + 1)
+                .frame(width: size, height: size)
+                .allowsHitTesting(false)
+                .opacity(0.5)
         }
     }
 }
 
 struct PixelCursor_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        VStack(spacing: 12) {
             PixelCursor().environmentObject(DrawSettings())
             PixelCursor().environmentObject(DrawSettings().tool(.erase))
+            PixelCursor().environmentObject(DrawSettings().tool(.fill))
         }
     }
 }

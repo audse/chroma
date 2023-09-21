@@ -14,21 +14,34 @@ struct ToolList: View {
     var body: some View {
         VStack {
             Button {
-                drawSettings.tool = Tool.draw
+                drawSettings.tool = .draw
             } label: {
                 Image(systemName: "paintbrush.fill")
+                    .frame(width: 14)
             }
-            .active(drawSettings.tool == Tool.draw)
+            .active(drawSettings.tool == .draw)
             .help("Draw Tool")
             .keyboardShortcut("p", modifiers: [])
+            
             Button {
-                drawSettings.tool = Tool.erase
+                drawSettings.tool = .erase
             } label: {
                 Image(systemName: "eraser.fill")
+                    .frame(width: 14)
             }
-            .active(drawSettings.tool == Tool.erase)
+            .active(drawSettings.tool == .erase)
             .help("Erase Tool")
             .keyboardShortcut("e", modifiers: [])
+            
+            Button {
+                drawSettings.tool = .fill
+            } label: {
+                Image(systemName: "drop.fill")
+                    .frame(width: 14)
+            }
+            .active(drawSettings.tool == .fill)
+            .help("Fill Tool")
+            .keyboardShortcut("f", modifiers: [])
         }
         .labelStyle(.iconOnly)
     }

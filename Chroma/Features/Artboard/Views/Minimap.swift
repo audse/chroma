@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Minimap: View {
-    @EnvironmentObject var currentArtboard: ArtboardViewModel
+    @EnvironmentObject var currentArtboard: ArtboardModel
     
     static let SCALE: CGFloat = 5.0
     
@@ -26,7 +26,7 @@ struct Minimap: View {
 }
 
 struct Minimap_Previews: PreviewProvider {
-    private static var currentArtboard = ArtboardViewModel().withNewLayer([
+    private static var currentArtboard = ArtboardModel().withNewLayer([
         PixelModel(shape: SquareShape),
         PixelModel(shape: CircleShape, position: CGPoint(250)),
         PixelModel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
