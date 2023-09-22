@@ -17,11 +17,47 @@ struct EditableArtboard: View {
     @State var mouseLocation = CGPoint()
 
     @State var ghostPixels: [PixelModel] = []
-
+    
+    enum DragState {
+        case inactive
+        case dragging([CGPoint])
+//        case dragging(translation: CGSize, startLocation: CGPoint)
+    }
+    
+    @State private var dragState = DragState.inactive
+    
     var body: some View {
         ZStack {
+            
+            Button("") {
+                eraseSelection()
+            }.buttonStyle(.plain)
+                .labelsHidden()
+                .keyboardShortcut("x", modifiers: [.command])
+            
+            let drag = DragGesture(minimumDistance: 10)
+                .onChanged { value in
+                    if drawSettings.tool == .rectSelect {
+                        if case .dragging(var currentPath) = dragState {
+                            currentPath.append(value.location)
+                            dragState = .dragging(currentPath)
+                        } else {
+                            dragState = .dragging([value.location])
+                        }
+                    }
+                }
+                .onEnded { _ in
+                    if drawSettings.tool == .rectSelect {
+                        if case .dragging(let currentPath) = dragState {
+                            rectSelect(currentPath)
+                        }
+                        dragState = .inactive
+                    }
+                }
+            
             Artboard(artboard: file.artboard)
                 .onTapGesture(perform: onTap)
+                .gesture(DragGesture(minimumDistance: 10))
                 .onHover { isHoveringValue in
                     isHovering = isHoveringValue
                 }
@@ -30,6 +66,23 @@ struct EditableArtboard: View {
                     ghostPixels.removeAll()
                 }
                 .releaseFocusOnTap()
+                .simultaneousGesture(drag)
+            
+            if drawSettings.tool == .rectSelect {
+                if case .dragging(let path) = dragState {
+                    getSelectionRect(path)
+                        .stroke(.black, style: StrokeStyle(
+                            lineWidth: 1.25,
+                            dash: [4]
+                        ))
+                        .shadow(color: .white, radius: 0, x: 1, y: 0)
+                        .shadow(color: .white, radius: 0, x: 0, y: 1)
+                        .shadow(color: .white, radius: 0, x: -1, y: 0)
+                        .shadow(color: .white, radius: 0, x: 0, y: -1)
+                        .allowsHitTesting(false)
+                }
+            }
+            
             if [.line, .rect].contains(drawSettings.tool) {
                 CancelToolButton(ghostPixels: $ghostPixels)
                 DrawGhost(ghostPixels: $ghostPixels)
@@ -45,6 +98,7 @@ struct EditableArtboard: View {
             if workspaceSettings.gridMode == .lines {
                 LinesGridView()
             }
+            Selection()
         }
         .frame(width: file.artboard.size.width, height: file.artboard.size.height)
         .clipped()
@@ -65,6 +119,7 @@ struct EditableArtboard: View {
         case .eyedropper: eyedrop(adjustedLocation)
         case .line: line(adjustedLocation)
         case .rect: rect(adjustedLocation)
+        case .rectSelect: break
         }
     }
 
@@ -90,22 +145,46 @@ struct EditableArtboard: View {
         default: return []
         }
     }
+    
+    func getSelectionRect(_ currentPath: [CGPoint]) -> Path {
+        var path = Path()
+        if let firstPoint = currentPath.first {
+            if let lastPoint = currentPath.last {
+                path.addRect(CGRect(start: firstPoint, end: lastPoint))
+            }
+        }
+        return path
+    }
+    
+    func getSelectionShape(_ currentPath: [CGPoint]) -> Path {
+        var path = Path()
+        if let firstPoint = currentPath.first {
+            path.move(to: firstPoint)
+        }
+        currentPath.forEach { point in
+            path.addLine(to: point)
+        }
+        return path
+    }
 
     func draw(_ location: CGPoint) {
         if let layer = file.artboard.currentLayer {
             let pixel = drawSettings.createPixel(location)
-            layer.addPixel(pixel)
             history.add(DrawAction(pixel, layer))
         }
     }
 
     func erase(_ location: CGPoint) {
         if let layer = file.artboard.currentLayer {
-            let idx: Int = layer.findPixel(location)
-            if idx != -1 {
-                let pixel = layer.removePixel(idx)
-                history.add(EraseAction(pixel, idx, layer))
+            if let (index, pixel) = layer.findPixel(location) {
+                history.add(EraseAction(pixel, index, layer))
             }
+        }
+    }
+    
+    func eraseSelection() {
+        if let layer = file.artboard.currentLayer {
+            history.add(EraseSelectionAction(layer.selectedPixels, layer))
         }
     }
 
@@ -114,7 +193,6 @@ struct EditableArtboard: View {
             let pixelsToFill = layer.getPixelsToFill(location)
             if let startPixel = pixelsToFill.first {
                 let originalColor = startPixel.color
-                pixelsToFill.forEach { pixel in pixel.setColor(drawSettings.color) }
                 history.add(FillAction(
                     pixelsToFill,
                     originalColor: originalColor,
@@ -139,7 +217,6 @@ struct EditableArtboard: View {
             if let layer = file.artboard.currentLayer {
                 drawSettings.multiClickState.removeAll()
                 let pixels = drawSettings.createPixelLine(pointA, location)
-                pixels.forEach(layer.addPixel)
                 history.add(LineAction(pixels, layer))
             }
         } else {
@@ -152,11 +229,17 @@ struct EditableArtboard: View {
             if let layer = file.artboard.currentLayer {
                 drawSettings.multiClickState.removeAll()
                 let pixels = drawSettings.createPixelRect(pointA, location)
-                pixels.forEach(layer.addPixel)
                 history.add(RectAction(pixels, layer))
             }
         } else {
             drawSettings.multiClickState = [location]
+        }
+    }
+    
+    func rectSelect(_ path: [CGPoint]) {
+        if let layer = file.artboard.currentLayer {
+            let pixels = layer.getSelectedPixels(in: getSelectionRect(path))
+            history.add(RectSelectAction(pixels, layer))
         }
     }
 }

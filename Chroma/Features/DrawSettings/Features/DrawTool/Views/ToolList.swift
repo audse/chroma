@@ -17,6 +17,7 @@ struct ToolList: View {
             FillToolButton()
             LineToolButton()
             RectToolButton()
+            RectSelectToolButton()
         }
     }
 }

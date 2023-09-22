@@ -30,11 +30,17 @@ class DrawSettings: ObservableObject {
         self.tool = value
         self.multiClickState.removeAll()
     }
-
+    
     func snapped(_ point: CGPoint) -> CGPoint {
         let x = round(point.x / (getPixelSize() * precisionSize))
         let y = round(point.y / (getPixelSize() * precisionSize))
         return CGPoint(x: x * (getPixelSize() * precisionSize), y: y * (getPixelSize() * precisionSize))
+    }
+    
+    func snapped(_ size: CGSize) -> CGSize {
+        let w = round(size.width / (getPixelSize() * precisionSize))
+        let h = round(size.height / (getPixelSize() * precisionSize))
+        return CGSize(w * (getPixelSize() * precisionSize), h * (getPixelSize() * precisionSize))
     }
 
     func createPixel(_ point: CGPoint = CGPoint()) -> PixelModel {
@@ -55,11 +61,13 @@ class DrawSettings: ObservableObject {
     }
 
     func getPixelSize() -> CGSize {
-        return CGSize(getPixelSize())
+        let number: CGFloat = getPixelSize()
+        return CGSize(number)
     }
 
     func getPixelSize() -> CGPoint {
-        return CGPoint(getPixelSize())
+        let number: CGFloat = getPixelSize()
+        return CGPoint(number)
     }
 
     func createPixelLine(_ pointA: CGPoint, _ pointB: CGPoint) -> [PixelModel] {

@@ -15,6 +15,10 @@ extension CGSize {
     init(_ width: CGFloat, _ height: CGFloat) {
         self = CGSize(width: width, height: height)
     }
+    
+    init(_ point: CGPoint) {
+        self = CGSize(width: point.x, height: point.y)
+    }
 
     // Operators
 

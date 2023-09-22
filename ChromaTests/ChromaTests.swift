@@ -28,17 +28,22 @@ final class ChromaTests: XCTestCase {
 }
 
 final class SequenceExtensionTest: XCTestCase {
-    func testContains() throws {
-        let a = PixelModel()
-        let items: [PixelModel] = [a, PixelModel(), PixelModel()]
-        XCTAssert(items.contains(a))
-        XCTAssert(!items.contains(PixelModel()))
-    }
-
     func testFilterOut() throws {
         let a: [Int] = [1, 2, 3, 4]
         let b: [Int] = [2, 4, 6, 8]
         XCTAssert(a.filterOut({ element in element == 1 }).count == 3)
         XCTAssert(a.filterOut(b.contains).elementsEqual([1, 3]))
+    }
+    
+    func testIntersection() throws {
+        let itemsA: [Int] = [1, 2, 3, 4]
+        let itemsB: [Int] = [2, 4, 6, 8]
+        XCTAssert(itemsA.intersection(itemsB).elementsEqual([2, 4]))
+    }
+    
+    func testXor() throws {
+        let itemsA: [Int] = [1, 2, 3, 4]
+        let itemsB: [Int] = [2, 3, 4, 5]
+        XCTAssert(itemsA.xor(itemsB).elementsEqual([1, 5]))
     }
 }

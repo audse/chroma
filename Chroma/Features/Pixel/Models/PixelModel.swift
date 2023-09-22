@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public class PixelModel: ObservableObject, Identifiable {
+public class PixelModel: ObservableObject, Identifiable, Equatable {
     public let id: UUID
     @Published public var shape: DrawShape = SquareShape
     @Published public var color: Color = .red
@@ -30,17 +30,19 @@ public class PixelModel: ObservableObject, Identifiable {
         self.rotation = rotation
         self.position = position
     }
-
+    
     public func path(in rect: CGRect) -> Path {
         return shape.shape.path(in: rect)
     }
+    
+    public func path() -> Path {
+        return shape.shape.path(in: CGRect(origin: position, size: CGSize(size)))
+    }
 
     public func draw(_ ctx: GraphicsContext) {
-        ctx.fill(
-            path(in: CGRect(origin: position, size: CGSize(size)))
-                .applying(CGAffineTransform(rotationAngle: rotation.radians)),
-            with: .color(color)
-        )
+        let path = path(in: CGRect(origin: position, size: CGSize(size)))
+            .applying(CGAffineTransform(rotationAngle: rotation.radians))
+        ctx.fill(path, with: .color(color))
     }
 
     public func getShape() -> some Shape {
@@ -75,5 +77,19 @@ public class PixelModel: ObservableObject, Identifiable {
 
     public func setColor(_ color: Color) {
         self.color = color
+    }
+    
+    /**
+     Returns true if at least `thresholdAmount` of the pixel shape is contained in the selection shape.
+     */
+    public func isSelected(_ selectionShape: Path, _ thresholdAmount: CGFloat = 0.4) -> Bool {
+        let newRect = CGRect(origin: position, size: getSize())
+        let intersection = selectionShape.cgPath.intersection(path(in: newRect).cgPath)
+        let bboxSize = intersection.boundingBox.size
+        return (bboxSize.width * bboxSize.height) >= (size * size * thresholdAmount)
+    }
+    
+    public static func == (lhs: PixelModel, rhs: PixelModel) -> Bool {
+        return lhs.id == rhs.id
     }
 }

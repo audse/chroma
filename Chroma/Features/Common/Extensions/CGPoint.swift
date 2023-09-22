@@ -15,6 +15,10 @@ extension CGPoint {
     init(_ x: CGFloat, _ y: CGFloat) {
         self = CGPoint(x: x, y: y)
     }
+    
+    init(_ size: CGSize) {
+        self = CGPoint(x: size.width, y: size.height)
+    }
 
     func distance(to point: CGPoint) -> CGFloat {
         return sqrt((x - point.x) * (x - point.x) + (y - point.y) * (y - point.y))

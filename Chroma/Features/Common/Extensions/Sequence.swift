@@ -13,8 +13,23 @@ extension Sequence {
     }
 }
 
-extension Sequence where Element: Identifiable {
-    public func contains(_ element: Element) -> Bool {
-        return contains(where: { eachElement in eachElement.id == element.id })
+extension Sequence where Element: Equatable {
+    public func intersection(_ other: [Self.Element]) -> [Self.Element] {
+        return filter(other.contains)
+    }
+    
+    public func xor(_ others: [Self.Element]) -> [Self.Element] {
+        var result: [Self.Element] = []
+        forEach { element in
+            if !others.contains(element) {
+                result.append(element)
+            }
+        }
+        others.forEach { element in
+            if !contains(element) {
+                result.append(element)
+            }
+        }
+        return result
     }
 }

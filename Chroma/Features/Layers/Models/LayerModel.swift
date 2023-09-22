@@ -13,6 +13,7 @@ class LayerModel: ObservableObject, Identifiable {
     @Published var name = "Layer"
     @Published var pixels: [PixelModel] = []
     @Published var isVisible: Bool = true
+    @Published var selectedPixels: [PixelModel] = []
 
     private var _pixelCancellables: [AnyCancellable] = []
 
@@ -38,10 +39,15 @@ class LayerModel: ObservableObject, Identifiable {
         pixels.append(pixel)
         _subscribe(pixel)
     }
-
+    
     func insertPixel(_ pixel: PixelModel, at index: Int) {
         pixels.insert(pixel, at: index)
         _subscribe(pixel)
+    }
+    
+    func insertPixels(_ pixelsToInsert: [PixelModel], at index: Int) {
+        pixels.insert(contentsOf: pixelsToInsert, at: index)
+        pixels.forEach(_subscribe)
     }
 
     func removePixel(_ index: Int) -> PixelModel {
@@ -56,15 +62,26 @@ class LayerModel: ObservableObject, Identifiable {
     func findPixel(_ point: CGPoint) -> Int {
         return pixels.firstIndex(where: { pixel in pixel.getRect().contains(point) }) ?? -1
     }
-
+    
     func findPixel(_ point: CGPoint) -> PixelModel? {
         return pixels.first(where: { pixel in pixel.getRect().contains(point) })
+    }
+    
+    func findPixel(_ point: CGPoint) -> (Int, PixelModel)? {
+        if let index = pixels.firstIndex(where: { pixel in pixel.getRect().contains(point) }) {
+            return (index, pixels[index])
+        }
+        return nil
     }
 
     func draw(_ context: GraphicsContext) {
         if isVisible {
             pixels.forEach { pixel in pixel.draw(context) }
         }
+    }
+    
+    func getSelectionPath() -> Path {
+        return Path().union(selectedPixels.map { pixel in pixel.path() })
     }
 
     /**
@@ -92,6 +109,10 @@ class LayerModel: ObservableObject, Identifiable {
             }
         }
         return pixelsToFill
+    }
+    
+    func getSelectedPixels(in shape: Path) -> [PixelModel] {
+        return pixels.filter { pixel in pixel.isSelected(shape) }
     }
 
     func toggle() {

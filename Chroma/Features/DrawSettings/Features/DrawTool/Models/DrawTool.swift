@@ -14,6 +14,7 @@ enum Tool {
     case eyedropper
     case line
     case rect
+    case rectSelect
 
     var name: String {
         switch self {
@@ -23,6 +24,7 @@ enum Tool {
         case .eyedropper: return "Eyedropper"
         case .line: return "Line"
         case .rect: return "Rect"
+        case .rectSelect: return "Rect Select"
         }
     }
 }

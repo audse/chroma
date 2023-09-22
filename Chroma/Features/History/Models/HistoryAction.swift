@@ -9,9 +9,15 @@ import SwiftUI
 
 class Action: Identifiable {
     var id = UUID()
+    
+    init() {
+        self.perform()
+    }
+    
     func getText() -> String {
         return "Action"
     }
+    func perform() {}
     func undo() {}
     func redo() {}
 }
@@ -21,15 +27,21 @@ class DrawAction: Action {
     var index: Int = -1
     var layer: LayerModel
 
-    init(_ pixelValue: PixelModel, _ layerValue: LayerModel) {
-        pixel = pixelValue
-        layer = layerValue
+    init(_ pixel: PixelModel, _ layer: LayerModel) {
+        self.pixel = pixel
+        self.layer = layer
+        super.init()
     }
 
     override func getText() -> String {
         return "Draw"
     }
-
+    
+    override func perform() {
+        index = layer.pixels.count
+        layer.addPixel(pixel)
+    }
+    
     override func undo() {
         index = layer.findPixel(pixel)
         if index != -1 {
@@ -53,10 +65,15 @@ class EraseAction: Action {
         pixel = pixelValue
         index = indexValue
         layer = layerValue
+        super.init()
     }
 
     override func getText() -> String {
         return "Erase"
+    }
+    
+    override func perform() {
+        _ = layer.removePixel(index)
     }
 
     override func undo() {
@@ -66,7 +83,7 @@ class EraseAction: Action {
     }
 
     override func redo() {
-        _ = layer.removePixel(index)
+        perform()
     }
 }
 
@@ -79,10 +96,15 @@ class FillAction: Action {
         self.pixels = pixels
         self.originalColor = originalColor
         self.newColor =  newColor
+        super.init()
     }
 
     override func getText() -> String {
         return "Fill"
+    }
+    
+    override func perform() {
+        pixels.forEach { pixel in pixel.setColor(newColor) }
     }
 
     override func undo() {
@@ -97,22 +119,90 @@ class FillAction: Action {
 class DrawMultipleAction: Action {
     var pixels: [PixelModel] = []
     var layer: LayerModel
-    var indices: [Int] = []
+    var startIndex: Int = -1
 
     init(_ pixels: [PixelModel], _ layer: LayerModel) {
         self.pixels = pixels
         self.layer = layer
-        self.indices = pixels.map(layer.findPixel)
+        super.init()
+    }
+    
+    override func getText() -> String {
+        return "Draw"
+    }
+    
+    override func perform() {
+        pixels.forEach(layer.addPixel)
+        if let firstPixel = pixels.first {
+            self.startIndex = layer.findPixel(firstPixel)
+        }
     }
 
     override func undo() {
-        indices.sorted().reversed().forEach { index in _ = layer.removePixel(index) }
+        layer.pixels = layer.pixels.filterOut(pixels.contains)
     }
 
     override func redo() {
-        indices.sorted().enumerated().forEach { (i, index) in
-            layer.insertPixel(pixels[i], at: index)
+        if startIndex != -1 {
+            layer.insertPixels(pixels, at: startIndex)
         }
+    }
+}
+
+class EraseMultipleAction: Action {
+    var pixels: [PixelModel] = []
+    var layer: LayerModel
+    var startIndex: Int = -1
+
+    init(_ pixels: [PixelModel], _ layer: LayerModel) {
+        self.pixels = pixels
+        self.layer = layer
+        super.init()
+    }
+    
+    override func getText() -> String {
+        return "Erase"
+    }
+    
+    override func perform() {
+        if let firstPixel = pixels.first {
+            self.startIndex = layer.findPixel(firstPixel)
+        }
+        layer.pixels = layer.pixels.filterOut(pixels.contains)
+    }
+
+    override func undo() {
+        if startIndex != -1 {
+            layer.insertPixels(pixels, at: startIndex)
+        }
+    }
+
+    override func redo() {
+        layer.pixels = layer.pixels.filterOut(pixels.contains)
+    }
+}
+
+class EraseSelectionAction: EraseMultipleAction {
+    var previousSelection: [PixelModel] = []
+    
+    override init(_ pixels: [PixelModel], _ layer: LayerModel) {
+        self.previousSelection = layer.selectedPixels
+        super.init(pixels, layer)
+    }
+    
+    override func perform() {
+        super.perform()
+        layer.selectedPixels = layer.selectedPixels.intersection(layer.pixels)
+    }
+    
+    override func undo() {
+        super.undo()
+        layer.selectedPixels = previousSelection
+    }
+    
+    override func redo() {
+        super.redo()
+        layer.selectedPixels = layer.selectedPixels.intersection(layer.pixels)
     }
 }
 
@@ -127,3 +217,34 @@ class RectAction: DrawMultipleAction {
         return "Rect"
     }
 }
+
+class SelectAction: Action {
+    var pixels: [PixelModel] = []
+    var previousSelection: [PixelModel] = []
+    var layer: LayerModel
+    
+    init(_ pixels: [PixelModel], _ layer: LayerModel) {
+        self.pixels = pixels
+        self.previousSelection = layer.selectedPixels
+        self.layer = layer
+        super.init()
+    }
+    
+    override func getText() -> String {
+        return "Select"
+    }
+    
+    override func perform() {
+        layer.selectedPixels = pixels
+    }
+    
+    override func undo() {
+        layer.selectedPixels = previousSelection
+    }
+    
+    override func redo() {
+        layer.selectedPixels = pixels
+    }
+}
+
+class RectSelectAction: SelectAction {}

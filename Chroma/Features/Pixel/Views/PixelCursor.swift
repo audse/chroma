@@ -68,6 +68,8 @@ struct PixelCursor: View {
                 .shadow(color: .white, radius: 0, x: -1, y: -1)
                 .shadow(color: .white, radius: 0, x: 1, y: -1)
                 .shadow(color: .white, radius: 0, x: -1, y: 1)
+        case .rectSelect:
+            EmptyView()
         }
     }
 }
