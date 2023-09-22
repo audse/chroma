@@ -18,10 +18,9 @@ struct EditableArtboard: View {
 
     @State var ghostPixels: [PixelModel] = []
     
-    enum DragState {
+    enum DragState: Equatable {
         case inactive
         case dragging([CGPoint])
-//        case dragging(translation: CGSize, startLocation: CGPoint)
     }
     
     @State private var dragState = DragState.inactive
@@ -37,7 +36,7 @@ struct EditableArtboard: View {
             
             let drag = DragGesture(minimumDistance: 10)
                 .onChanged { value in
-                    if drawSettings.tool == .rectSelect {
+                    if [.rectSelect, .lassoSelect].contains(drawSettings.tool) {
                         if case .dragging(var currentPath) = dragState {
                             currentPath.append(value.location)
                             dragState = .dragging(currentPath)
@@ -47,9 +46,9 @@ struct EditableArtboard: View {
                     }
                 }
                 .onEnded { _ in
-                    if drawSettings.tool == .rectSelect {
+                    if [.rectSelect, .lassoSelect].contains(drawSettings.tool) {
                         if case .dragging(let currentPath) = dragState {
-                            rectSelect(currentPath)
+                            selectPath(currentPath)
                         }
                         dragState = .inactive
                     }
@@ -71,6 +70,21 @@ struct EditableArtboard: View {
             if drawSettings.tool == .rectSelect {
                 if case .dragging(let path) = dragState {
                     getSelectionRect(path)
+                        .stroke(.black, style: StrokeStyle(
+                            lineWidth: 1.25,
+                            dash: [4]
+                        ))
+                        .shadow(color: .white, radius: 0, x: 1, y: 0)
+                        .shadow(color: .white, radius: 0, x: 0, y: 1)
+                        .shadow(color: .white, radius: 0, x: -1, y: 0)
+                        .shadow(color: .white, radius: 0, x: 0, y: -1)
+                        .allowsHitTesting(false)
+                }
+            }
+            
+            if drawSettings.tool == .lassoSelect {
+                if case .dragging(let path) = dragState {
+                    getSelectionShape(path)
                         .stroke(.black, style: StrokeStyle(
                             lineWidth: 1.25,
                             dash: [4]
@@ -119,7 +133,7 @@ struct EditableArtboard: View {
         case .eyedropper: eyedrop(adjustedLocation)
         case .line: line(adjustedLocation)
         case .rect: rect(adjustedLocation)
-        case .rectSelect: break
+        case .rectSelect, .lassoSelect: break
         }
     }
 
@@ -236,9 +250,15 @@ struct EditableArtboard: View {
         }
     }
     
-    func rectSelect(_ path: [CGPoint]) {
+    func selectPath(_ path: [CGPoint]) {
         if let layer = file.artboard.currentLayer {
-            let pixels = layer.getSelectedPixels(in: getSelectionRect(path))
+            var selectionPath: Path
+            switch drawSettings.tool {
+            case .rectSelect: selectionPath = getSelectionRect(path)
+            case .lassoSelect: selectionPath = getSelectionShape(path)
+            default: selectionPath = Path()
+            }
+            let pixels = layer.getSelectedPixels(in: selectionPath)
             history.add(RectSelectAction(pixels, layer))
         }
     }

@@ -17,7 +17,7 @@ struct RectSelectToolButton: View {
             Image(systemName: "square.dashed")
         }
         .active(drawSettings.tool == .rectSelect)
-        .help("Rectangle Tool")
+        .help("Rectangle Select Tool")
         .keyboardShortcut("s", modifiers: [])
     }
 }

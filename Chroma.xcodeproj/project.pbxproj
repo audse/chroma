@@ -127,6 +127,7 @@
 		7554D2CB2ABCE892008CEB87 /* RectSelectToolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2CA2ABCE892008CEB87 /* RectSelectToolButton.swift */; };
 		7554D2D02ABD15D8008CEB87 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2CF2ABD15D8008CEB87 /* Path.swift */; };
 		7554D2D22ABD1F3A008CEB87 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2D12ABD1F3A008CEB87 /* Selection.swift */; };
+		7554D2D42ABD28C2008CEB87 /* LassoSelectToolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2D32ABD28C2008CEB87 /* LassoSelectToolButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,6 +272,7 @@
 		7554D2CA2ABCE892008CEB87 /* RectSelectToolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectSelectToolButton.swift; sourceTree = "<group>"; };
 		7554D2CF2ABD15D8008CEB87 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		7554D2D12ABD1F3A008CEB87 /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
+		7554D2D32ABD28C2008CEB87 /* LassoSelectToolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LassoSelectToolButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -663,6 +665,7 @@
 				7554D2BF2ABCB072008CEB87 /* RectToolButton.swift */,
 				7554D2C12ABCB883008CEB87 /* CancelToolButton.swift */,
 				7554D2CA2ABCE892008CEB87 /* RectSelectToolButton.swift */,
+				7554D2D32ABD28C2008CEB87 /* LassoSelectToolButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1384,6 +1387,7 @@
 				7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
 				7554D2582AB8C378008CEB87 /* ColorJson.swift in Sources */,
+				7554D2D42ABD28C2008CEB87 /* LassoSelectToolButton.swift in Sources */,
 				7554D2AD2ABBEFCE008CEB87 /* Sequence.swift in Sources */,
 				7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */,
 				7554D22E2AB7A3BC008CEB87 /* CGSize.swift in Sources */,

@@ -18,6 +18,7 @@ struct ToolList: View {
             LineToolButton()
             RectToolButton()
             RectSelectToolButton()
+            LassoSelectToolButton()
         }
     }
 }
