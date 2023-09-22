@@ -138,6 +138,7 @@
 		7554D2E42ABD3938008CEB87 /* FillAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E32ABD3938008CEB87 /* FillAction.swift */; };
 		7554D2E62ABD394D008CEB87 /* DrawAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E52ABD394D008CEB87 /* DrawAction.swift */; };
 		7554D2E82ABD3E5F008CEB87 /* MoveAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E72ABD3E5F008CEB87 /* MoveAction.swift */; };
+		7554D2EA2ABD4856008CEB87 /* DrawSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E92ABD4856008CEB87 /* DrawSelection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -293,6 +294,7 @@
 		7554D2E32ABD3938008CEB87 /* FillAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillAction.swift; sourceTree = "<group>"; };
 		7554D2E52ABD394D008CEB87 /* DrawAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawAction.swift; sourceTree = "<group>"; };
 		7554D2E72ABD3E5F008CEB87 /* MoveAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAction.swift; sourceTree = "<group>"; };
+		7554D2E92ABD4856008CEB87 /* DrawSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSelection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -696,6 +698,7 @@
 				7554D2CA2ABCE892008CEB87 /* RectSelectToolButton.swift */,
 				7554D2D32ABD28C2008CEB87 /* LassoSelectToolButton.swift */,
 				7554D2D52ABD2D47008CEB87 /* MoveToolButton.swift */,
+				7554D2E92ABD4856008CEB87 /* DrawSelection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1388,6 +1391,7 @@
 				7554D2B82ABCAFAA008CEB87 /* DrawToolButton.swift in Sources */,
 				7554D2562AB8C1F5008CEB87 /* AngleJson.swift in Sources */,
 				7554D10E2AAFB6B8008CEB87 /* ContentView.swift in Sources */,
+				7554D2EA2ABD4856008CEB87 /* DrawSelection.swift in Sources */,
 				7554D1A62AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift in Sources */,
 				7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */,
 				7554D2E82ABD3E5F008CEB87 /* MoveAction.swift in Sources */,

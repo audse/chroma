@@ -70,33 +70,9 @@ struct EditableArtboard: View {
                 .releaseFocusOnTap()
                 .simultaneousGesture(drag)
             
-            if drawSettings.tool == .rectSelect {
+            if [.lassoSelect, .rectSelect].contains(drawSettings.tool) {
                 if case .dragging(let path) = dragState {
-                    getSelectionRect(path)
-                        .stroke(.black, style: StrokeStyle(
-                            lineWidth: 1.25,
-                            dash: [4]
-                        ))
-                        .shadow(color: .white, radius: 0, x: 1, y: 0)
-                        .shadow(color: .white, radius: 0, x: 0, y: 1)
-                        .shadow(color: .white, radius: 0, x: -1, y: 0)
-                        .shadow(color: .white, radius: 0, x: 0, y: -1)
-                        .allowsHitTesting(false)
-                }
-            }
-            
-            if drawSettings.tool == .lassoSelect {
-                if case .dragging(let path) = dragState {
-                    getSelectionShape(path)
-                        .stroke(.black, style: StrokeStyle(
-                            lineWidth: 1.25,
-                            dash: [4]
-                        ))
-                        .shadow(color: .white, radius: 0, x: 1, y: 0)
-                        .shadow(color: .white, radius: 0, x: 0, y: 1)
-                        .shadow(color: .white, radius: 0, x: -1, y: 0)
-                        .shadow(color: .white, radius: 0, x: 0, y: -1)
-                        .allowsHitTesting(false)
+                    DrawSelection(tool: drawSettings.tool, points: path)
                 }
             }
             
@@ -199,27 +175,6 @@ struct EditableArtboard: View {
         }
     }
     
-    func getSelectionRect(_ currentPath: [CGPoint]) -> Path {
-        var path = Path()
-        if let firstPoint = currentPath.first {
-            if let lastPoint = currentPath.last {
-                path.addRect(CGRect(start: firstPoint, end: lastPoint))
-            }
-        }
-        return path
-    }
-    
-    func getSelectionShape(_ currentPath: [CGPoint]) -> Path {
-        var path = Path()
-        if let firstPoint = currentPath.first {
-            path.move(to: firstPoint)
-        }
-        currentPath.forEach { point in
-            path.addLine(to: point)
-        }
-        return path
-    }
-
     func draw(_ location: CGPoint) {
         if let layer = file.artboard.currentLayer {
             let pixel = drawSettings.createPixel(location)
@@ -291,12 +246,7 @@ struct EditableArtboard: View {
     
     func selectPath(_ path: [CGPoint]) {
         if let layer = file.artboard.currentLayer {
-            var selectionPath: Path
-            switch drawSettings.tool {
-            case .rectSelect: selectionPath = getSelectionRect(path)
-            case .lassoSelect: selectionPath = getSelectionShape(path)
-            default: selectionPath = Path()
-            }
+            let selectionPath: Path = DrawSelection(tool: drawSettings.tool, points: path).getShape()
             let pixels = layer.getSelectedPixels(in: selectionPath)
             history.add(SelectAction(pixels, layer))
         }
