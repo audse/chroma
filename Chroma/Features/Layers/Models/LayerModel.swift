@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class LayerModel: ObservableObject, Identifiable {
+class LayerModel: ObservableObject, Identifiable, Equatable {
     var id = UUID()
     @Published var name = "Layer"
     @Published var pixels: [PixelModel] = []
@@ -117,5 +117,9 @@ class LayerModel: ObservableObject, Identifiable {
 
     func toggle() {
         isVisible.toggle()
+    }
+    
+    static func == (lhs: LayerModel, rhs: LayerModel) -> Bool {
+        return lhs.id == rhs.id
     }
 }

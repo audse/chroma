@@ -12,6 +12,7 @@ struct ToolList: View {
 
     var body: some View {
         VStack(spacing: 4) {
+            MoveToolButton()
             DrawToolButton()
             EraseToolButton()
             FillToolButton()

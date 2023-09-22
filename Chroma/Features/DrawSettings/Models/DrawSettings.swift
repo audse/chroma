@@ -32,15 +32,13 @@ class DrawSettings: ObservableObject {
     }
     
     func snapped(_ point: CGPoint) -> CGPoint {
-        let x = round(point.x / (getPixelSize() * precisionSize))
-        let y = round(point.y / (getPixelSize() * precisionSize))
+        let x = floor(point.x / (getPixelSize() * precisionSize))
+        let y = floor(point.y / (getPixelSize() * precisionSize))
         return CGPoint(x: x * (getPixelSize() * precisionSize), y: y * (getPixelSize() * precisionSize))
     }
     
     func snapped(_ size: CGSize) -> CGSize {
-        let w = round(size.width / (getPixelSize() * precisionSize))
-        let h = round(size.height / (getPixelSize() * precisionSize))
-        return CGSize(w * (getPixelSize() * precisionSize), h * (getPixelSize() * precisionSize))
+        return CGSize(snapped(CGPoint(size)))
     }
 
     func createPixel(_ point: CGPoint = CGPoint()) -> PixelModel {

@@ -7,6 +7,34 @@
 
 import SwiftUI
 
+private enum DragState: Equatable {
+    case inactive
+    case dragging([CGPoint])
+    
+    var points: [CGPoint] {
+        switch self {
+        case .dragging(let points): return points
+        default: return []
+        }
+    }
+    
+    var last: CGPoint {
+        return points.last ?? CGPoint()
+    }
+    
+    var first: CGPoint {
+        return points.first ?? CGPoint()
+    }
+    
+    var delta: CGSize {
+        let first = self.first, last = self.last
+        return CGSize(
+            width: last.x - first.x,
+            height: last.y - first.y
+        )
+    }
+}
+
 struct EditableArtboard: View {
     @EnvironmentObject var drawSettings: DrawSettings
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
@@ -17,11 +45,6 @@ struct EditableArtboard: View {
     @State var mouseLocation = CGPoint()
 
     @State var ghostPixels: [PixelModel] = []
-    
-    enum DragState: Equatable {
-        case inactive
-        case dragging([CGPoint])
-    }
     
     @State private var dragState = DragState.inactive
     
@@ -34,36 +57,16 @@ struct EditableArtboard: View {
                 .labelsHidden()
                 .keyboardShortcut("x", modifiers: [.command])
             
-            let drag = DragGesture(minimumDistance: 10)
-                .onChanged { value in
-                    if [.rectSelect, .lassoSelect].contains(drawSettings.tool) {
-                        if case .dragging(var currentPath) = dragState {
-                            currentPath.append(value.location)
-                            dragState = .dragging(currentPath)
-                        } else {
-                            dragState = .dragging([value.location])
-                        }
-                    }
-                }
-                .onEnded { _ in
-                    if [.rectSelect, .lassoSelect].contains(drawSettings.tool) {
-                        if case .dragging(let currentPath) = dragState {
-                            selectPath(currentPath)
-                        }
-                        dragState = .inactive
-                    }
-                }
+            let drag = DragGesture(minimumDistance: drawSettings.getPixelSize() / 2)
+                .onChanged(onDragChanged)
+                .onEnded { _ in onDragEnded() }
             
             Artboard(artboard: file.artboard)
                 .onTapGesture(perform: onTap)
-                .gesture(DragGesture(minimumDistance: 10))
                 .onHover { isHoveringValue in
                     isHovering = isHoveringValue
                 }
                 .onContinuousHover(perform: onContinuousHover)
-                .onChange(of: drawSettings.tool) { _ in
-                    ghostPixels.removeAll()
-                }
                 .releaseFocusOnTap()
                 .simultaneousGesture(drag)
             
@@ -97,9 +100,15 @@ struct EditableArtboard: View {
                 }
             }
             
-            if [.line, .rect].contains(drawSettings.tool) {
+            if [.line, .rect, .move].contains(drawSettings.tool) {
                 CancelToolButton(ghostPixels: $ghostPixels)
                 DrawGhost(ghostPixels: $ghostPixels)
+                    .onChange(of: drawSettings.tool) { _ in
+                        ghostPixels.removeAll()
+                    }
+                    .onChange(of: file.artboard.currentLayer) { _ in
+                        ghostPixels.removeAll()
+                    }
             }
             if isHovering {
                 PixelCursor()
@@ -120,27 +129,46 @@ struct EditableArtboard: View {
         .animation(.easeInOut(duration: 0.2), value: workspaceSettings.zoom)
     }
 
-    func adjust(_ location: CGPoint) -> CGPoint {
-        return location - drawSettings.getPixelSize() / 2.0
-    }
-
     func onTap(_ location: CGPoint) {
-        let adjustedLocation = adjust(location)
         switch drawSettings.tool {
-        case .draw: draw(adjustedLocation)
-        case .erase: erase(adjustedLocation)
-        case .fill: fill(adjustedLocation)
-        case .eyedropper: eyedrop(adjustedLocation)
-        case .line: line(adjustedLocation)
-        case .rect: rect(adjustedLocation)
-        case .rectSelect, .lassoSelect: break
+        case .draw: draw(location)
+        case .erase: erase(location)
+        case .fill: fill(location)
+        case .eyedropper: eyedrop(location)
+        case .line: line(location)
+        case .rect: rect(location)
+        case .rectSelect, .lassoSelect, .move: break
         }
+    }
+    
+    func onDragChanged(value: DragGesture.Value) {
+        switch dragState {
+        case .inactive: dragState = .dragging([value.location])
+        case .dragging(var points):
+            points.append(value.location)
+            dragState = .dragging(points)
+        }
+        ghostPixels = getGhostPixels(value.location)
+    }
+    
+    func onDragEnded() {
+        if case .dragging(let currentPath) = dragState {
+            if [.rectSelect, .lassoSelect].contains(drawSettings.tool) {
+                selectPath(currentPath)
+            }
+            if drawSettings.tool == .move {
+                move(currentPath)
+            }
+        }
+        dragState = .inactive
     }
 
     func onContinuousHover(_ phase: HoverPhase) {
         if case .active(let location) = phase {
-            mouseLocation = adjust(location)
+            mouseLocation = location
             ghostPixels = getGhostPixels(location)
+        } else {
+            ghostPixels = []
         }
     }
 
@@ -148,14 +176,25 @@ struct EditableArtboard: View {
         switch drawSettings.tool {
         case .line:
             switch drawSettings.multiClickState.first {
-            case .some(let pointA): return drawSettings.createPixelLine(pointA, adjust(location))
+            case .some(let pointA): return drawSettings.createPixelLine(pointA, location)
             case .none: return []
             }
         case .rect:
             switch drawSettings.multiClickState.first {
-            case .some(let pointA): return drawSettings.createPixelRect(pointA, adjust(location))
+            case .some(let pointA): return drawSettings.createPixelRect(pointA, location)
             case .none: return []
             }
+        case .move:
+            if let layer = file.artboard.currentLayer {
+                let first = drawSettings.snapped(dragState.first)
+                let last = drawSettings.snapped(dragState.last)
+                return layer.selectedPixels.map { pixel in
+                    let newPixel = pixel.duplicate()
+                    newPixel.position = drawSettings.snapped(pixel.position + last - first)
+                    return newPixel
+                }
+            }
+            return []
         default: return []
         }
     }
@@ -259,9 +298,22 @@ struct EditableArtboard: View {
             default: selectionPath = Path()
             }
             let pixels = layer.getSelectedPixels(in: selectionPath)
-            history.add(RectSelectAction(pixels, layer))
+            history.add(SelectAction(pixels, layer))
         }
     }
+    
+    func move(_ path: [CGPoint]) {
+        let first = drawSettings.snapped(dragState.first)
+        let last = drawSettings.snapped(dragState.last)
+        if let layer = file.artboard.currentLayer {
+            history.add(MoveAction(
+                layer.selectedPixels,
+                drawSettings: drawSettings,
+                delta: last - first
+            ))
+        }
+    }
+    
 }
 
 struct EditableCanvas_Previews: PreviewProvider {

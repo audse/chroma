@@ -31,6 +31,16 @@ public class PixelModel: ObservableObject, Identifiable, Equatable {
         self.position = position
     }
     
+    public func duplicate() -> PixelModel {
+        return PixelModel(
+            shape: self.shape,
+            color: self.color,
+            size: self.size,
+            rotation: self.rotation,
+            position: self.position
+        )
+    }
+    
     public func path(in rect: CGRect) -> Path {
         return shape.shape.path(in: rect)
     }

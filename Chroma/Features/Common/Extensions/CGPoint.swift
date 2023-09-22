@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension CGPoint {
+extension CGPoint: AdditiveArithmetic {
     init(_ number: CGFloat) {
         self = CGPoint(x: number, y: number)
     }
@@ -36,13 +36,13 @@ extension CGPoint {
 
     // Operators
 
-    static func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+    public static func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(
             x: lhs.x + rhs.x,
             y: lhs.y + rhs.y
         )
     }
-    static func - (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+    public static func - (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(
             x: lhs.x - rhs.x,
             y: lhs.y - rhs.y
@@ -65,8 +65,5 @@ extension CGPoint {
             x: lhs.x * rhs.x,
             y: lhs.y * rhs.y
         )
-    }
-    static func += (lhs: inout CGPoint, rhs: CGPoint) {
-        lhs = lhs + rhs
     }
 }

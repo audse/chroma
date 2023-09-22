@@ -55,7 +55,7 @@
 		7554D1B02AB6C903008CEB87 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1AF2AB6C903008CEB87 /* AppSettings.swift */; };
 		7554D1B22AB76EEB008CEB87 /* Conditional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1B12AB76EEB008CEB87 /* Conditional.swift */; };
 		7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1B32AB77477008CEB87 /* ActiveTint.swift */; };
-		7554D1BB2AB789BC008CEB87 /* HistoryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1BA2AB789BC008CEB87 /* HistoryAction.swift */; };
+		7554D1BB2AB789BC008CEB87 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1BA2AB789BC008CEB87 /* Action.swift */; };
 		7554D1BD2AB789FF008CEB87 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1BC2AB789FF008CEB87 /* History.swift */; };
 		7554D1C72AB78AFF008CEB87 /* TileMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1C62AB78AFF008CEB87 /* TileMode.swift */; };
 		7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1C82AB78B48008CEB87 /* GridMode.swift */; };
@@ -128,6 +128,16 @@
 		7554D2D02ABD15D8008CEB87 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2CF2ABD15D8008CEB87 /* Path.swift */; };
 		7554D2D22ABD1F3A008CEB87 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2D12ABD1F3A008CEB87 /* Selection.swift */; };
 		7554D2D42ABD28C2008CEB87 /* LassoSelectToolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2D32ABD28C2008CEB87 /* LassoSelectToolButton.swift */; };
+		7554D2D62ABD2D47008CEB87 /* MoveToolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2D52ABD2D47008CEB87 /* MoveToolButton.swift */; };
+		7554D2D82ABD38C7008CEB87 /* DeselectAllAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2D72ABD38C7008CEB87 /* DeselectAllAction.swift */; };
+		7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2D92ABD38DF008CEB87 /* SelectAction.swift */; };
+		7554D2DC2ABD38F3008CEB87 /* EraseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2DB2ABD38F3008CEB87 /* EraseAction.swift */; };
+		7554D2DE2ABD38FD008CEB87 /* EraseMultipleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2DD2ABD38FD008CEB87 /* EraseMultipleAction.swift */; };
+		7554D2E02ABD390B008CEB87 /* EraseSelectionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2DF2ABD390B008CEB87 /* EraseSelectionAction.swift */; };
+		7554D2E22ABD3922008CEB87 /* DrawMultipleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E12ABD3922008CEB87 /* DrawMultipleAction.swift */; };
+		7554D2E42ABD3938008CEB87 /* FillAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E32ABD3938008CEB87 /* FillAction.swift */; };
+		7554D2E62ABD394D008CEB87 /* DrawAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E52ABD394D008CEB87 /* DrawAction.swift */; };
+		7554D2E82ABD3E5F008CEB87 /* MoveAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E72ABD3E5F008CEB87 /* MoveAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,7 +210,7 @@
 		7554D1AF2AB6C903008CEB87 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		7554D1B12AB76EEB008CEB87 /* Conditional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conditional.swift; sourceTree = "<group>"; };
 		7554D1B32AB77477008CEB87 /* ActiveTint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTint.swift; sourceTree = "<group>"; };
-		7554D1BA2AB789BC008CEB87 /* HistoryAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAction.swift; sourceTree = "<group>"; };
+		7554D1BA2AB789BC008CEB87 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		7554D1BC2AB789FF008CEB87 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		7554D1C62AB78AFF008CEB87 /* TileMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileMode.swift; sourceTree = "<group>"; };
 		7554D1C82AB78B48008CEB87 /* GridMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridMode.swift; sourceTree = "<group>"; };
@@ -273,6 +283,16 @@
 		7554D2CF2ABD15D8008CEB87 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		7554D2D12ABD1F3A008CEB87 /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		7554D2D32ABD28C2008CEB87 /* LassoSelectToolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LassoSelectToolButton.swift; sourceTree = "<group>"; };
+		7554D2D52ABD2D47008CEB87 /* MoveToolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToolButton.swift; sourceTree = "<group>"; };
+		7554D2D72ABD38C7008CEB87 /* DeselectAllAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeselectAllAction.swift; sourceTree = "<group>"; };
+		7554D2D92ABD38DF008CEB87 /* SelectAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAction.swift; sourceTree = "<group>"; };
+		7554D2DB2ABD38F3008CEB87 /* EraseAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraseAction.swift; sourceTree = "<group>"; };
+		7554D2DD2ABD38FD008CEB87 /* EraseMultipleAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraseMultipleAction.swift; sourceTree = "<group>"; };
+		7554D2DF2ABD390B008CEB87 /* EraseSelectionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraseSelectionAction.swift; sourceTree = "<group>"; };
+		7554D2E12ABD3922008CEB87 /* DrawMultipleAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMultipleAction.swift; sourceTree = "<group>"; };
+		7554D2E32ABD3938008CEB87 /* FillAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillAction.swift; sourceTree = "<group>"; };
+		7554D2E52ABD394D008CEB87 /* DrawAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawAction.swift; sourceTree = "<group>"; };
+		7554D2E72ABD3E5F008CEB87 /* MoveAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,8 +461,17 @@
 		7554D1B82AB78961008CEB87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7554D1BA2AB789BC008CEB87 /* HistoryAction.swift */,
+				7554D1BA2AB789BC008CEB87 /* Action.swift */,
 				7554D1BC2AB789FF008CEB87 /* History.swift */,
+				7554D2E52ABD394D008CEB87 /* DrawAction.swift */,
+				7554D2E12ABD3922008CEB87 /* DrawMultipleAction.swift */,
+				7554D2DB2ABD38F3008CEB87 /* EraseAction.swift */,
+				7554D2DD2ABD38FD008CEB87 /* EraseMultipleAction.swift */,
+				7554D2DF2ABD390B008CEB87 /* EraseSelectionAction.swift */,
+				7554D2E32ABD3938008CEB87 /* FillAction.swift */,
+				7554D2D92ABD38DF008CEB87 /* SelectAction.swift */,
+				7554D2D72ABD38C7008CEB87 /* DeselectAllAction.swift */,
+				7554D2E72ABD3E5F008CEB87 /* MoveAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -666,6 +695,7 @@
 				7554D2C12ABCB883008CEB87 /* CancelToolButton.swift */,
 				7554D2CA2ABCE892008CEB87 /* RectSelectToolButton.swift */,
 				7554D2D32ABD28C2008CEB87 /* LassoSelectToolButton.swift */,
+				7554D2D52ABD2D47008CEB87 /* MoveToolButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1346,6 +1376,7 @@
 				7554D19B2AB54187008CEB87 /* WorkspaceSettingsPanel.swift in Sources */,
 				7554D1AA2AB63EB3008CEB87 /* NumberTextField.swift in Sources */,
 				7554D2742AB9429F008CEB87 /* ExportTypeControl.swift in Sources */,
+				7554D2D82ABD38C7008CEB87 /* DeselectAllAction.swift in Sources */,
 				7554D2C22ABCB883008CEB87 /* CancelToolButton.swift in Sources */,
 				7554D1792AB29A3D008CEB87 /* TintModel.swift in Sources */,
 				7554D1592AAFECB2008CEB87 /* SemiCircle.swift in Sources */,
@@ -1359,6 +1390,7 @@
 				7554D10E2AAFB6B8008CEB87 /* ContentView.swift in Sources */,
 				7554D1A62AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift in Sources */,
 				7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */,
+				7554D2E82ABD3E5F008CEB87 /* MoveAction.swift in Sources */,
 				7554D24A2AB7BC74008CEB87 /* FilesPage.swift in Sources */,
 				7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */,
 				7554D2522AB8C13C008CEB87 /* SizeJson.swift in Sources */,
@@ -1367,14 +1399,16 @@
 				7554D1892AB4BC12008CEB87 /* InverseQuadrant.swift in Sources */,
 				7554D2C72ABCCDAF008CEB87 /* ColorScheme.swift in Sources */,
 				7554D1872AB3D1D4008CEB87 /* ScaleTypeButtons.swift in Sources */,
-				7554D1BB2AB789BC008CEB87 /* HistoryAction.swift in Sources */,
+				7554D1BB2AB789BC008CEB87 /* Action.swift in Sources */,
 				7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */,
 				7554D19F2AB60CE6008CEB87 /* ButtonColorStyle.swift in Sources */,
 				7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */,
 				7554D24E2AB8C06A008CEB87 /* PixelJson.swift in Sources */,
 				7554D2682AB90573008CEB87 /* ArtboardJson.swift in Sources */,
 				7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */,
+				7554D2E42ABD3938008CEB87 /* FillAction.swift in Sources */,
 				7554D2542AB8C169008CEB87 /* PointJson.swift in Sources */,
+				7554D2DE2ABD38FD008CEB87 /* EraseMultipleAction.swift in Sources */,
 				7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */,
 				7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */,
 				7554D2372AB7A495008CEB87 /* Font.swift in Sources */,
@@ -1386,19 +1420,23 @@
 				7554D2B42ABCAEF7008CEB87 /* LineToolIcon.swift in Sources */,
 				7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
+				7554D2DC2ABD38F3008CEB87 /* EraseAction.swift in Sources */,
 				7554D2582AB8C378008CEB87 /* ColorJson.swift in Sources */,
 				7554D2D42ABD28C2008CEB87 /* LassoSelectToolButton.swift in Sources */,
 				7554D2AD2ABBEFCE008CEB87 /* Sequence.swift in Sources */,
 				7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */,
 				7554D22E2AB7A3BC008CEB87 /* CGSize.swift in Sources */,
 				7554D2A22ABB97BF008CEB87 /* DotsGridPattern.swift in Sources */,
+				7554D2E22ABD3922008CEB87 /* DrawMultipleAction.swift in Sources */,
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
 				7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
 				7554D21B2AB79901008CEB87 /* Well.swift in Sources */,
 				7554D25D2AB8C6CE008CEB87 /* LayerJson.swift in Sources */,
 				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
+				7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,
+				7554D2E62ABD394D008CEB87 /* DrawAction.swift in Sources */,
 				7554D1772AB28F3E008CEB87 /* CGPoint.swift in Sources */,
 				7554D1B02AB6C903008CEB87 /* AppSettings.swift in Sources */,
 				7554D2452AB7B584008CEB87 /* FilePreview.swift in Sources */,
@@ -1408,6 +1446,7 @@
 				7554D2D02ABD15D8008CEB87 /* Path.swift in Sources */,
 				7554D1432AAFC0DA008CEB87 /* DrawShape.swift in Sources */,
 				7554D1682AB0D55B008CEB87 /* DrawSettings.swift in Sources */,
+				7554D2D62ABD2D47008CEB87 /* MoveToolButton.swift in Sources */,
 				7554D1972AB52262008CEB87 /* ArtboardWrapper.swift in Sources */,
 				7554D2932ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift in Sources */,
 				7554D19D2AB5424B008CEB87 /* GridModeButtons.swift in Sources */,
@@ -1437,6 +1476,7 @@
 				7554D25A2AB8C4B9008CEB87 /* PixelModel.swift in Sources */,
 				7554D1F12AB78DDC008CEB87 /* DrawTool.swift in Sources */,
 				7554D1992AB53D11008CEB87 /* TileModeButtons.swift in Sources */,
+				7554D2E02ABD390B008CEB87 /* EraseSelectionAction.swift in Sources */,
 				7554D1952AB50B42008CEB87 /* Color.swift in Sources */,
 				7554D2CB2ABCE892008CEB87 /* RectSelectToolButton.swift in Sources */,
 				7554D1562AAFEC7E008CEB87 /* Square.swift in Sources */,

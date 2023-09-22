@@ -16,6 +16,7 @@ enum Tool {
     case rect
     case rectSelect
     case lassoSelect
+    case move
 
     var name: String {
         switch self {
@@ -27,6 +28,7 @@ enum Tool {
         case .rect: return "Rect"
         case .rectSelect: return "Rect Select"
         case .lassoSelect: return "Lasso Select"
+        case .move: return "Move"
         }
     }
 }
