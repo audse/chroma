@@ -13,6 +13,12 @@ import UIKit
 import AppKit
 #endif
 
+extension Int {
+    public var hexString: String {
+        String(format: "%02X", self)
+    }
+}
+
 extension Color {
     static var random: Color {
         return Color(
@@ -31,7 +37,7 @@ extension Color {
         return Color(white: 1, opacity: 0.001)
     }
 
-    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat) {
+    public var components: (red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat) {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -44,55 +50,54 @@ extension Color {
         return (r, g, b, o)
     }
     
-    var red: CGFloat {
+    public var red: CGFloat {
         return components.red
     }
     
-    var green: CGFloat {
+    public var green: CGFloat {
         return components.green
     }
     
-    var blue: CGFloat {
+    public var blue: CGFloat {
         return components.blue
     }
     
-    var opacity: CGFloat {
+    public var opacity: CGFloat {
         return components.opacity
     }
 
-    var luminance: CGFloat {
+    public var luminance: CGFloat {
         let (r, g, b, _) = components
         return 0.2126 * r + 0.7152 * g + 0.0722 * b
     }
 
-    var isDark: Bool {
+    public var isDark: Bool {
         return luminance < 0.5
     }
-
-    var hex: String {
-        String(
-            format: "#%02x%02x%02x%02x",
-            Int(components.red * 255),
-            Int(components.green * 255),
-            Int(components.blue * 255),
-            Int(components.opacity * 255)
-        )
+    
+    public var isLight: Bool {
+        return luminance > 0.5
     }
 
-    var contrasting: Color {
+    public var hex: String {
+        let (r, g, b, o) = components
+        return "#\(Int(r * 255).hexString)\(Int(g * 255).hexString)\(Int(b * 255).hexString)\(Int(o * 255).hexString)"
+    }
+
+    public var contrasting: Color {
         return isDark ? lighten(0.7) : darken(0.7)
     }
 
-    func contrast(with other: Color) -> CGFloat {
+    public func contrast(with other: Color) -> CGFloat {
         return other.luminance - self.luminance
     }
 
-    func lighten(_ amount: CGFloat) -> Color {
+    public func lighten(_ amount: CGFloat) -> Color {
         let (r, g, b, o) = components
         return Color(red: r + amount, green: g + amount, blue: b + amount, opacity: o)
     }
 
-    func darken(_ amount: CGFloat) -> Color {
+    public func darken(_ amount: CGFloat) -> Color {
         let (r, g, b, o) = components
         return Color(red: r - amount, green: g - amount, blue: b - amount, opacity: o)
     }

@@ -7,6 +7,7 @@
 
 import XCTest
 import Chroma
+import SwiftUI
 
 final class ChromaTests: XCTestCase {
 
@@ -25,6 +26,34 @@ final class ChromaTests: XCTestCase {
         }
     }
 
+}
+
+final class ColorExtensionTest: XCTestCase {
+    func testComponents() throws {
+        XCTAssert(Color.black.components == (0, 0, 0, 1))
+        let (r, g, b, o) = Color.white.components
+        XCTAssert(r.isApprox(1))
+        XCTAssert(g.isApprox(1))
+        XCTAssert(b.isApprox(1))
+        XCTAssert(o.isApprox(1))
+    }
+    
+    func testHex() throws {
+        XCTAssert(["#000000", "#000000ff"].contains(Color.black.hex.lowercased()))
+    }
+    
+    func testLuminance() throws {
+        XCTAssert(Color.white.luminance > 0.5)
+        XCTAssert(Color.black.luminance < 0.5)
+        XCTAssert(Color(white: 0.6).luminance > 0.5)
+        XCTAssert(Color(white: 0.4).luminance < 0.5)
+    }
+    
+    func testContasting() throws {
+        XCTAssert(Color.white.contrasting.isDark)
+        XCTAssert(Color.black.contrasting.isLight)
+        XCTAssert(Color(red: 0.0, green: 0.0, blue: 0.5).contrasting.isLight)
+    }
 }
 
 final class SequenceExtensionTest: XCTestCase {
