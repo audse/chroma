@@ -26,8 +26,6 @@ struct Artboard: View {
     }
 }
 
-struct Artboard_Previews: PreviewProvider {
-    static var previews: some View {
-        Artboard(artboard: PreviewArtboardModelBuilder().build())
-    }
+#Preview {
+    Artboard(artboard: PreviewArtboardModelBuilder().build())
 }

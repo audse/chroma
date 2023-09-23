@@ -139,6 +139,8 @@
 		7554D2E62ABD394D008CEB87 /* DrawAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E52ABD394D008CEB87 /* DrawAction.swift */; };
 		7554D2E82ABD3E5F008CEB87 /* MoveAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E72ABD3E5F008CEB87 /* MoveAction.swift */; };
 		7554D2EA2ABD4856008CEB87 /* DrawSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E92ABD4856008CEB87 /* DrawSelection.swift */; };
+		75836D632ABE6A68007172AD /* NewLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D622ABE6A68007172AD /* NewLayerAction.swift */; };
+		75836D652ABE6B56007172AD /* DeleteLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D642ABE6B56007172AD /* DeleteLayerAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,6 +297,8 @@
 		7554D2E52ABD394D008CEB87 /* DrawAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawAction.swift; sourceTree = "<group>"; };
 		7554D2E72ABD3E5F008CEB87 /* MoveAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAction.swift; sourceTree = "<group>"; };
 		7554D2E92ABD4856008CEB87 /* DrawSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSelection.swift; sourceTree = "<group>"; };
+		75836D622ABE6A68007172AD /* NewLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLayerAction.swift; sourceTree = "<group>"; };
+		75836D642ABE6B56007172AD /* DeleteLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLayerAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,6 +478,8 @@
 				7554D2D92ABD38DF008CEB87 /* SelectAction.swift */,
 				7554D2D72ABD38C7008CEB87 /* DeselectAllAction.swift */,
 				7554D2E72ABD3E5F008CEB87 /* MoveAction.swift */,
+				75836D622ABE6A68007172AD /* NewLayerAction.swift */,
+				75836D642ABE6B56007172AD /* DeleteLayerAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1475,6 +1481,7 @@
 				7554D2A72ABB986C008CEB87 /* WorkspaceGridColorControl.swift in Sources */,
 				7554D25F2AB8C73B008CEB87 /* LayerModel.swift in Sources */,
 				7554D2BE2ABCB048008CEB87 /* LineToolButton.swift in Sources */,
+				75836D652ABE6B56007172AD /* DeleteLayerAction.swift in Sources */,
 				7554D14E2AAFD4DD008CEB87 /* ToolList.swift in Sources */,
 				7554D2472AB7B9E8008CEB87 /* FilePreviewList.swift in Sources */,
 				7554D25A2AB8C4B9008CEB87 /* PixelModel.swift in Sources */,
@@ -1485,6 +1492,7 @@
 				7554D2CB2ABCE892008CEB87 /* RectSelectToolButton.swift in Sources */,
 				7554D1562AAFEC7E008CEB87 /* Square.swift in Sources */,
 				7554D2292AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift in Sources */,
+				75836D632ABE6A68007172AD /* NewLayerAction.swift in Sources */,
 				7554D1B22AB76EEB008CEB87 /* Conditional.swift in Sources */,
 				7554D1732AB2775B008CEB87 /* Panel.swift in Sources */,
 				7554D13D2AAFBA49008CEB87 /* Minimap.swift in Sources */,

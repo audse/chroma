@@ -13,7 +13,13 @@ class ArtboardModel: ObservableObject, Identifiable {
     @Published var name: String?
     @Published var size: CGSize
     @Published var backgroundColor: Color
-    @Published private(set) var layers: [LayerModel]
+    @Published private(set) var layers: [LayerModel] {
+        didSet {
+            _layerCancellables = layers.map { layer in
+                layer.objectWillChange.sink { _ in self.objectWillChange.send() }
+            }
+        }
+    }
     @Published var currentLayer: LayerModel?
 
     private var _layerCancellables: [AnyCancellable] = []
@@ -33,10 +39,6 @@ class ArtboardModel: ObservableObject, Identifiable {
 
     }
 
-    private func _subscribe(_ layer: LayerModel) {
-        _layerCancellables.append(layer.objectWillChange.sink { _ in self.objectWillChange.send() })
-    }
-
     func withNewLayer(_ pixels: [LayerPixelModel] = []) -> ArtboardModel {
         currentLayer = newLayer(pixels)
         return self
@@ -53,7 +55,10 @@ class ArtboardModel: ObservableObject, Identifiable {
 
     func addLayer(_ layer: LayerModel) {
         layers.append(layer)
-        _subscribe(layer)
+    }
+    
+    func insertLayer(_ layer: LayerModel, at index: Int) {
+        layers.insert(layer, at: index)
     }
 
     func removeLayer(_ layer: LayerModel) {

@@ -21,6 +21,8 @@ struct HistoryActionListItem: View {
             }
         } label: {
             Label(action.getText(), systemImage: getIcon())
+                .expandWidth()
+                .background(Color.almostClear)
         }.foregroundColor(isUndone ? .secondary : .primary)
             .labelStyle(SpacedTrailingIconLabelStyle())
             .help(getHelpText())
@@ -54,7 +56,7 @@ struct HistoryList: View {
             }
         }
         .buttonStyle(.plain)
-        .frame(width: 70)
+        .frame(width: 100)
     }
 }
 
@@ -67,12 +69,14 @@ struct HistoryList_Previews: PreviewProvider {
                 .history([
                     DrawAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
                     EraseAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
+                    NewLayerAction(currentArtboard),
                     LineAction([drawSettings.createPixel().positive()], currentArtboard.currentLayer!),
                     DrawAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!)
                 ])
                 .undoHistory([
                     DrawAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
                     EraseAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
+                    DeleteLayerAction(currentArtboard.newLayer(), currentArtboard),
                     FillAction([drawSettings.createPixel().positive()], originalColor: .red, newColor: .black)
                 ]))
             .environmentObject(currentArtboard)

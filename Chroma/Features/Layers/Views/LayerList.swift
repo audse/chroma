@@ -38,29 +38,32 @@ struct LayerListItem: View {
 
 struct LayerList: View {
     @EnvironmentObject var currentArtboard: ArtboardModel
+    @EnvironmentObject var history: History
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
                 Text("Layers")
                 Spacer()
-                if let layer = currentArtboard.currentLayer {
-                    Button(
-                        role: .destructive,
-                        action: {
-                            currentArtboard.deleteLayer(layer)
-                        },
-                        label: {
-                            Image(systemName: "minus")
-                                .scaledToFit()
-                                .frame(width: 24, height: 18)
-                                .background(Color.almostClear)
+                Button(
+                    role: .destructive,
+                    action: {
+                        if let layer = currentArtboard.currentLayer {
+                            history.add(DeleteLayerAction(layer, currentArtboard))
                         }
-                    )
-                    .fixedSize()
-                    .buttonStyle(.plain)
-                }
+                    },
+                    label: {
+                        Image(systemName: "minus")
+                            .scaledToFit()
+                            .frame(width: 24, height: 18)
+                            .background(Color.almostClear)
+                    }
+                )
+                .fixedSize()
+                .buttonStyle(.plain)
+                .disabled(currentArtboard.currentLayer == nil)
                 Button {
-                    currentArtboard.currentLayer = currentArtboard.newLayer()
+                    history.add(NewLayerAction(currentArtboard))
                 } label: {
                     Image(systemName: "plus")
                 }
