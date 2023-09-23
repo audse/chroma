@@ -7,8 +7,6 @@
 
 import Foundation
 
-// swiftlint:disable force_cast
-
 extension History {
     /**
      Scans the history to get the most recently selected pixels on the current layer.
@@ -16,18 +14,20 @@ extension History {
     func getCurrentSelection() -> [LayerPixelModel] {
         if let currentLayer = getCurrentLayer() {
             var pixels = [LayerPixelModel]()
-            history.forEach { action in
-                if let action = action as? EraseSelectionAction {
-                    pixels = []
+            if currentLayer.isVisible {
+                history.forEach { action in
+                    if action is EraseSelectionAction {
+                        pixels = []
+                    }
+                    if action is DeselectAllAction {
+                        pixels = []
+                    }
+                    if let action = action as? SelectAction {
+                        pixels = action.pixels
+                    }
                 }
-                if let action = action as? DeselectAllAction {
-                    pixels = []
-                }
-                if let action = action as? SelectAction {
-                    pixels = action.pixels
-                }
+                return pixels.filter(currentLayer.pixels.contains)
             }
-            return pixels.filter(currentLayer.pixels.contains)
         }
         return []
     }

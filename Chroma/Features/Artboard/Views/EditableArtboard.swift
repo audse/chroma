@@ -170,7 +170,7 @@ struct EditableArtboard: View {
     }
     
     func draw(_ location: CGPoint) {
-        if let layer = history.getCurrentLayer() {
+        withCurrentLayer { layer in
             let model = drawSettings.createPixel(location)
             let pixel = drawSettings.tool == .drawPositive ? model.positive() : model.negative()
             history.add(DrawAction(pixel, layer))
@@ -178,7 +178,7 @@ struct EditableArtboard: View {
     }
 
     func erase(_ location: CGPoint) {
-        if let layer = history.getCurrentLayer() {
+        withCurrentLayer { layer in
             if let (_, pixel) = layer.findPixel(location) {
                 history.add(EraseAction(pixel, layer))
             }
@@ -186,13 +186,13 @@ struct EditableArtboard: View {
     }
     
     func eraseSelection() {
-        if let layer = history.getCurrentLayer() {
+        withCurrentLayer { layer in
             history.add(EraseSelectionAction(history.getCurrentSelection(), layer))
         }
     }
 
     func fill(_ location: CGPoint) {
-        if let layer = history.getCurrentLayer() {
+        withCurrentLayer { layer in
             let pixelsToFill = layer.getPixelsToFill(location)
             if let startPixel = pixelsToFill.first {
                 let originalColor = startPixel.color
@@ -216,31 +216,31 @@ struct EditableArtboard: View {
     }
 
     func line(_ location: CGPoint) {
-        if let pointA = drawSettings.multiClickState.first {
-            if let layer = history.getCurrentLayer() {
+        withCurrentLayer { layer in
+            if let pointA = drawSettings.multiClickState.first {
                 drawSettings.multiClickState.removeAll()
                 let pixels = drawSettings.createPixelLine(pointA, location).map { pixel in pixel.positive() }
                 history.add(LineAction(pixels, layer))
+            } else {
+                drawSettings.multiClickState = [location]
             }
-        } else {
-            drawSettings.multiClickState = [location]
         }
     }
 
     func rect(_ location: CGPoint) {
-        if let pointA = drawSettings.multiClickState.first {
-            if let layer = history.getCurrentLayer() {
+        withCurrentLayer { layer in
+            if let pointA = drawSettings.multiClickState.first {
                 drawSettings.multiClickState.removeAll()
                 let pixels = drawSettings.createPixelRect(pointA, location).map { pixel in pixel.positive() }
                 history.add(RectAction(pixels, layer))
+            } else {
+                drawSettings.multiClickState = [location]
             }
-        } else {
-            drawSettings.multiClickState = [location]
         }
     }
     
     func selectPath(_ path: [CGPoint]) {
-        if let layer = history.getCurrentLayer() {
+        withCurrentLayer { layer in
             let selectionPath: Path = DrawSelection(tool: drawSettings.tool, points: path).getShape()
             let pixels = layer.getSelectedPixels(in: selectionPath)
             history.add(SelectAction(pixels, layer))
@@ -248,13 +248,23 @@ struct EditableArtboard: View {
     }
     
     func move(_ path: [CGPoint]) {
-        let first = drawSettings.snapped(dragState.first)
-        let last = drawSettings.snapped(dragState.last)
-        history.add(MoveAction(
-            history.getCurrentSelection(),
-            drawSettings: drawSettings,
-            delta: last - first
-        ))
+        withCurrentLayer { _ in
+            let first = drawSettings.snapped(dragState.first)
+            let last = drawSettings.snapped(dragState.last)
+            history.add(MoveAction(
+                history.getCurrentSelection(),
+                drawSettings: drawSettings,
+                delta: last - first
+            ))
+        }
+    }
+    
+    func withCurrentLayer(_ closure: (LayerModel) -> Void) {
+        if let layer = history.getCurrentLayer() {
+            if layer.isVisible {
+                closure(layer)
+            }
+        }
     }
     
 }

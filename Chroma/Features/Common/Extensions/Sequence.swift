@@ -61,4 +61,3 @@ extension Array where Element: Equatable {
         elements.forEach { element in remove(element) }
     }
 }
-
