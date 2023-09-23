@@ -80,20 +80,12 @@
 		7554D2472AB7B9E8008CEB87 /* FilePreviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2462AB7B9E8008CEB87 /* FilePreviewList.swift */; };
 		7554D24A2AB7BC74008CEB87 /* FilesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2492AB7BC74008CEB87 /* FilesPage.swift */; };
 		7554D24C2AB8BF0B008CEB87 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D24B2AB8BF0B008CEB87 /* FileModel.swift */; };
-		7554D24E2AB8C06A008CEB87 /* PixelJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D24D2AB8C06A008CEB87 /* PixelJson.swift */; };
-		7554D2522AB8C13C008CEB87 /* SizeJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2512AB8C13C008CEB87 /* SizeJson.swift */; };
-		7554D2542AB8C169008CEB87 /* PointJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2532AB8C169008CEB87 /* PointJson.swift */; };
-		7554D2562AB8C1F5008CEB87 /* AngleJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2552AB8C1F5008CEB87 /* AngleJson.swift */; };
-		7554D2582AB8C378008CEB87 /* ColorJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2572AB8C378008CEB87 /* ColorJson.swift */; };
 		7554D25A2AB8C4B9008CEB87 /* PixelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2592AB8C4B9008CEB87 /* PixelModel.swift */; };
-		7554D25D2AB8C6CE008CEB87 /* LayerJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D25C2AB8C6CE008CEB87 /* LayerJson.swift */; };
 		7554D25F2AB8C73B008CEB87 /* LayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D25E2AB8C73B008CEB87 /* LayerModel.swift */; };
 		7554D2632AB8CDC0008CEB87 /* ArtboardHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2622AB8CDC0008CEB87 /* ArtboardHelpers.swift */; };
 		7554D2662AB8D2D1008CEB87 /* PixelHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2652AB8D2D1008CEB87 /* PixelHelpers.swift */; };
-		7554D2682AB90573008CEB87 /* ArtboardJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2672AB90573008CEB87 /* ArtboardJson.swift */; };
 		7554D26A2AB906F8008CEB87 /* TestFile1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7554D2692AB906F8008CEB87 /* TestFile1.json */; };
 		7554D26D2AB912B8008CEB87 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D26C2AB912B8008CEB87 /* JsonHelper.swift */; };
-		7554D26F2AB91310008CEB87 /* FileJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D26E2AB91310008CEB87 /* FileJson.swift */; };
 		7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2712AB9423E008CEB87 /* ExportPage.swift */; };
 		7554D2742AB9429F008CEB87 /* ExportTypeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */; };
 		7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2792AB942D4008CEB87 /* ExportType.swift */; };
@@ -144,6 +136,7 @@
 		75836D672ABE7158007172AD /* DerivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D662ABE7158007172AD /* DerivedData.swift */; };
 		75836D692ABE7396007172AD /* SelectLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D682ABE7396007172AD /* SelectLayerAction.swift */; };
 		75836D6B2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */; };
+		75836D6D2ABF4FFD007172AD /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D6C2ABF4FFD007172AD /* Angle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,20 +234,12 @@
 		7554D2462AB7B9E8008CEB87 /* FilePreviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreviewList.swift; sourceTree = "<group>"; };
 		7554D2492AB7BC74008CEB87 /* FilesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesPage.swift; sourceTree = "<group>"; };
 		7554D24B2AB8BF0B008CEB87 /* FileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
-		7554D24D2AB8C06A008CEB87 /* PixelJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelJson.swift; sourceTree = "<group>"; };
-		7554D2512AB8C13C008CEB87 /* SizeJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeJson.swift; sourceTree = "<group>"; };
-		7554D2532AB8C169008CEB87 /* PointJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointJson.swift; sourceTree = "<group>"; };
-		7554D2552AB8C1F5008CEB87 /* AngleJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleJson.swift; sourceTree = "<group>"; };
-		7554D2572AB8C378008CEB87 /* ColorJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorJson.swift; sourceTree = "<group>"; };
 		7554D2592AB8C4B9008CEB87 /* PixelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelModel.swift; sourceTree = "<group>"; };
-		7554D25C2AB8C6CE008CEB87 /* LayerJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerJson.swift; sourceTree = "<group>"; };
 		7554D25E2AB8C73B008CEB87 /* LayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerModel.swift; sourceTree = "<group>"; };
 		7554D2622AB8CDC0008CEB87 /* ArtboardHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardHelpers.swift; sourceTree = "<group>"; };
 		7554D2652AB8D2D1008CEB87 /* PixelHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelHelpers.swift; sourceTree = "<group>"; };
-		7554D2672AB90573008CEB87 /* ArtboardJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardJson.swift; sourceTree = "<group>"; };
 		7554D2692AB906F8008CEB87 /* TestFile1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestFile1.json; sourceTree = "<group>"; };
 		7554D26C2AB912B8008CEB87 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
-		7554D26E2AB91310008CEB87 /* FileJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileJson.swift; sourceTree = "<group>"; };
 		7554D2712AB9423E008CEB87 /* ExportPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportPage.swift; sourceTree = "<group>"; };
 		7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportTypeControl.swift; sourceTree = "<group>"; };
 		7554D2792AB942D4008CEB87 /* ExportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportType.swift; sourceTree = "<group>"; };
@@ -305,6 +290,7 @@
 		75836D662ABE7158007172AD /* DerivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedData.swift; sourceTree = "<group>"; };
 		75836D682ABE7396007172AD /* SelectLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLayerAction.swift; sourceTree = "<group>"; };
 		75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleLayerVisibilityAction.swift; sourceTree = "<group>"; };
+		75836D6C2ABF4FFD007172AD /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,7 +424,6 @@
 			children = (
 				7554D2942ABB7F89008CEB87 /* Events */,
 				7554D2752AB942BB008CEB87 /* Export */,
-				7554D24F2AB8C12D008CEB87 /* Json */,
 				7554D2412AB7B53D008CEB87 /* File */,
 				7554D2382AB7A538008CEB87 /* AppSettings */,
 				7554D2142AB797F3008CEB87 /* Common */,
@@ -513,7 +498,6 @@
 		7554D1C02AB78A62008CEB87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7554D25C2AB8C6CE008CEB87 /* LayerJson.swift */,
 				7554D25E2AB8C73B008CEB87 /* LayerModel.swift */,
 			);
 			path = Models;
@@ -871,7 +855,6 @@
 		7554D2012AB78F3B008CEB87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7554D2672AB90573008CEB87 /* ArtboardJson.swift */,
 				7554D2082AB78FC7008CEB87 /* ArtboardModel.swift */,
 			);
 			path = Models;
@@ -913,7 +896,6 @@
 		7554D2132AB791FA008CEB87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7554D24D2AB8C06A008CEB87 /* PixelJson.swift */,
 				7554D2592AB8C4B9008CEB87 /* PixelModel.swift */,
 			);
 			path = Models;
@@ -1002,6 +984,7 @@
 		7554D22A2AB7A38C008CEB87 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				75836D6C2ABF4FFD007172AD /* Angle.swift */,
 				7554D1942AB50B42008CEB87 /* Color.swift */,
 				7554D1762AB28F3E008CEB87 /* CGPoint.swift */,
 				7554D22B2AB7A39E008CEB87 /* CGRect.swift */,
@@ -1063,7 +1046,6 @@
 		7554D2432AB7B54E008CEB87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7554D26E2AB91310008CEB87 /* FileJson.swift */,
 				7554D24B2AB8BF0B008CEB87 /* FileModel.swift */,
 			);
 			path = Models;
@@ -1075,26 +1057,6 @@
 				7554D2492AB7BC74008CEB87 /* FilesPage.swift */,
 			);
 			path = Pages;
-			sourceTree = "<group>";
-		};
-		7554D24F2AB8C12D008CEB87 /* Json */ = {
-			isa = PBXGroup;
-			children = (
-				7554D2502AB8C132008CEB87 /* Models */,
-				7554D26B2AB912AD008CEB87 /* Helpers */,
-			);
-			path = Json;
-			sourceTree = "<group>";
-		};
-		7554D2502AB8C132008CEB87 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7554D2512AB8C13C008CEB87 /* SizeJson.swift */,
-				7554D2532AB8C169008CEB87 /* PointJson.swift */,
-				7554D2552AB8C1F5008CEB87 /* AngleJson.swift */,
-				7554D2572AB8C378008CEB87 /* ColorJson.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		7554D2612AB8CDA3008CEB87 /* Helpers */ = {
@@ -1161,6 +1123,7 @@
 		7554D28B2ABA6068008CEB87 /* FileDocuments */ = {
 			isa = PBXGroup;
 			children = (
+				7554D26B2AB912AD008CEB87 /* Helpers */,
 				7554D2802ABA0F8F008CEB87 /* JsonDocument.swift */,
 				7554D28C2ABA6080008CEB87 /* PngDocument.swift */,
 			);
@@ -1405,7 +1368,7 @@
 				7554D16D2AB119FD008CEB87 /* PixelCursor.swift in Sources */,
 				7554D1602AAFF3C9008CEB87 /* ShapeButton.swift in Sources */,
 				7554D2B82ABCAFAA008CEB87 /* DrawToolButton.swift in Sources */,
-				7554D2562AB8C1F5008CEB87 /* AngleJson.swift in Sources */,
+				75836D6D2ABF4FFD007172AD /* Angle.swift in Sources */,
 				7554D10E2AAFB6B8008CEB87 /* ContentView.swift in Sources */,
 				7554D2EA2ABD4856008CEB87 /* DrawSelection.swift in Sources */,
 				7554D1A62AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift in Sources */,
@@ -1413,7 +1376,6 @@
 				7554D2E82ABD3E5F008CEB87 /* MoveAction.swift in Sources */,
 				7554D24A2AB7BC74008CEB87 /* FilesPage.swift in Sources */,
 				7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */,
-				7554D2522AB8C13C008CEB87 /* SizeJson.swift in Sources */,
 				7554D24C2AB8BF0B008CEB87 /* FileModel.swift in Sources */,
 				7554D17C2AB29BAB008CEB87 /* ZoomButtons.swift in Sources */,
 				7554D1892AB4BC12008CEB87 /* InverseQuadrant.swift in Sources */,
@@ -1423,11 +1385,8 @@
 				7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */,
 				7554D19F2AB60CE6008CEB87 /* ButtonColorStyle.swift in Sources */,
 				7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */,
-				7554D24E2AB8C06A008CEB87 /* PixelJson.swift in Sources */,
-				7554D2682AB90573008CEB87 /* ArtboardJson.swift in Sources */,
 				7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */,
 				7554D2E42ABD3938008CEB87 /* FillAction.swift in Sources */,
-				7554D2542AB8C169008CEB87 /* PointJson.swift in Sources */,
 				7554D2DE2ABD38FD008CEB87 /* EraseMultipleAction.swift in Sources */,
 				75836D692ABE7396007172AD /* SelectLayerAction.swift in Sources */,
 				7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */,
@@ -1442,7 +1401,6 @@
 				7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
 				7554D2DC2ABD38F3008CEB87 /* EraseAction.swift in Sources */,
-				7554D2582AB8C378008CEB87 /* ColorJson.swift in Sources */,
 				7554D2D42ABD28C2008CEB87 /* LassoSelectToolButton.swift in Sources */,
 				7554D2AD2ABBEFCE008CEB87 /* Sequence.swift in Sources */,
 				7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */,
@@ -1453,7 +1411,6 @@
 				7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
 				7554D21B2AB79901008CEB87 /* Well.swift in Sources */,
-				7554D25D2AB8C6CE008CEB87 /* LayerJson.swift in Sources */,
 				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
 				7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,
@@ -1509,7 +1466,6 @@
 				7554D1732AB2775B008CEB87 /* Panel.swift in Sources */,
 				7554D13D2AAFBA49008CEB87 /* Minimap.swift in Sources */,
 				7554D2AB2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift in Sources */,
-				7554D26F2AB91310008CEB87 /* FileJson.swift in Sources */,
 				7554D1C72AB78AFF008CEB87 /* TileMode.swift in Sources */,
 				7554D1D52AB78C32008CEB87 /* WorkspaceBackgroundColor.swift in Sources */,
 				7554D22C2AB7A39E008CEB87 /* CGRect.swift in Sources */,

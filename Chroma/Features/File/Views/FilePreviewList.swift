@@ -38,7 +38,7 @@ struct FilePreviewList: View {
 struct FilePreviewList_Previews: PreviewProvider {
     static var previews: some View {
         FilePreviewList(files: [
-            FileModel(loadFile()),
+            loadFile(),
             FileModel(artboard: PreviewArtboardModelBuilder().build()),
             FileModel(artboard: PreviewArtboardModelBuilder().build()),
             FileModel(artboard: PreviewArtboardModelBuilder().build()),
@@ -48,7 +48,7 @@ struct FilePreviewList_Previews: PreviewProvider {
         ])
     }
 
-    static func loadFile() -> FileJson {
-        return load("TestFile1.json") ?? FileJson.Empty()
+    static func loadFile() -> FileModel {
+        return load("TestFile1.json") ?? FileModel.Empty()
     }
 }

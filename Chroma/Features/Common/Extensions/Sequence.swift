@@ -39,11 +39,17 @@ extension Sequence where Element: Equatable {
 }
 
 extension Array {
-    func get(at index: Int) -> Self.Element? {
+    func get(at index: Int) -> Element? {
         if index <= self.underestimatedCount && index >= 0 {
             return self[index]
         }
         return nil
+    }
+    
+    func grouped(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, count)])
+        }
     }
 }
 
@@ -51,4 +57,8 @@ extension Array where Element: Equatable {
     public mutating func remove(_ element: Element) {
         removeAll(where: { other in other == element })
     }
+    public mutating func removeEach(_ elements: [Element]) {
+        elements.forEach { element in remove(element) }
+    }
 }
+

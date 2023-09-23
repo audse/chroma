@@ -31,11 +31,11 @@ class EraseMultipleAction: Action {
 
     override func undo() {
         if let startIndex = startIndex {
-            layer.insertPixels(pixels, at: startIndex)
+            layer.pixels.insert(contentsOf: pixels, at: startIndex)
         }
     }
 
     override func redo() {
-        layer.pixels = layer.pixels.filterOut(pixels.contains)
+        layer.pixels.removeEach(pixels)
     }
 }

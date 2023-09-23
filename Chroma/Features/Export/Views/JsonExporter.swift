@@ -32,7 +32,7 @@ struct JsonExporter: View {
 
     func getJsonDocument() -> JsonDocument {
         do {
-            let document = try JsonDocument(FileJson(file))
+            let document = try JsonDocument(file)
             return document
         } catch {
             print("Error!! \(error)")

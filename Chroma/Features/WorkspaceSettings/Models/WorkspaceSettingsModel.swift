@@ -12,7 +12,7 @@ class WorkspaceSettingsModel: ObservableObject {
         didSet { saveProperty(key: "gridMode", value: gridMode) }
     }
     @Published var gridColor: Color = .gray.opacity(0.2) {
-        didSet { saveProperty(key: "gridColor", value: ColorJson(gridColor)) }
+        didSet { saveProperty(key: "gridColor", value: gridColor) }
     }
     @Published var gridThickness: Double = 1.0 {
         didSet { saveProperty(key: "gridThickness", value: gridThickness) }
@@ -34,7 +34,7 @@ class WorkspaceSettingsModel: ObservableObject {
         self.gridMode = gridMode ?? getSavedProperty(key: "gridMode", defaultValue: .dots)
         self.gridThickness = gridThickness ?? getSavedProperty(key: "gridThickness", defaultValue: 1.0)
         self.gridColor = gridColor
-            ?? Color(getSavedProperty(key: "gridColor", defaultValue: ColorJson(.gray.opacity(0.2))))
+            ?? getSavedProperty(key: "gridColor", defaultValue: Color.gray.opacity(0.2))
         self.backgroundColor = backgroundColor
             ?? getSavedProperty(key: "backgroundColor", defaultValue: .followColorScheme)
         self.tileMode = tileMode

@@ -43,6 +43,22 @@ extension Color {
         #endif
         return (r, g, b, o)
     }
+    
+    var red: CGFloat {
+        return components.red
+    }
+    
+    var green: CGFloat {
+        return components.green
+    }
+    
+    var blue: CGFloat {
+        return components.blue
+    }
+    
+    var opacity: CGFloat {
+        return components.opacity
+    }
 
     var luminance: CGFloat {
         let (r, g, b, _) = components
@@ -83,22 +99,28 @@ extension Color {
 }
 
 extension Color: Codable {
-    var json: ColorJson {
-        return ColorJson(self)
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case json
+    internal enum CodingKeys: CodingKey {
+        case red
+        case green
+        case blue
+        case opacity
     }
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let colorJson: ColorJson = try values.decode(ColorJson.self, forKey: .json)
-        self.init(colorJson)
+        self.init(
+            red: try values.decode(CGFloat.self, forKey: .red),
+            green: try values.decode(CGFloat.self, forKey: .green),
+            blue: try values.decode(CGFloat.self, forKey: .blue),
+            opacity: try values.decode(CGFloat.self, forKey: .opacity)
+        )
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.json, forKey: CodingKeys.json)
+        try container.encode(red, forKey: .red)
+        try container.encode(green, forKey: .green)
+        try container.encode(blue, forKey: .blue)
+        try container.encode(opacity, forKey: .opacity)
     }
 }

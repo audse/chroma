@@ -7,35 +7,44 @@
 
 import SwiftUI
 
-extension CGPoint: AdditiveArithmetic {
-    init(_ number: CGFloat) {
+extension CGPoint {
+    public init(_ number: CGFloat) {
         self = CGPoint(x: number, y: number)
     }
-
-    init(_ x: CGFloat, _ y: CGFloat) {
+    public init(_ x: CGFloat, _ y: CGFloat) {
         self = CGPoint(x: x, y: y)
     }
-    
-    init(_ size: CGSize) {
+    public init(_ size: CGSize) {
         self = CGPoint(x: size.width, y: size.height)
     }
+}
 
-    func distance(to point: CGPoint) -> CGFloat {
+extension CGPoint {
+    /**
+     Returns the distance between `self` and `to point`
+     */
+    public func distance(to point: CGPoint) -> CGFloat {
         return sqrt((x - point.x) * (x - point.x) + (y - point.y) * (y - point.y))
     }
-
-    func moveToward(_ point: CGPoint, by delta: CGFloat) -> CGPoint {
+    
+    /**
+     Moves `self` towards `point` by a distance of `delta`
+     */
+    public func moveToward(_ point: CGPoint, by delta: CGFloat) -> CGPoint {
         let temp = point - self
         let len = temp.length
         return len <= delta || len < CGFLOAT_EPSILON ? point : (self + temp / CGPoint(len) * CGPoint(delta))
     }
-
-    var length: CGFloat {
+    
+    /**
+     Returns the length of `self` as a vector
+     */
+    public var length: CGFloat {
         return sqrt(x * x + y * y)
     }
+}
 
-    // Operators
-
+extension CGPoint: AdditiveArithmetic {
     public static func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(
             x: lhs.x + rhs.x,

@@ -24,12 +24,12 @@ class EraseAction: Action {
     }
     
     override func perform() {
-        layer.removePixel(pixel)
+        layer.pixels.remove(pixel)
     }
 
     override func undo() {
         if let index = index {
-            layer.insertPixel(pixel, at: index)
+            layer.pixels.insert(pixel, at: index)
         }
     }
 

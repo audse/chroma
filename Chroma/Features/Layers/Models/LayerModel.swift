@@ -8,19 +8,20 @@
 import SwiftUI
 import Combine
 
-class LayerModel: ObservableObject, Identifiable, Equatable {
-    private(set) var id = UUID()
-    @Published private(set) var name = "Layer"
-    @Published var pixels: [LayerPixelModel] = [] {
+public final class LayerModel: ObservableObject, Identifiable {
+    public let id: UUID
+    @Published public private(set) var name = "Layer"
+    
+    // swiftlint:disable:next identifier_name
+    internal var _pixelCancellables: [AnyCancellable] = []
+    @Published public var pixels: [LayerPixelModel] = [] {
         didSet { self._pixelCancellables = self.pixels.map { pixel in
             pixel.pixel.objectWillChange.sink { _ in self.objectWillChange.send() }
         } }
     }
-    @Published private(set) var isVisible: Bool = true
-
-    // swiftlint:disable:next identifier_name
-    internal var _pixelCancellables: [AnyCancellable] = []
-
+    
+    @Published public private(set) var isVisible: Bool = true
+    
     init(
         id: UUID = UUID(),
         name: String = "Layer",
@@ -32,28 +33,42 @@ class LayerModel: ObservableObject, Identifiable, Equatable {
         self.pixels = pixels
         self.isVisible = isVisible
     }
+}
 
-    func addPixel(_ pixel: LayerPixelModel) {
-        pixels.append(pixel)
+extension LayerModel: Equatable {
+    public static func == (lhs: LayerModel, rhs: LayerModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
+extension LayerModel: Codable {
+    internal enum CodingKeys: CodingKey {
+        case id
+        case name
+        case pixels
+        case isVisible
     }
     
-    func insertPixel(_ pixel: LayerPixelModel, at index: Int) {
-        pixels.insert(pixel, at: index)
+    public convenience init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.init(
+            id: try values.decode(UUID.self, forKey: .id),
+            name: try values.decode(String.self, forKey: .name),
+            pixels: try values.decode([LayerPixelModel].self, forKey: .pixels),
+            isVisible: try values.decode(Bool.self, forKey: .isVisible)
+        )
     }
     
-    func insertPixels(_ pixelsToInsert: [LayerPixelModel], at index: Int) {
-        pixels.insert(contentsOf: pixelsToInsert, at: index)
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(pixels, forKey: .pixels)
+        try container.encode(isVisible, forKey: .isVisible)
     }
-    
-    func removePixel(_ value: LayerPixelModel) {
-        pixels = pixels.filterOut(value)
-    }
+}
 
-    func removePixel(_ index: Int) -> LayerPixelModel {
-        let pixel = pixels.remove(at: index)
-        return pixel
-    }
-
+extension LayerModel {
     func findPixel(_ value: LayerPixelModel) -> Int? {
         return pixels.firstIndex(of: value)
     }
@@ -108,9 +123,5 @@ class LayerModel: ObservableObject, Identifiable, Equatable {
 
     func toggle() {
         isVisible.toggle()
-    }
-    
-    static func == (lhs: LayerModel, rhs: LayerModel) -> Bool {
-        return lhs.id == rhs.id
     }
 }

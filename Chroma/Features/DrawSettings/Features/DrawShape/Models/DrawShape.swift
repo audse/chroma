@@ -8,9 +8,26 @@
 import SwiftUI
 
 public struct DrawShape: Identifiable {
-    public var id: String
-    public var shape: AnyShape
-    public var keyboardShortcut: KeyEquivalent?
+    public let id: String
+    public let shape: AnyShape
+    public let keyboardShortcut: KeyEquivalent?
+}
+
+extension DrawShape: Codable {
+    internal enum CodingKeys: CodingKey {
+        case id
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let id = try values.decode(String.self, forKey: .id)
+        self = AllDrawShapes.find(by: id) ?? SquareShape
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+    }
 }
 
 // swiftlint:disable identifier_name

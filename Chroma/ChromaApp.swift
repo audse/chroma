@@ -57,9 +57,9 @@ struct Editor: View {
                 onCompletion: { result in
                     switch result {
                     case .success(let url):
-                        let newFile: FileJson? = load(url[0])
+                        let newFile: FileModel? = load(url[0])
                         if let newFile = newFile {
-                            file.setFile(FileModel(newFile))
+                            file.setFile(newFile)
                         }
                     case .failure(let error): print(error)
                     }

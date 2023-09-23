@@ -24,16 +24,16 @@ class DrawAction: Action {
     
     override func perform() {
         index = layer.pixels.count
-        layer.addPixel(pixel)
+        layer.pixels.append(pixel)
     }
     
     override func undo() {
-        layer.removePixel(pixel)
+        layer.pixels.remove(pixel)
     }
 
     override func redo() {
         if let index = index {
-            layer.insertPixel(pixel, at: index)
+            layer.pixels.insert(pixel, at: index)
         }
     }
 }

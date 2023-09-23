@@ -15,7 +15,7 @@ struct PngDocument: FileDocument {
 
     init(_ cgImage: CGImage?) {
         if let cgImage = cgImage {
-            let image = NSImage(cgImage: cgImage, size: .init(width: 512, height: 512))
+            let image = NSImage(cgImage: cgImage, size: .init(width: cgImage.width, height: cgImage.height))
             guard let representation = image.tiffRepresentation else { return }
             let imageRepresentation = NSBitmapImageRep(data: representation)
             self.data = imageRepresentation?.representation(using: .png, properties: [:])

@@ -23,19 +23,19 @@ class DrawMultipleAction: Action {
     }
     
     override func perform() {
-        pixels.forEach(layer.addPixel)
+        layer.pixels.append(contentsOf: pixels)
         if let firstPixel = pixels.first {
             self.startIndex = layer.findPixel(firstPixel)
         }
     }
 
     override func undo() {
-        layer.pixels = layer.pixels.filterOut(pixels.contains)
+        layer.pixels.removeEach(pixels)
     }
 
     override func redo() {
         if let startIndex = startIndex {
-            layer.insertPixels(pixels, at: startIndex)
+            layer.pixels.insert(contentsOf: pixels, at: startIndex)
         }
     }
 }
