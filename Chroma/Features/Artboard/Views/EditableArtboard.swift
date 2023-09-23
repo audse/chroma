@@ -7,34 +7,6 @@
 
 import SwiftUI
 
-private enum DragState: Equatable {
-    case inactive
-    case dragging([CGPoint])
-    
-    var points: [CGPoint] {
-        switch self {
-        case .dragging(let points): return points
-        default: return []
-        }
-    }
-    
-    var last: CGPoint {
-        return points.last ?? CGPoint()
-    }
-    
-    var first: CGPoint {
-        return points.first ?? CGPoint()
-    }
-    
-    var delta: CGSize {
-        let first = self.first, last = self.last
-        return CGSize(
-            width: last.x - first.x,
-            height: last.y - first.y
-        )
-    }
-}
-
 struct EditableArtboard: View {
     @EnvironmentObject var drawSettings: DrawSettings
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
@@ -46,7 +18,7 @@ struct EditableArtboard: View {
 
     @State var ghostPixels: [PixelModel] = []
     
-    @State private var dragState = DragState.inactive
+    @State var dragState = DragPathState.inactive
     
     var body: some View {
         ZStack {
@@ -57,10 +29,6 @@ struct EditableArtboard: View {
                 .labelsHidden()
                 .keyboardShortcut("x", modifiers: [.command])
             
-            let drag = DragGesture(minimumDistance: drawSettings.getPixelSize() / 2)
-                .onChanged(onDragChanged)
-                .onEnded { _ in onDragEnded() }
-            
             Artboard(artboard: file.artboard)
                 .onTapGesture(perform: onTap)
                 .onHover { isHoveringValue in
@@ -68,7 +36,12 @@ struct EditableArtboard: View {
                 }
                 .onContinuousHover(perform: onContinuousHover)
                 .releaseFocusOnTap()
-                .simultaneousGesture(drag)
+                .dragPathGesture(
+                    state: $dragState,
+                    minimumDistance: drawSettings.getPixelSize() / 2,
+                    onChanged: onDragChanged,
+                    onBeforeEnded: onDragEnded
+                )
             
             if [.lassoSelect, .rectSelect].contains(drawSettings.tool) {
                 if case .dragging(let path) = dragState {
@@ -114,26 +87,17 @@ struct EditableArtboard: View {
         }
     }
     
-    func onDragChanged(value: DragGesture.Value) {
-        switch dragState {
-        case .inactive: dragState = .dragging([value.location])
-        case .dragging(var points):
-            points.append(value.location)
-            dragState = .dragging(points)
-        }
-        ghostPixels = getGhostPixels(value.location)
+    func onDragChanged(_ value: DragPathState) {
+        ghostPixels = getGhostPixels(value.last)
     }
     
-    func onDragEnded() {
-        if case .dragging(let currentPath) = dragState {
-            if [.rectSelect, .lassoSelect].contains(drawSettings.tool) {
-                selectPath(currentPath)
-            }
-            if drawSettings.tool == .move {
-                move(currentPath)
-            }
+    func onDragEnded(_ value: DragPathState) {
+        if [.rectSelect, .lassoSelect].contains(drawSettings.tool) {
+            selectPath(value.points)
         }
-        dragState = .inactive
+        if drawSettings.tool == .move {
+            move(value.points)
+        }
     }
 
     func onContinuousHover(_ phase: HoverPhase) {
