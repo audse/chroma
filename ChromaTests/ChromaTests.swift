@@ -46,4 +46,33 @@ final class SequenceExtensionTest: XCTestCase {
         let itemsB: [Int] = [2, 3, 4, 5]
         XCTAssert(itemsA.xor(itemsB).elementsEqual([1, 5]))
     }
+    
+    func testRemove() throws {
+        var items: [Int] = [1, 2, 3, 4]
+        items.remove(1)
+        XCTAssert(items.elementsEqual([2, 3, 4]))
+        items.remove(5)
+        XCTAssert(items.elementsEqual([2, 3, 4]))
+    }
+    
+    func testRemoveEach() throws {
+        var items: [Int] = [1, 2, 3, 4]
+        items.removeEach([2, 4])
+        XCTAssert(items.elementsEqual([1, 3]))
+    }
+    
+    func testGet() throws {
+        let items: [Int] = [1, 2, 3, 4]
+        XCTAssert(items.get(at: 0) == .some(1))
+        XCTAssert(items.get(at: -1) == nil)
+        XCTAssert(items.get(at: 4) == nil)
+    }
+    
+    func testGrouped() throws {
+        let items: [Int] = [1, 2, 3, 4]
+        let groups = items.grouped(by: 2)
+        XCTAssert(groups.count == 2)
+        XCTAssert(groups[0].elementsEqual([1, 2]))
+        XCTAssert(groups[1].elementsEqual([3, 4]))
+    }
 }

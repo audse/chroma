@@ -39,14 +39,14 @@ extension Sequence where Element: Equatable {
 }
 
 extension Array {
-    func get(at index: Int) -> Element? {
-        if index <= self.underestimatedCount && index >= 0 {
+    public func get(at index: Int) -> Element? {
+        if index <= (self.count - 1) && index >= 0 {
             return self[index]
         }
         return nil
     }
     
-    func grouped(into size: Int) -> [[Element]] {
+    public func grouped(by size: Int) -> [[Element]] {
         return stride(from: 0, to: count, by: size).map {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }

@@ -49,7 +49,7 @@ extension ArtboardModel: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.init(
             id: try values.decode(UUID.self, forKey: .id),
-            name: try values.decode(String.self, forKey: .name),
+            name: try values.decode(String?.self, forKey: .name),
             size: try values.decode(CGSize.self, forKey: .size),
             backgroundColor: try values.decode(Color.self, forKey: .backgroundColor),
             layers: try values.decode([LayerModel].self, forKey: .layers)
