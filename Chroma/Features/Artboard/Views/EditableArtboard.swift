@@ -261,7 +261,7 @@ struct EditableArtboard: View {
     
     func withCurrentLayer(_ closure: (LayerModel) -> Void) {
         if let layer = history.getCurrentLayer() {
-            if layer.isVisible {
+            if layer.isVisible && !layer.isLocked {
                 closure(layer)
             }
         }

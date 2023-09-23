@@ -1,5 +1,5 @@
 //
-//  ToggleLayerVisibilityAction.swift
+//  ToggleLayerLockAction.swift
 //  Chroma
 //
 //  Created by Audrey Serene on 9/23/23.
@@ -7,32 +7,32 @@
 
 import Foundation
 
-class ToggleLayerVisibilityAction: Action {
+class ToggleLayerLockAction: Action {
     let layer: LayerModel
     let initialState: Bool
     
     init(_ layer: LayerModel) {
         self.layer = layer
-        self.initialState = layer.isVisible
+        self.initialState = layer.isLocked
         super.init()
     }
     
     override func getText() -> String {
         switch initialState {
-        case true: return "Hide Layer"
-        case false: return "Show Layer"
+        case true: return "Unlock Layer"
+        case false: return "Lock Layer"
         }
     }
     
     override func perform() {
-        layer.isVisible.toggle()
+        layer.isLocked.toggle()
     }
     
     override func undo() {
-        layer.isVisible.toggle()
+        layer.isLocked.toggle()
     }
     
     override func redo() {
-        layer.isVisible.toggle()
+        layer.isLocked.toggle()
     }
 }

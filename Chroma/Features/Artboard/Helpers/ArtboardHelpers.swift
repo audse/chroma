@@ -25,7 +25,7 @@ struct PreviewArtboardModelBuilder {
             for _ in 0...pixelsPerLayer {
                 pixels.append(PreviewPixelBuilder(artboardSize: size).build())
             }
-            artboard.addLayer(LayerModel(
+            artboard.layers.append(LayerModel(
                 name: "Layer \(index)",
                 pixels: pixels
             ))

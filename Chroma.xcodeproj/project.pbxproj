@@ -137,6 +137,12 @@
 		75836D692ABE7396007172AD /* SelectLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D682ABE7396007172AD /* SelectLayerAction.swift */; };
 		75836D6B2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */; };
 		75836D6D2ABF4FFD007172AD /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D6C2ABF4FFD007172AD /* Angle.swift */; };
+		75836D6F2ABF6358007172AD /* ToggleLayerLockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D6E2ABF6358007172AD /* ToggleLayerLockAction.swift */; };
+		75836D712ABF63FD007172AD /* LayerVisibiltyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D702ABF63FD007172AD /* LayerVisibiltyButton.swift */; };
+		75836D732ABF6455007172AD /* LayerLockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D722ABF6455007172AD /* LayerLockButton.swift */; };
+		75836D752ABF6474007172AD /* LayerListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D742ABF6474007172AD /* LayerListItem.swift */; };
+		75836D772ABF6644007172AD /* DeleteLayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D762ABF6644007172AD /* DeleteLayerButton.swift */; };
+		75836D792ABF67E1007172AD /* NewLayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D782ABF67E1007172AD /* NewLayerButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +297,12 @@
 		75836D682ABE7396007172AD /* SelectLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLayerAction.swift; sourceTree = "<group>"; };
 		75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleLayerVisibilityAction.swift; sourceTree = "<group>"; };
 		75836D6C2ABF4FFD007172AD /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
+		75836D6E2ABF6358007172AD /* ToggleLayerLockAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleLayerLockAction.swift; sourceTree = "<group>"; };
+		75836D702ABF63FD007172AD /* LayerVisibiltyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerVisibiltyButton.swift; sourceTree = "<group>"; };
+		75836D722ABF6455007172AD /* LayerLockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerLockButton.swift; sourceTree = "<group>"; };
+		75836D742ABF6474007172AD /* LayerListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerListItem.swift; sourceTree = "<group>"; };
+		75836D762ABF6644007172AD /* DeleteLayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLayerButton.swift; sourceTree = "<group>"; };
+		75836D782ABF67E1007172AD /* NewLayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLayerButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,6 +486,7 @@
 				75836D642ABE6B56007172AD /* DeleteLayerAction.swift */,
 				75836D682ABE7396007172AD /* SelectLayerAction.swift */,
 				75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */,
+				75836D6E2ABF6358007172AD /* ToggleLayerLockAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -491,6 +504,11 @@
 			isa = PBXGroup;
 			children = (
 				7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */,
+				75836D742ABF6474007172AD /* LayerListItem.swift */,
+				75836D702ABF63FD007172AD /* LayerVisibiltyButton.swift */,
+				75836D722ABF6455007172AD /* LayerLockButton.swift */,
+				75836D782ABF67E1007172AD /* NewLayerButton.swift */,
+				75836D762ABF6644007172AD /* DeleteLayerButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1365,6 +1383,7 @@
 				7554D26D2AB912B8008CEB87 /* JsonHelper.swift in Sources */,
 				7554D2252AB79C29008CEB87 /* ButtonColor.swift in Sources */,
 				7554D2912ABA7599008CEB87 /* NumberFormatter.swift in Sources */,
+				75836D792ABF67E1007172AD /* NewLayerButton.swift in Sources */,
 				7554D16D2AB119FD008CEB87 /* PixelCursor.swift in Sources */,
 				7554D1602AAFF3C9008CEB87 /* ShapeButton.swift in Sources */,
 				7554D2B82ABCAFAA008CEB87 /* DrawToolButton.swift in Sources */,
@@ -1383,6 +1402,7 @@
 				7554D1872AB3D1D4008CEB87 /* ScaleTypeButtons.swift in Sources */,
 				7554D1BB2AB789BC008CEB87 /* Action.swift in Sources */,
 				7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */,
+				75836D772ABF6644007172AD /* DeleteLayerButton.swift in Sources */,
 				7554D19F2AB60CE6008CEB87 /* ButtonColorStyle.swift in Sources */,
 				7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */,
 				7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */,
@@ -1410,6 +1430,7 @@
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
 				7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
+				75836D732ABF6455007172AD /* LayerLockButton.swift in Sources */,
 				7554D21B2AB79901008CEB87 /* Well.swift in Sources */,
 				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
 				7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */,
@@ -1441,6 +1462,7 @@
 				7554D1BD2AB789FF008CEB87 /* History.swift in Sources */,
 				7554D15C2AAFEEE8008CEB87 /* Quadrant.swift in Sources */,
 				7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */,
+				75836D6F2ABF6358007172AD /* ToggleLayerLockAction.swift in Sources */,
 				7554D2A02ABB9573008CEB87 /* DotsGridView.swift in Sources */,
 				7554D2BA2ABCAFD8008CEB87 /* EraseToolButton.swift in Sources */,
 				7554D1662AB0D508008CEB87 /* RotationControl.swift in Sources */,
@@ -1451,10 +1473,12 @@
 				7554D2BE2ABCB048008CEB87 /* LineToolButton.swift in Sources */,
 				75836D652ABE6B56007172AD /* DeleteLayerAction.swift in Sources */,
 				7554D14E2AAFD4DD008CEB87 /* ToolList.swift in Sources */,
+				75836D752ABF6474007172AD /* LayerListItem.swift in Sources */,
 				7554D2472AB7B9E8008CEB87 /* FilePreviewList.swift in Sources */,
 				7554D25A2AB8C4B9008CEB87 /* PixelModel.swift in Sources */,
 				7554D1F12AB78DDC008CEB87 /* DrawTool.swift in Sources */,
 				7554D1992AB53D11008CEB87 /* TileModeButtons.swift in Sources */,
+				75836D712ABF63FD007172AD /* LayerVisibiltyButton.swift in Sources */,
 				7554D2E02ABD390B008CEB87 /* EraseSelectionAction.swift in Sources */,
 				7554D1952AB50B42008CEB87 /* Color.swift in Sources */,
 				75836D6B2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift in Sources */,

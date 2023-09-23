@@ -23,17 +23,17 @@ class DeleteLayerAction: Action {
     }
     
     override func perform() {
-        index = artboard.getIndex(layer)
-        artboard.removeLayer(layer)
+        index = artboard.layers.firstIndex(of: layer)
+        artboard.layers.remove(layer)
     }
     
     override func undo() {
         if let index {
-            artboard.insertLayer(layer, at: index)
+            artboard.layers.insert(layer, at: index)
         }
     }
     
     override func redo() {
-        artboard.removeLayer(layer)
+        artboard.layers.remove(layer)
     }
 }

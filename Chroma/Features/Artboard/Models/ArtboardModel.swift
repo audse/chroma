@@ -15,7 +15,7 @@ public final class ArtboardModel: ObservableObject, Identifiable {
     @Published public var backgroundColor: Color
     
     private var _layerCancellables: [AnyCancellable] = []
-    @Published private(set) var layers: [LayerModel] {
+    @Published public var layers: [LayerModel] {
         didSet { _layerCancellables = layers.map { layer in
             layer.objectWillChange.sink { _ in self.objectWillChange.send() }
         } }
@@ -74,24 +74,8 @@ extension ArtboardModel {
 
     func newLayer(_ pixels: [LayerPixelModel] = []) -> LayerModel {
         let newLayer = LayerModel(name: "Layer \(layers.count)", pixels: pixels)
-        addLayer(newLayer)
+        layers.append(newLayer)
         return newLayer
-    }
-
-    func addLayer(_ layer: LayerModel) {
-        layers.append(layer)
-    }
-    
-    func insertLayer(_ layer: LayerModel, at index: Int) {
-        layers.insert(layer, at: index)
-    }
-
-    func removeLayer(_ layer: LayerModel) {
-        layers.remove(layer)
-    }
-
-    func getIndex(_ layer: LayerModel) -> Int? {
-        return layers.firstIndex(of: layer)
     }
 
     func resize(width: CGFloat? = nil, height: CGFloat? = nil) {

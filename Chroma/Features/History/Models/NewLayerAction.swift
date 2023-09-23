@@ -28,15 +28,13 @@ class NewLayerAction: Action {
     
     override func undo() {
         if let layer {
-            artboard.removeLayer(layer)
+            artboard.layers.remove(layer)
         }
     }
     
     override func redo() {
-        if let layer {
-            if let index {
-                artboard.insertLayer(layer, at: index)
-            }
+        if let layer, let index {
+            artboard.layers.insert(layer, at: index)
         }
     }
 }

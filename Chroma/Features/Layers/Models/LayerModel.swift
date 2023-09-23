@@ -10,28 +10,31 @@ import Combine
 
 public final class LayerModel: ObservableObject, Identifiable {
     public let id: UUID
-    @Published public private(set) var name = "Layer"
+    @Published public var name: String
     
     // swiftlint:disable:next identifier_name
     internal var _pixelCancellables: [AnyCancellable] = []
-    @Published public var pixels: [LayerPixelModel] = [] {
+    @Published public var pixels: [LayerPixelModel] {
         didSet { self._pixelCancellables = self.pixels.map { pixel in
             pixel.pixel.objectWillChange.sink { _ in self.objectWillChange.send() }
         } }
     }
     
-    @Published public private(set) var isVisible: Bool = true
+    @Published public var isVisible: Bool
+    @Published public var isLocked: Bool
     
     init(
         id: UUID = UUID(),
         name: String = "Layer",
         pixels: [LayerPixelModel] = [],
-        isVisible: Bool = true
+        isVisible: Bool = true,
+        isLocked: Bool = false
     ) {
         self.id = id
         self.name = name
         self.pixels = pixels
         self.isVisible = isVisible
+        self.isLocked = isLocked
     }
 }
 
@@ -119,9 +122,5 @@ extension LayerModel {
     
     func getSelectedPixels(in shape: Path) -> [LayerPixelModel] {
         return pixels.filter { pixel in pixel.pixel.isSelected(shape) }
-    }
-
-    func toggle() {
-        isVisible.toggle()
     }
 }
