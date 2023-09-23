@@ -8,14 +8,14 @@
 import Foundation
 
 class EraseAction: Action {
-    var pixel: PixelModel
-    var index: Int
+    var pixel: LayerPixelModel
+    var index: Int?
     var layer: LayerModel
 
-    init(_ pixelValue: PixelModel, _ indexValue: Int, _ layerValue: LayerModel) {
-        pixel = pixelValue
-        index = indexValue
-        layer = layerValue
+    init(_ pixel: LayerPixelModel, _ layer: LayerModel) {
+        self.pixel = pixel
+        self.layer = layer
+        self.index = layer.findPixel(pixel)
         super.init()
     }
 
@@ -24,11 +24,11 @@ class EraseAction: Action {
     }
     
     override func perform() {
-        _ = layer.removePixel(index)
+        layer.removePixel(pixel)
     }
 
     override func undo() {
-        if index != -1 {
+        if let index = index {
             layer.insertPixel(pixel, at: index)
         }
     }

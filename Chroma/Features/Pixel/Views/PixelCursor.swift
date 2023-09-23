@@ -13,7 +13,7 @@ struct PixelCursor: View {
     var body: some View {
         let size: CGFloat = drawSettings.getPixelSize()
         switch drawSettings.tool {
-        case .draw, .line, .rect:
+        case .drawPositive, .drawNegative, .line, .rect:
             PixelModel(
                 shape: drawSettings.shape,
                 color: drawSettings.color,

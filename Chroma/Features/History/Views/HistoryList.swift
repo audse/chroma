@@ -65,15 +65,15 @@ struct HistoryList_Previews: PreviewProvider {
         HistoryList()
             .environmentObject(History()
                 .history([
-                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
-                    EraseAction(drawSettings.createPixel(), 1, currentArtboard.currentLayer!),
-                    LineAction([drawSettings.createPixel()], currentArtboard.currentLayer!),
-                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!)
+                    DrawAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
+                    EraseAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
+                    LineAction([drawSettings.createPixel().positive()], currentArtboard.currentLayer!),
+                    DrawAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!)
                 ])
                 .undoHistory([
-                    DrawAction(drawSettings.createPixel(), currentArtboard.currentLayer!),
-                    EraseAction(drawSettings.createPixel(), 2, currentArtboard.currentLayer!),
-                    FillAction([drawSettings.createPixel()], originalColor: .red, newColor: .black)
+                    DrawAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
+                    EraseAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
+                    FillAction([drawSettings.createPixel().positive()], originalColor: .red, newColor: .black)
                 ]))
             .environmentObject(currentArtboard)
     }

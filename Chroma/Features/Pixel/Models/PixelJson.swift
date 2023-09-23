@@ -37,3 +37,35 @@ extension PixelModel {
         )
     }
 }
+
+enum LayerPixelJson: Identifiable, Codable {
+    case positive(PixelJson)
+    case negative(PixelJson)
+    
+    var pixel: PixelJson {
+        switch self {
+        case .positive(let pixel): return pixel
+        case .negative(let pixel): return pixel
+        }
+    }
+    
+    var id: UUID {
+        return pixel.id
+    }
+    
+    init(_ model: LayerPixelModel) {
+        switch model {
+        case .positive(let pixel): self = .positive(PixelJson(pixel))
+        case .negative(let pixel): self = .negative(PixelJson(pixel))
+        }
+    }
+}
+
+extension LayerPixelModel {
+    init(_ json: LayerPixelJson) {
+        switch json {
+        case .positive(let json): self = .positive(PixelModel(json))
+        case .negative(let json): self = .negative(PixelModel(json))
+        }
+    }
+}

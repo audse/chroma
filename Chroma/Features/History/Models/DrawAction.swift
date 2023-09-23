@@ -8,11 +8,11 @@
 import Foundation
 
 class DrawAction: Action {
-    var pixel: PixelModel
-    var index: Int = -1
+    var pixel: LayerPixelModel
+    var index: Int?
     var layer: LayerModel
 
-    init(_ pixel: PixelModel, _ layer: LayerModel) {
+    init(_ pixel: LayerPixelModel, _ layer: LayerModel) {
         self.pixel = pixel
         self.layer = layer
         super.init()
@@ -28,14 +28,11 @@ class DrawAction: Action {
     }
     
     override func undo() {
-        index = layer.findPixel(pixel)
-        if index != -1 {
-            _ = layer.removePixel(index)
-        }
+        layer.removePixel(pixel)
     }
 
     override func redo() {
-        if index != -1 {
+        if let index = index {
             layer.insertPixel(pixel, at: index)
         }
     }

@@ -8,11 +8,11 @@
 import Foundation
 
 class EraseMultipleAction: Action {
-    var pixels: [PixelModel] = []
+    var pixels: [LayerPixelModel] = []
     var layer: LayerModel
-    var startIndex: Int = -1
+    var startIndex: Int?
 
-    init(_ pixels: [PixelModel], _ layer: LayerModel) {
+    init(_ pixels: [LayerPixelModel], _ layer: LayerModel) {
         self.pixels = pixels
         self.layer = layer
         super.init()
@@ -30,7 +30,7 @@ class EraseMultipleAction: Action {
     }
 
     override func undo() {
-        if startIndex != -1 {
+        if let startIndex = startIndex {
             layer.insertPixels(pixels, at: startIndex)
         }
     }

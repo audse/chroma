@@ -77,7 +77,7 @@ struct ArtboardWrapper_Previews: PreviewProvider {
     static var previews: some View {
         ArtboardWrapper()
             .environmentObject(ArtboardModel().withNewLayer([
-                PixelModel(position: CGPoint(100))
+                PixelModel(position: CGPoint(100)).positive()
             ]))
             .environmentObject(WorkspaceSettingsModel())
             .environmentObject(DrawSettings())

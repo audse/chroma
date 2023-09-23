@@ -8,11 +8,11 @@
 import Foundation
 
 class DrawMultipleAction: Action {
-    var pixels: [PixelModel] = []
+    var pixels: [LayerPixelModel] = []
     var layer: LayerModel
-    var startIndex: Int = -1
+    var startIndex: Int?
 
-    init(_ pixels: [PixelModel], _ layer: LayerModel) {
+    init(_ pixels: [LayerPixelModel], _ layer: LayerModel) {
         self.pixels = pixels
         self.layer = layer
         super.init()
@@ -34,7 +34,7 @@ class DrawMultipleAction: Action {
     }
 
     override func redo() {
-        if startIndex != -1 {
+        if let startIndex = startIndex {
             layer.insertPixels(pixels, at: startIndex)
         }
     }

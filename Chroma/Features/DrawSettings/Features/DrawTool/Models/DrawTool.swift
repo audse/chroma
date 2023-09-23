@@ -8,7 +8,8 @@
 import Foundation
 
 enum Tool {
-    case draw
+    case drawPositive
+    case drawNegative
     case erase
     case fill
     case eyedropper
@@ -20,7 +21,7 @@ enum Tool {
 
     var name: String {
         switch self {
-        case .draw: return "Draw"
+        case .drawPositive, .drawNegative: return "Draw"
         case .erase: return "Erase"
         case .fill: return "Fill"
         case .eyedropper: return "Eyedropper"

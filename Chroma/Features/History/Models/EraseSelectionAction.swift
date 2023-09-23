@@ -8,9 +8,9 @@
 import Foundation
 
 class EraseSelectionAction: EraseMultipleAction {
-    var previousSelection: [PixelModel] = []
+    var previousSelection: [LayerPixelModel] = []
     
-    override init(_ pixels: [PixelModel], _ layer: LayerModel) {
+    override init(_ pixels: [LayerPixelModel], _ layer: LayerModel) {
         self.previousSelection = layer.selectedPixels
         super.init(pixels, layer)
     }

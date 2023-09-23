@@ -20,13 +20,18 @@ struct PreviewPixelBuilder {
         )
     }
 
-    func build() -> PixelModel {
-        return PixelModel(
+    func build() -> LayerPixelModel {
+        let model = PixelModel(
             shape: AllDrawShapes.random(),
             color: Color.random,
             size: possibleSizes.randomElement() ?? 32,
             rotation: Angle(degrees: possibleAngles.randomElement() ?? 0),
             position: randomPosition()
         )
+        if [true, true, true, false].randomElement() ?? true {
+            return model.positive()
+        } else {
+            return model.negative()
+        }
     }
 }

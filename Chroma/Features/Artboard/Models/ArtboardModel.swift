@@ -37,12 +37,12 @@ class ArtboardModel: ObservableObject, Identifiable {
         _layerCancellables.append(layer.objectWillChange.sink { _ in self.objectWillChange.send() })
     }
 
-    func withNewLayer(_ pixels: [PixelModel] = []) -> ArtboardModel {
+    func withNewLayer(_ pixels: [LayerPixelModel] = []) -> ArtboardModel {
         currentLayer = newLayer(pixels)
         return self
     }
 
-    func newLayer(_ pixels: [PixelModel] = []) -> LayerModel {
+    func newLayer(_ pixels: [LayerPixelModel] = []) -> LayerModel {
         let newLayer = LayerModel(
             name: "Layer \(layers.count)",
             pixels: pixels

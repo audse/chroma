@@ -9,79 +9,76 @@ import SwiftUI
 import Combine
 
 class LayerModel: ObservableObject, Identifiable, Equatable {
-    var id = UUID()
-    @Published var name = "Layer"
-    @Published var pixels: [PixelModel] = []
-    @Published var isVisible: Bool = true
-    @Published var selectedPixels: [PixelModel] = []
+    private(set) var id = UUID()
+    @Published private(set) var name = "Layer"
+    @Published var pixels: [LayerPixelModel] = [] {
+        didSet { self._pixelCancellables = self.pixels.map { pixel in
+            pixel.pixel.objectWillChange.sink { _ in self.objectWillChange.send() }
+        } }
+    }
+    @Published private(set) var isVisible: Bool = true
 
-    private var _pixelCancellables: [AnyCancellable] = []
+    // swiftlint:disable:next identifier_name
+    internal var _pixelCancellables: [AnyCancellable] = []
+    
+    @Published private var _selectedPixels: [LayerPixelModel] = []
+    var selectedPixels: [LayerPixelModel] {
+        get { return _selectedPixels.intersection(pixels) }
+        set { _selectedPixels = newValue.intersection(pixels) }
+    }
 
     init(
         id: UUID = UUID(),
         name: String = "Layer",
-        pixels: [PixelModel] = [],
+        pixels: [LayerPixelModel] = [],
         isVisible: Bool = true
     ) {
         self.id = id
         self.name = name
         self.pixels = pixels
         self.isVisible = isVisible
-
-        pixels.forEach(_subscribe)
     }
 
-    private func _subscribe(_ pixel: PixelModel) {
-        _pixelCancellables.append(pixel.objectWillChange.sink { _ in self.objectWillChange.send() })
-    }
-
-    func addPixel(_ pixel: PixelModel) {
+    func addPixel(_ pixel: LayerPixelModel) {
         pixels.append(pixel)
-        _subscribe(pixel)
     }
     
-    func insertPixel(_ pixel: PixelModel, at index: Int) {
+    func insertPixel(_ pixel: LayerPixelModel, at index: Int) {
         pixels.insert(pixel, at: index)
-        _subscribe(pixel)
     }
     
-    func insertPixels(_ pixelsToInsert: [PixelModel], at index: Int) {
+    func insertPixels(_ pixelsToInsert: [LayerPixelModel], at index: Int) {
         pixels.insert(contentsOf: pixelsToInsert, at: index)
-        pixels.forEach(_subscribe)
+    }
+    
+    func removePixel(_ value: LayerPixelModel) {
+        pixels = pixels.filterOut(value)
     }
 
-    func removePixel(_ index: Int) -> PixelModel {
+    func removePixel(_ index: Int) -> LayerPixelModel {
         let pixel = pixels.remove(at: index)
         return pixel
     }
 
-    func findPixel(_ value: PixelModel) -> Int {
-        return pixels.firstIndex(where: { pixel in pixel.id == value.id }) ?? -1
-    }
-
-    func findPixel(_ point: CGPoint) -> Int {
-        return pixels.firstIndex(where: { pixel in pixel.getRect().contains(point) }) ?? -1
+    func findPixel(_ value: LayerPixelModel) -> Int? {
+        return pixels.firstIndex(of: value)
     }
     
-    func findPixel(_ point: CGPoint) -> PixelModel? {
-        return pixels.first(where: { pixel in pixel.getRect().contains(point) })
-    }
-    
-    func findPixel(_ point: CGPoint) -> (Int, PixelModel)? {
-        if let index = pixels.firstIndex(where: { pixel in pixel.getRect().contains(point) }) {
+    func findPixel(_ point: CGPoint) -> (Int, LayerPixelModel)? {
+        if let index = pixels.firstIndex(where: { pixel in pixel.pixel.getRect().contains(point) }) {
             return (index, pixels[index])
         }
         return nil
     }
 
-    func draw(_ context: GraphicsContext) {
+    func draw(_ context: inout GraphicsContext) {
         if isVisible {
-            pixels.forEach { pixel in pixel.draw(context) }
+            pixels.reversed().forEach { pixel in pixel.draw(&context) }
         }
     }
     
     func getSelectionPath() -> Path {
-        return Path().union(selectedPixels.map { pixel in pixel.path() })
+        return Path().union(selectedPixels.map { pixel in pixel.pixel.path() })
     }
 
     /**
@@ -89,12 +86,12 @@ class LayerModel: ObservableObject, Identifiable, Equatable {
      1. Connected to the given point (either by overlapping or overlapping other filled pixels), and
      2. The same color as the "start" pixel
      */
-    func getPixelsToFill(_ point: CGPoint) -> [PixelModel] {
-        var pixelsToFill: [PixelModel] = []
-        if let startPixel: PixelModel = findPixel(point) {
+    func getPixelsToFill(_ point: CGPoint) -> [LayerPixelModel] {
+        var pixelsToFill: [LayerPixelModel] = []
+        if let (_, startPixel) = findPixel(point) {
             pixelsToFill.append(startPixel)
             mainLoop: for _ in 0...10 {
-                let unfilledPixels: [PixelModel] = pixels.filterOut(pixelsToFill.contains)
+                let unfilledPixels: [LayerPixelModel] = pixels.filterOut(pixelsToFill.contains)
                 for foundPixel in pixelsToFill {
                     let foundPixelRect = foundPixel.getRect().insetBy(dx: -1, dy: -1)
                     for unfilledPixel in unfilledPixels {
@@ -111,8 +108,8 @@ class LayerModel: ObservableObject, Identifiable, Equatable {
         return pixelsToFill
     }
     
-    func getSelectedPixels(in shape: Path) -> [PixelModel] {
-        return pixels.filter { pixel in pixel.isSelected(shape) }
+    func getSelectedPixels(in shape: Path) -> [LayerPixelModel] {
+        return pixels.filter { pixel in pixel.pixel.isSelected(shape) }
     }
 
     func toggle() {

@@ -10,9 +10,9 @@ import SwiftUI
 class FillAction: Action {
     var originalColor: Color
     var newColor: Color
-    var pixels: [PixelModel]
+    var pixels: [LayerPixelModel]
 
-    init(_ pixels: [PixelModel], originalColor: Color, newColor: Color) {
+    init(_ pixels: [LayerPixelModel], originalColor: Color, newColor: Color) {
         self.pixels = pixels
         self.originalColor = originalColor
         self.newColor =  newColor

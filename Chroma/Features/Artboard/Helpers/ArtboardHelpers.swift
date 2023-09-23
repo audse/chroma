@@ -21,7 +21,7 @@ struct PreviewArtboardModelBuilder {
             backgroundColor: backgroundColor
         )
         for index in 0...numberOfLayers {
-            var pixels: [PixelModel] = []
+            var pixels: [LayerPixelModel] = []
             for _ in 0...pixelsPerLayer {
                 pixels.append(PreviewPixelBuilder(artboardSize: size).build())
             }

@@ -16,7 +16,7 @@ struct Artboard: View {
                 Rectangle().path(in: CGRect(origin: CGPoint(0), size: size)),
                 with: .color(artboard.backgroundColor)
             )
-            artboard.layers.forEach { layer in layer.draw(context) }
+            artboard.layers.forEach { layer in layer.draw(&context) }
         }
         .frame(
             width: artboard.size.width,

@@ -27,9 +27,9 @@ struct Minimap: View {
 
 struct Minimap_Previews: PreviewProvider {
     private static var currentArtboard = ArtboardModel().withNewLayer([
-        PixelModel(shape: SquareShape),
-        PixelModel(shape: CircleShape, position: CGPoint(250)),
-        PixelModel(shape: SquareShape, color: Color.blue, position: CGPoint(100))
+        PixelModel(shape: SquareShape).positive(),
+        PixelModel(shape: CircleShape, position: CGPoint(250)).positive(),
+        PixelModel(shape: SquareShape, color: Color.blue, position: CGPoint(100)).positive()
     ])
 
     static var previews: some View {

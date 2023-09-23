@@ -8,13 +8,13 @@
 import Foundation
 
 class MoveAction: Action {
-    var pixels: [PixelModel]
+    var pixels: [LayerPixelModel]
     var originalPositions: [CGPoint]
     var delta: CGPoint
     
     var snapFn: (CGPoint) -> CGPoint
     
-    init(_ pixels: [PixelModel], drawSettings: DrawSettings, delta: CGPoint) {
+    init(_ pixels: [LayerPixelModel], drawSettings: DrawSettings, delta: CGPoint) {
         self.pixels = pixels
         self.delta = delta
         self.originalPositions = pixels.map { pixel in pixel.position }
@@ -28,13 +28,13 @@ class MoveAction: Action {
     
     override func perform() {
         pixels.forEach { pixel in
-            pixel.position = snapFn(pixel.position + delta)
+            pixel.setPosition(snapFn(pixel.position + delta))
         }
     }
     
     override func undo() {
         pixels.enumerated().forEach { (index, pixel) in
-            pixel.position = originalPositions[index]
+            pixel.setPosition(originalPositions[index])
         }
     }
     

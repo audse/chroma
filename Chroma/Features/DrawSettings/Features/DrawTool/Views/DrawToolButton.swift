@@ -12,12 +12,12 @@ struct DrawToolButton: View {
 
     var body: some View {
         Button {
-            drawSettings.setTool(.draw)
+            drawSettings.setTool(.drawPositive)
         } label: {
             Image(systemName: "paintbrush.fill")
                 .frame(width: 14)
         }
-        .active(drawSettings.tool == .draw)
+        .active([.drawPositive, .drawNegative].contains(drawSettings.tool))
         .help("Draw Tool")
         .keyboardShortcut("p", modifiers: [])
     }

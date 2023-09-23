@@ -8,7 +8,7 @@
 import Foundation
 
 class DeselectAllAction: Action {
-    var previousSelection: [PixelModel] = []
+    var previousSelection: [LayerPixelModel] = []
     var layer: LayerModel
     
     init(_ layer: LayerModel) {

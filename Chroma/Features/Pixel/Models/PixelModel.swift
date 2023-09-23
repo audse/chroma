@@ -41,18 +41,32 @@ public class PixelModel: ObservableObject, Identifiable, Equatable {
         )
     }
     
+    public func positive() -> LayerPixelModel {
+        return LayerPixelModel.positive(self)
+    }
+    
+    public func negative() -> LayerPixelModel {
+        return LayerPixelModel.negative(self)
+    }
+    
     public func path(in rect: CGRect) -> Path {
         return shape.shape.path(in: rect)
     }
     
     public func path() -> Path {
-        return shape.shape.path(in: CGRect(origin: position, size: CGSize(size)))
+        return shape.shape.path(in: getRect())
     }
-
+    
     public func draw(_ ctx: GraphicsContext) {
-        let path = path(in: CGRect(origin: position, size: CGSize(size)))
+        let path = path(in: getRect())
             .applying(CGAffineTransform(rotationAngle: rotation.radians))
         ctx.fill(path, with: .color(color))
+    }
+    
+    public func clip(_ ctx: inout GraphicsContext) {
+        let path = path(in: getRect())
+            .applying(CGAffineTransform(rotationAngle: rotation.radians))
+        ctx.clip(to: path, options: .inverse)
     }
 
     public func getShape() -> some Shape {
@@ -76,30 +90,83 @@ public class PixelModel: ObservableObject, Identifiable, Equatable {
     }
 
     public func getRect() -> CGRect {
-        return CGRect(
-            origin: CGPoint(
-                x: position.x - (size / 2),
-                y: position.y - (size / 2)
-            ),
-            size: getSize()
-        )
-    }
-
-    public func setColor(_ color: Color) {
-        self.color = color
+        return CGRect(origin: position, size: getSize())
     }
     
     /**
      Returns true if at least `thresholdAmount` of the pixel shape is contained in the selection shape.
      */
     public func isSelected(_ selectionShape: Path, _ thresholdAmount: CGFloat = 0.4) -> Bool {
-        let newRect = CGRect(origin: position, size: getSize())
-        let intersection = selectionShape.cgPath.intersection(path(in: newRect).cgPath)
+        let intersection = selectionShape.cgPath.intersection(path(in: getRect()).cgPath)
         let bboxSize = intersection.boundingBox.size
         return (bboxSize.width * bboxSize.height) >= (size * size * thresholdAmount)
     }
     
     public static func == (lhs: PixelModel, rhs: PixelModel) -> Bool {
         return lhs.id == rhs.id
+    }
+}
+
+public enum LayerPixelModel: Identifiable, Equatable {
+    case positive(PixelModel)
+    case negative(PixelModel)
+    
+    var pixel: PixelModel {
+        switch self {
+        case .positive(let pixel): return pixel
+        case .negative(let pixel): return pixel
+        }
+    }
+    
+    public var id: UUID {
+        return pixel.id
+    }
+    
+    public var color: Color {
+        return pixel.color
+    }
+    
+    public var position: CGPoint {
+        return pixel.position
+    }
+    
+    public var isPositive: Bool {
+        switch self {
+        case .positive: return true
+        case .negative: return false
+        }
+    }
+    
+    public var isNegative: Bool {
+        switch self {
+        case .positive: return false
+        case .negative: return true
+        }
+    }
+    
+    public func duplicate() -> Self {
+        switch self {
+        case .positive(let pixel): return pixel.duplicate().positive()
+        case .negative(let pixel): return pixel.duplicate().negative()
+        }
+    }
+    
+    public func draw(_ context: inout GraphicsContext) {
+        switch self {
+        case .positive(let pixel): pixel.draw(context)
+        case .negative(let pixel): pixel.clip(&context)
+        }
+    }
+    
+    public func getRect() -> CGRect {
+        return pixel.getRect()
+    }
+    
+    public func setColor(_ color: Color) {
+        self.pixel.color = color
+    }
+    
+    public func setPosition(_ point: CGPoint) {
+        self.pixel.position = point
     }
 }

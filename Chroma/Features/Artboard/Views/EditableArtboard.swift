@@ -107,7 +107,7 @@ struct EditableArtboard: View {
 
     func onTap(_ location: CGPoint) {
         switch drawSettings.tool {
-        case .draw: draw(location)
+        case .drawPositive, .drawNegative: draw(location)
         case .erase: erase(location)
         case .fill: fill(location)
         case .eyedropper: eyedrop(location)
@@ -166,8 +166,8 @@ struct EditableArtboard: View {
                 let last = drawSettings.snapped(dragState.last)
                 return layer.selectedPixels.map { pixel in
                     let newPixel = pixel.duplicate()
-                    newPixel.position = drawSettings.snapped(pixel.position + last - first)
-                    return newPixel
+                    newPixel.setPosition(drawSettings.snapped(pixel.position + last - first))
+                    return newPixel.pixel
                 }
             }
             return []
@@ -177,15 +177,16 @@ struct EditableArtboard: View {
     
     func draw(_ location: CGPoint) {
         if let layer = file.artboard.currentLayer {
-            let pixel = drawSettings.createPixel(location)
+            let model = drawSettings.createPixel(location)
+            let pixel = drawSettings.tool == .drawPositive ? model.positive() : model.negative()
             history.add(DrawAction(pixel, layer))
         }
     }
 
     func erase(_ location: CGPoint) {
         if let layer = file.artboard.currentLayer {
-            if let (index, pixel) = layer.findPixel(location) {
-                history.add(EraseAction(pixel, index, layer))
+            if let (_, pixel) = layer.findPixel(location) {
+                history.add(EraseAction(pixel, layer))
             }
         }
     }
@@ -212,9 +213,9 @@ struct EditableArtboard: View {
 
     func eyedrop(_ location: CGPoint) {
         for layer in file.artboard.visibleLayers.reversed() {
-            if let pixel: PixelModel = layer.findPixel(location) {
+            if let (_, pixel) = layer.findPixel(location) {
                 drawSettings.color = pixel.color
-                drawSettings.setTool(.draw)
+                drawSettings.setTool(.drawPositive)
                 return
             }
         }
@@ -224,7 +225,7 @@ struct EditableArtboard: View {
         if let pointA = drawSettings.multiClickState.first {
             if let layer = file.artboard.currentLayer {
                 drawSettings.multiClickState.removeAll()
-                let pixels = drawSettings.createPixelLine(pointA, location)
+                let pixels = drawSettings.createPixelLine(pointA, location).map { pixel in pixel.positive() }
                 history.add(LineAction(pixels, layer))
             }
         } else {
@@ -236,7 +237,7 @@ struct EditableArtboard: View {
         if let pointA = drawSettings.multiClickState.first {
             if let layer = file.artboard.currentLayer {
                 drawSettings.multiClickState.removeAll()
-                let pixels = drawSettings.createPixelRect(pointA, location)
+                let pixels = drawSettings.createPixelRect(pointA, location).map { pixel in pixel.positive() }
                 history.add(RectAction(pixels, layer))
             }
         } else {
@@ -266,14 +267,12 @@ struct EditableArtboard: View {
     
 }
 
-struct EditableCanvas_Previews: PreviewProvider {
-    static var previews: some View {
-        EditableArtboard(mouseLocation: CGPoint(x: 33, y: 31))
-            .environmentObject(
-                FileModel(artboard: PreviewArtboardModelBuilder().build())
-            )
-            .environmentObject(DrawSettings())
-            .environmentObject(History())
-            .environmentObject(WorkspaceSettingsModel())
-    }
+#Preview {
+    EditableArtboard(mouseLocation: CGPoint(x: 33, y: 31))
+        .environmentObject(
+            FileModel(artboard: PreviewArtboardModelBuilder().build())
+        )
+        .environmentObject(DrawSettings())
+        .environmentObject(History())
+        .environmentObject(WorkspaceSettingsModel())
 }

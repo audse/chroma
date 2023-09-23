@@ -21,8 +21,7 @@ class ChromaSubscriber<D>: Identifiable {
 class ChromaEvent<D>: Identifiable {
     typealias Subscriber = ChromaSubscriber<D>
 
-    var id: String
-
+    let id: String
     private var subscriptions: [Subscriber] = []
 
     init(_ id: String) {
