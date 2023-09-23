@@ -23,7 +23,7 @@ struct LayerListItem: View {
                 Text(layer.name)
                 Spacer()
                 Button {
-                    layer.toggle()
+                    history.add(ToggleLayerVisibilityAction(layer))
                 } label: {
                     Image(systemName: layer.isVisible ? "eye.fill" : "eye.slash.fill")
                 }.buttonStyle(.plain)

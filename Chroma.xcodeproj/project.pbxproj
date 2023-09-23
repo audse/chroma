@@ -143,6 +143,7 @@
 		75836D652ABE6B56007172AD /* DeleteLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D642ABE6B56007172AD /* DeleteLayerAction.swift */; };
 		75836D672ABE7158007172AD /* DerivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D662ABE7158007172AD /* DerivedData.swift */; };
 		75836D692ABE7396007172AD /* SelectLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D682ABE7396007172AD /* SelectLayerAction.swift */; };
+		75836D6B2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,6 +304,7 @@
 		75836D642ABE6B56007172AD /* DeleteLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLayerAction.swift; sourceTree = "<group>"; };
 		75836D662ABE7158007172AD /* DerivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedData.swift; sourceTree = "<group>"; };
 		75836D682ABE7396007172AD /* SelectLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLayerAction.swift; sourceTree = "<group>"; };
+		75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleLayerVisibilityAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +488,7 @@
 				75836D622ABE6A68007172AD /* NewLayerAction.swift */,
 				75836D642ABE6B56007172AD /* DeleteLayerAction.swift */,
 				75836D682ABE7396007172AD /* SelectLayerAction.swift */,
+				75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1497,6 +1500,7 @@
 				7554D1992AB53D11008CEB87 /* TileModeButtons.swift in Sources */,
 				7554D2E02ABD390B008CEB87 /* EraseSelectionAction.swift in Sources */,
 				7554D1952AB50B42008CEB87 /* Color.swift in Sources */,
+				75836D6B2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift in Sources */,
 				7554D2CB2ABCE892008CEB87 /* RectSelectToolButton.swift in Sources */,
 				7554D1562AAFEC7E008CEB87 /* Square.swift in Sources */,
 				7554D2292AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift in Sources */,
