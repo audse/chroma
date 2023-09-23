@@ -36,10 +36,10 @@ class AppSettingsModel: ObservableObject {
         saveProperty(key: "colorScheme", value: colorScheme)
     }
 
-    var colorSchemeValue: ColorScheme {
+    var colorSchemeValue: ColorScheme? {
         switch colorScheme {
         case .custom(let value): return value
-        case .followSystem: return .dark // TODO
+        case .followSystem: return nil
         }
     }
 

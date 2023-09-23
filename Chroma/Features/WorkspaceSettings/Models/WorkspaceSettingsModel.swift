@@ -18,7 +18,7 @@ class WorkspaceSettingsModel: ObservableObject {
         didSet { saveProperty(key: "gridThickness", value: gridThickness) }
     }
     @Published var backgroundColor: WorkspaceBackgroundColor = .followColorScheme {
-        didSet { saveProperty(key: "backgroundColor", value: backgroundColor) }
+        didSet { saveProperty(key: "workspaceBackgroundColor", value: backgroundColor) }
     }
     @Published var tileMode: TileMode = .none
     @Published var zoom: CGFloat = 1.0
@@ -36,7 +36,7 @@ class WorkspaceSettingsModel: ObservableObject {
         self.gridColor = gridColor
             ?? getSavedProperty(key: "gridColor", defaultValue: Color.gray.opacity(0.2))
         self.backgroundColor = backgroundColor
-            ?? getSavedProperty(key: "backgroundColor", defaultValue: .followColorScheme)
+            ?? getSavedProperty(key: "workspaceBackgroundColor", defaultValue: .followColorScheme)
         self.tileMode = tileMode
         self.zoom = zoom
     }

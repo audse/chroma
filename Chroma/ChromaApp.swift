@@ -37,7 +37,9 @@ struct Editor: View {
             .environmentObject(file.artboard)
             .environmentObject(history)
             .environmentObject(file)
-            .colorScheme(appSettings.colorSchemeValue)
+            .if(appSettings.colorSchemeValue != nil) { view in
+                view.colorScheme(appSettings.colorSchemeValue ?? .light)
+            }
             .toolbar { toolbar() }
             .sheet(isPresented: $appSettings.showingSettings) {
                 AppSettings(showing: $appSettings.showingSettings)
@@ -85,7 +87,9 @@ struct Editor: View {
                     history.clear()
                     file.setFile(newFile)
                 }).expand()
-                    .colorScheme(appSettings.colorSchemeValue)
+                    .if(appSettings.colorSchemeValue != nil) { view in
+                        view.colorScheme(appSettings.colorSchemeValue ?? .light)
+                    }
                     .environmentObject(file)
             } label: {
                 Label("Files", systemImage: "folder.fill")

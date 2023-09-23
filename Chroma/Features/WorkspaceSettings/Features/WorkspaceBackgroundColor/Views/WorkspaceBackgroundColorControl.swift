@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WorkspaceBackgroundColorControl: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appSettings: AppSettingsModel
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
 
@@ -24,18 +25,23 @@ struct WorkspaceBackgroundColorControl: View {
                     "Follow system color scheme",
                     isOn: $followSystem
                 ).onChange(of: followSystem) { value in
-                    setColor(value ? nil : customColor)
+                    switch value {
+                    case true: workspaceSettings.backgroundColor = .followColorScheme
+                    case false: workspaceSettings.backgroundColor = .custom(customColor)
+                    }
                 }
                 Spacer()
                 ColorPicker("Custom color", selection: $customColor).onChange(of: customColor) { newValue in
-                    setColor(newValue)
+                    if !isFollowingColorScheme() {
+                        workspaceSettings.backgroundColor = .custom(newValue)
+                    }
                 }.disabled(followSystem)
                     .opacity(followSystem ? 0.25 : 1.0)
             }
         }.onAppear {
             followSystem = isFollowingColorScheme()
             switch workspaceSettings.backgroundColor {
-            case .followColorScheme: customColor = appSettings.colorSchemeValue == .dark
+            case .followColorScheme: customColor = colorScheme == .dark 
                 ? WorkspaceBackgroundColor.defaultDark
                 : WorkspaceBackgroundColor.defaultLight
             case .custom(let color): customColor = color
@@ -46,19 +52,10 @@ struct WorkspaceBackgroundColorControl: View {
     func isFollowingColorScheme() -> Bool {
         return workspaceSettings.backgroundColor == .followColorScheme
     }
-
-    func setColor(_ color: Color? = nil) {
-        switch color {
-        case .some(let value): workspaceSettings.backgroundColor = .custom(value)
-        case .none: workspaceSettings.backgroundColor = .followColorScheme
-        }
-    }
 }
 
-struct WorkspaceBackgroundColorControl_Previews: PreviewProvider {
-    static var previews: some View {
-        WorkspaceBackgroundColorControl()
-            .environmentObject(WorkspaceSettingsModel())
-            .environmentObject(AppSettingsModel())
-    }
+#Preview {
+    WorkspaceBackgroundColorControl()
+        .environmentObject(WorkspaceSettingsModel())
+        .environmentObject(AppSettingsModel())
 }
