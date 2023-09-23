@@ -56,6 +56,36 @@ final class ColorExtensionTest: XCTestCase {
     }
 }
 
+final class CGPointExtensionTest: XCTestCase {
+    func testDistance() throws {
+        XCTAssert(CGPoint(x: 1, y: 1)
+            .distance(to: CGPoint(x: 1, y: 2))
+            .isApprox(1))
+        XCTAssert(CGPoint(x: 1, y: 1)
+            .distance(to: CGPoint(x: 1, y: 1))
+            .isApprox(0))
+    }
+    
+    func testMoveToward() throws {
+        XCTAssert(CGPoint(x: 1, y: 1)
+            .moveToward(CGPoint(x: 1, y: 2), by: 0.5)
+            .isApprox(CGPoint(x: 1, y: 1.5)))
+    }
+    
+    func testLength() throws {
+        XCTAssert(CGPoint(x: 1, y: 1)
+            .length
+            .isApprox(sqrt(2)))
+    }
+    
+    func testOperators() throws {
+        XCTAssert((CGPoint(1) + CGPoint(1)).isApprox(CGPoint(2)))
+        XCTAssert((CGPoint(1) - CGPoint(1)).isApprox(CGPoint(0)))
+        XCTAssert((CGPoint(1) * CGPoint(1)).isApprox(CGPoint(1)))
+        XCTAssert((CGPoint(1) / CGPoint(2)).isApprox(CGPoint(0.5)))
+    }
+}
+
 final class SequenceExtensionTest: XCTestCase {
     func testFilterOut() throws {
         let a: [Int] = [1, 2, 3, 4]

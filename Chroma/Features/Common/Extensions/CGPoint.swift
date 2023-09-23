@@ -42,6 +42,10 @@ extension CGPoint {
     public var length: CGFloat {
         return sqrt(x * x + y * y)
     }
+    
+    public func isApprox(_ other: CGPoint) -> Bool {
+        return x.isApprox(other.x) && y.isApprox(other.y)
+    }
 }
 
 extension CGPoint: AdditiveArithmetic {
@@ -57,19 +61,19 @@ extension CGPoint: AdditiveArithmetic {
             y: lhs.y - rhs.y
         )
     }
-    static func / (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+    public static func / (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(
             x: lhs.x / rhs.x,
             y: lhs.y / rhs.y
         )
     }
-    static func / (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+    public static func / (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
         return CGPoint(
             x: lhs.x / rhs,
             y: lhs.y / rhs
         )
     }
-    static func * (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+    public static func * (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(
             x: lhs.x * rhs.x,
             y: lhs.y * rhs.y
