@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct Minimap: View {
-    @EnvironmentObject var currentArtboard: ArtboardModel
+    @EnvironmentObject var file: FileModel
 
     static let SCALE: CGFloat = 5.0
 
     var body: some View {
-        Artboard(artboard: currentArtboard)
+        Artboard(artboard: file.artboard)
             .allowsHitTesting(false)
             .scaleEffect(CGSize(1.0 / Minimap.SCALE))
             .frame(width: getSize().width, height: getSize().height)
@@ -21,7 +21,7 @@ struct Minimap: View {
     }
 
     func getSize() -> CGSize {
-        return currentArtboard.size / Minimap.SCALE
+        return file.artboard.size / Minimap.SCALE
     }
 }
 
@@ -34,7 +34,7 @@ struct Minimap_Previews: PreviewProvider {
 
     static var previews: some View {
         Minimap()
-            .environmentObject(currentArtboard)
+            .environmentObject(FileModel(artboard: currentArtboard))
             .environmentObject(DrawSettings())
             .environmentObject(History())
     }

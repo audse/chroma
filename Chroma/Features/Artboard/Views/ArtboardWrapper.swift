@@ -12,7 +12,7 @@ import SwiftUI
 // live in EditableCanvas because that messes up the mouseLocation code.
 
 struct ArtboardWrapper: View {
-    @EnvironmentObject var currentArtboard: ArtboardModel
+    @EnvironmentObject var file: FileModel
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
     @Environment(\.colorScheme) var colorScheme
 
@@ -43,8 +43,8 @@ struct ArtboardWrapper: View {
                 }
                 EditableArtboard().fixedSize()
             }.frame(
-                width: max(currentArtboard.size.width * 6, 2000),
-                height: max(currentArtboard.size.height * 6, 1400)
+                width: max(file.artboard.size.width * 6, 2000),
+                height: max(file.artboard.size.height * 6, 1400)
             )
             .fixedSize()
             .zoomable(zoom: $currentZoom, onChanged: { newValue in
@@ -66,8 +66,8 @@ struct ArtboardWrapper: View {
         EditableArtboard()
             .fixedSize()
             .offset(
-                x: currentArtboard.size.width * w *  workspaceSettings.zoom,
-                y: currentArtboard.size.height * h * workspaceSettings.zoom
+                x: file.artboard.size.width * w *  workspaceSettings.zoom,
+                y: file.artboard.size.height * h * workspaceSettings.zoom
             )
             .opacity(0.5)
     }
@@ -76,9 +76,9 @@ struct ArtboardWrapper: View {
 struct ArtboardWrapper_Previews: PreviewProvider {
     static var previews: some View {
         ArtboardWrapper()
-            .environmentObject(ArtboardModel().withNewLayer([
+            .environmentObject(FileModel(artboard: ArtboardModel().withNewLayer([
                 PixelModel(position: CGPoint(100)).positive()
-            ]))
+            ])))
             .environmentObject(WorkspaceSettingsModel())
             .environmentObject(DrawSettings())
             .environmentObject(History())

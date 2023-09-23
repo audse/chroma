@@ -101,6 +101,17 @@ extension Color {
         let (r, g, b, o) = components
         return Color(red: r - amount, green: g - amount, blue: b - amount, opacity: o)
     }
+    
+    public func lerp(_ other: Color, by amount: CGFloat = 0.5) -> Color {
+        let (r, g, b, o) = components
+        let (otherR, otherG, otherB, otherO) = other.components
+        return Color(
+            red: r.lerp(otherR, by: amount),
+            green: g.lerp(otherG, by: amount),
+            blue: b.lerp(otherB, by: amount),
+            opacity: o.lerp(otherO, by: amount)
+        )
+    }
 }
 
 extension Color: Codable {

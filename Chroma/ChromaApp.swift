@@ -61,7 +61,11 @@ struct Editor: View {
                     case .success(let url):
                         let newFile: FileModel? = load(url[0])
                         if let newFile = newFile {
+                            history.clear()
                             file.setFile(newFile)
+                            if let layer = file.artboard.layers.first {
+                                history.add(SelectLayerAction(layer))
+                            }
                         }
                     case .failure(let error): print(error)
                     }
@@ -96,7 +100,7 @@ struct Editor: View {
                     .labelStyle(.titleAndIcon)
             }
             Spacer()
-            Text(file.name)
+            EditableText(text: $file.name).foregroundColor(.primary)
             Spacer()
             ZoomButtons().environmentObject(workspaceSettings)
             Button {

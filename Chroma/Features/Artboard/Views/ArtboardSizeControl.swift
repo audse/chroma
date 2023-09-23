@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ArtboardSizeControl: View {
-    @EnvironmentObject var currentArtboard: ArtboardModel
+    @EnvironmentObject var file: FileModel
 
     @State var width: Double = 512
     @State var height: Double = 512
@@ -16,24 +16,28 @@ struct ArtboardSizeControl: View {
     var body: some View {
         HStack {
             Text("W")
+                .font(.label)
+                .foregroundColor(.secondary.lerp(.primary))
             NumberTextField(
                 value: $width,
                 min: 0,
                 step: 1,
                 rounded: true,
                 onChangeValue: { value in
-                    currentArtboard.resize(width: value)
+                    file.artboard.resize(width: value)
                 }
             )
             Spacer()
             Text("H")
+                .font(.label)
+                .foregroundColor(.secondary.lerp(.primary))
             NumberTextField(
                 value: $height,
                 min: 0,
                 step: 1,
                 rounded: true,
                 onChangeValue: { value in
-                    currentArtboard.resize(height: value)
+                    file.artboard.resize(height: value)
                 }
             )
         }
@@ -43,6 +47,6 @@ struct ArtboardSizeControl: View {
 struct ArtboardSizeControl_Previews: PreviewProvider {
     static var previews: some View {
         ArtboardSizeControl()
-            .environmentObject(ArtboardModel())
+            .environmentObject(FileModel(artboard: ArtboardModel()))
     }
 }

@@ -16,27 +16,34 @@ struct ArtboardSettingsPanel: View {
                 ArtboardSizeControl()
                 HStack {
                     Text("Background")
+                        .font(.label)
+                        .foregroundColor(.secondary.lerp(.primary))
                     Spacer()
                     ArtboardBackgroundColorControl()
                 }
                 LayerList()
             }.padding(Edge.Set.top, 8)
         } label: {
-            HStack { Text("Canvas").expandWidth() }
+            Text("Artboard").expandWidth()
+                .foregroundColor(.primary)
                 .background(Color.almostClear)
                 .onTapGesture {
                     withAnimation(.easeInOut(duration: 0.2)) {
                         isExpanded = !isExpanded
                     }
                 }
-        }.frame(width: 200)
+        }.frame(width: 250)
         .panel()
     }
 }
 
 struct ArtboardSettingsPanel_Previews: PreviewProvider {
+    static let artboard = ArtboardModel().withNewLayer().withNewLayer()
     static var previews: some View {
         ArtboardSettingsPanel()
-            .environmentObject(ArtboardModel().withNewLayer())
+            .environmentObject(FileModel(artboard: artboard))
+            .environmentObject(History().history([
+                SelectLayerAction(artboard.layers.first.unsafelyUnwrapped)
+            ]))
     }
 }

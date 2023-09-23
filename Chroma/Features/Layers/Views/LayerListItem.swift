@@ -20,7 +20,9 @@ struct LayerListItem: View {
             HStack {
                 Text("\(file.artboard.layers.firstIndex(of: layer) ?? 0)").opacity(0.5)
                 Spacer()
-                Text(layer.name)
+                EditableText(text: $layer.name)
+                    .fixedSize()
+                    .expandWidth()
                 Spacer()
                 LayerLockButton(layer: layer)
                 LayerVisibiltyButton(layer: layer)

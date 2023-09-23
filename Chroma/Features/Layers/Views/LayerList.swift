@@ -13,17 +13,20 @@ struct LayerList: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
+            HStack(spacing: 6) {
                 Text("Layers")
+                    .font(.label)
+                    .foregroundColor(.secondary.lerp(.primary))
                 Spacer()
-                DeleteLayerButton().frame(width: 24, height: 18)
-                NewLayerButton().frame(width: 24, height: 18)
+                DeleteLayerButton()
+                    .frame(width: 18, height: 18)
+                    .buttonStyle(.plain)
+                NewLayerButton()
+                    .frame(width: 18, height: 18)
             }.padding(.bottom, 4)
             ScrollView(.vertical) {
-                LazyVStack {
-                    ForEach(file.artboard.layers.reversed(), id: \.id) { layer in
-                        LayerListItem(layer: layer)
-                    }
+                ForEach(file.artboard.layers.reversed(), id: \.id) { layer in
+                    LayerListItem(layer: layer)
                 }
             }.well()
         }

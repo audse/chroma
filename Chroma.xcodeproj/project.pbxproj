@@ -144,6 +144,7 @@
 		75836D772ABF6644007172AD /* DeleteLayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D762ABF6644007172AD /* DeleteLayerButton.swift */; };
 		75836D792ABF67E1007172AD /* NewLayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D782ABF67E1007172AD /* NewLayerButton.swift */; };
 		75836D7B2ABF6928007172AD /* DragPathGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D7A2ABF6928007172AD /* DragPathGesture.swift */; };
+		75836D7D2ABF8BA5007172AD /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D7C2ABF8BA5007172AD /* EditableText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -305,6 +306,7 @@
 		75836D762ABF6644007172AD /* DeleteLayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLayerButton.swift; sourceTree = "<group>"; };
 		75836D782ABF67E1007172AD /* NewLayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLayerButton.swift; sourceTree = "<group>"; };
 		75836D7A2ABF6928007172AD /* DragPathGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPathGesture.swift; sourceTree = "<group>"; };
+		75836D7C2ABF8BA5007172AD /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -998,6 +1000,7 @@
 			isa = PBXGroup;
 			children = (
 				7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */,
+				75836D7C2ABF8BA5007172AD /* EditableText.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1438,6 +1441,7 @@
 				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
 				7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,
+				75836D7D2ABF8BA5007172AD /* EditableText.swift in Sources */,
 				7554D2E62ABD394D008CEB87 /* DrawAction.swift in Sources */,
 				7554D1772AB28F3E008CEB87 /* CGPoint.swift in Sources */,
 				7554D1B02AB6C903008CEB87 /* AppSettings.swift in Sources */,

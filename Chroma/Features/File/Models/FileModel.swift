@@ -10,7 +10,7 @@ import Combine
 
 public final class FileModel: ObservableObject, Identifiable {
     @Published public private(set) var id: UUID
-    @Published public private(set) var name: String
+    @Published public var name: String
     
     private var _artboardCancellable: AnyCancellable?
     @Published public private(set) var artboard: ArtboardModel {

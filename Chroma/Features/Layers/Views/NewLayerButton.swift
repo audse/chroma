@@ -16,7 +16,13 @@ struct NewLayerButton: View {
             history.add(NewLayerAction(file.artboard))
         } label: {
             Image(systemName: "plus")
+                .padding(2)
         }.active(false)
+            .composableButtonStyle(
+                Btn.filledAccent
+                |> Btn.rounded
+            )
+            .tinted(.secondary)
     }
 }
 
