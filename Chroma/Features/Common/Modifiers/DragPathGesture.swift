@@ -34,6 +34,10 @@ public enum DragPathState: Equatable {
         )
     }
     
+    mutating func onDragStarted(_ value: DragGesture.Value) {
+        self = .dragging([value.startLocation])
+    }
+    
     mutating func onDragChanged(_ value: DragGesture.Value) {
         switch self {
         case .inactive: self = .dragging([value.location])
@@ -54,7 +58,7 @@ public struct DragPathGestureModifier: ViewModifier {
     
     @Binding var state: DragPathState
     
-    @State public var minimumDistance: CGFloat?
+    @State public var minimumDistance: CGFloat
     /** Called BEFORE `state` is set to `dragging` */
     @State public var onBeforeStarted: StatelessCallback?
     /** Called AFTER `state` is set to `dragging` */
@@ -71,14 +75,17 @@ public struct DragPathGestureModifier: ViewModifier {
     }
     
     internal func makeGesture() -> some Gesture {
-        DragGesture(minimumDistance: minimumDistance ?? 5)
+        DragGesture(minimumDistance: minimumDistance)
             .onChanged { value in
                 let isStarted = state == .inactive
                 if let onBeforeStarted {
                     onBeforeStarted()
                 }
-                if !isStarted, let onChanged {
+                if let onChanged {
                     onChanged(state)
+                }
+                if isStarted {
+                    state.onDragStarted(value)
                 }
                 state.onDragChanged(value)
                 if isStarted, let onAfterStarted {
@@ -100,7 +107,7 @@ public struct DragPathGestureModifier: ViewModifier {
 extension View {
     public func dragPathGesture(
         state: Binding<DragPathState>,
-        minimumDistance: CGFloat? = nil,
+        minimumDistance: CGFloat,
         onBeforeStarted: DragPathGestureModifier.StatelessCallback? = nil,
         onAfterStarted: DragPathGestureModifier.Callback? = nil,
         onChanged: DragPathGestureModifier.Callback? = nil,

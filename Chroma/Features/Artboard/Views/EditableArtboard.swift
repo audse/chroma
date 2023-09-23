@@ -38,7 +38,7 @@ struct EditableArtboard: View {
                 .releaseFocusOnTap()
                 .dragPathGesture(
                     state: $dragState,
-                    minimumDistance: drawSettings.getPixelSize() / 2,
+                    minimumDistance: 2,
                     onChanged: onDragChanged,
                     onBeforeEnded: onDragEnded
                 )
@@ -50,12 +50,10 @@ struct EditableArtboard: View {
             }
             
             if [.line, .rect, .move].contains(drawSettings.tool) {
-                CancelToolButton(ghostPixels: $ghostPixels)
-                DrawGhost(ghostPixels: $ghostPixels)
-                    .onChange(of: drawSettings.tool) { _ in
-                        ghostPixels.removeAll()
-                    }
+                CancelToolButton()
             }
+            DrawGhost(ghostPixels: $ghostPixels)
+            
             if isHovering {
                 PixelCursor()
                     .position(drawSettings.snapped(mouseLocation) + drawSettings.getPixelSize() / 2.0)
@@ -98,6 +96,12 @@ struct EditableArtboard: View {
         if drawSettings.tool == .move {
             move(value.points)
         }
+        if [.drawPositive, .drawNegative].contains(drawSettings.tool) {
+            drawPath(value.points)
+        }
+        if drawSettings.tool == .erase {
+            erasePath(value.points)
+        }
     }
 
     func onContinuousHover(_ phase: HoverPhase) {
@@ -129,6 +133,8 @@ struct EditableArtboard: View {
                 newPixel.setPosition(drawSettings.snapped(pixel.position + last - first))
                 return newPixel.pixel
             }
+        case .drawNegative, .drawPositive, .erase:
+            return drawSettings.createPixelPath(dragState.points)
         default: return []
         }
     }
@@ -140,12 +146,34 @@ struct EditableArtboard: View {
             history.add(DrawAction(pixel, layer))
         }
     }
+    
+    func drawPath(_ points: [CGPoint]) {
+        withCurrentLayer { layer in
+            let pixelsToAdd = drawSettings.createPixelPath(points).map { pixel in
+                drawSettings.tool == .drawPositive ? pixel.positive() : pixel.negative()
+            }
+            if !pixelsToAdd.isEmpty {
+                history.add(DrawMultipleAction(pixelsToAdd, layer))
+            }
+        }
+    }
 
     func erase(_ location: CGPoint) {
         withCurrentLayer { layer in
             if let (_, pixel) = layer.findPixel(location) {
                 history.add(EraseAction(pixel, layer))
             }
+        }
+    }
+    
+    func erasePath(_ points: [CGPoint]) {
+        withCurrentLayer { layer in
+            let pixelsToErase = points
+                .map(layer.findPixel)
+                .filterSome()
+                .map { (_, pixel) in pixel }
+                .unique()
+            history.add(EraseMultipleAction(pixelsToErase, layer))
         }
     }
     

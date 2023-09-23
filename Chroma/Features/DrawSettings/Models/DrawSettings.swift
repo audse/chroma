@@ -41,16 +41,6 @@ class DrawSettings: ObservableObject {
         return CGSize(snapped(CGPoint(size)))
     }
 
-    func createPixel(_ point: CGPoint = CGPoint()) -> PixelModel {
-        return PixelModel(
-            shape: self.shape,
-            color: self.color,
-            size: self.getPixelSize(),
-            rotation: self.rotation,
-            position: self.snapped(point)
-        )
-    }
-
     func getPixelSize() -> CGFloat {
         switch scaleType {
         case .even: return pow(2, pixelSize)
@@ -66,6 +56,27 @@ class DrawSettings: ObservableObject {
     func getPixelSize() -> CGPoint {
         let number: CGFloat = getPixelSize()
         return CGPoint(number)
+    }
+    
+    func createPixel(_ point: CGPoint = CGPoint()) -> PixelModel {
+        return PixelModel(
+            shape: self.shape,
+            color: self.color,
+            size: self.getPixelSize(),
+            rotation: self.rotation,
+            position: self.snapped(point)
+        )
+    }
+    
+    func createPixelPath(_ points: [CGPoint]) -> [PixelModel] {
+        var pixelsToAdd = [PixelModel]()
+        for point in points {
+            // swiftlint:disable:next for_where
+            if pixelsToAdd.first(where: { pixel in pixel.hasPoint(point) }) == nil {
+                pixelsToAdd.append(createPixel(point))
+            }
+        }
+        return pixelsToAdd
     }
 
     func createPixelLine(_ pointA: CGPoint, _ pointB: CGPoint) -> [PixelModel] {

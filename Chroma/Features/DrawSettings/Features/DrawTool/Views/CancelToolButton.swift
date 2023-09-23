@@ -12,12 +12,10 @@ import SwiftUI
  */
 struct CancelToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
-    @Binding var ghostPixels: [PixelModel]
 
     var body: some View {
         Button {
             drawSettings.multiClickState.removeAll()
-            ghostPixels.removeAll()
         } label: {
             Text("Stop drawing \(drawSettings.tool.name)")
         }.keyboardShortcut(.escape, modifiers: [])

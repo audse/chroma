@@ -144,6 +144,10 @@ extension PixelModel {
         let bboxSize = intersection.boundingBox.size
         return (bboxSize.width * bboxSize.height) >= (size * size * thresholdAmount)
     }
+    
+    public func hasPoint(_ point: CGPoint) -> Bool {
+        return getRect().contains(point)
+    }
 }
 
 public enum LayerPixelModel: Identifiable, Equatable, Codable {
@@ -207,5 +211,9 @@ public enum LayerPixelModel: Identifiable, Equatable, Codable {
     
     public func setPosition(_ point: CGPoint) {
         self.pixel.position = point
+    }
+    
+    public func hasPoint(_ point: CGPoint) -> Bool {
+        self.pixel.hasPoint(point)
     }
 }

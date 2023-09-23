@@ -75,4 +75,14 @@ final class SequenceExtensionTest: XCTestCase {
         XCTAssert(groups[0].elementsEqual([1, 2]))
         XCTAssert(groups[1].elementsEqual([3, 4]))
     }
+    
+    func testFilterSome() throws {
+        let items: [Int?] = [.some(1), .some(2), nil, nil]
+        XCTAssert(items.filterSome().elementsEqual([1, 2]))
+    }
+    
+    func testUnique() throws {
+        let items: [Int] = [1, 1, 2, 2]
+        XCTAssert(items.unique().elementsEqual([1, 2]))
+    }
 }

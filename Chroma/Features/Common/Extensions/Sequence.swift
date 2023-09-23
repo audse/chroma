@@ -36,6 +36,16 @@ extension Sequence where Element: Equatable {
         }
         return result
     }
+    
+    public func unique() -> [Element] {
+        var newArray = [Element]()
+        forEach { element in
+            if !newArray.contains(element) {
+                newArray.append(element)
+            }
+        }
+        return newArray
+    }
 }
 
 extension Array {
@@ -50,6 +60,16 @@ extension Array {
         return stride(from: 0, to: count, by: size).map {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
+    }
+    
+    public func filterSome<T>() -> [T] where Element == T? {
+        var newArray: [T] = []
+        forEach { element in
+            if let element {
+                newArray.append(element)
+            }
+        }
+        return newArray
     }
 }
 
