@@ -9,10 +9,13 @@ import SwiftUI
 
 struct LayerListItem: View {
     @EnvironmentObject var currentArtboard: ArtboardModel
+    @EnvironmentObject var history: History
+    
     @State var layer: LayerModel
+    
     var body: some View {
         Button {
-            currentArtboard.currentLayer = layer
+            history.add(SelectLayerAction(layer))
         } label: {
             HStack {
                 Text("\(currentArtboard.getIndex(layer) ?? 0)").opacity(0.5)
@@ -32,7 +35,7 @@ struct LayerListItem: View {
             |> Btn.rounded
             |> Btn.scaled
         )
-            .tinted(layer.id == currentArtboard.currentLayer?.id ? Color.accentColor : Color.clear)
+            .tinted(layer.id == history.getCurrentLayer()?.id ? Color.accentColor : Color.clear)
     }
 }
 
@@ -48,7 +51,7 @@ struct LayerList: View {
                 Button(
                     role: .destructive,
                     action: {
-                        if let layer = currentArtboard.currentLayer {
+                        if let layer = history.getCurrentLayer() {
                             history.add(DeleteLayerAction(layer, currentArtboard))
                         }
                     },
@@ -61,7 +64,7 @@ struct LayerList: View {
                 )
                 .fixedSize()
                 .buttonStyle(.plain)
-                .disabled(currentArtboard.currentLayer == nil)
+                .disabled(history.getCurrentLayer() == nil)
                 Button {
                     history.add(NewLayerAction(currentArtboard))
                 } label: {

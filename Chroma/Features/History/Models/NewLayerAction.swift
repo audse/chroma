@@ -24,7 +24,6 @@ class NewLayerAction: Action {
     override func perform() {
         index = artboard.layers.count
         layer = artboard.newLayer()
-        artboard.currentLayer = layer
     }
     
     override func undo() {

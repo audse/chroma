@@ -65,6 +65,11 @@ struct Editor: View {
                     }
                 }
             )
+            .onAppear {
+                if let layer = file.artboard.layers.first {
+                    history.add(SelectLayerAction(layer))
+                }
+            }
     }
 
     @ToolbarContentBuilder

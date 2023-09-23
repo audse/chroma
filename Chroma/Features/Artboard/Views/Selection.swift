@@ -9,11 +9,12 @@ import SwiftUI
 
 struct Selection: View {
     @EnvironmentObject var file: FileModel
+    @EnvironmentObject var history: History
     
     var body: some View {
         Canvas { context, _ in
-            if let layer = file.artboard.currentLayer {
-                let selectionPath = layer.getSelectionPath()
+            if let layer = history.getCurrentLayer() {
+                let selectionPath = layer.getSelectionPath(history)
                 context.stroke(
                     selectionPath,
                     with: .color(.white),

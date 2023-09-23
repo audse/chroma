@@ -24,7 +24,7 @@ class DeleteLayerAction: Action {
     
     override func perform() {
         index = artboard.getIndex(layer)
-        artboard.deleteLayer(layer)
+        artboard.removeLayer(layer)
     }
     
     override func undo() {
@@ -34,6 +34,6 @@ class DeleteLayerAction: Action {
     }
     
     override func redo() {
-        artboard.deleteLayer(layer)
+        artboard.removeLayer(layer)
     }
 }

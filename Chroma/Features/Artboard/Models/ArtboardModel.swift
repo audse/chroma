@@ -13,16 +13,13 @@ class ArtboardModel: ObservableObject, Identifiable {
     @Published var name: String?
     @Published var size: CGSize
     @Published var backgroundColor: Color
-    @Published private(set) var layers: [LayerModel] {
-        didSet {
-            _layerCancellables = layers.map { layer in
-                layer.objectWillChange.sink { _ in self.objectWillChange.send() }
-            }
-        }
-    }
-    @Published var currentLayer: LayerModel?
-
+    
     private var _layerCancellables: [AnyCancellable] = []
+    @Published private(set) var layers: [LayerModel] {
+        didSet { _layerCancellables = layers.map { layer in
+            layer.objectWillChange.sink { _ in self.objectWillChange.send() }
+        } }
+    }
 
     init(
         id: UUID = UUID(),
@@ -40,15 +37,12 @@ class ArtboardModel: ObservableObject, Identifiable {
     }
 
     func withNewLayer(_ pixels: [LayerPixelModel] = []) -> ArtboardModel {
-        currentLayer = newLayer(pixels)
+        _ = newLayer(pixels)
         return self
     }
 
     func newLayer(_ pixels: [LayerPixelModel] = []) -> LayerModel {
-        let newLayer = LayerModel(
-            name: "Layer \(layers.count)",
-            pixels: pixels
-        )
+        let newLayer = LayerModel(name: "Layer \(layers.count)", pixels: pixels)
         addLayer(newLayer)
         return newLayer
     }
@@ -62,32 +56,16 @@ class ArtboardModel: ObservableObject, Identifiable {
     }
 
     func removeLayer(_ layer: LayerModel) {
-        if let index = getIndex(layer) {
-            layers.remove(at: index)
-        }
+        layers.remove(layer)
     }
 
-    func getIndex(_ forLayer: LayerModel) -> Int? {
-        return layers.firstIndex(where: { layer in layer.id == forLayer.id })
-    }
-
-    func deleteLayer(_ toDelete: LayerModel) {
-        // delete active layer
-        if currentLayer?.id == toDelete.id {
-            currentLayer = nil
-            // set active to previous layer
-            if let idx = getIndex(toDelete) {
-                if idx > 0 && idx < layers.count {
-                    currentLayer = layers[idx - 1]
-                }
-            }
-        }
-        layers.removeAll { layer in layer.id == toDelete.id }
+    func getIndex(_ layer: LayerModel) -> Int? {
+        return layers.firstIndex(of: layer)
     }
 
     func resize(width: CGFloat? = nil, height: CGFloat? = nil) {
-        self.size.width = width ?? self.size.width
-        self.size.height = height ?? self.size.height
+        size.width = width ?? size.width
+        size.height = height ?? size.height
     }
 
     var visibleLayers: [LayerModel] {

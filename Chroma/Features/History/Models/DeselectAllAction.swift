@@ -8,28 +8,14 @@
 import Foundation
 
 class DeselectAllAction: Action {
-    var previousSelection: [LayerPixelModel] = []
     var layer: LayerModel
     
     init(_ layer: LayerModel) {
-        self.previousSelection = layer.selectedPixels
         self.layer = layer
         super.init()
     }
     
     override func getText() -> String {
         return "Deselect"
-    }
-    
-    override func perform() {
-        layer.selectedPixels = []
-    }
-    
-    override func undo() {
-        layer.selectedPixels = previousSelection
-    }
-    
-    override func redo() {
-        layer.selectedPixels = []
     }
 }

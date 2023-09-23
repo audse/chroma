@@ -141,6 +141,8 @@
 		7554D2EA2ABD4856008CEB87 /* DrawSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2E92ABD4856008CEB87 /* DrawSelection.swift */; };
 		75836D632ABE6A68007172AD /* NewLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D622ABE6A68007172AD /* NewLayerAction.swift */; };
 		75836D652ABE6B56007172AD /* DeleteLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D642ABE6B56007172AD /* DeleteLayerAction.swift */; };
+		75836D672ABE7158007172AD /* DerivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D662ABE7158007172AD /* DerivedData.swift */; };
+		75836D692ABE7396007172AD /* SelectLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D682ABE7396007172AD /* SelectLayerAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +301,8 @@
 		7554D2E92ABD4856008CEB87 /* DrawSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSelection.swift; sourceTree = "<group>"; };
 		75836D622ABE6A68007172AD /* NewLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLayerAction.swift; sourceTree = "<group>"; };
 		75836D642ABE6B56007172AD /* DeleteLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLayerAction.swift; sourceTree = "<group>"; };
+		75836D662ABE7158007172AD /* DerivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedData.swift; sourceTree = "<group>"; };
+		75836D682ABE7396007172AD /* SelectLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLayerAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +473,7 @@
 			children = (
 				7554D1BA2AB789BC008CEB87 /* Action.swift */,
 				7554D1BC2AB789FF008CEB87 /* History.swift */,
+				75836D662ABE7158007172AD /* DerivedData.swift */,
 				7554D2E52ABD394D008CEB87 /* DrawAction.swift */,
 				7554D2E12ABD3922008CEB87 /* DrawMultipleAction.swift */,
 				7554D2DB2ABD38F3008CEB87 /* EraseAction.swift */,
@@ -480,6 +485,7 @@
 				7554D2E72ABD3E5F008CEB87 /* MoveAction.swift */,
 				75836D622ABE6A68007172AD /* NewLayerAction.swift */,
 				75836D642ABE6B56007172AD /* DeleteLayerAction.swift */,
+				75836D682ABE7396007172AD /* SelectLayerAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1388,6 +1394,7 @@
 				7554D2D82ABD38C7008CEB87 /* DeselectAllAction.swift in Sources */,
 				7554D2C22ABCB883008CEB87 /* CancelToolButton.swift in Sources */,
 				7554D1792AB29A3D008CEB87 /* TintModel.swift in Sources */,
+				75836D672ABE7158007172AD /* DerivedData.swift in Sources */,
 				7554D1592AAFECB2008CEB87 /* SemiCircle.swift in Sources */,
 				7554D26D2AB912B8008CEB87 /* JsonHelper.swift in Sources */,
 				7554D2252AB79C29008CEB87 /* ButtonColor.swift in Sources */,
@@ -1419,6 +1426,7 @@
 				7554D2E42ABD3938008CEB87 /* FillAction.swift in Sources */,
 				7554D2542AB8C169008CEB87 /* PointJson.swift in Sources */,
 				7554D2DE2ABD38FD008CEB87 /* EraseMultipleAction.swift in Sources */,
+				75836D692ABE7396007172AD /* SelectLayerAction.swift in Sources */,
 				7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */,
 				7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */,
 				7554D2372AB7A495008CEB87 /* Font.swift in Sources */,

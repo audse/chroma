@@ -49,10 +49,14 @@ struct HistoryList: View {
     var body: some View {
         ScrollView {
             ForEach(history.undoHistory, id: \.id) { action in
-                HistoryActionListItem(action: action, isUndone: true)
+                if !action.isSilent() {
+                    HistoryActionListItem(action: action, isUndone: true)
+                }
             }
             ForEach(history.history.reversed(), id: \.id) { action in
-                HistoryActionListItem(action: action, isUndone: false)
+                if !action.isSilent() {
+                    HistoryActionListItem(action: action, isUndone: false)
+                }
             }
         }
         .buttonStyle(.plain)
@@ -63,19 +67,20 @@ struct HistoryList: View {
 struct HistoryList_Previews: PreviewProvider {
     static var drawSettings = DrawSettings()
     static var currentArtboard = ArtboardModel().withNewLayer()
+    static var history = History()
     static var previews: some View {
         HistoryList()
-            .environmentObject(History()
+            .environmentObject(history
                 .history([
-                    DrawAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
-                    EraseAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
+                    DrawAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
+                    EraseAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
                     NewLayerAction(currentArtboard),
-                    LineAction([drawSettings.createPixel().positive()], currentArtboard.currentLayer!),
-                    DrawAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!)
+                    LineAction([drawSettings.createPixel().positive()], history.getCurrentLayer()!),
+                    DrawAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!)
                 ])
                 .undoHistory([
-                    DrawAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
-                    EraseAction(drawSettings.createPixel().positive(), currentArtboard.currentLayer!),
+                    DrawAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
+                    EraseAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
                     DeleteLayerAction(currentArtboard.newLayer(), currentArtboard),
                     FillAction([drawSettings.createPixel().positive()], originalColor: .red, newColor: .black)
                 ]))

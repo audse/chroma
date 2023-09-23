@@ -20,12 +20,6 @@ class LayerModel: ObservableObject, Identifiable, Equatable {
 
     // swiftlint:disable:next identifier_name
     internal var _pixelCancellables: [AnyCancellable] = []
-    
-    @Published private var _selectedPixels: [LayerPixelModel] = []
-    var selectedPixels: [LayerPixelModel] {
-        get { return _selectedPixels.intersection(pixels) }
-        set { _selectedPixels = newValue.intersection(pixels) }
-    }
 
     init(
         id: UUID = UUID(),
@@ -77,8 +71,8 @@ class LayerModel: ObservableObject, Identifiable, Equatable {
         }
     }
     
-    func getSelectionPath() -> Path {
-        return Path().union(selectedPixels.map { pixel in pixel.pixel.path() })
+    func getSelectionPath(_ history: History) -> Path {
+        return Path().union(history.getCurrentSelection().map { pixel in pixel.pixel.path() })
     }
 
     /**

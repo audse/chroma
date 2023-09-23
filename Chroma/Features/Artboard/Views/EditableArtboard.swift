@@ -82,9 +82,6 @@ struct EditableArtboard: View {
                     .onChange(of: drawSettings.tool) { _ in
                         ghostPixels.removeAll()
                     }
-                    .onChange(of: file.artboard.currentLayer) { _ in
-                        ghostPixels.removeAll()
-                    }
             }
             if isHovering {
                 PixelCursor()
@@ -161,22 +158,19 @@ struct EditableArtboard: View {
             case .none: return []
             }
         case .move:
-            if let layer = file.artboard.currentLayer {
-                let first = drawSettings.snapped(dragState.first)
-                let last = drawSettings.snapped(dragState.last)
-                return layer.selectedPixels.map { pixel in
-                    let newPixel = pixel.duplicate()
-                    newPixel.setPosition(drawSettings.snapped(pixel.position + last - first))
-                    return newPixel.pixel
-                }
+            let first = drawSettings.snapped(dragState.first)
+            let last = drawSettings.snapped(dragState.last)
+            return history.getCurrentSelection().map { pixel in
+                let newPixel = pixel.duplicate()
+                newPixel.setPosition(drawSettings.snapped(pixel.position + last - first))
+                return newPixel.pixel
             }
-            return []
         default: return []
         }
     }
     
     func draw(_ location: CGPoint) {
-        if let layer = file.artboard.currentLayer {
+        if let layer = history.getCurrentLayer() {
             let model = drawSettings.createPixel(location)
             let pixel = drawSettings.tool == .drawPositive ? model.positive() : model.negative()
             history.add(DrawAction(pixel, layer))
@@ -184,7 +178,7 @@ struct EditableArtboard: View {
     }
 
     func erase(_ location: CGPoint) {
-        if let layer = file.artboard.currentLayer {
+        if let layer = history.getCurrentLayer() {
             if let (_, pixel) = layer.findPixel(location) {
                 history.add(EraseAction(pixel, layer))
             }
@@ -192,13 +186,13 @@ struct EditableArtboard: View {
     }
     
     func eraseSelection() {
-        if let layer = file.artboard.currentLayer {
-            history.add(EraseSelectionAction(layer.selectedPixels, layer))
+        if let layer = history.getCurrentLayer() {
+            history.add(EraseSelectionAction(history.getCurrentSelection(), layer))
         }
     }
 
     func fill(_ location: CGPoint) {
-        if let layer = file.artboard.currentLayer {
+        if let layer = history.getCurrentLayer() {
             let pixelsToFill = layer.getPixelsToFill(location)
             if let startPixel = pixelsToFill.first {
                 let originalColor = startPixel.color
@@ -223,7 +217,7 @@ struct EditableArtboard: View {
 
     func line(_ location: CGPoint) {
         if let pointA = drawSettings.multiClickState.first {
-            if let layer = file.artboard.currentLayer {
+            if let layer = history.getCurrentLayer() {
                 drawSettings.multiClickState.removeAll()
                 let pixels = drawSettings.createPixelLine(pointA, location).map { pixel in pixel.positive() }
                 history.add(LineAction(pixels, layer))
@@ -235,7 +229,7 @@ struct EditableArtboard: View {
 
     func rect(_ location: CGPoint) {
         if let pointA = drawSettings.multiClickState.first {
-            if let layer = file.artboard.currentLayer {
+            if let layer = history.getCurrentLayer() {
                 drawSettings.multiClickState.removeAll()
                 let pixels = drawSettings.createPixelRect(pointA, location).map { pixel in pixel.positive() }
                 history.add(RectAction(pixels, layer))
@@ -246,7 +240,7 @@ struct EditableArtboard: View {
     }
     
     func selectPath(_ path: [CGPoint]) {
-        if let layer = file.artboard.currentLayer {
+        if let layer = history.getCurrentLayer() {
             let selectionPath: Path = DrawSelection(tool: drawSettings.tool, points: path).getShape()
             let pixels = layer.getSelectedPixels(in: selectionPath)
             history.add(SelectAction(pixels, layer))
@@ -256,13 +250,11 @@ struct EditableArtboard: View {
     func move(_ path: [CGPoint]) {
         let first = drawSettings.snapped(dragState.first)
         let last = drawSettings.snapped(dragState.last)
-        if let layer = file.artboard.currentLayer {
-            history.add(MoveAction(
-                layer.selectedPixels,
-                drawSettings: drawSettings,
-                delta: last - first
-            ))
-        }
+        history.add(MoveAction(
+            history.getCurrentSelection(),
+            drawSettings: drawSettings,
+            delta: last - first
+        ))
     }
     
 }

@@ -14,6 +14,12 @@ class Action: Identifiable, Equatable {
         self.perform()
     }
     
+    /**
+     If `true`, this action will not show up in the history list
+     */
+    func isSilent() -> Bool {
+        return false
+    }
     func getText() -> String {
         return "Action"
     }
