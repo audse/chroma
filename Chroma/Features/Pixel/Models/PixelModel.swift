@@ -93,22 +93,20 @@ extension PixelModel {
     }
     
     public func path(in rect: CGRect) -> Path {
-        return shape.shape.path(in: rect)
+        return shape.shape.rotation(rotation).path(in: rect)
     }
     
     public func path() -> Path {
         return shape.shape.path(in: getRect())
     }
     
-    public func draw(_ ctx: GraphicsContext) {
+    public func draw(_ ctx: inout GraphicsContext) {
         let path = path(in: getRect())
-            .applying(CGAffineTransform(rotationAngle: rotation.radians))
         ctx.fill(path, with: .color(color))
     }
     
     public func clip(_ ctx: inout GraphicsContext) {
         let path = path(in: getRect())
-            .applying(CGAffineTransform(rotationAngle: rotation.radians))
         ctx.clip(to: path, options: .inverse)
     }
 
@@ -196,7 +194,7 @@ public enum LayerPixelModel: Identifiable, Equatable, Codable {
     
     public func draw(_ context: inout GraphicsContext) {
         switch self {
-        case .positive(let pixel): pixel.draw(context)
+        case .positive(let pixel): pixel.draw(&context)
         case .negative(let pixel): pixel.clip(&context)
         }
     }

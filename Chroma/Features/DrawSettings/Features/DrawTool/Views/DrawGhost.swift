@@ -16,7 +16,7 @@ struct DrawGhost: View {
     var body: some View {
         Canvas { context, _ in
             for pixel in ghostPixels {
-                pixel.draw(context)
+                pixel.draw(&context)
             }
         }
         .opacity(0.25)
