@@ -11,12 +11,16 @@ struct Artboard: View {
     @ObservedObject var artboard: ArtboardModel
 
     var body: some View {
-        Canvas { context, size in
-            context.fill(
-                Rectangle().path(in: CGRect(origin: CGPoint(0), size: size)),
-                with: .color(artboard.backgroundColor)
-            )
-            artboard.layers.forEach { layer in layer.draw(&context) }
+        ZStack {
+            Canvas { context, size in
+                context.fill(
+                    Rectangle().path(in: CGRect(origin: CGPoint(0), size: size)),
+                    with: .color(artboard.backgroundColor)
+                )
+            }
+            ForEach(artboard.layers, id: \.id) { layer in
+                Layer(layer: layer)
+            }
         }
         .frame(
             width: artboard.size.width,

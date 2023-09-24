@@ -149,6 +149,7 @@
 		75836D832ABFAA1C007172AD /* ShortcutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D822ABFAA1C007172AD /* ShortcutList.swift */; };
 		75836D862ABFAEBE007172AD /* ShortcutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D852ABFAEBE007172AD /* ShortcutPage.swift */; };
 		75836D882ABFB362007172AD /* DocumentationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D872ABFB362007172AD /* DocumentationPage.swift */; };
+		75836D8A2ABFBAAF007172AD /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D892ABFBAAF007172AD /* Layer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,6 +316,7 @@
 		75836D822ABFAA1C007172AD /* ShortcutList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutList.swift; sourceTree = "<group>"; };
 		75836D852ABFAEBE007172AD /* ShortcutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutPage.swift; sourceTree = "<group>"; };
 		75836D872ABFB362007172AD /* DocumentationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationPage.swift; sourceTree = "<group>"; };
+		75836D892ABFBAAF007172AD /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -523,6 +525,7 @@
 				75836D722ABF6455007172AD /* LayerLockButton.swift */,
 				75836D782ABF67E1007172AD /* NewLayerButton.swift */,
 				75836D762ABF6644007172AD /* DeleteLayerButton.swift */,
+				75836D892ABFBAAF007172AD /* Layer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1539,6 +1542,7 @@
 				7554D2AB2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift in Sources */,
 				75836D7B2ABF6928007172AD /* DragPathGesture.swift in Sources */,
 				7554D1C72AB78AFF008CEB87 /* TileMode.swift in Sources */,
+				75836D8A2ABFBAAF007172AD /* Layer.swift in Sources */,
 				7554D1D52AB78C32008CEB87 /* WorkspaceBackgroundColor.swift in Sources */,
 				7554D22C2AB7A39E008CEB87 /* CGRect.swift in Sources */,
 			);
