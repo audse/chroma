@@ -82,6 +82,13 @@ extension ArtboardModel {
         size.width = width ?? size.width
         size.height = height ?? size.height
     }
+    
+    func moveLayer(_ layer: LayerModel, to newIndex: Int) {
+        if let index = layers.firstIndex(of: layer) {
+            layers.move(fromOffsets: [index], toOffset: newIndex)
+            objectWillChange.send()
+        }
+    }
 
     var visibleLayers: [LayerModel] {
         return layers.filter { layer in layer.isVisible }

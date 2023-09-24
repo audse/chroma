@@ -29,6 +29,9 @@ struct ButtonColorStyle: ShapeStyle {
 
     var foregroundColor: Color {
         if type == .filled {
+            if baseColor.opacity < 0.1 {
+                return .primary
+            }
             return contrasting
         }
         if colorScheme != nil {

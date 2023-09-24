@@ -14,27 +14,26 @@ struct LayerListItem: View {
     @ObservedObject var layer: LayerModel
     
     var body: some View {
-        Button {
+        HStack {
+            Text("\(file.artboard.layers.firstIndex(of: layer) ?? 0)").opacity(0.5)
+            Spacer()
+            EditableText(text: $layer.name)
+                .fixedSize()
+                .expandWidth()
+            Spacer()
+            LayerLockButton(layer: layer)
+            LayerVisibiltyButton(layer: layer)
+        }
+        .background(Color.almostClear)
+        .padding([.top, .bottom], 3)
+        .padding([.leading, .trailing], 9)
+        .buttonAccentStyle(.filled)
+        .cornerRadius(6)
+        .tinted(layer == history.getCurrentLayer() ? .accentColor : .accentColor.almostClear)
+        .onTapGesture {
             history.add(SelectLayerAction(layer))
-        } label: {
-            HStack {
-                Text("\(file.artboard.layers.firstIndex(of: layer) ?? 0)").opacity(0.5)
-                Spacer()
-                EditableText(text: $layer.name)
-                    .fixedSize()
-                    .expandWidth()
-                Spacer()
-                LayerLockButton(layer: layer)
-                LayerVisibiltyButton(layer: layer)
-            }.background(Color.almostClear)
-        }.composableButtonStyle(
-            Btn.defaultPadding
-            |> Btn.hStack
-            |> Btn.filledAccent
-            |> Btn.rounded
-            |> Btn.scaled
-        )
-            .tinted(layer.id == history.getCurrentLayer()?.id ? Color.accentColor : Color.clear)
+        }
+        .scaleOnTap()
     }
 }
 

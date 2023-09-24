@@ -36,9 +36,12 @@ extension Color {
     static var almostClear: Color {
         return Color(white: 1, opacity: 0.001)
     }
-    
     static public var emerald: Color {
         return Color(red: 5 / 255, green: 150 / 255, blue: 105 / 255, opacity: 1)
+    }
+    
+    public var almostClear: Color {
+        return self.opacity(0.001)
     }
 
     public var components: (red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat) {

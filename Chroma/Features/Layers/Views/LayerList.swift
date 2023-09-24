@@ -11,6 +11,8 @@ struct LayerList: View {
     @EnvironmentObject var file: FileModel
     @EnvironmentObject var history: History
     
+    let layerListItemHeight: CGFloat = 36
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 6) {
@@ -25,11 +27,32 @@ struct LayerList: View {
                     .frame(width: 18, height: 18)
             }.padding(.bottom, 4)
             ScrollView(.vertical) {
-                ForEach(file.artboard.layers.reversed(), id: \.id) { layer in
-                    LayerListItem(layer: layer)
+                VStack(spacing: 0) {
+                    ForEach(file.artboard.layers.reversed(), id: \.id) { layer in
+                        LayerListItem(layer: layer)
+                            .draggable(layer.id.uuidString)
+                            .frame(height: layerListItemHeight)
+                    }
                 }
-            }.well()
+            }
+            .well()
+            .dropDestination(for: String.self) { layers, point in
+                guard let layerId = layers.first else { return false }
+                guard let layer = getLayerById(layerId) else { return false }
+                let newIndex = getLayerIndexAtDropPoint(point)
+                file.artboard.moveLayer(layer, to: newIndex)
+                file.objectWillChange.send()
+                return true
+            }
         }
+    }
+    
+    func getLayerById(_ layerId: String) -> LayerModel? {
+        return file.artboard.layers.first { layer in layer.id.uuidString == layerId }
+    }
+    
+    func getLayerIndexAtDropPoint(_ point: CGPoint) -> Int {
+        return file.artboard.layers.count - Int(floor(point.y / layerListItemHeight))
     }
 }
 
