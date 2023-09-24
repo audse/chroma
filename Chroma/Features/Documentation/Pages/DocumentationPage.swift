@@ -8,11 +8,13 @@
 import SwiftUI
 
 private struct NavbarItem: Identifiable, Hashable, Equatable {
+    var icon: String?
     let id: String
 }
 
 private let navbarItems = [
-    NavbarItem(id: "Shortcuts")
+    NavbarItem(id: "Shortcuts"),
+    NavbarItem(icon: "plus.forwardslash.minus", id: "Shapes")
 ]
 
 struct DocumentationPage: View {
@@ -28,11 +30,15 @@ struct DocumentationPage: View {
                     .font(.label)
                     .foregroundColor(.secondary.lerp(.primary))
                 List(navbarItems, selection: $selection) { item in
-                    Text(item.id)
+                    Label(item.id, systemImage: item.icon ?? "")
                 }.expandHeight()
         } detail: {
             if let selection, selection == "Shortcuts" {
                 ShortcutPage()
+                    .expand()
+            }
+            if let selection, selection == "Shapes" {
+                BooleanShapePage()
                     .expand()
             }
             Spacer()
