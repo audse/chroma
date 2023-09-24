@@ -27,6 +27,7 @@ class AppSettingsModel: ObservableObject {
     @Published var showingSettings: Bool = false
     @Published var showingImport: Bool = false
     @Published var showingExport: Bool = false
+    @Published var showingDocumentation: Bool = false
     
     init() {
         self.colorScheme = getSavedProperty(key: "colorScheme", defaultValue: AppColorScheme.followSystem)

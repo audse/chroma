@@ -52,6 +52,10 @@ struct Editor: View {
                     .environmentObject(appSettings)
                     .environmentObject(file.artboard)
             }
+            .sheet(isPresented: $appSettings.showingDocumentation) {
+                DocumentationPage(showing: $appSettings.showingDocumentation)
+                    .frame(minWidth: 800, minHeight: 600)
+            }
             .fileImporter(
                 isPresented: $appSettings.showingImport,
                 allowedContentTypes: [.chroma, .json],
@@ -156,6 +160,11 @@ struct ChromaApp: App {
                         RequestRedoEvent.emit(())
                     }
                     .keyboardShortcut("z", modifiers: [.command, .shift])
+                }
+                CommandGroup(replacing: .help) {
+                    Button("Documentation") {
+                        appSettings.showingDocumentation.toggle()
+                    }.keyboardShortcut("h", modifiers: [.command, .shift])
                 }
             }
     }

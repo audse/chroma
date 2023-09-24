@@ -145,6 +145,10 @@
 		75836D792ABF67E1007172AD /* NewLayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D782ABF67E1007172AD /* NewLayerButton.swift */; };
 		75836D7B2ABF6928007172AD /* DragPathGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D7A2ABF6928007172AD /* DragPathGesture.swift */; };
 		75836D7D2ABF8BA5007172AD /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D7C2ABF8BA5007172AD /* EditableText.swift */; };
+		75836D812ABFA0C1007172AD /* ShortcutKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D802ABFA0C1007172AD /* ShortcutKey.swift */; };
+		75836D832ABFAA1C007172AD /* ShortcutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D822ABFAA1C007172AD /* ShortcutList.swift */; };
+		75836D862ABFAEBE007172AD /* ShortcutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D852ABFAEBE007172AD /* ShortcutPage.swift */; };
+		75836D882ABFB362007172AD /* DocumentationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D872ABFB362007172AD /* DocumentationPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -307,6 +311,10 @@
 		75836D782ABF67E1007172AD /* NewLayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLayerButton.swift; sourceTree = "<group>"; };
 		75836D7A2ABF6928007172AD /* DragPathGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPathGesture.swift; sourceTree = "<group>"; };
 		75836D7C2ABF8BA5007172AD /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
+		75836D802ABFA0C1007172AD /* ShortcutKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutKey.swift; sourceTree = "<group>"; };
+		75836D822ABFAA1C007172AD /* ShortcutList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutList.swift; sourceTree = "<group>"; };
+		75836D852ABFAEBE007172AD /* ShortcutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutPage.swift; sourceTree = "<group>"; };
+		75836D872ABFB362007172AD /* DocumentationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +447,7 @@
 		7554D1B52AB7883E008CEB87 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				75836D7E2ABFA0A2007172AD /* Documentation */,
 				7554D2942ABB7F89008CEB87 /* Events */,
 				7554D2752AB942BB008CEB87 /* Export */,
 				7554D2412AB7B53D008CEB87 /* File */,
@@ -1211,6 +1220,33 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		75836D7E2ABFA0A2007172AD /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				75836D842ABFAEB4007172AD /* Pages */,
+				75836D7F2ABFA0A7007172AD /* Views */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		75836D7F2ABFA0A7007172AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				75836D802ABFA0C1007172AD /* ShortcutKey.swift */,
+				75836D822ABFAA1C007172AD /* ShortcutList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		75836D842ABFAEB4007172AD /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				75836D852ABFAEBE007172AD /* ShortcutPage.swift */,
+				75836D872ABFB362007172AD /* DocumentationPage.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1425,6 +1461,7 @@
 				7554D2632AB8CDC0008CEB87 /* ArtboardHelpers.swift in Sources */,
 				7554D2B42ABCAEF7008CEB87 /* LineToolIcon.swift in Sources */,
 				7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */,
+				75836D812ABFA0C1007172AD /* ShortcutKey.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
 				7554D2DC2ABD38F3008CEB87 /* EraseAction.swift in Sources */,
 				7554D2D42ABD28C2008CEB87 /* LassoSelectToolButton.swift in Sources */,
@@ -1435,10 +1472,13 @@
 				7554D2E22ABD3922008CEB87 /* DrawMultipleAction.swift in Sources */,
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
 				7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */,
+				75836D832ABFAA1C007172AD /* ShortcutList.swift in Sources */,
+				75836D862ABFAEBE007172AD /* ShortcutPage.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
 				75836D732ABF6455007172AD /* LayerLockButton.swift in Sources */,
 				7554D21B2AB79901008CEB87 /* Well.swift in Sources */,
 				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
+				75836D882ABFB362007172AD /* DocumentationPage.swift in Sources */,
 				7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,
 				75836D7D2ABF8BA5007172AD /* EditableText.swift in Sources */,
