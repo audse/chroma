@@ -150,6 +150,7 @@
 		75836D862ABFAEBE007172AD /* ShortcutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D852ABFAEBE007172AD /* ShortcutPage.swift */; };
 		75836D882ABFB362007172AD /* DocumentationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D872ABFB362007172AD /* DocumentationPage.swift */; };
 		75836D8A2ABFBAAF007172AD /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D892ABFBAAF007172AD /* Layer.swift */; };
+		75836D8C2AC0A6E0007172AD /* BooleanShapePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D8B2AC0A6E0007172AD /* BooleanShapePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -317,6 +318,7 @@
 		75836D852ABFAEBE007172AD /* ShortcutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutPage.swift; sourceTree = "<group>"; };
 		75836D872ABFB362007172AD /* DocumentationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationPage.swift; sourceTree = "<group>"; };
 		75836D892ABFBAAF007172AD /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		75836D8B2AC0A6E0007172AD /* BooleanShapePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooleanShapePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1246,6 +1248,7 @@
 			children = (
 				75836D852ABFAEBE007172AD /* ShortcutPage.swift */,
 				75836D872ABFB362007172AD /* DocumentationPage.swift */,
+				75836D8B2AC0A6E0007172AD /* BooleanShapePage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1465,6 +1468,7 @@
 				7554D2B42ABCAEF7008CEB87 /* LineToolIcon.swift in Sources */,
 				7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */,
 				75836D812ABFA0C1007172AD /* ShortcutKey.swift in Sources */,
+				75836D8C2AC0A6E0007172AD /* BooleanShapePage.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
 				7554D2DC2ABD38F3008CEB87 /* EraseAction.swift in Sources */,
 				7554D2D42ABD28C2008CEB87 /* LassoSelectToolButton.swift in Sources */,

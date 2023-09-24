@@ -85,7 +85,10 @@ extension LayerModel {
 
     func draw(_ context: inout GraphicsContext) {
         if isVisible {
-            pixels.reversed().forEach { pixel in pixel.draw(&context) }
+            let negativePixels = pixels.filter { $0.isNegative }
+            let positivePixels = pixels.filter { $0.isPositive }
+            negativePixels.forEach { $0.draw(&context) }
+            positivePixels.forEach { $0.draw(&context) }
         }
     }
     
