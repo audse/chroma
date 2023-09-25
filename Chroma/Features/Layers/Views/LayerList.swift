@@ -40,8 +40,7 @@ struct LayerList: View {
                 guard let layerId = layers.first else { return false }
                 guard let layer = getLayerById(layerId) else { return false }
                 let newIndex = getLayerIndexAtDropPoint(point)
-                file.artboard.moveLayer(layer, to: newIndex)
-                file.objectWillChange.send()
+                history.add(MoveLayerAction(layer, file.artboard, to: newIndex))
                 return true
             }
         }

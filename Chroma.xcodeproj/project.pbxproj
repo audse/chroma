@@ -153,6 +153,7 @@
 		75836D8C2AC0A6E0007172AD /* BooleanShapePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D8B2AC0A6E0007172AD /* BooleanShapePage.swift */; };
 		75836D922AC0BC87007172AD /* ScaleOnTapModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D912AC0BC87007172AD /* ScaleOnTapModifier.swift */; };
 		75836D942AC22088007172AD /* ChromaDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D932AC22088007172AD /* ChromaDocument.swift */; };
+		75836D962AC2355C007172AD /* MoveLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D952AC2355C007172AD /* MoveLayerAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,6 +324,7 @@
 		75836D8B2AC0A6E0007172AD /* BooleanShapePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooleanShapePage.swift; sourceTree = "<group>"; };
 		75836D912AC0BC87007172AD /* ScaleOnTapModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleOnTapModifier.swift; sourceTree = "<group>"; };
 		75836D932AC22088007172AD /* ChromaDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaDocument.swift; sourceTree = "<group>"; };
+		75836D952AC2355C007172AD /* MoveLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveLayerAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -510,6 +512,7 @@
 				75836D682ABE7396007172AD /* SelectLayerAction.swift */,
 				75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */,
 				75836D6E2ABF6358007172AD /* ToggleLayerLockAction.swift */,
+				75836D952AC2355C007172AD /* MoveLayerAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1463,6 +1466,7 @@
 				7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */,
 				7554D2E42ABD3938008CEB87 /* FillAction.swift in Sources */,
 				7554D2DE2ABD38FD008CEB87 /* EraseMultipleAction.swift in Sources */,
+				75836D962AC2355C007172AD /* MoveLayerAction.swift in Sources */,
 				75836D692ABE7396007172AD /* SelectLayerAction.swift in Sources */,
 				7554D2302AB7A3D7008CEB87 /* CGFloat.swift in Sources */,
 				7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */,
