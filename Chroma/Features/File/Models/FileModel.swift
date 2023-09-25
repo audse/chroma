@@ -63,13 +63,6 @@ extension FileModel {
             artboard: ArtboardModel().withNewLayer()
         )
     }
-    
-    func setFile(_ file: FileModel) {
-        self.id = file.id
-        self.name = file.name
-        self.artboard = file.artboard
-    }
-    
 }
 
 private struct FileKey: EnvironmentKey {

@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct FilePreview: View {
-    @State var file: FileModel
+    @ObservedObject var file: FileModel
 
     var body: some View {
         VStack {
+            Text(file.name)
+                .font(.label)
+                .foregroundColor(.primary.lerp(.secondary))
             Image(
                 ImageRenderer(content: Artboard(artboard: file.artboard)
                     .fixedSize()).cgImage.unsafelyUnwrapped,
@@ -22,16 +25,10 @@ struct FilePreview: View {
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .shadow(radius: 4)
-        }.expand()
+        }.expand().padding()
     }
 }
 
-struct FilePreview_Previews: PreviewProvider {
-    static var previews: some View {
-        FilePreview(file: FileModel(
-            id: UUID(),
-            name: "Untitled",
-            artboard: PreviewArtboardModelBuilder().build()
-        ))
-    }
+#Preview {
+    FilePreview(file: FileModel(artboard: PreviewArtboardModelBuilder().build()))
 }

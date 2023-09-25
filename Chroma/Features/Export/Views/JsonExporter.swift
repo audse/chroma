@@ -8,23 +8,21 @@
 import SwiftUI
 
 struct JsonExporter: View {
+    @EnvironmentObject var appSettings: AppSettingsModel
     @EnvironmentObject var file: FileModel
     @Binding var isPresented: Bool
 
-    var onCompletion: ((Bool) -> Void)?
+    var onCompletion: ((Result<URL, Error>) -> Void)?
 
     var body: some View {
-        Spacer().fileExporter(
+        Spacer().fixedSize().fileExporter(
             isPresented: $isPresented,
             document: getJsonDocument(),
             contentType: .chroma,
             defaultFilename: "\(file.name).chroma",
             onCompletion: { result in
-                if let onCompletion = onCompletion {
-                    switch result {
-                    case .success: onCompletion(true)
-                    case .failure: onCompletion(false)
-                    }
+                if let onCompletion {
+                    onCompletion(result)
                 }
             }
         )

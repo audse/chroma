@@ -13,52 +13,61 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>chroma</string>
+				<string>com.chroma.chroma</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string></string>
 		</dict>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict/>
 	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>json</string>
+				<string>public.json</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Chroma File</string>
 			<key>UTTypeIcons</key>
 			<dict/>
 			<key>UTTypeIdentifier</key>
-			<string>chroma</string>
+			<string>com.chroma.chroma</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
 					<string>chroma</string>
+					<string>CHROMA</string>
+					<string>Chroma</string>
 				</array>
 			</dict>
 		</dict>
+		<dict/>
 	</array>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>json</string>
+				<string>public.json</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Chroma File</string>
 			<key>UTTypeIcons</key>
 			<dict/>
 			<key>UTTypeIdentifier</key>
-			<string>chroma</string>
+			<string>com.chroma.chroma</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
 					<string>chroma</string>
+					<string>CHROMA</string>
+					<string>Chroma</string>
 				</array>
 			</dict>
 		</dict>

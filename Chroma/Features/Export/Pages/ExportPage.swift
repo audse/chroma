@@ -10,7 +10,7 @@ import SwiftUI
 struct ExportPage: View {
     @EnvironmentObject var file: FileModel
 
-    @State var exportType: ExportType = .chroma
+    @State var exportType: ExportType = .png
     @State var exportScale: Double = 1
     @State var isChromaExporterPresented: Bool = false
     @State var isPngExporterPresented: Bool = false
@@ -27,7 +27,12 @@ struct ExportPage: View {
                 }
                 JsonExporter(
                     isPresented: $isChromaExporterPresented,
-                    onCompletion: { isSuccess in showing = !isSuccess }
+                    onCompletion: { result in
+                        switch result {
+                        case .success: showing = true
+                        default: showing = false
+                        }
+                    }
                 )
                 PngExporter(
                     isPresented: $isPngExporterPresented,

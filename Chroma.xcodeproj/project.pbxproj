@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */; };
-		7554D10E2AAFB6B8008CEB87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D10D2AAFB6B8008CEB87 /* ContentView.swift */; };
+		7554D10E2AAFB6B8008CEB87 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D10D2AAFB6B8008CEB87 /* EditorView.swift */; };
 		7554D1102AAFB6B9008CEB87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7554D10F2AAFB6B9008CEB87 /* Assets.xcassets */; };
 		7554D1142AAFB6B9008CEB87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7554D1132AAFB6B9008CEB87 /* Preview Assets.xcassets */; };
 		7554D11E2AAFB6B9008CEB87 /* ChromaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D11D2AAFB6B9008CEB87 /* ChromaTests.swift */; };
@@ -174,7 +174,7 @@
 /* Begin PBXFileReference section */
 		7554D1082AAFB6B8008CEB87 /* Chroma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chroma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaApp.swift; sourceTree = "<group>"; };
-		7554D10D2AAFB6B8008CEB87 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7554D10D2AAFB6B8008CEB87 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		7554D10F2AAFB6B9008CEB87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7554D1112AAFB6B9008CEB87 /* Chroma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chroma.entitlements; sourceTree = "<group>"; };
 		7554D1132AAFB6B9008CEB87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -377,7 +377,7 @@
 				7554D10F2AAFB6B9008CEB87 /* Assets.xcassets */,
 				7554D1112AAFB6B9008CEB87 /* Chroma.entitlements */,
 				7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */,
-				7554D10D2AAFB6B8008CEB87 /* ContentView.swift */,
+				7554D10D2AAFB6B8008CEB87 /* EditorView.swift */,
 				7554D1B52AB7883E008CEB87 /* Features */,
 				7554D1122AAFB6B9008CEB87 /* Preview Content */,
 			);
@@ -1440,7 +1440,7 @@
 				7554D1602AAFF3C9008CEB87 /* ShapeButton.swift in Sources */,
 				7554D2B82ABCAFAA008CEB87 /* DrawToolButton.swift in Sources */,
 				75836D6D2ABF4FFD007172AD /* Angle.swift in Sources */,
-				7554D10E2AAFB6B8008CEB87 /* ContentView.swift in Sources */,
+				7554D10E2AAFB6B8008CEB87 /* EditorView.swift in Sources */,
 				7554D2EA2ABD4856008CEB87 /* DrawSelection.swift in Sources */,
 				7554D1A62AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift in Sources */,
 				7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */,

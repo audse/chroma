@@ -71,6 +71,10 @@ extension Array {
         }
         return newArray
     }
+    
+    public func filterMap<T>(_ closure: (Element) -> T?) -> [T] {
+        return map(closure).filterSome()
+    }
 }
 
 extension Array where Element: Equatable {

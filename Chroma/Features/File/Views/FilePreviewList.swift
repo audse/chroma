@@ -7,10 +7,25 @@
 
 import SwiftUI
 
+extension URL: Identifiable {
+    public var id: String {
+        return self.absoluteString
+    }
+}
+
+private struct File: Identifiable {
+    let url: URL
+    let file: FileModel
+    
+    var id: String { return url.absoluteString }
+}
+
 struct FilePreviewList: View {
-    @State var files: [FileModel]
+    @Environment(\.newDocument) var newDocument
+    @Environment(\.openDocument) var openDocument
+    @EnvironmentObject var appSettings: AppSettingsModel
+    
     @State var selectedFile: FileModel?
-    var onSelectFile: ((FileModel) -> Void)?
 
     var columns: [GridItem] = [
         GridItem(.flexible(), spacing: 12),
@@ -22,33 +37,61 @@ struct FilePreviewList: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 12) {
-                ForEach(files, id: \.id) { file in
-                    NavigationLink {
-                        Editor(file: file)
+                Button {
+                    newDocument(ChromaDocument(FileModel.Empty()))
+                } label: {
+                    Text("New")
+                        .expand()
+                        .background(Color.almostClear)
+                }
+                .foregroundStyle(.primary)
+                .buttonStyle(.plain)
+                .overlay(RoundedRectangle(cornerRadius: 12)
+                    .strokeBorder(
+                        .tertiary,
+                        style: StrokeStyle(
+                            lineWidth: 3,
+                            lineCap: .round,
+                            dash: [6]
+                        )
+                    ))
+                .aspectRatio(1, contentMode: .fit)
+                .expand()
+                
+                ForEach(getRecentFiles(), id: \.id) { file in
+                    Button {
+                        open(file.url)
                     } label: {
-                        FilePreview(file: file).expand()
+                        FilePreview(file: file.file)
+                            .expand()
+                            .composableButtonStyle(Btn.scaled)
                     }.buttonStyle(.plain)
-                        .composableButtonStyle(Btn.scaled)
                 }
             }
         }.expand()
     }
+    
+    private func getRecentFiles() -> [File] {
+        appSettings.recentFiles.filterMap { url in
+            if let file: FileModel = loadJson(url) {
+                return File(url: url, file: file)
+            }
+            return nil
+        }
+    }
+    
+    func open(_ url: URL) {
+        Task {
+            do {
+                try await openDocument(at: url)
+            } catch {
+                print("error")
+            }
+        }
+    }
 }
 
-struct FilePreviewList_Previews: PreviewProvider {
-    static var previews: some View {
-        FilePreviewList(files: [
-            loadFile(),
-            FileModel(artboard: PreviewArtboardModelBuilder().build()),
-            FileModel(artboard: PreviewArtboardModelBuilder().build()),
-            FileModel(artboard: PreviewArtboardModelBuilder().build()),
-            FileModel(artboard: PreviewArtboardModelBuilder().build()),
-            FileModel(artboard: PreviewArtboardModelBuilder().build()),
-            FileModel(artboard: PreviewArtboardModelBuilder().build())
-        ])
-    }
-
-    static func loadFile() -> FileModel {
-        return load("TestFile1.json") ?? FileModel.Empty()
-    }
+#Preview {
+    FilePreviewList()
+        .environmentObject(AppSettingsModel())
 }

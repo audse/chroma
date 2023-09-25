@@ -34,3 +34,5 @@ func load<T: Decodable>(_ url: URL) -> T? {
         return nil
     }
 }
+
+func loadJson<T: Decodable>(_ url: URL) -> T? { load(url) }

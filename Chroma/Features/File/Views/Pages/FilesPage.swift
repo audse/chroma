@@ -8,27 +8,17 @@
 import SwiftUI
 
 struct FilesPage: View {
-    @State var files: [FileModel]
-    var onSelectFile: ((FileModel) -> Void)?
-
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Recent files")
+            Text("Recent Files")
                 .font(.title)
+            FilePreviewList()
                 .navigationTitle("Recent files")
-            FilePreviewList(files: files, onSelectFile: onSelectFile)
         }.padding()
     }
 }
 
-struct FilesPage_Previews: PreviewProvider {
-    static var previews: some View {
-        FilesPage(files: [
-            FileModel(artboard: PreviewArtboardModelBuilder().build()),
-            FileModel(artboard: PreviewArtboardModelBuilder().build()),
-            FileModel(artboard: PreviewArtboardModelBuilder().build()),
-            FileModel(artboard: PreviewArtboardModelBuilder().build()),
-            FileModel(artboard: PreviewArtboardModelBuilder().build())
-        ])
-    }
+#Preview {
+    FilesPage().environmentObject(AppSettingsModel())
 }
