@@ -9,10 +9,11 @@ import SwiftUI
 
 struct LineToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
+    @EnvironmentObject var history: History
 
     var body: some View {
         Button {
-            drawSettings.setTool(.line)
+            history.add(SelectToolAction(.line, drawSettings))
         } label: {
             LineToolIcon.getView()
         }

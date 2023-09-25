@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RectToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
+    @EnvironmentObject var history: History
 
     var body: some View {
         Button {
-            drawSettings.setTool(.rect)
+            history.add(SelectToolAction(.rect, drawSettings))
         } label: {
             RectToolIcon.getView()
         }

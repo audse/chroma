@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MoveToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
+    @EnvironmentObject var history: History
 
     var body: some View {
         Button {
-            drawSettings.setTool(.move)
+            history.add(SelectToolAction(.move, drawSettings))
         } label: {
             Image(systemName: "hand.point.up.left.fill")
         }

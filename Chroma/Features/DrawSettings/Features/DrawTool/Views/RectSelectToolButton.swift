@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RectSelectToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
+    @EnvironmentObject var history: History
 
     var body: some View {
         Button {
-            drawSettings.setTool(.rectSelect)
+            history.add(SelectToolAction(.rectSelect, drawSettings))
         } label: {
             Image(systemName: "square.dashed")
         }

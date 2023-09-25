@@ -198,13 +198,10 @@ struct EditableArtboard: View {
     }
 
     func eyedrop(_ location: CGPoint) {
-        for layer in file.artboard.visibleLayers.reversed() {
-            if let (_, pixel) = layer.findPixel(location) {
-                drawSettings.color = pixel.color
-                drawSettings.setTool(.drawPositive)
-                return
-            }
-        }
+        let renderer = ImageRenderer(content: Artboard(artboard: file.artboard))
+        let color = renderer.cgImage?.getPixelColor(at: location) ?? .black
+        drawSettings.color = color
+        history.add(SelectToolAction(history.getPreviousTool(), drawSettings))
     }
 
     func line(_ location: CGPoint) {

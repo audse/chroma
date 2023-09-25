@@ -154,6 +154,8 @@
 		75836D922AC0BC87007172AD /* ScaleOnTapModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D912AC0BC87007172AD /* ScaleOnTapModifier.swift */; };
 		75836D942AC22088007172AD /* ChromaDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D932AC22088007172AD /* ChromaDocument.swift */; };
 		75836D962AC2355C007172AD /* MoveLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D952AC2355C007172AD /* MoveLayerAction.swift */; };
+		75836D982AC245B3007172AD /* SelectToolAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D972AC245B3007172AD /* SelectToolAction.swift */; };
+		75836D9A2AC24E12007172AD /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D992AC24E12007172AD /* CGImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,6 +327,8 @@
 		75836D912AC0BC87007172AD /* ScaleOnTapModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleOnTapModifier.swift; sourceTree = "<group>"; };
 		75836D932AC22088007172AD /* ChromaDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaDocument.swift; sourceTree = "<group>"; };
 		75836D952AC2355C007172AD /* MoveLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveLayerAction.swift; sourceTree = "<group>"; };
+		75836D972AC245B3007172AD /* SelectToolAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectToolAction.swift; sourceTree = "<group>"; };
+		75836D992AC24E12007172AD /* CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,6 +517,7 @@
 				75836D6A2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift */,
 				75836D6E2ABF6358007172AD /* ToggleLayerLockAction.swift */,
 				75836D952AC2355C007172AD /* MoveLayerAction.swift */,
+				75836D972AC245B3007172AD /* SelectToolAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1032,10 +1037,11 @@
 			children = (
 				75836D6C2ABF4FFD007172AD /* Angle.swift */,
 				7554D1942AB50B42008CEB87 /* Color.swift */,
+				7554D22F2AB7A3D7008CEB87 /* CGFloat.swift */,
+				75836D992AC24E12007172AD /* CGImage.swift */,
 				7554D1762AB28F3E008CEB87 /* CGPoint.swift */,
 				7554D22B2AB7A39E008CEB87 /* CGRect.swift */,
 				7554D22D2AB7A3BC008CEB87 /* CGSize.swift */,
-				7554D22F2AB7A3D7008CEB87 /* CGFloat.swift */,
 				7554D2362AB7A495008CEB87 /* Font.swift */,
 				7554D2902ABA7598008CEB87 /* NumberFormatter.swift */,
 				7554D2AC2ABBEFCE008CEB87 /* Sequence.swift */,
@@ -1461,6 +1467,7 @@
 				7554D1BB2AB789BC008CEB87 /* Action.swift in Sources */,
 				7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */,
 				75836D772ABF6644007172AD /* DeleteLayerButton.swift in Sources */,
+				75836D9A2AC24E12007172AD /* CGImage.swift in Sources */,
 				7554D19F2AB60CE6008CEB87 /* ButtonColorStyle.swift in Sources */,
 				7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */,
 				7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */,
@@ -1555,6 +1562,7 @@
 				7554D1B22AB76EEB008CEB87 /* Conditional.swift in Sources */,
 				7554D1732AB2775B008CEB87 /* Panel.swift in Sources */,
 				7554D13D2AAFBA49008CEB87 /* Minimap.swift in Sources */,
+				75836D982AC245B3007172AD /* SelectToolAction.swift in Sources */,
 				7554D2AB2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift in Sources */,
 				75836D7B2ABF6928007172AD /* DragPathGesture.swift in Sources */,
 				7554D1C72AB78AFF008CEB87 /* TileMode.swift in Sources */,

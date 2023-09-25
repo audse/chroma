@@ -9,11 +9,12 @@ import SwiftUI
 
 struct DrawToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
+    @EnvironmentObject var history: History
 
     var body: some View {
         HStack {
             Button {
-                drawSettings.setTool(.drawPositive)
+                history.add(SelectToolAction(.drawPositive, drawSettings))
             } label: {
                 Image(systemName: "paintbrush.fill")
                     .frame(width: 14)
@@ -25,13 +26,13 @@ struct DrawToolButton: View {
             if isSelected {
                 VStack(spacing: 4) {
                     Button {
-                        drawSettings.setTool(.drawPositive)
+                        history.add(SelectToolAction(.drawPositive, drawSettings))
                     } label: {
                         Image(systemName: "plus")
                             .frame(width: 14, height: 14)
                     }.active(drawSettings.tool == .drawPositive)
                     Button {
-                        drawSettings.setTool(.drawNegative)
+                        history.add(SelectToolAction(.drawNegative, drawSettings))
                     } label: {
                         Image(systemName: "minus")
                             .frame(width: 14, height: 14)

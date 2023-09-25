@@ -9,10 +9,11 @@ import SwiftUI
 
 struct EraseToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
+    @EnvironmentObject var history: History
 
     var body: some View {
         Button {
-            drawSettings.setTool(.erase)
+            history.add(SelectToolAction(.erase, drawSettings))
         } label: {
             Image(systemName: "eraser.fill")
                 .frame(width: 14)

@@ -9,10 +9,11 @@ import SwiftUI
 
 struct FillToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
+    @EnvironmentObject var history: History
 
     var body: some View {
         Button {
-            drawSettings.setTool(.fill)
+            history.add(SelectToolAction(.fill, drawSettings))
         } label: {
             Image(systemName: "drop.fill")
                 .frame(width: 14)

@@ -9,10 +9,11 @@ import SwiftUI
 
 struct LassoSelectToolButton: View {
     @EnvironmentObject var drawSettings: DrawSettings
+    @EnvironmentObject var history: History
 
     var body: some View {
         Button {
-            drawSettings.setTool(.lassoSelect)
+            history.add(SelectToolAction(.lassoSelect, drawSettings))
         } label: {
             Image(systemName: "lasso")
         }
