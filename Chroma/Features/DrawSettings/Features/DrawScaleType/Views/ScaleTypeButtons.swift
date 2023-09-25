@@ -15,12 +15,18 @@ struct ScaleTypeButtons: View {
             Button {
                 drawSettings.scaleType = .even
             } label: {
-                Label("2", systemImage: "divide")
+                HStack(spacing: 0) {
+                    Image(systemName: "divide")
+                    Text("2")
+                }.frame(width: 22)
             }.active(drawSettings.scaleType == .even)
             Button {
                 drawSettings.scaleType = .odd
             } label: {
-                Label("3", systemImage: "divide")
+                HStack(spacing: 0) {
+                    Image(systemName: "divide")
+                    Text("3")
+                }.frame(width: 22)
             }.active(drawSettings.scaleType == .odd)
         }
     }

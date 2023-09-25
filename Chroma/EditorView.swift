@@ -22,7 +22,7 @@ struct EditorView: View {
             PngExporter(isPresented: $appSettings.showingPngQuickExport, exportScale: .constant(1))
             ArtboardWrapper()
             HStack {
-                VStack(spacing: 8) {
+                VStack(alignment: .leading, spacing: 8) {
                     PixelSizeControl().panel()
                     ColorControl().panel()
                     ToolList().panel()
@@ -32,7 +32,7 @@ struct EditorView: View {
                     }.panel()
                 }
                 Spacer()
-                HStack {
+                HStack(alignment: .top) {
                     RotationControl().panel()
                     ShapeList().panel()
                     ScaleTypeButtons().panel()
@@ -154,14 +154,12 @@ struct EditorCommands: Commands {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var artboard = ArtboardModel()
-    static var previews: some View {
-        EditorView()
-            .environmentObject(AppSettingsModel())
-            .environmentObject(DrawSettings())
-            .environmentObject(FileModel(artboard: artboard))
-            .environmentObject(History())
-            .environmentObject(WorkspaceSettingsModel())
-    }
+#Preview {
+    let artboard = ArtboardModel()
+    return EditorView()
+        .environmentObject(AppSettingsModel())
+        .environmentObject(DrawSettings())
+        .environmentObject(FileModel(artboard: artboard))
+        .environmentObject(History())
+        .environmentObject(WorkspaceSettingsModel())
 }
