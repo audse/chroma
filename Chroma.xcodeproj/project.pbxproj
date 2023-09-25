@@ -152,6 +152,7 @@
 		75836D8A2ABFBAAF007172AD /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D892ABFBAAF007172AD /* Layer.swift */; };
 		75836D8C2AC0A6E0007172AD /* BooleanShapePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D8B2AC0A6E0007172AD /* BooleanShapePage.swift */; };
 		75836D922AC0BC87007172AD /* ScaleOnTapModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D912AC0BC87007172AD /* ScaleOnTapModifier.swift */; };
+		75836D942AC22088007172AD /* ChromaDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D932AC22088007172AD /* ChromaDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,6 +322,7 @@
 		75836D892ABFBAAF007172AD /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		75836D8B2AC0A6E0007172AD /* BooleanShapePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooleanShapePage.swift; sourceTree = "<group>"; };
 		75836D912AC0BC87007172AD /* ScaleOnTapModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleOnTapModifier.swift; sourceTree = "<group>"; };
+		75836D932AC22088007172AD /* ChromaDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaDocument.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1167,6 +1169,7 @@
 				7554D26B2AB912AD008CEB87 /* Helpers */,
 				7554D2802ABA0F8F008CEB87 /* JsonDocument.swift */,
 				7554D28C2ABA6080008CEB87 /* PngDocument.swift */,
+				75836D932AC22088007172AD /* ChromaDocument.swift */,
 			);
 			path = FileDocuments;
 			sourceTree = "<group>";
@@ -1512,6 +1515,7 @@
 				7554D1F32AB78E61008CEB87 /* DrawScaleType.swift in Sources */,
 				7554D1752AB2888C008CEB87 /* ZoomGesture.swift in Sources */,
 				7554D28F2ABA6207008CEB87 /* ExportScaleControl.swift in Sources */,
+				75836D942AC22088007172AD /* ChromaDocument.swift in Sources */,
 				7554D2AF2ABBF568008CEB87 /* ColorEyedropper.swift in Sources */,
 				7554D1622AAFF880008CEB87 /* ColorControl.swift in Sources */,
 				7554D2232AB79BB7008CEB87 /* ComposableButtonStyle.swift in Sources */,

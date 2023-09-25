@@ -42,31 +42,3 @@ struct JsonDocument: FileDocument {
         return try decoder.decode(Json.self, from: data)
     }
 }
-
-public struct ChromaDocument: FileDocument {
-    public static var readableContentTypes: [UTType] = [.chroma]
-    
-    public var file: FileModel
-    
-    public init(_ file: FileModel) {
-        self.file = file
-    }
-    
-    public init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents
-        else {
-            throw CocoaError(.fileReadCorruptFile)
-        }
-        self.file = try JSONDecoder().decode(FileModel.self, from: data)
-    }
-    
-    public func data() throws -> Data {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        return try encoder.encode(file)
-    }
-    
-    public func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        return FileWrapper(regularFileWithContents: try data())
-    }
-}
