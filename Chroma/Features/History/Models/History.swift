@@ -33,12 +33,16 @@ class History: ObservableObject {
 
     func add(_ action: Action) {
         history.append(action)
+        action.perform()
         undoHistory.removeAll()
     }
     
     func addOrAccumulate(_ action: AccumulatableAction) {
-        if let last = history.last, let last = last as? AccumulatableAction, type(of: action) == type(of: last) {
-            last.accumulate(with: action)
+        if let last = history.last,
+           let last = last as? AccumulatableAction,
+           type(of: action) == type(of: last),
+           case .success = last.accumulate(with: action) {
+            last.perform()
         } else {
             history.append(action)
         }

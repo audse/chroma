@@ -151,6 +151,7 @@
 		75DD39D42AC3686000E5D4D3 /* LayerBlendModeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D32AC3686000E5D4D3 /* LayerBlendModeControl.swift */; };
 		75DD39D62AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */; };
 		75DD39D82AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D72AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift */; };
+		75DD39DA2AC384B000E5D4D3 /* ChangeArtboardSizeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D92AC384B000E5D4D3 /* ChangeArtboardSizeAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -331,6 +332,7 @@
 		75DD39D32AC3686000E5D4D3 /* LayerBlendModeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerBlendModeControl.swift; sourceTree = "<group>"; };
 		75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLayerOpacityAction.swift; sourceTree = "<group>"; };
 		75DD39D72AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLayerBlendModeAction.swift; sourceTree = "<group>"; };
+		75DD39D92AC384B000E5D4D3 /* ChangeArtboardSizeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeArtboardSizeAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -526,6 +528,7 @@
 				75836D952AC2355C007172AD /* MoveLayerAction.swift */,
 				75836D972AC245B3007172AD /* SelectToolAction.swift */,
 				75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */,
+				75DD39D92AC384B000E5D4D3 /* ChangeArtboardSizeAction.swift */,
 				75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */,
 				75DD39D72AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift */,
 			);
@@ -1510,6 +1513,7 @@
 				7554D2932ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift in Sources */,
 				7554D19D2AB5424B008CEB87 /* GridModeButtons.swift in Sources */,
 				7554D23E2AB7ABCA008CEB87 /* AppSettingsModel.swift in Sources */,
+				75DD39DA2AC384B000E5D4D3 /* ChangeArtboardSizeAction.swift in Sources */,
 				7554D2C02ABCB072008CEB87 /* RectToolButton.swift in Sources */,
 				7554D1F32AB78E61008CEB87 /* DrawScaleType.swift in Sources */,
 				7554D1752AB2888C008CEB87 /* ZoomGesture.swift in Sources */,

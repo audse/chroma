@@ -17,7 +17,7 @@ struct ArtboardBackgroundColorControl: View {
         ColorPicker("Background", selection: $color)
             .labelsHidden()
             .onChange(of: color) { color in
-                history.add(ChangeArtboardBackgroundAction(file.artboard, color))
+                history.addOrAccumulate(ChangeArtboardBackgroundAction(file.artboard, color))
             }
     }
 }

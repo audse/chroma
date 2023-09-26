@@ -19,11 +19,12 @@ class ChangeLayerOpacityAction: AccumulatableAction {
         super.init()
     }
     
-    override func accumulate(with next: AccumulatableAction) {
+    override func accumulate(with next: AccumulatableAction) -> AccumulateResult {
         if let next = next as? Self {
             newOpacity = next.newOpacity
+            return .success
         }
-        perform()
+        return .failure
     }
     
     override func getText() -> String {

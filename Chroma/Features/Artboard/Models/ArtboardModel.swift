@@ -67,6 +67,12 @@ extension ArtboardModel: Codable {
     }
 }
 
+extension ArtboardModel: Equatable {
+    public static func == (lhs: ArtboardModel, rhs: ArtboardModel) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 extension ArtboardModel {
     func withNewLayer(_ pixels: [LayerPixelModel] = []) -> ArtboardModel {
         _ = newLayer(pixels)

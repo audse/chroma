@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct ArtboardSizeControl: View {
-    @EnvironmentObject var file: FileModel
+    @ObservedObject var artboard: ArtboardModel
+    @EnvironmentObject var history: History
 
     @State var width: Double = 512
     @State var height: Double = 512
+    
+    init(_ artboard: ArtboardModel) {
+        self.artboard = artboard
+        self.width = artboard.size.width
+        self.height = artboard.size.height
+    }
 
     var body: some View {
         HStack {
@@ -24,7 +31,7 @@ struct ArtboardSizeControl: View {
                 step: 1,
                 rounded: true,
                 onChangeValue: { value in
-                    file.artboard.resize(width: value)
+                    history.addOrAccumulate(ChangeArtboardSizeAction(artboard, CGSize(value, height)))
                 }
             )
             Spacer()
@@ -37,16 +44,14 @@ struct ArtboardSizeControl: View {
                 step: 1,
                 rounded: true,
                 onChangeValue: { value in
-                    file.artboard.resize(height: value)
+                    history.addOrAccumulate(ChangeArtboardSizeAction(artboard, CGSize(width, value)))
                 }
             )
         }
     }
 }
 
-struct ArtboardSizeControl_Previews: PreviewProvider {
-    static var previews: some View {
-        ArtboardSizeControl()
-            .environmentObject(FileModel(artboard: ArtboardModel()))
-    }
+#Preview {
+    ArtboardSizeControl(ArtboardModel())
+        .environmentObject(History())
 }

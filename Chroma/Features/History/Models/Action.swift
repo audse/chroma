@@ -10,9 +10,7 @@ import SwiftUI
 class Action: Identifiable, Equatable {
     var id = UUID()
     
-    init() {
-        self.perform()
-    }
+    init() {}
     
     /**
      If `true`, this action will not show up in the history list
@@ -33,5 +31,11 @@ class Action: Identifiable, Equatable {
 }
 
 class AccumulatableAction: Action {
-    func accumulate(with next: AccumulatableAction) {}
+    package enum AccumulateResult {
+        case success
+        case failure
+    }
+    func accumulate(with next: AccumulatableAction) -> AccumulateResult {
+        return .success
+    }
 }

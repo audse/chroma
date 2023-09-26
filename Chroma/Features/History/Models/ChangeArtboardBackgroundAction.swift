@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-class ChangeArtboardBackgroundAction: Action {
+class ChangeArtboardBackgroundAction: AccumulatableAction {
     let artboard: ArtboardModel
     let prevColor: Color
-    let newColor: Color
+    var newColor: Color
     
     init(_ artboard: ArtboardModel, _ newColor: Color) {
         self.artboard = artboard
@@ -21,6 +21,14 @@ class ChangeArtboardBackgroundAction: Action {
     
     override func getText() -> String {
         "Set BG"
+    }
+    
+    override func accumulate(with next: AccumulatableAction) -> AccumulateResult {
+        if let next = next as? Self, next.artboard == artboard {
+            newColor = next.newColor
+            return .success
+        }
+        return .failure
     }
     
     override func perform() {
