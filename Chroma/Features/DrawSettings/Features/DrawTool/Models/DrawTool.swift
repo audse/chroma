@@ -7,21 +7,25 @@
 
 import Foundation
 
-enum Tool {
-    case drawPositive
-    case drawNegative
+enum DrawRule: Equatable {
+    case positive
+    case negative
+}
+
+enum Tool: Equatable {
+    case draw(DrawRule)
     case erase
     case fill
     case eyedropper
-    case line
-    case rect
+    case line(DrawRule)
+    case rect(DrawRule)
     case rectSelect
     case lassoSelect
     case move
 
     var name: String {
         switch self {
-        case .drawPositive, .drawNegative: return "Draw"
+        case .draw: return "Draw"
         case .erase: return "Erase"
         case .fill: return "Fill"
         case .eyedropper: return "Eyedropper"
@@ -31,5 +35,16 @@ enum Tool {
         case .lassoSelect: return "Lasso Select"
         case .move: return "Move"
         }
+    }
+    
+    var isPositive: Bool {
+        switch self {
+        case .draw(let rule), .line(let rule), .rect(let rule): return rule == .positive
+        default: return false
+        }
+    }
+    
+    var isNegative: Bool {
+        return !isPositive
     }
 }

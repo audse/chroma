@@ -25,7 +25,7 @@ struct EditorView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     PixelSizeControl().panel()
                     ColorControl().panel()
-                    ToolList().panel()
+                    ToolList()
                     VStack {
                         HistoryButtons()
                         HistoryList().expandHeight()

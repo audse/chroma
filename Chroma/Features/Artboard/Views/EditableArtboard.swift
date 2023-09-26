@@ -49,7 +49,7 @@ struct EditableArtboard: View {
                 }
             }
             
-            if [.line, .rect, .move].contains(drawSettings.tool) {
+            if [.line(.positive), .line(.negative), .rect(.positive), .rect(.negative), .move].contains(drawSettings.tool) {
                 CancelToolButton()
             }
             DrawGhost(ghostPixels: $ghostPixels)
@@ -75,7 +75,7 @@ struct EditableArtboard: View {
 
     func onTap(_ location: CGPoint) {
         switch drawSettings.tool {
-        case .drawPositive, .drawNegative: draw(location)
+        case .draw: draw(location)
         case .erase: erase(location)
         case .fill: fill(location)
         case .eyedropper: eyedrop(location)
@@ -96,7 +96,7 @@ struct EditableArtboard: View {
         if drawSettings.tool == .move {
             move(value.points)
         }
-        if [.drawPositive, .drawNegative].contains(drawSettings.tool) {
+        if [.draw(.positive), .draw(.negative)].contains(drawSettings.tool) {
             drawPath(value.points)
         }
         if drawSettings.tool == .erase {
@@ -133,7 +133,7 @@ struct EditableArtboard: View {
                 newPixel.setPosition(drawSettings.snapped(pixel.position + last - first))
                 return newPixel.pixel
             }
-        case .drawNegative, .drawPositive, .erase:
+        case .draw, .erase:
             return drawSettings.createPixelPath(dragState.points)
         default: return []
         }
@@ -142,7 +142,7 @@ struct EditableArtboard: View {
     func draw(_ location: CGPoint) {
         withCurrentLayer { layer in
             let model = drawSettings.createPixel(location)
-            let pixel = drawSettings.tool == .drawPositive ? model.positive() : model.negative()
+            let pixel = drawSettings.tool.isPositive ? model.positive() : model.negative()
             history.add(DrawAction(pixel, layer))
         }
     }
@@ -150,7 +150,7 @@ struct EditableArtboard: View {
     func drawPath(_ points: [CGPoint]) {
         withCurrentLayer { layer in
             let pixelsToAdd = drawSettings.createPixelPath(points).map { pixel in
-                drawSettings.tool == .drawPositive ? pixel.positive() : pixel.negative()
+                drawSettings.tool.isPositive ? pixel.positive() : pixel.negative()
             }
             if !pixelsToAdd.isEmpty {
                 history.add(DrawMultipleAction(pixelsToAdd, layer))
@@ -208,7 +208,12 @@ struct EditableArtboard: View {
         withCurrentLayer { layer in
             if let pointA = drawSettings.multiClickState.first {
                 drawSettings.multiClickState.removeAll()
-                let pixels = drawSettings.createPixelLine(pointA, location).map { pixel in pixel.positive() }
+                let pixels = drawSettings.createPixelLine(pointA, location)
+                    .map { pixel in
+                        drawSettings.tool.isPositive
+                        ? pixel.positive()
+                        : pixel.negative()
+                    }
                 history.add(LineAction(pixels, layer))
             } else {
                 drawSettings.multiClickState = [location]
@@ -220,7 +225,12 @@ struct EditableArtboard: View {
         withCurrentLayer { layer in
             if let pointA = drawSettings.multiClickState.first {
                 drawSettings.multiClickState.removeAll()
-                let pixels = drawSettings.createPixelRect(pointA, location).map { pixel in pixel.positive() }
+                let pixels = drawSettings.createPixelRect(pointA, location)
+                    .map { pixel in
+                        drawSettings.tool.isPositive
+                        ? pixel.positive()
+                        : pixel.negative()
+                    }
                 history.add(RectAction(pixels, layer))
             } else {
                 drawSettings.multiClickState = [location]

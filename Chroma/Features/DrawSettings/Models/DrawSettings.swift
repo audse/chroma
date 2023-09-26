@@ -9,7 +9,7 @@ import SwiftUI
 
 class DrawSettings: ObservableObject {
     @Published var rotation = Angle(degrees: 0)
-    @Published private(set) var tool: Tool = .drawPositive
+    @Published private(set) var tool: Tool = .draw(.positive)
     @Published var shape = SquareShape
     @Published var color = Color.black
     @Published var scaleType = ScaleType.even

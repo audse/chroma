@@ -54,6 +54,6 @@ extension History {
     
     func getPreviousTool() -> Tool {
         let actions = history.reversed().filterMap { $0 as? SelectToolAction }
-        return actions.get(at: 1)?.tool ?? .drawPositive
+        return actions.get(at: 1)?.tool ?? .draw(.positive)
     }
 }

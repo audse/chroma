@@ -20,6 +20,13 @@ struct ToolList: View {
             RectToolButton()
             RectSelectToolButton()
             LassoSelectToolButton()
+        }.panel().animation(.spring(duration: 0.15), value: isShowingPositiveNegative)
+    }
+    
+    var isShowingPositiveNegative: Bool {
+        switch drawSettings.tool {
+        case .draw, .line, .rect: return true
+        default: return false
         }
     }
 }
