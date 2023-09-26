@@ -1,12 +1,6 @@
-//
-//  Angle.swift
-//  Chroma
-//
-//  Created by Audrey Serene on 9/23/23.
-//
-
 import SwiftUI
 
+@available(macOS 10.15, *)
 extension Angle: Codable {
     internal enum CodingKeys: CodingKey {
         case degrees
@@ -31,7 +25,8 @@ extension Angle: Codable {
     }
 }
 
-extension Angle {
+@available(macOS 10.15, *)
+public extension Angle {
     var degreesWrapped: CGFloat {
         var deg = degrees
         while deg > 360 {

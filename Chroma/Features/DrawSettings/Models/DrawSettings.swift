@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Extensions
 
 class DrawSettings: ObservableObject {
     @Published var rotation = Angle(degrees: 0)

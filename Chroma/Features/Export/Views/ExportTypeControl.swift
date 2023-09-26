@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Extensions
 
 struct ExportTypeControl: View {
     @Binding var exportType: ExportType

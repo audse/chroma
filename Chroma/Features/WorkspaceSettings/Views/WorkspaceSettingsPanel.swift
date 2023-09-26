@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Extensions
 
 struct WorkspaceSettingsPanel: View {
     @State var isExpanded: Bool = true

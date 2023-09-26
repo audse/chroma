@@ -1,14 +1,8 @@
-//
-//  ColorScheme.swift
-//  Chroma
-//
-//  Created by Audrey Serene on 9/21/23.
-//
-
 import SwiftUI
 
+@available(macOS 10.15, *)
 extension ColorScheme: Codable {
-    var name: String {
+    public var name: String {
         switch self {
         case .dark: return "dark"
         case .light: return "light"
@@ -16,7 +10,7 @@ extension ColorScheme: Codable {
         }
     }
     
-    enum CodingKeys: String, CodingKey {
+    internal enum CodingKeys: String, CodingKey {
         case name
     }
     

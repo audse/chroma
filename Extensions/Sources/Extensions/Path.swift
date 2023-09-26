@@ -1,14 +1,9 @@
-//
-//  Path.swift
-//  Chroma
-//
-//  Created by Audrey Serene on 9/21/23.
-//
-
 import SwiftUI
 
-extension Path {
-    public func union(_ others: [Path]) -> Path {
+@available(macOS 10.15, *)
+public extension Path {
+    @available(macOS 13.0, *)
+    func union(_ others: [Path]) -> Path {
         var cgPath = self.cgPath
         others.forEach { other in
             cgPath = cgPath.union(other.cgPath)
@@ -16,20 +11,21 @@ extension Path {
         return Path(cgPath)
     }
     
-    public func union(_ others: Path...) -> Path {
+    @available(macOS 13.0, *)
+    func union(_ others: Path...) -> Path {
         union(others)
     }
     
-    public func union(_ others: Path..., threshold: CGFloat) -> Path {
+    @available(macOS 13.0, *)
+    func union(_ others: Path..., threshold: CGFloat) -> Path {
         Path(union(others).cgPath.flattened(threshold: threshold))
     }
     
-    public func union(_ others: [Path], threshold: CGFloat) -> Path {
+    @available(macOS 13.0, *)
+    func union(_ others: [Path], threshold: CGFloat) -> Path {
         Path(union(others).cgPath.flattened(threshold: threshold))
     }
-}
-
-extension Path {
+    
     static func regularPolygon(sides: UInt, in rect: CGRect, inset: CGFloat = 0) -> Path {
         let width = rect.size.width - inset * 2
         let height = rect.size.height - inset * 2

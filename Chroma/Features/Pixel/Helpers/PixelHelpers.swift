@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Extensions
 
 struct PreviewPixelBuilder {
     var artboardSize: CGSize = CGSize(512)

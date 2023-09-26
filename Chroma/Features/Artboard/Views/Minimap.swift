@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Extensions
 
 struct Minimap: View {
     @EnvironmentObject var file: FileModel

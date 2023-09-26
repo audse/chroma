@@ -1,13 +1,7 @@
-//
-//  CGImage.swift
-//  Chroma
-//
-//  Created by Audrey Serene on 9/25/23.
-//
-
 import SwiftUI
 
-extension CGImage {
+public extension CGImage {
+    @available(macOS 10.15, *)
     func getPixelColor(at pos: CGPoint) -> Color? {
         if let dataProvider, let pixelData = dataProvider.data {
             let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
