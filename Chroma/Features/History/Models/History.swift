@@ -10,6 +10,8 @@ import SwiftUI
 // swiftlint:disable identifier_name
 let RequestUndoEvent = EmptyChromaEvent("Request Undo")
 let RequestRedoEvent = EmptyChromaEvent("Request Redo")
+let RequestSelectAll = EmptyChromaEvent("Select All")
+let RequestDeselectAll = EmptyChromaEvent("Deselect All")
 // swiftlint:enable identifier_name
 
 class History: ObservableObject {
@@ -19,6 +21,16 @@ class History: ObservableObject {
     init() {
         _ = RequestUndoEvent.subscribe { _ in self.undo() }
         _ = RequestRedoEvent.subscribe { _ in self.redo() }
+        _ = RequestSelectAll.subscribe {
+            if let layer = self.getCurrentLayer() {
+                self.add(SelectAction(layer.pixels, layer))
+            }
+        }
+        _ = RequestDeselectAll.subscribe {
+            if let layer = self.getCurrentLayer() {
+                self.add(DeselectAllAction(layer))
+            }
+        }
     }
 
     func history(_ value: [Action]) -> History {

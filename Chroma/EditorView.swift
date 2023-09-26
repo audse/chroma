@@ -15,7 +15,7 @@ struct EditorView: View {
     @StateObject private var workspaceSettings = WorkspaceSettingsModel()
     @StateObject private var history = History()
     @StateObject private var drawSettings = DrawSettings()
-
+    
     var body: some View {
         ZStack {
             // Quick PNG export
@@ -145,6 +145,14 @@ struct EditorCommands: Commands {
                 RequestRedoEvent.emit(())
             }
             .keyboardShortcut("z", modifiers: [.command, .shift])
+        }
+        CommandMenu("Select") {
+            Button("Select All") {
+                RequestSelectAll.emit(())
+            }.keyboardShortcut("a", modifiers: [.command])
+            Button("Deselect") {
+                RequestDeselectAll.emit(())
+            }.keyboardShortcut("d", modifiers: [.command])
         }
         CommandGroup(replacing: .help) {
             Button("Documentation") {
