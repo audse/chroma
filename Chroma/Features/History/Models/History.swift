@@ -56,7 +56,7 @@ class History: ObservableObject {
            case .success = last.accumulate(with: action) {
             last.perform()
         } else {
-            history.append(action)
+            add(action)
         }
         undoHistory.removeAll()
     }
