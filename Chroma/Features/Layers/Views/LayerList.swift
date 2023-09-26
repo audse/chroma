@@ -11,7 +11,7 @@ struct LayerList: View {
     @EnvironmentObject var file: FileModel
     @EnvironmentObject var history: History
     
-    let layerListItemHeight: CGFloat = 36
+    let layerListItemHeight: CGFloat = 52
     
     var body: some View {
         VStack(spacing: 0) {

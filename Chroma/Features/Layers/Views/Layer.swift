@@ -14,6 +14,8 @@ struct Layer: View {
         Canvas { context, _ in
             layer.draw(&context)
         }.expand()
+            .blendMode(layer.blendMode)
+            .opacity(layer.opacity)
     }
 }
 

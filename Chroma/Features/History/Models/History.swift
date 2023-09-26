@@ -35,6 +35,15 @@ class History: ObservableObject {
         history.append(action)
         undoHistory.removeAll()
     }
+    
+    func addOrAccumulate(_ action: AccumulatableAction) {
+        if let last = history.last, let last = last as? AccumulatableAction, type(of: action) == type(of: last) {
+            last.accumulate(with: action)
+        } else {
+            history.append(action)
+        }
+        undoHistory.removeAll()
+    }
 
     func undoUntil(_ action: Action) {
         while let currentAction = history.popLast() {

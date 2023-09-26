@@ -31,3 +31,7 @@ class Action: Identifiable, Equatable {
         return lhs.id == rhs.id
     }
 }
+
+class AccumulatableAction: Action {
+    func accumulate(with next: AccumulatableAction) {}
+}

@@ -147,6 +147,10 @@
 		75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */; };
 		75DD39CD2AC33FBD00E5D4D3 /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 75DD39CC2AC33FBD00E5D4D3 /* Extensions */; };
 		75DD39D02AC361D800E5D4D3 /* Codextended in Frameworks */ = {isa = PBXBuildFile; productRef = 75DD39CF2AC361D800E5D4D3 /* Codextended */; };
+		75DD39D22AC3678F00E5D4D3 /* LayerOpacityControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D12AC3678F00E5D4D3 /* LayerOpacityControl.swift */; };
+		75DD39D42AC3686000E5D4D3 /* LayerBlendModeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D32AC3686000E5D4D3 /* LayerBlendModeControl.swift */; };
+		75DD39D62AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */; };
+		75DD39D82AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D72AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,6 +327,10 @@
 		75836D9D2AC28063007172AD /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeArtboardBackgroundAction.swift; sourceTree = "<group>"; };
 		75836DB22AC33B67007172AD /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Extensions; sourceTree = "<group>"; };
+		75DD39D12AC3678F00E5D4D3 /* LayerOpacityControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerOpacityControl.swift; sourceTree = "<group>"; };
+		75DD39D32AC3686000E5D4D3 /* LayerBlendModeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerBlendModeControl.swift; sourceTree = "<group>"; };
+		75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLayerOpacityAction.swift; sourceTree = "<group>"; };
+		75DD39D72AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLayerBlendModeAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +526,8 @@
 				75836D952AC2355C007172AD /* MoveLayerAction.swift */,
 				75836D972AC245B3007172AD /* SelectToolAction.swift */,
 				75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */,
+				75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */,
+				75DD39D72AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -534,13 +544,15 @@
 		7554D1BF2AB78A5D008CEB87 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				75836D892ABFBAAF007172AD /* Layer.swift */,
 				7554D1AB2AB6B3B0008CEB87 /* LayerList.swift */,
 				75836D742ABF6474007172AD /* LayerListItem.swift */,
 				75836D702ABF63FD007172AD /* LayerVisibiltyButton.swift */,
 				75836D722ABF6455007172AD /* LayerLockButton.swift */,
 				75836D782ABF67E1007172AD /* NewLayerButton.swift */,
 				75836D762ABF6644007172AD /* DeleteLayerButton.swift */,
-				75836D892ABFBAAF007172AD /* Layer.swift */,
+				75DD39D12AC3678F00E5D4D3 /* LayerOpacityControl.swift */,
+				75DD39D32AC3686000E5D4D3 /* LayerBlendModeControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1435,12 +1447,14 @@
 				7554D10E2AAFB6B8008CEB87 /* EditorView.swift in Sources */,
 				7554D2EA2ABD4856008CEB87 /* DrawSelection.swift in Sources */,
 				7554D1A62AB63BBA008CEB87 /* ArtboardBackgroundColorControl.swift in Sources */,
+				75DD39D62AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift in Sources */,
 				7554D1AC2AB6B3B0008CEB87 /* LayerList.swift in Sources */,
 				7554D2E82ABD3E5F008CEB87 /* MoveAction.swift in Sources */,
 				7554D24A2AB7BC74008CEB87 /* FilesPage.swift in Sources */,
 				7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */,
 				7554D24C2AB8BF0B008CEB87 /* FileModel.swift in Sources */,
 				7554D17C2AB29BAB008CEB87 /* ZoomButtons.swift in Sources */,
+				75DD39D42AC3686000E5D4D3 /* LayerBlendModeControl.swift in Sources */,
 				7554D1892AB4BC12008CEB87 /* InverseQuadrant.swift in Sources */,
 				7554D1872AB3D1D4008CEB87 /* ScaleTypeButtons.swift in Sources */,
 				7554D1BB2AB789BC008CEB87 /* Action.swift in Sources */,
@@ -1531,6 +1545,8 @@
 				7554D2CB2ABCE892008CEB87 /* RectSelectToolButton.swift in Sources */,
 				7554D1562AAFEC7E008CEB87 /* Square.swift in Sources */,
 				7554D2292AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift in Sources */,
+				75DD39D82AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift in Sources */,
+				75DD39D22AC3678F00E5D4D3 /* LayerOpacityControl.swift in Sources */,
 				75836D632ABE6A68007172AD /* NewLayerAction.swift in Sources */,
 				7554D1B22AB76EEB008CEB87 /* Conditional.swift in Sources */,
 				7554D1732AB2775B008CEB87 /* Panel.swift in Sources */,

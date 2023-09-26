@@ -20,6 +20,8 @@ public final class LayerModel: ObservableObject, Identifiable {
         } }
     }
     
+    @Published public var opacity: Double
+    @Published public var blendMode: BlendMode
     @Published public var isVisible: Bool
     @Published public var isLocked: Bool
     
@@ -27,12 +29,16 @@ public final class LayerModel: ObservableObject, Identifiable {
         id: UUID = UUID(),
         name: String = "Layer",
         pixels: [LayerPixelModel] = [],
+        opacity: CGFloat = 1.0,
+        blendMode: BlendMode = .normal,
         isVisible: Bool = true,
         isLocked: Bool = false
     ) {
         self.id = id
         self.name = name
         self.pixels = pixels
+        self.opacity = opacity
+        self.blendMode = blendMode
         self.isVisible = isVisible
         self.isLocked = isLocked
     }

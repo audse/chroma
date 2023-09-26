@@ -14,15 +14,24 @@ struct LayerListItem: View {
     @ObservedObject var layer: LayerModel
     
     var body: some View {
-        HStack {
-            Text("\(file.artboard.layers.firstIndex(of: layer) ?? 0)").opacity(0.5)
-            Spacer()
-            EditableText(text: $layer.name)
-                .fixedSize()
-                .expandWidth()
-            Spacer()
-            LayerLockButton(layer: layer)
-            LayerVisibiltyButton(layer: layer)
+        VStack(spacing: 0) {
+            HStack(spacing: 2) {
+                Text("\(file.artboard.layers.firstIndex(of: layer) ?? 0)").opacity(0.5)
+                Spacer()
+                EditableText(text: $layer.name)
+                    .fixedSize()
+                    .expandWidth()
+                Spacer()
+                LayerLockButton(layer: layer)
+                LayerVisibiltyButton(layer: layer)
+            }
+            HStack(spacing: 4) {
+                Image(systemName: "circle.lefthalf.filled")
+                LayerOpacityControl(layer)
+                Spacer()
+                Image(systemName: "camera.filters")
+                LayerBlendModeControl(layer)
+            }
         }
         .background(Color.almostClear)
         .padding([.top, .bottom], 3)
