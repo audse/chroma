@@ -83,9 +83,7 @@
 		7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2712AB9423E008CEB87 /* ExportPage.swift */; };
 		7554D2742AB9429F008CEB87 /* ExportTypeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */; };
 		7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2792AB942D4008CEB87 /* ExportType.swift */; };
-		7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2802ABA0F8F008CEB87 /* JsonDocument.swift */; };
 		7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2822ABA5684008CEB87 /* PngExporter.swift */; };
-		7554D2862ABA5759008CEB87 /* JsonExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2852ABA5759008CEB87 /* JsonExporter.swift */; };
 		7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D28C2ABA6080008CEB87 /* PngDocument.swift */; };
 		7554D28F2ABA6207008CEB87 /* ExportScaleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D28E2ABA6207008CEB87 /* ExportScaleControl.swift */; };
 		7554D2932ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D2922ABB7A3C008CEB87 /* ReleaseFocusOnTap.swift */; };
@@ -261,9 +259,7 @@
 		7554D2712AB9423E008CEB87 /* ExportPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportPage.swift; sourceTree = "<group>"; };
 		7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportTypeControl.swift; sourceTree = "<group>"; };
 		7554D2792AB942D4008CEB87 /* ExportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportType.swift; sourceTree = "<group>"; };
-		7554D2802ABA0F8F008CEB87 /* JsonDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDocument.swift; sourceTree = "<group>"; };
 		7554D2822ABA5684008CEB87 /* PngExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PngExporter.swift; sourceTree = "<group>"; };
-		7554D2852ABA5759008CEB87 /* JsonExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonExporter.swift; sourceTree = "<group>"; };
 		7554D2872ABA5AEA008CEB87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7554D28C2ABA6080008CEB87 /* PngDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PngDocument.swift; sourceTree = "<group>"; };
 		7554D28E2ABA6207008CEB87 /* ExportScaleControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportScaleControl.swift; sourceTree = "<group>"; };
@@ -1141,7 +1137,6 @@
 				7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */,
 				7554D28E2ABA6207008CEB87 /* ExportScaleControl.swift */,
 				7554D2822ABA5684008CEB87 /* PngExporter.swift */,
-				7554D2852ABA5759008CEB87 /* JsonExporter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1158,7 +1153,6 @@
 			isa = PBXGroup;
 			children = (
 				7554D26B2AB912AD008CEB87 /* Helpers */,
-				7554D2802ABA0F8F008CEB87 /* JsonDocument.swift */,
 				7554D28C2ABA6080008CEB87 /* PngDocument.swift */,
 				75836D932AC22088007172AD /* ChromaDocument.swift */,
 			);
@@ -1415,7 +1409,6 @@
 			files = (
 				7554D2D22ABD1F3A008CEB87 /* Selection.swift in Sources */,
 				75836D922AC0BC87007172AD /* ScaleOnTapModifier.swift in Sources */,
-				7554D2862ABA5759008CEB87 /* JsonExporter.swift in Sources */,
 				7554D2092AB78FC7008CEB87 /* ArtboardModel.swift in Sources */,
 				7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */,
 				7554D16A2AB10288008CEB87 /* Expand.swift in Sources */,
@@ -1464,7 +1457,6 @@
 				7554D2632AB8CDC0008CEB87 /* ArtboardHelpers.swift in Sources */,
 				7554D2B42ABCAEF7008CEB87 /* LineToolIcon.swift in Sources */,
 				75836D9E2AC28063007172AD /* Polygon.swift in Sources */,
-				7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */,
 				75836D812ABFA0C1007172AD /* ShortcutKey.swift in Sources */,
 				75836D8C2AC0A6E0007172AD /* BooleanShapePage.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,

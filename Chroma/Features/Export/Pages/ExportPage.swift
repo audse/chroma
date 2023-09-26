@@ -12,7 +12,6 @@ struct ExportPage: View {
 
     @State var exportType: ExportType = .png
     @State var exportScale: Double = 1
-    @State var isChromaExporterPresented: Bool = false
     @State var isPngExporterPresented: Bool = false
 
     @Binding var showing: Bool
@@ -25,15 +24,6 @@ struct ExportPage: View {
                 if exportType == .png {
                     ExportScaleControl(exportScale: $exportScale)
                 }
-                JsonExporter(
-                    isPresented: $isChromaExporterPresented,
-                    onCompletion: { result in
-                        switch result {
-                        case .success: showing = true
-                        default: showing = false
-                        }
-                    }
-                )
                 PngExporter(
                     isPresented: $isPngExporterPresented,
                     exportScale: $exportScale,
@@ -44,7 +34,6 @@ struct ExportPage: View {
                         .tinted(.primaryBackgroundDark)
                     Button("Export") {
                         switch exportType {
-                        case .chroma: isChromaExporterPresented = true
                         case .png: isPngExporterPresented = true
                         }
                     }

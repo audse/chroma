@@ -8,6 +8,11 @@
 import Foundation
 
 enum ExportType: Equatable {
-    case chroma
     case png
+    
+    var name: String {
+        switch self {
+        case .png: return "PNG"
+        }
+    }
 }

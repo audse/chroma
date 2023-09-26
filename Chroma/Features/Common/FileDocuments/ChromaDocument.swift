@@ -8,6 +8,10 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+extension UTType {
+    static let chroma = UTType(exportedAs: "com.chroma.chroma", conformingTo: .json)
+}
+
 public struct ChromaDocument: FileDocument {
     public static var readableContentTypes: [UTType] = [.chroma]
     

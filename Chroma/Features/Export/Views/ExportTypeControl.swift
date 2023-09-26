@@ -16,23 +16,15 @@ struct ExportTypeControl: View {
             Text("File type")
                 .font(.label)
                 .foregroundColor(.secondary)
-            MenuButton(getText()) {
-                Button("Chroma") { exportType = .chroma }
+            MenuButton(exportType.name) {
                 Button("PNG") { exportType = .png }
             }.frame(width: 100).fixedSize()
-        }
-    }
-
-    func getText() -> String {
-        switch exportType {
-        case .chroma: return "Chroma"
-        case .png: return "PNG"
         }
     }
 }
 
 struct ExportTypeControl_Previews: PreviewProvider {
     static var previews: some View {
-        ExportTypeControl(exportType: .constant(.chroma))
+        ExportTypeControl(exportType: .constant(.png))
     }
 }
