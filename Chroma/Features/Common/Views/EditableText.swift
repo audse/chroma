@@ -11,6 +11,7 @@ struct EditableText: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var text: String
     @State var isEditing: Bool = false
+    @FocusState private var isFocused: Bool
     var formatter = Formatter()
     
     let padding = EdgeInsets(
@@ -34,6 +35,7 @@ struct EditableText: View {
                             .allowsHitTesting(false)
                     )
                 }
+                .focused($isFocused)
                 .clipShape(.rect(cornerRadius: 4))
                 .padding([.leading, .trailing], 22)
                 .overlay(
@@ -48,6 +50,11 @@ struct EditableText: View {
                 )
                 .onSubmit {
                     isEditing = false
+                }
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        self.isFocused = true
+                    }
                 }
         } else {
             Text(text)
