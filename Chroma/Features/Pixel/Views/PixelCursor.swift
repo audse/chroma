@@ -38,7 +38,7 @@ struct PixelCursor: View {
                         shape: SquareShape,
                         color: Color.clear,
                         size: drawSettings.getPixelSize() - 2
-                    ).getShape()
+                    ).path()
                         .stroke(.black, style: StrokeStyle(
                             lineWidth: 2,
                             lineCap: .round,

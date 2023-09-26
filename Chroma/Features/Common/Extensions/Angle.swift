@@ -30,3 +30,16 @@ extension Angle: Codable {
         try container.encode(radians, forKey: .radians)
     }
 }
+
+extension Angle {
+    var degreesWrapped: CGFloat {
+        var deg = degrees
+        while deg > 360 {
+            deg -= 360
+        }
+        while deg < 0 {
+            deg += 360
+        }
+        return deg
+    }
+}

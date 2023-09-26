@@ -12,6 +12,23 @@ public struct DrawShape: Identifiable {
     public let shape: AnyShape
     public let aspectRatio: (CGFloat, CGFloat)
     public let keyboardShortcut: KeyEquivalent?
+    
+    func ratio() -> CGPoint {
+        return CGPoint(x: aspectRatio.0, y: aspectRatio.1)
+    }
+    
+    func ratio() -> CGSize {
+        return CGSize(aspectRatio.0, aspectRatio.1)
+    }
+    
+    func ratio(_ angle: Angle) -> CGPoint {
+        var r: CGPoint = ratio()
+        if !CGFloat(angle.degrees.truncatingRemainder(dividingBy: 180)).isApprox(0) {
+            return CGPoint(x: r.y, y: r.x)
+        } else {
+            return r
+        }
+    }
 }
 
 extension DrawShape: Codable {
@@ -69,6 +86,24 @@ public let InverseQuadrantShape = DrawShape(
     aspectRatio: (1, 1),
     keyboardShortcut: "6"
 )
+public let PentagonShape = DrawShape(
+    id: "Pentagon",
+    shape: AnyShape(Polygon(sides: 5)),
+    aspectRatio: (1, 1),
+    keyboardShortcut: "7"
+)
+public let HexagonShape = DrawShape(
+    id: "Hexagon",
+    shape: AnyShape(Polygon(sides: 6)),
+    aspectRatio: (1, 1),
+    keyboardShortcut: "8"
+)
+public let OctagonShape = DrawShape(
+    id: "Octagon",
+    shape: AnyShape(Polygon(sides: 8)),
+    aspectRatio: (1, 1),
+    keyboardShortcut: "9"
+)
 
 // swiftlint:enable identifier_name
 
@@ -79,7 +114,10 @@ public struct AllDrawShapes {
         SemiCircleShape,
         QuadrantShape,
         RightTriangleShape,
-        InverseQuadrantShape
+        InverseQuadrantShape,
+        PentagonShape,
+        HexagonShape,
+        OctagonShape
     ]
 
     public mutating func add(_ shape: DrawShape) {

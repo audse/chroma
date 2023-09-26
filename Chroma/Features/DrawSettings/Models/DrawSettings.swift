@@ -62,15 +62,14 @@ class DrawSettings: ObservableObject {
     }
 
     func getPixelSize() -> CGSize {
-        let (x, y) = shape.aspectRatio
+        let ratio = shape.ratio(rotation)
         let number: CGFloat = getPixelSize()
-        return CGSize(number) * CGSize(x, y)
+        return CGSize(number) * CGSize(ratio.x, ratio.y)
     }
 
     func getPixelSize() -> CGPoint {
-        let (x, y) = shape.aspectRatio
-        let number: CGFloat = getPixelSize()
-        return CGPoint(number) * CGPoint(x: x, y: y)
+        let size: CGSize = getPixelSize()
+        return CGPoint(size)
     }
     
     func createPixel(_ point: CGPoint = CGPoint()) -> PixelModel {

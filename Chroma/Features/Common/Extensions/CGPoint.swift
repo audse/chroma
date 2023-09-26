@@ -46,6 +46,11 @@ extension CGPoint {
     public func isApprox(_ other: CGPoint) -> Bool {
         return x.isApprox(other.x) && y.isApprox(other.y)
     }
+    
+    public func rotated(_ angle: Angle) -> CGPoint {
+        let cosRad: CGFloat = cos(angle.radians), sinRad: CGFloat = sin(angle.radians)
+        return CGPoint(x: x * cosRad - y * sinRad, y: x * sinRad + y * cosRad)
+    }
 }
 
 extension CGPoint: AdditiveArithmetic {

@@ -157,6 +157,7 @@
 		75836D982AC245B3007172AD /* SelectToolAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D972AC245B3007172AD /* SelectToolAction.swift */; };
 		75836D9A2AC24E12007172AD /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D992AC24E12007172AD /* CGImage.swift */; };
 		75836D9C2AC25919007172AD /* LinesGridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9B2AC25919007172AD /* LinesGridPattern.swift */; };
+		75836D9E2AC28063007172AD /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9D2AC28063007172AD /* Polygon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -331,6 +332,7 @@
 		75836D972AC245B3007172AD /* SelectToolAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectToolAction.swift; sourceTree = "<group>"; };
 		75836D992AC24E12007172AD /* CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImage.swift; sourceTree = "<group>"; };
 		75836D9B2AC25919007172AD /* LinesGridPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesGridPattern.swift; sourceTree = "<group>"; };
+		75836D9D2AC28063007172AD /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -440,6 +442,7 @@
 				7554D1882AB4BC12008CEB87 /* InverseQuadrant.swift */,
 				7554D2A12ABB97BF008CEB87 /* DotsGridPattern.swift */,
 				75836D9B2AC25919007172AD /* LinesGridPattern.swift */,
+				75836D9D2AC28063007172AD /* Polygon.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -1487,6 +1490,7 @@
 				7554D1502AAFE61D008CEB87 /* ShapeList.swift in Sources */,
 				7554D2632AB8CDC0008CEB87 /* ArtboardHelpers.swift in Sources */,
 				7554D2B42ABCAEF7008CEB87 /* LineToolIcon.swift in Sources */,
+				75836D9E2AC28063007172AD /* Polygon.swift in Sources */,
 				7554D2812ABA0F8F008CEB87 /* JsonDocument.swift in Sources */,
 				75836D812ABFA0C1007172AD /* ShortcutKey.swift in Sources */,
 				75836D8C2AC0A6E0007172AD /* BooleanShapePage.swift in Sources */,

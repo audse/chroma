@@ -93,32 +93,27 @@ extension PixelModel {
     }
     
     public func path(in rect: CGRect) -> Path {
-        return shape.shape.rotation(rotation).path(in: rect)
+        var ratio: CGPoint = shape.ratio(rotation)
+        return shape.shape.rotation(rotation, anchor: UnitPoint(x: 0.5 * ratio.x, y: 0.5 * ratio.y)).path(in: rect)
     }
     
     public func path() -> Path {
-        return shape.shape.path(in: getRect())
+//        let ratio: CGPoint = shape.ratio()
+//        let size = CGSize(width: size * ratio.x, height: size * ratio.y)
+        return path(in: getRect())
     }
     
     public func draw(_ ctx: inout GraphicsContext) {
-        let path = path(in: getRect())
-        ctx.fill(path, with: .color(color))
+        ctx.fill(path(), with: .color(color))
     }
     
     public func clip(_ ctx: inout GraphicsContext) {
-        let path = path(in: getRect())
-        ctx.clip(to: path, options: .inverse)
-    }
-
-    public func getShape() -> some Shape {
-        shape.shape
-            .size(getSize())
-            .rotation(rotation)
+        ctx.clip(to: path(), options: .inverse)
     }
 
     public func getView() -> some View {
         let size = getSize()
-        return getShape()
+        return path()
             .fill(color)
             .frame(
                 width: size.width,
@@ -128,7 +123,8 @@ extension PixelModel {
     }
 
     public func getSize() -> CGSize {
-        return CGSize(width: size * shape.aspectRatio.0, height: size * shape.aspectRatio.1)
+        let ratio = shape.ratio(rotation)
+        return CGSize(width: size * ratio.x, height: size * ratio.y)
     }
 
     public func getRect() -> CGRect {
@@ -139,9 +135,10 @@ extension PixelModel {
      Returns true if at least `thresholdAmount` of the pixel shape is contained in the selection shape.
      */
     public func isSelected(_ selectionShape: Path, _ thresholdAmount: CGFloat = 0.4) -> Bool {
-        let intersection = selectionShape.cgPath.intersection(path(in: getRect()).cgPath)
+        let intersection = selectionShape.cgPath.intersection(path().cgPath)
         let bboxSize = intersection.boundingBox.size
-        return (bboxSize.width * bboxSize.height) >= (size * size * thresholdAmount)
+        let size = getSize()
+        return (bboxSize.width * bboxSize.height) >= (size.width * size.height * thresholdAmount)
     }
     
     public func hasPoint(_ point: CGPoint) -> Bool {

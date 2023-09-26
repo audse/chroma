@@ -16,22 +16,18 @@ struct SemiCircle: InsettableShape {
         return shape
     }
 
-    func getCenter(_ rect: CGRect) -> CGPoint {
-        return rect.origin + CGPoint(x: rect.width / 2, y: rect.height) + CGPoint(x: 0, y: -insetAmount)
-    }
-
     func path(in rect: CGRect) -> Path {
-        let startPosition = rect.origin + CGPoint(x: 0, y: rect.height) + CGPoint(x: insetAmount, y: -insetAmount)
+        let newRect = rect.insetBy(dx: insetAmount, dy: insetAmount)
         var path = Path()
-        path.move(to: startPosition)
+        path.move(to: newRect.bottomLeft)
         path.addArc(
-            center: getCenter(rect),
-            radius: (rect.width - insetAmount * 2) / 2,
+            center: newRect.bottomCenter,
+            radius: newRect.width / 2,
             startAngle: Angle(degrees: 0),
             endAngle: Angle(degrees: 180),
             clockwise: true
         )
-        path.addLine(to: startPosition)
+        path.addLine(to: newRect.bottomLeft)
         path.closeSubpath()
         return path
     }

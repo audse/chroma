@@ -23,4 +23,20 @@ extension CGRect {
     public var bottomLeft: CGPoint {
         return CGPoint(x: origin.x, y: origin.y + height)
     }
+    
+    public var bottomCenter: CGPoint {
+        return CGPoint(x: origin.x + size.width / 2, y: end.y)
+    }
+    
+    public var topCenter: CGPoint {
+        return CGPoint(x: origin.x + size.width / 2, y: origin.y)
+    }
+    
+    public var leftCenter: CGPoint {
+        return CGPoint(x: origin.x, y: origin.y + size.height / 2)
+    }
+    
+    public var rightCenter: CGPoint {
+        return CGPoint(x: origin.x, y: origin.y + size.height / 2)
+    }
 }
