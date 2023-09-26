@@ -38,3 +38,20 @@ public extension Angle {
         return deg
     }
 }
+
+@available(macOS 10.15, *)
+extension Angle: IsApprox {
+    public func isApprox(_ other: Angle, epsilon: Angle = Angle(degrees: 0.0001)) -> Bool {
+        return CGFloat(self.degrees).isApprox(other.degrees, epsilon: epsilon.degrees)
+    }
+}
+
+@available(macOS 10.15, *)
+extension Angle: Lerp {
+    public func lerp(_ other: Angle, by amount: CGFloat = 0.5) -> Angle {
+        return Angle(degrees: CGFloat(degrees).lerp(other.degrees, by: amount))
+    }
+}
+
+@available(macOS 10.15, *)
+extension Angle: JSONTestable {}

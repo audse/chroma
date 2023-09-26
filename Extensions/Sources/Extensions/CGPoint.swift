@@ -37,10 +37,6 @@ public extension CGPoint {
         return sqrt(x * x + y * y)
     }
     
-    func isApprox(_ other: CGPoint) -> Bool {
-        return x.isApprox(other.x) && y.isApprox(other.y)
-    }
-    
     func rotated(_ angle: Angle) -> CGPoint {
         let cosRad: CGFloat = cos(angle.radians), sinRad: CGFloat = sin(angle.radians)
         return CGPoint(x: x * cosRad - y * sinRad, y: x * sinRad + y * cosRad)
@@ -48,6 +44,21 @@ public extension CGPoint {
     
     var size: CGSize {
         return CGSize(self)
+    }
+}
+
+extension CGPoint: IsApprox {
+   public func isApprox(_ other: CGPoint, epsilon: CGPoint = CGPoint(0.0001)) -> Bool {
+       return x.isApprox(other.x, epsilon: epsilon.x) && y.isApprox(other.y, epsilon: epsilon.y)
+   }
+}
+
+extension CGPoint: Lerp {
+    public func lerp(_ other: CGPoint, by amount: CGFloat = 0.5) -> CGPoint {
+        return CGPoint(
+            x: x.lerp(other.x, by: amount),
+            y: y.lerp(other.y, by: amount)
+        )
     }
 }
 
@@ -80,6 +91,12 @@ extension CGPoint: AdditiveArithmetic {
         return CGPoint(
             x: lhs.x * rhs.x,
             y: lhs.y * rhs.y
+        )
+    }
+    public static func * (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+        return CGPoint(
+            x: lhs.x * rhs,
+            y: lhs.y * rhs
         )
     }
 }

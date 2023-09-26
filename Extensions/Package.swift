@@ -11,6 +11,9 @@ let package = Package(
             name: "Extensions",
             targets: ["Extensions"])
     ],
+    dependencies: [
+        .package(url: "https://github.com/JohnSundell/Codextended.git", from: "0.3.0")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
@@ -18,6 +21,6 @@ let package = Package(
             name: "Extensions"),
         .testTarget(
             name: "ExtensionsTests",
-            dependencies: ["Extensions"])
+            dependencies: ["Extensions", "Codextended"])
     ]
 )

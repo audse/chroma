@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "codextended",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/Codextended.git",
+      "state" : {
+        "revision" : "8d7c46dfc9c55240870cf5561d6cefa41e3d7105",
+        "version" : "0.3.0"
+      }
+    },
+    {
       "identity" : "swiftui-shapes",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/spacenation/swiftui-shapes.git",

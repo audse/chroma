@@ -95,7 +95,7 @@ public extension Color {
     
     @available(macOS 11.0, *)
     func contrast(with other: Color) -> CGFloat {
-        return other.luminance - self.luminance
+        return abs(other.luminance - self.luminance)
     }
     
     @available(macOS 11.0, *)
@@ -108,18 +108,6 @@ public extension Color {
     func darken(_ amount: CGFloat) -> Color {
         let (r, g, b, o) = components
         return Color(red: r - amount, green: g - amount, blue: b - amount, opacity: o)
-    }
-    
-    @available(macOS 11.0, *)
-    func lerp(_ other: Color, by amount: CGFloat = 0.5) -> Color {
-        let (r, g, b, o) = components
-        let (otherR, otherG, otherB, otherO) = other.components
-        return Color(
-            red: r.lerp(otherR, by: amount),
-            green: g.lerp(otherG, by: amount),
-            blue: b.lerp(otherB, by: amount),
-            opacity: o.lerp(otherO, by: amount)
-        )
     }
 }
 
@@ -150,3 +138,37 @@ extension Color: Codable {
         try container.encode(opacity, forKey: .opacity)
     }
 }
+
+@available(macOS 11.0, *)
+extension Color: IsApprox {
+    public func isApprox(_ other: Color, epsilon: Color = Color(red: 0.001, green: 0.001, blue: 0.001, opacity: 0.001)) -> Bool {
+        let (r, g, b, o) = self.components
+        let (otherR, otherG, otherB, otherO) = other.components
+        let (epR, epG, epB, epO) = epsilon.components
+        return [
+            (r, otherR, epR),
+            (g, otherG, epG),
+            (b, otherB, epB),
+            (o, otherO, epO)
+        ].allSatisfy { (this, other, epsilon) in
+            this.isApprox(other, epsilon: epsilon)
+        }
+    }
+}
+
+@available(macOS 11.0, *)
+extension Color: Lerp {
+    public func lerp(_ other: Color, by amount: CGFloat = 0.5) -> Color {
+        let (r, g, b, o) = self.components
+        let (otherR, otherG, otherB, otherO) = other.components
+        return Color(
+            red: r.lerp(otherR, by: amount).clamp(low: 0, high: 1),
+            green: g.lerp(otherG, by: amount).clamp(low: 0, high: 1),
+            blue: b.lerp(otherB, by: amount).clamp(low: 0, high: 1),
+            opacity: o.lerp(otherO, by: amount).clamp(low: 0, high: 1)
+        )
+    }
+}
+
+@available(macOS 11.0, *)
+extension Color: JSONTestable {}

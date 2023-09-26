@@ -146,6 +146,7 @@
 		75836D9E2AC28063007172AD /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9D2AC28063007172AD /* Polygon.swift */; };
 		75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */; };
 		75DD39CD2AC33FBD00E5D4D3 /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 75DD39CC2AC33FBD00E5D4D3 /* Extensions */; };
+		75DD39D02AC361D800E5D4D3 /* Codextended in Frameworks */ = {isa = PBXBuildFile; productRef = 75DD39CF2AC361D800E5D4D3 /* Codextended */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75DD39CD2AC33FBD00E5D4D3 /* Extensions in Frameworks */,
+				75DD39D02AC361D800E5D4D3 /* Codextended in Frameworks */,
 				7554D29C2ABB8E8E008CEB87 /* Shapes in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1265,6 +1267,7 @@
 			packageProductDependencies = (
 				7554D29B2ABB8E8E008CEB87 /* Shapes */,
 				75DD39CC2AC33FBD00E5D4D3 /* Extensions */,
+				75DD39CF2AC361D800E5D4D3 /* Codextended */,
 			);
 			productName = Chroma;
 			productReference = 7554D1082AAFB6B8008CEB87 /* Chroma.app */;
@@ -1341,6 +1344,7 @@
 			packageReferences = (
 				7554D29A2ABB8E8E008CEB87 /* XCRemoteSwiftPackageReference "swiftui-shapes" */,
 				75DD39CB2AC33FBD00E5D4D3 /* XCLocalSwiftPackageReference "Extensions" */,
+				75DD39CE2AC361D800E5D4D3 /* XCRemoteSwiftPackageReference "Codextended" */,
 			);
 			productRefGroup = 7554D1092AAFB6B8008CEB87 /* Products */;
 			projectDirPath = "";
@@ -1921,6 +1925,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		75DD39CE2AC361D800E5D4D3 /* XCRemoteSwiftPackageReference "Codextended" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Codextended.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1932,6 +1944,11 @@
 		75DD39CC2AC33FBD00E5D4D3 /* Extensions */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Extensions;
+		};
+		75DD39CF2AC361D800E5D4D3 /* Codextended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75DD39CE2AC361D800E5D4D3 /* XCRemoteSwiftPackageReference "Codextended" */;
+			productName = Codextended;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
