@@ -13,14 +13,14 @@ struct RotationControl: View {
     var body: some View {
         HStack {
             Button {
-                drawSettings.rotation -= Angle(degrees: 90)
+                drawSettings.rotation -= increment
             } label: {
                 Image(systemName: "rotate.left.fill")
             }
             .help("Rotate Left")
             .keyboardShortcut(",", modifiers: [])
             Button {
-                drawSettings.rotation += Angle(degrees: 90)
+                drawSettings.rotation += increment
             } label: {
                 Image(systemName: "rotate.right.fill")
             }
@@ -28,6 +28,14 @@ struct RotationControl: View {
             .keyboardShortcut(".", modifiers: [])
         }.labelStyle(.iconOnly)
             .active(false)
+    }
+    
+    var increment: Angle {
+        if drawSettings.precisionSize.isApprox(1.0) {
+            return Angle(degrees: 90)
+        } else {
+            return Angle(degrees: 45)
+        }
     }
 }
 

@@ -156,6 +156,7 @@
 		75836D962AC2355C007172AD /* MoveLayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D952AC2355C007172AD /* MoveLayerAction.swift */; };
 		75836D982AC245B3007172AD /* SelectToolAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D972AC245B3007172AD /* SelectToolAction.swift */; };
 		75836D9A2AC24E12007172AD /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D992AC24E12007172AD /* CGImage.swift */; };
+		75836D9C2AC25919007172AD /* LinesGridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9B2AC25919007172AD /* LinesGridPattern.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -329,6 +330,7 @@
 		75836D952AC2355C007172AD /* MoveLayerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveLayerAction.swift; sourceTree = "<group>"; };
 		75836D972AC245B3007172AD /* SelectToolAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectToolAction.swift; sourceTree = "<group>"; };
 		75836D992AC24E12007172AD /* CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImage.swift; sourceTree = "<group>"; };
+		75836D9B2AC25919007172AD /* LinesGridPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesGridPattern.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,6 +439,7 @@
 				7554D15D2AAFF149008CEB87 /* RightTriangle.swift */,
 				7554D1882AB4BC12008CEB87 /* InverseQuadrant.swift */,
 				7554D2A12ABB97BF008CEB87 /* DotsGridPattern.swift */,
+				75836D9B2AC25919007172AD /* LinesGridPattern.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -1496,6 +1499,7 @@
 				7554D2A22ABB97BF008CEB87 /* DotsGridPattern.swift in Sources */,
 				7554D2E22ABD3922008CEB87 /* DrawMultipleAction.swift in Sources */,
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
+				75836D9C2AC25919007172AD /* LinesGridPattern.swift in Sources */,
 				7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */,
 				75836D832ABFAA1C007172AD /* ShortcutList.swift in Sources */,
 				75836D862ABFAEBE007172AD /* ShortcutPage.swift in Sources */,

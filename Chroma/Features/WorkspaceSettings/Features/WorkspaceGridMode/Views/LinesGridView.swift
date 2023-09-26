@@ -16,9 +16,9 @@ struct LinesGridView: View {
     var body: some View {
         let pixelSize: CGFloat = drawSettings.getPixelSize()
         let numLines = Int(round(width / pixelSize) + 1)
-        GridPattern(
-            horizontalLines: numLines,
-            verticalLines: numLines
+        LinesGridPattern(
+            horizontalSpacing: pixelSize,
+            verticalSpacing: pixelSize
         )
         .size(width: width, height: height)
         .stroke(

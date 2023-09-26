@@ -43,8 +43,20 @@ class DrawSettings: ObservableObject {
 
     func getPixelSize() -> CGFloat {
         switch scaleType {
-        case .even: return pow(2, pixelSize)
-        case .odd: return pow(2, pixelSize + 1) / 3
+        case .even: 
+            let base = pow(2, floor(pixelSize))
+            let oneUp = pow(2, floor(pixelSize) + 1)
+            if precisionSize.isApprox(0.5) {
+                return base + (oneUp - base) / 2
+            }
+            return base
+        case .odd:
+            let oneUp = pow(2, floor(pixelSize) + 1)
+            let twoUp = pow(2, floor(pixelSize) + 2)
+            if precisionSize.isApprox(0.5) {
+                return (oneUp + (twoUp - oneUp) / 2) / 3
+            }
+            return oneUp / 3
         }
     }
 

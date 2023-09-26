@@ -9,13 +9,13 @@ import SwiftUI
 
 struct NumberTextField: View {
     @Binding var value: Double
-    @State var min: Double = -.infinity
-    @State var max: Double = .infinity
-    @State var step: Double = 1
-    @State var rounded: Bool = false
-    @State var formatter: NumberFormatter = NumberFormatter()
-    @State var onChangeValue: ((CGFloat) -> Void)?
-    @State var keyboardShortcuts: (KeyEquivalent, KeyEquivalent)?
+    var min: Double = -.infinity
+    var max: Double = .infinity
+    var step: Double = 1
+    var rounded: Bool = false
+    var formatter: NumberFormatter = NumberFormatter()
+    var onChangeValue: ((CGFloat) -> Void)?
+    var keyboardShortcuts: (KeyEquivalent, KeyEquivalent)?
 
     var body: some View {
         HStack(spacing: 0) {
@@ -52,6 +52,7 @@ struct NumberTextField: View {
     }
 
     func getStep() -> Double {
+        print(rounded)
         return rounded ? round(Swift.max(step, 1)) : step
     }
 

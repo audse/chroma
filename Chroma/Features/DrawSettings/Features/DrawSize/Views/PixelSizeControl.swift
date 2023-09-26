@@ -16,13 +16,13 @@ struct PixelSizeControl: View {
             value: $value,
             min: 1,
             max: 9,
-            step: 1,
-            rounded: true,
+            step: drawSettings.precisionSize,
+            rounded: drawSettings.precisionSize.isApprox(1.0),
             onChangeValue: { newValue in
                 drawSettings.pixelSize = newValue
             },
             keyboardShortcuts: ("[", "]")
-        ).frame(width: 30)
+        ).frame(width: 40)
     }
 }
 

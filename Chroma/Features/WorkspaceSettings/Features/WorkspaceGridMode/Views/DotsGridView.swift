@@ -13,10 +13,9 @@ struct DotsGridView: View {
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
     var body: some View {
         let pixelSize: CGFloat = drawSettings.getPixelSize()
-        let numDots = Int(round(width / pixelSize) + 1)
         DotsGridPattern(
-            horizontalDots: numDots,
-            verticalDots: numDots,
+            horizontalSpacing: pixelSize,
+            verticalSpacing: pixelSize,
             radius: workspaceSettings.gridThickness + 0.25
         )
         .size(width: width, height: height)
