@@ -67,11 +67,16 @@ let implementedShortcuts: [Shortcut] = [
         modifiers: [.command],
         description: "Delete selected shapes"
     ),
-//    Shortcut(
-//        key: "D",
-//        modifiers: [.command],
-//        description: "Deselect all"
-//    ),
+    Shortcut(
+        key: "A",
+        modifiers: [.command],
+        description: "Select all"
+    ),
+    Shortcut(
+        key: "D",
+        modifiers: [.command],
+        description: "Deselect all"
+    ),
     Shortcut(
         key: ",",
         modifiers: [],
