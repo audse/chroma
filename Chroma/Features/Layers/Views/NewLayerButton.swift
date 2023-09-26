@@ -13,7 +13,14 @@ struct NewLayerButton: View {
     
     var body: some View {
         Button {
-            history.add(NewLayerAction(file.artboard))
+            var index: Int?
+            if let currentLayer = history.getCurrentLayer() {
+                index = file.artboard.layers.firstIndex(of: currentLayer)
+            }
+            if let indexValue = index {
+                index = indexValue + 1
+            }
+            history.add(NewLayerAction(file.artboard, index: index))
         } label: {
             Image(systemName: "plus")
                 .padding(2)

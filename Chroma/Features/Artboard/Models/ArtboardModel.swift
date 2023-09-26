@@ -77,6 +77,16 @@ extension ArtboardModel {
         layers.append(newLayer)
         return newLayer
     }
+    
+    func newLayer(at index: Int) -> LayerModel {
+        let newLayer = LayerModel(name: "Layer \(layers.count)", pixels: [])
+        if index < layers.count {
+            layers.insert(newLayer, at: index)
+        } else {
+            layers.append(newLayer)
+        }
+        return newLayer
+    }
 
     func resize(width: CGFloat? = nil, height: CGFloat? = nil) {
         size.width = width ?? size.width

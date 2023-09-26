@@ -12,8 +12,9 @@ class NewLayerAction: Action {
     var index: Int?
     let artboard: ArtboardModel
     
-    init(_ artboard: ArtboardModel) {
+    init(_ artboard: ArtboardModel, index: Int?) {
         self.artboard = artboard
+        self.index = index
         super.init()
     }
     
@@ -22,8 +23,12 @@ class NewLayerAction: Action {
     }
     
     override func perform() {
-        index = artboard.layers.count
-        layer = artboard.newLayer()
+        if let index {
+            layer = artboard.newLayer(at: index)
+        } else {
+            index = artboard.layers.count
+            layer = artboard.newLayer()
+        }
     }
     
     override func undo() {

@@ -74,7 +74,7 @@ struct HistoryList_Previews: PreviewProvider {
                 .history([
                     DrawAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
                     EraseAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
-                    NewLayerAction(currentArtboard),
+                    NewLayerAction(currentArtboard, index: nil),
                     LineAction([drawSettings.createPixel().positive()], history.getCurrentLayer()!),
                     DrawAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!)
                 ])

@@ -22,6 +22,7 @@ struct DeleteLayerButton: View {
             label: {
                 Image(systemName: "minus")
                     .scaledToFit()
+                    .frame(width: 14, height: 14)
                     .background(Color.almostClear)
                     .padding(2)
             }
