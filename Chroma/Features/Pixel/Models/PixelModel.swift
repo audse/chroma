@@ -112,22 +112,23 @@ extension PixelModel {
 
     public func getShape() -> some Shape {
         shape.shape
-            .size(width: size, height: size)
+            .size(getSize())
             .rotation(rotation)
     }
 
     public func getView() -> some View {
-        getShape()
+        let size = getSize()
+        return getShape()
             .fill(color)
             .frame(
-                width: size,
-                height: size,
+                width: size.width,
+                height: size.height,
                 alignment: .topLeading
             )
     }
 
     public func getSize() -> CGSize {
-        return CGSize(width: size, height: size)
+        return CGSize(width: size * shape.aspectRatio.0, height: size * shape.aspectRatio.1)
     }
 
     public func getRect() -> CGRect {

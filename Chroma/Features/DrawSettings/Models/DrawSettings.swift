@@ -32,9 +32,10 @@ class DrawSettings: ObservableObject {
     }
     
     func snapped(_ point: CGPoint) -> CGPoint {
-        let x = floor(point.x / (getPixelSize() * precisionSize))
-        let y = floor(point.y / (getPixelSize() * precisionSize))
-        return CGPoint(x: x * (getPixelSize() * precisionSize), y: y * (getPixelSize() * precisionSize))
+        let size: CGSize = getPixelSize()
+        let x = floor(point.x / (size.width * precisionSize))
+        let y = floor(point.y / (size.height * precisionSize))
+        return CGPoint(x: x * (size.width * precisionSize), y: y * (size.height * precisionSize))
     }
     
     func snapped(_ size: CGSize) -> CGSize {
@@ -46,28 +47,30 @@ class DrawSettings: ObservableObject {
         case .even: 
             let base = pow(2, floor(pixelSize))
             let oneUp = pow(2, floor(pixelSize) + 1)
-            if precisionSize.isApprox(0.5) {
+            if (pixelSize - floor(pixelSize)).isApprox(0.5) {
                 return base + (oneUp - base) / 2
             }
             return base
         case .odd:
             let oneUp = pow(2, floor(pixelSize) + 1)
             let twoUp = pow(2, floor(pixelSize) + 2)
-            if precisionSize.isApprox(0.5) {
-                return (oneUp + (twoUp - oneUp) / 2) / 3
+            if (pixelSize - floor(pixelSize)).isApprox(0.5) {
+                return (oneUp + (twoUp - oneUp) / 2) * (2/3)
             }
-            return oneUp / 3
+            return oneUp * (2/3)
         }
     }
 
     func getPixelSize() -> CGSize {
+        let (x, y) = shape.aspectRatio
         let number: CGFloat = getPixelSize()
-        return CGSize(number)
+        return CGSize(number) * CGSize(x, y)
     }
 
     func getPixelSize() -> CGPoint {
+        let (x, y) = shape.aspectRatio
         let number: CGFloat = getPixelSize()
-        return CGPoint(number)
+        return CGPoint(number) * CGPoint(x: x, y: y)
     }
     
     func createPixel(_ point: CGPoint = CGPoint()) -> PixelModel {
@@ -109,15 +112,15 @@ class DrawSettings: ObservableObject {
         var pixels: [PixelModel] = []
         let a = snapped(pointA), b = snapped(pointB)
         let startX = min(a.x, b.x), endX = max(a.x, b.x), startY = min(a.y, b.y), endY = max(a.y, b.y)
-        let increment: CGFloat = getPixelSize()
+        let increment: CGSize = getPixelSize()
         var xPos: CGFloat = startX
-        while xPos < endX + increment {
+        while xPos < endX + increment.width {
             var yPos: CGFloat = startY
-            while yPos < endY + increment {
+            while yPos < endY + increment.height {
                 pixels.append(createPixel(CGPoint(xPos, yPos)))
-                yPos += increment
+                yPos += increment.height
             }
-            xPos += increment
+            xPos += increment.width
         }
         return pixels
     }

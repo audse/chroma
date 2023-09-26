@@ -21,13 +21,12 @@ struct SemiCircle: InsettableShape {
     }
 
     func path(in rect: CGRect) -> Path {
-        let sideLength = min(rect.width, rect.height) / 2 - insetAmount
         let startPosition = rect.origin + CGPoint(x: 0, y: rect.height) + CGPoint(x: insetAmount, y: -insetAmount)
         var path = Path()
         path.move(to: startPosition)
         path.addArc(
             center: getCenter(rect),
-            radius: sideLength,
+            radius: (rect.width - insetAmount * 2) / 2,
             startAngle: Angle(degrees: 0),
             endAngle: Angle(degrees: 180),
             clockwise: true

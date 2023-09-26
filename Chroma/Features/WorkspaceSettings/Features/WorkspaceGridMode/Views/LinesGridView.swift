@@ -14,11 +14,10 @@ struct LinesGridView: View {
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
 
     var body: some View {
-        let pixelSize: CGFloat = drawSettings.getPixelSize()
-        let numLines = Int(round(width / pixelSize) + 1)
+        let pixelSize: CGSize = drawSettings.getPixelSize()
         LinesGridPattern(
-            horizontalSpacing: pixelSize,
-            verticalSpacing: pixelSize
+            horizontalSpacing: pixelSize.width,
+            verticalSpacing: pixelSize.height
         )
         .size(width: width, height: height)
         .stroke(

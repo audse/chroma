@@ -10,6 +10,7 @@ import SwiftUI
 public struct DrawShape: Identifiable {
     public let id: String
     public let shape: AnyShape
+    public let aspectRatio: (CGFloat, CGFloat)
     public let keyboardShortcut: KeyEquivalent?
 }
 
@@ -35,31 +36,37 @@ extension DrawShape: Codable {
 public let SquareShape = DrawShape(
     id: "Square",
     shape: AnyShape(Square()),
+    aspectRatio: (1, 1),
     keyboardShortcut: "1"
 )
 public let CircleShape = DrawShape(
     id: "Circle",
     shape: AnyShape(Circle()),
+    aspectRatio: (1, 1),
     keyboardShortcut: "2"
 )
 public let SemiCircleShape = DrawShape(
     id: "Semi Circle",
     shape: AnyShape(SemiCircle()),
+    aspectRatio: (1, 0.5),
     keyboardShortcut: "3"
 )
 public let QuadrantShape = DrawShape(
     id: "Quadrant",
     shape: AnyShape(Quadrant()),
+    aspectRatio: (1, 1),
     keyboardShortcut: "4"
 )
 public let RightTriangleShape = DrawShape(
     id: "Right Triangle",
     shape: AnyShape(RightTriangle()),
+    aspectRatio: (1, 1),
     keyboardShortcut: "5"
 )
 public let InverseQuadrantShape = DrawShape(
     id: "Inverse Quadrant",
     shape: AnyShape(InverseQuadrant()),
+    aspectRatio: (1, 1),
     keyboardShortcut: "6"
 )
 

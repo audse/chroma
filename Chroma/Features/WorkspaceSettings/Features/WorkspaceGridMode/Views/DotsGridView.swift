@@ -12,10 +12,10 @@ struct DotsGridView: View {
     @EnvironmentObject var drawSettings: DrawSettings
     @EnvironmentObject var workspaceSettings: WorkspaceSettingsModel
     var body: some View {
-        let pixelSize: CGFloat = drawSettings.getPixelSize()
+        let pixelSize: CGSize = drawSettings.getPixelSize()
         DotsGridPattern(
-            horizontalSpacing: pixelSize,
-            verticalSpacing: pixelSize,
+            horizontalSpacing: pixelSize.width,
+            verticalSpacing: pixelSize.height,
             radius: workspaceSettings.gridThickness + 0.25
         )
         .size(width: width, height: height)
