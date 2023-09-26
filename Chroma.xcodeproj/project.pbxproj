@@ -158,6 +158,7 @@
 		75836D9A2AC24E12007172AD /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D992AC24E12007172AD /* CGImage.swift */; };
 		75836D9C2AC25919007172AD /* LinesGridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9B2AC25919007172AD /* LinesGridPattern.swift */; };
 		75836D9E2AC28063007172AD /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9D2AC28063007172AD /* Polygon.swift */; };
+		75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,6 +334,7 @@
 		75836D992AC24E12007172AD /* CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImage.swift; sourceTree = "<group>"; };
 		75836D9B2AC25919007172AD /* LinesGridPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesGridPattern.swift; sourceTree = "<group>"; };
 		75836D9D2AC28063007172AD /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
+		75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeArtboardBackgroundAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,6 +526,7 @@
 				75836D6E2ABF6358007172AD /* ToggleLayerLockAction.swift */,
 				75836D952AC2355C007172AD /* MoveLayerAction.swift */,
 				75836D972AC245B3007172AD /* SelectToolAction.swift */,
+				75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1511,6 +1514,7 @@
 				75836D732ABF6455007172AD /* LayerLockButton.swift in Sources */,
 				7554D21B2AB79901008CEB87 /* Well.swift in Sources */,
 				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
+				75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */,
 				75836D882ABFB362007172AD /* DocumentationPage.swift in Sources */,
 				7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,

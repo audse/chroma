@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArtboardBackgroundColorControl: View {
     @EnvironmentObject var file: FileModel
+    @EnvironmentObject var history: History
 
     @State var color = Color.white
 
@@ -16,7 +17,7 @@ struct ArtboardBackgroundColorControl: View {
         ColorPicker("Background", selection: $color)
             .labelsHidden()
             .onChange(of: color) { color in
-                file.artboard.backgroundColor = color
+                history.add(ChangeArtboardBackgroundAction(file.artboard, color))
             }
     }
 }
@@ -25,5 +26,6 @@ struct ArtboardBackgroundColorControl_Previews: PreviewProvider {
     static var previews: some View {
         ArtboardBackgroundColorControl()
             .environmentObject(FileModel.Empty())
+            .environmentObject(History())
     }
 }
