@@ -161,6 +161,9 @@
 		75DD39F02AC4E42400E5D4D3 /* ColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39EF2AC4E42400E5D4D3 /* ColorControl.swift */; };
 		75DD39F22AC526CB00E5D4D3 /* PopoverColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39F12AC526CB00E5D4D3 /* PopoverColorControl.swift */; };
 		75DD39F42AC5283C00E5D4D3 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39F32AC5283C00E5D4D3 /* OpacitySlider.swift */; };
+		75DD39F62AC52FAE00E5D4D3 /* PaletteDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39F52AC52FAE00E5D4D3 /* PaletteDocument.swift */; };
+		75DD39FA2AC52FE700E5D4D3 /* PaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39F92AC52FE700E5D4D3 /* PaletteModel.swift */; };
+		75DD39FD2AC5318E00E5D4D3 /* PalettePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39FC2AC5318E00E5D4D3 /* PalettePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -351,6 +354,9 @@
 		75DD39EF2AC4E42400E5D4D3 /* ColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorControl.swift; sourceTree = "<group>"; };
 		75DD39F12AC526CB00E5D4D3 /* PopoverColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverColorControl.swift; sourceTree = "<group>"; };
 		75DD39F32AC5283C00E5D4D3 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
+		75DD39F52AC52FAE00E5D4D3 /* PaletteDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteDocument.swift; sourceTree = "<group>"; };
+		75DD39F92AC52FE700E5D4D3 /* PaletteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteModel.swift; sourceTree = "<group>"; };
+		75DD39FC2AC5318E00E5D4D3 /* PalettePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +495,7 @@
 		7554D1B52AB7883E008CEB87 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				75DD39F72AC52FD600E5D4D3 /* Palette */,
 				75836D7E2ABFA0A2007172AD /* Documentation */,
 				7554D2942ABB7F89008CEB87 /* Events */,
 				7554D2752AB942BB008CEB87 /* Export */,
@@ -1199,6 +1206,7 @@
 				7554D26B2AB912AD008CEB87 /* Helpers */,
 				7554D28C2ABA6080008CEB87 /* PngDocument.swift */,
 				75836D932AC22088007172AD /* ChromaDocument.swift */,
+				75DD39F52AC52FAE00E5D4D3 /* PaletteDocument.swift */,
 			);
 			path = FileDocuments;
 			sourceTree = "<group>";
@@ -1286,6 +1294,31 @@
 				75836D8B2AC0A6E0007172AD /* BooleanShapePage.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		75DD39F72AC52FD600E5D4D3 /* Palette */ = {
+			isa = PBXGroup;
+			children = (
+				75DD39F82AC52FDD00E5D4D3 /* Models */,
+				75DD39FB2AC5317400E5D4D3 /* Views */,
+			);
+			path = Palette;
+			sourceTree = "<group>";
+		};
+		75DD39F82AC52FDD00E5D4D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				75DD39F92AC52FE700E5D4D3 /* PaletteModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		75DD39FB2AC5317400E5D4D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				75DD39FC2AC5318E00E5D4D3 /* PalettePicker.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1582,15 +1615,18 @@
 				75836D712ABF63FD007172AD /* LayerVisibiltyButton.swift in Sources */,
 				7554D2E02ABD390B008CEB87 /* EraseSelectionAction.swift in Sources */,
 				75836D6B2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift in Sources */,
+				75DD39FD2AC5318E00E5D4D3 /* PalettePicker.swift in Sources */,
 				7554D2CB2ABCE892008CEB87 /* RectSelectToolButton.swift in Sources */,
 				7554D1562AAFEC7E008CEB87 /* Square.swift in Sources */,
 				7554D2292AB7A198008CEB87 /* WorkspaceBackgroundColorControl.swift in Sources */,
 				75DD39D82AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift in Sources */,
 				75DD39D22AC3678F00E5D4D3 /* LayerOpacityControl.swift in Sources */,
 				75836D632ABE6A68007172AD /* NewLayerAction.swift in Sources */,
+				75DD39FA2AC52FE700E5D4D3 /* PaletteModel.swift in Sources */,
 				7554D1B22AB76EEB008CEB87 /* Conditional.swift in Sources */,
 				7554D1732AB2775B008CEB87 /* Panel.swift in Sources */,
 				7554D13D2AAFBA49008CEB87 /* Minimap.swift in Sources */,
+				75DD39F62AC52FAE00E5D4D3 /* PaletteDocument.swift in Sources */,
 				75836D982AC245B3007172AD /* SelectToolAction.swift in Sources */,
 				7554D2AB2ABB995D008CEB87 /* WorkspaceGridThicknessControl.swift in Sources */,
 				75836D7B2ABF6928007172AD /* DragPathGesture.swift in Sources */,

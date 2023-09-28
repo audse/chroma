@@ -18,6 +18,18 @@
 			<key>NSDocumentClass</key>
 			<string></string>
 		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Palette</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.chroma.palette</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
@@ -46,7 +58,27 @@
 				</array>
 			</dict>
 		</dict>
-		<dict/>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.json</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Palette File</string>
+			<key>UTTypeIcons</key>
+			<dict/>
+			<key>UTTypeIdentifier</key>
+			<string>com.chroma.palette</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>chromapalette</string>
+					<string>CHROMAPALETTE</string>
+					<string>ChromaPalette</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
@@ -68,6 +100,27 @@
 					<string>chroma</string>
 					<string>CHROMA</string>
 					<string>Chroma</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.json</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Chroma Palette</string>
+			<key>UTTypeIcons</key>
+			<dict/>
+			<key>UTTypeIdentifier</key>
+			<string>com.chroma.palette</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>chromapalette</string>
+					<string>CHROMAPALETTE</string>
+					<string>ChromaPalette</string>
 				</array>
 			</dict>
 		</dict>

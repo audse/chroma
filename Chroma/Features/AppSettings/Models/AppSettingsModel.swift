@@ -55,6 +55,9 @@ class AppSettingsModel: ObservableObject {
     @Published var recentFiles: [URL] = [] {
         didSet { saveProperty(key: "recentFiles", value: recentFiles) }
     }
+    @Published var palettes: [PaletteModel] = [.grays] {
+        didSet { saveProperty(key: "palettes", value: palettes) }
+    }
     @Published var showingSettings: Bool = false
     @Published var showingImport: Bool = false
     @Published var showingExport: Bool = false
@@ -65,13 +68,16 @@ class AppSettingsModel: ObservableObject {
     
     init(
         colorScheme: AppColorScheme? = nil,
-        recentFiles: [URL]? = nil
+        recentFiles: [URL]? = nil,
+        palettes: [PaletteModel]? = nil
     ) {
         self.colorScheme = colorScheme 
             ?? getSavedProperty(key: "colorScheme", defaultValue: AppColorScheme.followSystem)
         self.recentFiles = recentFiles
             ?? getRecentDocuments()
             ?? getSavedProperty(key: "recentFiles", defaultValue: [])
+//        self.palettes = palettes
+//            ?? getSavedProperty(key: "palettes", defaultValue: [.grays])
     }
     
     func addRecentFile(_ url: URL) {

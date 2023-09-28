@@ -11,6 +11,7 @@ struct PopoverColorControl: View {
     @Binding var color: Color
     var edge: Edge = .trailing
     var controls = ColorControl.Control.all
+    var palettes: [PaletteModel] = []
     
     @State private var isPresented: Bool = false
     
@@ -30,7 +31,8 @@ struct PopoverColorControl: View {
         .popover(isPresented: $isPresented, arrowEdge: edge) {
             ColorControl(
                 color: $color,
-                controls: controls, 
+                controls: controls,
+                palettes: palettes,
                 size: 150,
                 handleSize: 20
             ).padding()

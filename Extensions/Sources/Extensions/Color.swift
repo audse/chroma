@@ -6,6 +6,18 @@ import UIKit
 import AppKit
 #endif
 
+public extension String {
+    func index(of index: Int) -> String.Index {
+        self.index(startIndex, offsetBy: index)
+    }
+    func char(at index: Int) -> Character? {
+        return get(at: self.index(of: index))
+    }
+    func chars(at indices: [Int]) -> [Character] {
+        return indices.map { index in char(at: index) }.filterSome()
+    }
+}
+
 @available(macOS 10.15, *)
 public extension Color {
     init(hue: CGFloat) {
@@ -16,6 +28,27 @@ public extension Color {
     }
     init(brightness: CGFloat) {
         self.init(hue: 0, saturation: 1, brightness: brightness)
+    }
+    init(hex value: String) {
+        var hex = value.uppercased()
+        if hex.starts(with: "#") { hex.removeFirst() }
+        if hex.count == 2 { hex = "\(hex)\(hex)\(hex)FF" }
+        if hex.count == 3 {
+            let rgbo = hex.chars(at: [0, 1, 2])
+            hex = "\(rgbo[0])\(rgbo[0])\(rgbo[1])\(rgbo[1])\(rgbo[2])\(rgbo[2])FF"
+        }
+        if hex.count == 4 {
+            let rgbo = (0...3).map { index in hex.char(at: index) ?? "F" }
+            hex = "\(rgbo[0])\(rgbo[0])\(rgbo[1])\(rgbo[1])\(rgbo[2])\(rgbo[2])\(rgbo[3])\(rgbo[3])"
+        }
+        let strs = [
+            hex.prefix(upTo: hex.index(of: 2)),
+            hex[hex.index(of: 2)..<hex.index(of: 4)],
+            hex[hex.index(of: 4)..<hex.index(of: 6)],
+            hex.suffix(from: hex.index(of: 6))
+        ]
+        let rgbo = strs.map { str in Double(Int(str, radix: 16) ?? 255) / 255 }
+        self.init(red: rgbo[0], green: rgbo[1], blue: rgbo[2], opacity: rgbo[3])
     }
 }
 

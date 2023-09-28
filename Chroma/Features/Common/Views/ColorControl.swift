@@ -14,19 +14,22 @@ struct ColorControl: View {
         case saturation
         case brightness
         case opacity
+        case palettes
         
         static let all: [Control] = [
             .radial,
             .hue,
             .saturation,
             .brightness,
-            .opacity
+            .opacity,
+            .palettes
         ]
     }
     
     @Binding var color: Color
     
     var controls = Control.all
+    var palettes: [PaletteModel] = []
     var size: CGFloat = 200
     var handleSize: CGFloat = 30
     
@@ -98,6 +101,15 @@ struct ColorControl: View {
                     size: size * 0.85,
                     handleSize: handleSize
                 )
+            }
+            if controls.contains(.palettes) {
+                Spacer(minLength: 12).fixedSize()
+                ForEach(palettes, id: \.id) { palette in
+                    PalettePicker(
+                        palette: palette,
+                        color: $color
+                    ).frame(width: size * 0.85, alignment: .leading)
+                }
             }
         }
     }

@@ -49,12 +49,6 @@ public extension Sequence where Element: Equatable {
 }
 
 public extension Array {
-    func get(at index: Int) -> Element? {
-        if index <= (self.count - 1) && index >= 0 {
-            return self[index]
-        }
-        return nil
-    }
     
     func grouped(by size: Int) -> [[Element]] {
         return stride(from: 0, to: count, by: size).map {
@@ -83,5 +77,14 @@ public extension Array where Element: Equatable {
     }
     mutating func removeEach(_ elements: [Element]) {
         elements.forEach { element in remove(element) }
+    }
+}
+
+public extension Collection {
+    func get(at index: Index) -> Element? {
+        if self.indices.contains(index) {
+            return self[index]
+        }
+        return nil
     }
 }
