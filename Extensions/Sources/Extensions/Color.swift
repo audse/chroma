@@ -8,6 +8,19 @@ import AppKit
 
 @available(macOS 10.15, *)
 public extension Color {
+    init(hue: CGFloat) {
+        self.init(hue: hue, saturation: 1, brightness: 1)
+    }
+    init(saturation: CGFloat) {
+        self.init(hue: 0, saturation: saturation, brightness: 1)
+    }
+    init(brightness: CGFloat) {
+        self.init(hue: 0, saturation: 1, brightness: brightness)
+    }
+}
+
+@available(macOS 10.15, *)
+public extension Color {
     static var random: Color {
         return Color(
             red: .random(in: 0...1),
@@ -28,8 +41,9 @@ public extension Color {
         return Color(red: 5 / 255, green: 150 / 255, blue: 105 / 255, opacity: 1)
     }
     
+    @available(macOS 11.0, *)
     var almostClear: Color {
-        return self.opacity(0.001)
+        return self.opacity(to: 0.001)
     }
 
     @available(macOS 11.0, *)
@@ -44,6 +58,29 @@ public extension Color {
         NSColor(self).usingColorSpace(NSColorSpace.extendedSRGB)?.getRed(&r, green: &g, blue: &b, alpha: &o)
         #endif
         return (r, g, b, o)
+    }
+    
+    @available(macOS 11.0, *)
+    var hsb: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat) {
+        let (r, g, b, _) = components
+      
+        let cmax = max(r, max(g, b))
+        let cmin = min(r, min(g, b))
+        let diff = cmax - cmin
+        
+        let hue: CGFloat = switch cmax {
+        case cmin: 0.0
+        case r: (60 * ((g - b) / diff) + 360).truncatingRemainder(dividingBy: 360)
+        case g: (60 * ((b - r) / diff) + 120).truncatingRemainder(dividingBy: 360)
+        case b: (60 * ((r - g) / diff) + 240).truncatingRemainder(dividingBy: 360)
+        default: -1.0
+        }
+        let saturation: CGFloat = switch cmax {
+        case 0: 0
+        default: (diff / cmax)
+        }
+        let brightness: CGFloat = cmax
+        return (hue / 360, saturation, brightness)
     }
     
     @available(macOS 11.0, *)
@@ -109,6 +146,30 @@ public extension Color {
         let (r, g, b, o) = components
         return Color(red: r - amount, green: g - amount, blue: b - amount, opacity: o)
     }
+    
+    @available(macOS 11.0, *)
+    func hue(_ newValue: CGFloat) -> Color {
+        let (_, s, b) = hsb, o = opacity
+        return Color(hue: newValue, saturation: s, brightness: b, opacity: o)
+    }
+    
+    @available(macOS 11.0, *)
+    func saturation(_ newValue: CGFloat) -> Color {
+        let (h, _, b) = hsb, o = opacity
+        return Color(hue: h, saturation: newValue, brightness: b, opacity: o)
+    }
+    
+    @available(macOS 11.0, *)
+    func brightness(_ newValue: CGFloat) -> Color {
+        let (h, s, _) = hsb, o = opacity
+        return Color(hue: h, saturation: s, brightness: newValue, opacity: o)
+    }
+    
+    @available(macOS 11.0, *)
+    func opacity(to newValue: CGFloat) -> Color {
+        let (h, s, b) = hsb
+        return Color(hue: h, saturation: s, brightness: b, opacity: newValue)
+    }
 }
 
 @available(macOS 11.0, *)
@@ -141,7 +202,10 @@ extension Color: Codable {
 
 @available(macOS 11.0, *)
 extension Color: IsApprox {
-    public func isApprox(_ other: Color, epsilon: Color = Color(red: 0.001, green: 0.001, blue: 0.001, opacity: 0.001)) -> Bool {
+    public func isApprox(
+        _ other: Color,
+        epsilon: Color = Color(red: 0.001, green: 0.001, blue: 0.001, opacity: 0.001)
+    ) -> Bool {
         let (r, g, b, o) = self.components
         let (otherR, otherG, otherB, otherO) = other.components
         let (epR, epG, epB, epO) = epsilon.components

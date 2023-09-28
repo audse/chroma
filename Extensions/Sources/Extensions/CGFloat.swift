@@ -19,3 +19,9 @@ extension CGFloat: Lerp {
         return self * (1.0 - amount) + (other * amount)
     }
 }
+
+extension Double: Lerp {
+    public func lerp(_ other: Double, by amount: Double = 0.5) -> Double {
+        return self * (1.0 - amount) + (other * amount)
+    }
+}

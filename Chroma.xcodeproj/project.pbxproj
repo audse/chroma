@@ -25,7 +25,7 @@
 		7554D15C2AAFEEE8008CEB87 /* Quadrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D15B2AAFEEE8008CEB87 /* Quadrant.swift */; };
 		7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D15D2AAFF149008CEB87 /* RightTriangle.swift */; };
 		7554D1602AAFF3C9008CEB87 /* ShapeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D15F2AAFF3C9008CEB87 /* ShapeButton.swift */; };
-		7554D1622AAFF880008CEB87 /* ColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1612AAFF880008CEB87 /* ColorControl.swift */; };
+		7554D1622AAFF880008CEB87 /* DrawColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1612AAFF880008CEB87 /* DrawColorControl.swift */; };
 		7554D1662AB0D508008CEB87 /* RotationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1652AB0D508008CEB87 /* RotationControl.swift */; };
 		7554D1682AB0D55B008CEB87 /* DrawSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1672AB0D55B008CEB87 /* DrawSettings.swift */; };
 		7554D16A2AB10288008CEB87 /* Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D1692AB10288008CEB87 /* Expand.swift */; };
@@ -152,6 +152,15 @@
 		75DD39D62AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */; };
 		75DD39D82AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D72AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift */; };
 		75DD39DA2AC384B000E5D4D3 /* ChangeArtboardSizeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D92AC384B000E5D4D3 /* ChangeArtboardSizeAction.swift */; };
+		75DD39E42AC3A3CB00E5D4D3 /* RadialColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39E32AC3A3CB00E5D4D3 /* RadialColorControl.swift */; };
+		75DD39E62AC3DD4F00E5D4D3 /* HueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39E52AC3DD4F00E5D4D3 /* HueSlider.swift */; };
+		75DD39E82AC4B9CF00E5D4D3 /* BrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39E72AC4B9CF00E5D4D3 /* BrightnessSlider.swift */; };
+		75DD39EA2AC4BB1600E5D4D3 /* GradientSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39E92AC4BB1600E5D4D3 /* GradientSlider.swift */; };
+		75DD39EC2AC4BBF900E5D4D3 /* SaturationSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39EB2AC4BBF900E5D4D3 /* SaturationSlider.swift */; };
+		75DD39EE2AC4D38900E5D4D3 /* Interpolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39ED2AC4D38900E5D4D3 /* Interpolate.swift */; };
+		75DD39F02AC4E42400E5D4D3 /* ColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39EF2AC4E42400E5D4D3 /* ColorControl.swift */; };
+		75DD39F22AC526CB00E5D4D3 /* PopoverColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39F12AC526CB00E5D4D3 /* PopoverColorControl.swift */; };
+		75DD39F42AC5283C00E5D4D3 /* OpacitySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39F32AC5283C00E5D4D3 /* OpacitySlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,7 +216,7 @@
 		7554D15B2AAFEEE8008CEB87 /* Quadrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadrant.swift; sourceTree = "<group>"; };
 		7554D15D2AAFF149008CEB87 /* RightTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTriangle.swift; sourceTree = "<group>"; };
 		7554D15F2AAFF3C9008CEB87 /* ShapeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeButton.swift; sourceTree = "<group>"; };
-		7554D1612AAFF880008CEB87 /* ColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorControl.swift; sourceTree = "<group>"; };
+		7554D1612AAFF880008CEB87 /* DrawColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawColorControl.swift; sourceTree = "<group>"; };
 		7554D1652AB0D508008CEB87 /* RotationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationControl.swift; sourceTree = "<group>"; };
 		7554D1672AB0D55B008CEB87 /* DrawSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSettings.swift; sourceTree = "<group>"; };
 		7554D1692AB10288008CEB87 /* Expand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expand.swift; sourceTree = "<group>"; };
@@ -333,6 +342,15 @@
 		75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLayerOpacityAction.swift; sourceTree = "<group>"; };
 		75DD39D72AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLayerBlendModeAction.swift; sourceTree = "<group>"; };
 		75DD39D92AC384B000E5D4D3 /* ChangeArtboardSizeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeArtboardSizeAction.swift; sourceTree = "<group>"; };
+		75DD39E32AC3A3CB00E5D4D3 /* RadialColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialColorControl.swift; sourceTree = "<group>"; };
+		75DD39E52AC3DD4F00E5D4D3 /* HueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueSlider.swift; sourceTree = "<group>"; };
+		75DD39E72AC4B9CF00E5D4D3 /* BrightnessSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessSlider.swift; sourceTree = "<group>"; };
+		75DD39E92AC4BB1600E5D4D3 /* GradientSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientSlider.swift; sourceTree = "<group>"; };
+		75DD39EB2AC4BBF900E5D4D3 /* SaturationSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationSlider.swift; sourceTree = "<group>"; };
+		75DD39ED2AC4D38900E5D4D3 /* Interpolate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interpolate.swift; sourceTree = "<group>"; };
+		75DD39EF2AC4E42400E5D4D3 /* ColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorControl.swift; sourceTree = "<group>"; };
+		75DD39F12AC526CB00E5D4D3 /* PopoverColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverColorControl.swift; sourceTree = "<group>"; };
+		75DD39F32AC5283C00E5D4D3 /* OpacitySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacitySlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -735,7 +753,7 @@
 		7554D1E22AB78D50008CEB87 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7554D1612AAFF880008CEB87 /* ColorControl.swift */,
+				7554D1612AAFF880008CEB87 /* DrawColorControl.swift */,
 				7554D2AE2ABBF568008CEB87 /* ColorEyedropper.swift */,
 			);
 			path = Views;
@@ -976,6 +994,7 @@
 				7554D1542AAFEC70008CEB87 /* Shapes */,
 				7554D16B2AB10318008CEB87 /* Modifiers */,
 				7554D2152AB79825008CEB87 /* Features */,
+				75DD39ED2AC4D38900E5D4D3 /* Interpolate.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1042,6 +1061,14 @@
 			children = (
 				7554D1A92AB63EB3008CEB87 /* NumberTextField.swift */,
 				75836D7C2ABF8BA5007172AD /* EditableText.swift */,
+				75DD39E32AC3A3CB00E5D4D3 /* RadialColorControl.swift */,
+				75DD39E92AC4BB1600E5D4D3 /* GradientSlider.swift */,
+				75DD39E52AC3DD4F00E5D4D3 /* HueSlider.swift */,
+				75DD39EB2AC4BBF900E5D4D3 /* SaturationSlider.swift */,
+				75DD39E72AC4B9CF00E5D4D3 /* BrightnessSlider.swift */,
+				75DD39F32AC5283C00E5D4D3 /* OpacitySlider.swift */,
+				75DD39EF2AC4E42400E5D4D3 /* ColorControl.swift */,
+				75DD39F12AC526CB00E5D4D3 /* PopoverColorControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1428,6 +1455,7 @@
 			files = (
 				7554D2D22ABD1F3A008CEB87 /* Selection.swift in Sources */,
 				75836D922AC0BC87007172AD /* ScaleOnTapModifier.swift in Sources */,
+				75DD39E82AC4B9CF00E5D4D3 /* BrightnessSlider.swift in Sources */,
 				7554D2092AB78FC7008CEB87 /* ArtboardModel.swift in Sources */,
 				7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */,
 				7554D16A2AB10288008CEB87 /* Expand.swift in Sources */,
@@ -1463,6 +1491,7 @@
 				7554D1BB2AB789BC008CEB87 /* Action.swift in Sources */,
 				7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */,
 				75836D772ABF6644007172AD /* DeleteLayerButton.swift in Sources */,
+				75DD39E62AC3DD4F00E5D4D3 /* HueSlider.swift in Sources */,
 				7554D19F2AB60CE6008CEB87 /* ButtonColorStyle.swift in Sources */,
 				7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */,
 				7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */,
@@ -1471,15 +1500,18 @@
 				75836D962AC2355C007172AD /* MoveLayerAction.swift in Sources */,
 				75836D692ABE7396007172AD /* SelectLayerAction.swift in Sources */,
 				7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */,
+				75DD39E42AC3A3CB00E5D4D3 /* RadialColorControl.swift in Sources */,
 				7554D2972ABB7FA3008CEB87 /* Event.swift in Sources */,
 				7554D2BC2ABCB016008CEB87 /* FillToolButton.swift in Sources */,
 				7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */,
 				7554D1502AAFE61D008CEB87 /* ShapeList.swift in Sources */,
 				7554D2632AB8CDC0008CEB87 /* ArtboardHelpers.swift in Sources */,
 				7554D2B42ABCAEF7008CEB87 /* LineToolIcon.swift in Sources */,
+				75DD39EA2AC4BB1600E5D4D3 /* GradientSlider.swift in Sources */,
 				75836D9E2AC28063007172AD /* Polygon.swift in Sources */,
 				75836D812ABFA0C1007172AD /* ShortcutKey.swift in Sources */,
 				75836D8C2AC0A6E0007172AD /* BooleanShapePage.swift in Sources */,
+				75DD39EC2AC4BBF900E5D4D3 /* SaturationSlider.swift in Sources */,
 				7554D23B2AB7A78C008CEB87 /* WorkspaceSettingsModel.swift in Sources */,
 				7554D2DC2ABD38F3008CEB87 /* EraseAction.swift in Sources */,
 				7554D2D42ABD28C2008CEB87 /* LassoSelectToolButton.swift in Sources */,
@@ -1493,10 +1525,12 @@
 				75836D862ABFAEBE007172AD /* ShortcutPage.swift in Sources */,
 				7554D1802AB3600B008CEB87 /* HistoryButtons.swift in Sources */,
 				75836D732ABF6455007172AD /* LayerLockButton.swift in Sources */,
+				75DD39EE2AC4D38900E5D4D3 /* Interpolate.swift in Sources */,
 				7554D21B2AB79901008CEB87 /* Well.swift in Sources */,
 				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
 				75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */,
 				75836D882ABFB362007172AD /* DocumentationPage.swift in Sources */,
+				75DD39F22AC526CB00E5D4D3 /* PopoverColorControl.swift in Sources */,
 				7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,
 				75836D7D2ABF8BA5007172AD /* EditableText.swift in Sources */,
@@ -1505,6 +1539,7 @@
 				7554D2452AB7B584008CEB87 /* FilePreview.swift in Sources */,
 				7554D2B62ABCAF27008CEB87 /* RectToolIcon.swift in Sources */,
 				7554D1822AB3657D008CEB87 /* HistoryList.swift in Sources */,
+				75DD39F02AC4E42400E5D4D3 /* ColorControl.swift in Sources */,
 				7554D1A42AB63B55008CEB87 /* ArtboardSettingsPanel.swift in Sources */,
 				7554D1432AAFC0DA008CEB87 /* DrawShape.swift in Sources */,
 				7554D1682AB0D55B008CEB87 /* DrawSettings.swift in Sources */,
@@ -1520,10 +1555,11 @@
 				7554D28F2ABA6207008CEB87 /* ExportScaleControl.swift in Sources */,
 				75836D942AC22088007172AD /* ChromaDocument.swift in Sources */,
 				7554D2AF2ABBF568008CEB87 /* ColorEyedropper.swift in Sources */,
-				7554D1622AAFF880008CEB87 /* ColorControl.swift in Sources */,
+				7554D1622AAFF880008CEB87 /* DrawColorControl.swift in Sources */,
 				7554D2232AB79BB7008CEB87 /* ComposableButtonStyle.swift in Sources */,
 				7554D21F2AB79B4E008CEB87 /* TrailingIconLabelStyle.swift in Sources */,
 				7554D1A82AB63E7C008CEB87 /* ArtboardSizeControl.swift in Sources */,
+				75DD39F42AC5283C00E5D4D3 /* OpacitySlider.swift in Sources */,
 				7554D1BD2AB789FF008CEB87 /* History.swift in Sources */,
 				7554D15C2AAFEEE8008CEB87 /* Quadrant.swift in Sources */,
 				7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */,

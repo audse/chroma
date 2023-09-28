@@ -42,6 +42,10 @@ public extension CGPoint {
         return CGPoint(x: x * cosRad - y * sinRad, y: x * sinRad + y * cosRad)
     }
     
+    func angle(from origin: CGPoint = CGPoint(0)) -> Angle {
+        return Angle(radians: atan2(y - origin.y, x - origin.x))
+    }
+    
     var size: CGSize {
         return CGSize(self)
     }

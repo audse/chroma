@@ -93,7 +93,7 @@ extension PixelModel {
     }
     
     public func path(in rect: CGRect) -> Path {
-        var ratio: CGPoint = shape.ratio(rotation)
+        let ratio: CGPoint = shape.ratio(rotation)
         return shape.shape.rotation(rotation, anchor: UnitPoint(x: 0.5 * ratio.x, y: 0.5 * ratio.y)).path(in: rect)
     }
     

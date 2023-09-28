@@ -15,8 +15,10 @@ struct WorkspaceGridColorControl: View {
             Text("Grid color")
                 .font(.label)
                 .foregroundColor(.secondary)
-            ColorPicker("Grid color", selection: $workspaceSettings.gridColor)
-                .labelsHidden()
+            PopoverColorControl(
+                color: $workspaceSettings.gridColor,
+                edge: .trailing
+            )
         }
     }
 }

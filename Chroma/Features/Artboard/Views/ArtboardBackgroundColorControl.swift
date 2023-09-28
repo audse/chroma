@@ -14,10 +14,11 @@ struct ArtboardBackgroundColorControl: View {
     @State var color = Color.white
 
     var body: some View {
-        ColorPicker("Background", selection: $color)
-            .labelsHidden()
+        PopoverColorControl(color: $color, edge: .leading)
             .onChange(of: color) { color in
                 history.addOrAccumulate(ChangeArtboardBackgroundAction(file.artboard, color))
+            }.onAppear {
+                color = file.artboard.backgroundColor
             }
     }
 }

@@ -31,11 +31,13 @@ struct WorkspaceBackgroundColorControl: View {
                     }
                 }
                 Spacer()
-                ColorPicker("Custom color", selection: $customColor).onChange(of: customColor) { newValue in
-                    if !isFollowingColorScheme() {
-                        workspaceSettings.backgroundColor = .custom(newValue)
+                PopoverColorControl(color: $customColor, edge: .leading)
+                    .onChange(of: customColor) { newValue in
+                        if !isFollowingColorScheme() {
+                            workspaceSettings.backgroundColor = .custom(newValue)
+                        }
                     }
-                }.disabled(followSystem)
+                    .disabled(followSystem)
                     .opacity(followSystem ? 0.25 : 1.0)
             }
         }.onAppear {

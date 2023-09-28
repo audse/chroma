@@ -120,6 +120,7 @@ struct BooleanShapePage: View {
                 .bold())
                 .padding(.top, 12)
             
+            // swiftlint:disable:next line_length
             Text("This is distinct from using the eraser tool because this method can erase partial shapes. Negative shapes can also be selected and moved, just like positive shapes.")
                 .padding(.top, 12)
         }

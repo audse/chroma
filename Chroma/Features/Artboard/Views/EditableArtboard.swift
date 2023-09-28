@@ -50,7 +50,13 @@ struct EditableArtboard: View {
                 }
             }
             
-            if [.line(.positive), .line(.negative), .rect(.positive), .rect(.negative), .move].contains(drawSettings.tool) {
+            if [
+                .line(.positive), 
+                .line(.negative),
+                .rect(.positive),
+                .rect(.negative),
+                .move
+            ].contains(drawSettings.tool) {
                 CancelToolButton()
             }
             DrawGhost(ghostPixels: $ghostPixels)

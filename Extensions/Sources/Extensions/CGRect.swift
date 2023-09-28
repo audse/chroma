@@ -32,10 +32,17 @@ public extension CGRect {
     var rightCenter: CGPoint {
         return CGPoint(x: origin.x, y: origin.y + size.height / 2)
     }
+    
+    var center: CGPoint {
+        return CGPoint(x: origin.x + size.width / 2, y: origin.y + size.height / 2)
+    }
 }
 
 extension CGRect: IsApprox {
-    public func isApprox(_ other: CGRect, epsilon: CGRect = CGRect(origin: CGPoint(0.0001), size: CGSize(0.0001))) -> Bool {
+    public func isApprox(
+        _ other: CGRect,
+        epsilon: CGRect = CGRect(origin: CGPoint(0.0001), size: CGSize(0.0001))
+    ) -> Bool {
         return origin.isApprox(other.origin, epsilon: epsilon.origin)
             && size.isApprox(other.size, epsilon: epsilon.size)
     }

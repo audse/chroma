@@ -22,7 +22,7 @@ public struct DrawShape: Identifiable {
     }
     
     func ratio(_ angle: Angle) -> CGPoint {
-        var r: CGPoint = ratio()
+        let r: CGPoint = ratio()
         if !CGFloat(angle.degrees.truncatingRemainder(dividingBy: 180)).isApprox(0) {
             return CGPoint(x: r.y, y: r.x)
         } else {

@@ -16,6 +16,10 @@ struct EditorView: View {
     @StateObject private var history = History()
     @StateObject private var drawSettings = DrawSettings()
     
+    @State var hue: CGFloat = 0
+    @State var saturation: CGFloat = 1
+    @State var brightness: CGFloat = 1
+    
     var body: some View {
         ZStack {
             // Quick PNG export
@@ -24,7 +28,8 @@ struct EditorView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
                     PixelSizeControl().panel()
-                    ColorControl().panel()
+                    DrawColorControl().panel()
+                    
                     ToolList()
                     VStack {
                         HistoryButtons()
