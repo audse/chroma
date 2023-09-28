@@ -44,7 +44,7 @@ struct ArtboardSettingsPanel_Previews: PreviewProvider {
     static var previews: some View {
         ArtboardSettingsPanel()
             .environmentObject(FileModel(artboard: artboard))
-            .environmentObject(History().history([
+            .environmentObject(History(history: [
                 SelectLayerAction(artboard.layers.first.unsafelyUnwrapped)
             ]))
     }

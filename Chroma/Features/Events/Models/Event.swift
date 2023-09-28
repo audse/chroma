@@ -32,6 +32,7 @@ class ChromaEvent<D>: Identifiable {
         subscriptions.forEach { subscriber in subscriber.fun(data) }
     }
 
+    @discardableResult
     func subscribe(_ fun: @escaping Subscriber.SubscribeFn) -> Subscriber {
         let subscriber = ChromaSubscriber(fun)
         subscriptions.append(subscriber)

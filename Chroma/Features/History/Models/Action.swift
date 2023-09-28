@@ -12,12 +12,10 @@ class Action: Identifiable, Equatable {
     
     init() {}
     
-    /**
-     If `true`, this action will not show up in the history list
-     */
-    func isSilent() -> Bool {
+    func isEditorAction() -> Bool {
         return false
     }
+    
     func getText() -> String {
         return "Action"
     }
@@ -37,5 +35,11 @@ class AccumulatableAction: Action {
     }
     func accumulate(with next: AccumulatableAction) -> AccumulateResult {
         return .success
+    }
+}
+
+class EditorAction: Action {
+    override func isEditorAction() -> Bool {
+        return true
     }
 }

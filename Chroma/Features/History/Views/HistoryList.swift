@@ -49,12 +49,12 @@ struct HistoryList: View {
     var body: some View {
         ScrollView {
             ForEach(history.undoHistory, id: \.id) { action in
-                if !action.isSilent() {
+                if !action.isEditorAction() {
                     HistoryActionListItem(action: action, isUndone: true)
                 }
             }
             ForEach(history.history.reversed(), id: \.id) { action in
-                if !action.isSilent() {
+                if !action.isEditorAction() {
                     HistoryActionListItem(action: action, isUndone: false)
                 }
             }
@@ -64,26 +64,26 @@ struct HistoryList: View {
     }
 }
 
-struct HistoryList_Previews: PreviewProvider {
-    static var drawSettings = DrawSettings()
-    static var currentArtboard = ArtboardModel().withNewLayer()
-    static var history = History()
-    static var previews: some View {
-        HistoryList()
-            .environmentObject(history
-                .history([
-                    DrawAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
-                    EraseAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
-                    NewLayerAction(currentArtboard, index: nil),
-                    LineAction([drawSettings.createPixel().positive()], history.getCurrentLayer()!),
-                    DrawAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!)
-                ])
-                .undoHistory([
-                    DrawAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
-                    EraseAction(drawSettings.createPixel().positive(), history.getCurrentLayer()!),
-                    DeleteLayerAction(currentArtboard.newLayer(), currentArtboard),
-                    FillAction([drawSettings.createPixel().positive()], originalColor: .red, newColor: .black)
-                ]))
-            .environmentObject(currentArtboard)
-    }
+#Preview {
+    @ObservedObject var drawSettings = DrawSettings()
+    @ObservedObject var currentArtboard = ArtboardModel().withNewLayer()
+    @ObservedObject var layer = currentArtboard.layers.first!
+    @ObservedObject var history = History(
+        history: [
+            DrawAction(drawSettings.createPixel().positive(), layer),
+            EraseAction(drawSettings.createPixel().positive(), layer),
+            NewLayerAction(currentArtboard, index: nil),
+            LineAction([drawSettings.createPixel().positive()], layer),
+            DrawAction(drawSettings.createPixel().positive(), layer)
+        ],
+        undoHistory: [
+            DrawAction(drawSettings.createPixel().positive(), layer),
+            EraseAction(drawSettings.createPixel().positive(), layer),
+            DeleteLayerAction(currentArtboard.newLayer(), currentArtboard),
+            FillAction([drawSettings.createPixel().positive()], originalColor: .red, newColor: .black)
+        ]
+    )
+    return HistoryList()
+        .environmentObject(history)
+        .environmentObject(currentArtboard)
 }

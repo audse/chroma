@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class SelectToolAction: Action {
+class SelectToolAction: EditorAction {
     let tool: Tool
     let prevTool: Tool
     let drawSettings: DrawSettings
@@ -17,10 +17,6 @@ class SelectToolAction: Action {
         self.prevTool = drawSettings.tool
         self.drawSettings = drawSettings
         super.init()
-    }
-    
-    override func isSilent() -> Bool {
-        return true
     }
     
     override func perform() {

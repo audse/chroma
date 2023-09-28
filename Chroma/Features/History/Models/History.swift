@@ -18,35 +18,32 @@ class History: ObservableObject {
     @Published var history: [Action] = []
     @Published var undoHistory: [Action] = []
 
-    init() {
-        _ = RequestUndoEvent.subscribe { _ in self.undo() }
-        _ = RequestRedoEvent.subscribe { _ in self.redo() }
-        _ = RequestSelectAll.subscribe {
+    init(
+        history: [Action] = [],
+        undoHistory: [Action] = []
+    ) {
+        RequestUndoEvent.subscribe { _ in self.undo() }
+        RequestRedoEvent.subscribe { _ in self.redo() }
+        RequestSelectAll.subscribe {
             if let layer = self.getCurrentLayer() {
                 self.add(SelectAction(layer.pixels, layer))
             }
         }
-        _ = RequestDeselectAll.subscribe {
+        RequestDeselectAll.subscribe {
             if let layer = self.getCurrentLayer() {
                 self.add(DeselectAllAction(layer))
             }
         }
-    }
-
-    func history(_ value: [Action]) -> History {
-        history.append(contentsOf: value)
-        return self
-    }
-
-    func undoHistory(_ value: [Action]) -> History {
-        undoHistory.append(contentsOf: value)
-        return self
+        self.history = history
+        self.undoHistory = undoHistory
     }
 
     func add(_ action: Action) {
         history.append(action)
         action.perform()
-        undoHistory.removeAll()
+        if !action.isEditorAction() {
+            undoHistory.removeAll()
+        }
     }
     
     func addOrAccumulate(_ action: AccumulatableAction) {
@@ -58,13 +55,14 @@ class History: ObservableObject {
         } else {
             add(action)
         }
-        undoHistory.removeAll()
     }
 
     func undoUntil(_ action: Action) {
-        while let currentAction = history.popLast() {
-            currentAction.undo()
-            undoHistory.append(currentAction)
+        for currentAction in history.reversed() {
+            if currentAction.isEditorAction() {
+                continue
+            }
+            undo(currentAction)
             if currentAction.id == action.id {
                 break
             }
@@ -72,9 +70,11 @@ class History: ObservableObject {
     }
 
     func redoUntil(_ action: Action) {
-        while let currentAction = undoHistory.popLast() {
-            currentAction.redo()
-            history.append(currentAction)
+        for currentAction in undoHistory.reversed() {
+            if currentAction.isEditorAction() {
+                continue
+            }
+            redo(currentAction)
             if currentAction.id == action.id {
                 break
             }
@@ -82,17 +82,33 @@ class History: ObservableObject {
     }
 
     func undo() {
-        if let action = history.popLast() {
-            action.undo()
-            undoHistory.append(action)
+        for action in history.reversed() {
+            if action.isEditorAction() {
+                continue
+            }
+            return undo(action)
         }
+    }
+    
+    func undo(_ action: Action) {
+        action.undo()
+        undoHistory.append(action)
+        history.remove(action)
     }
 
     func redo() {
-        if let action = undoHistory.popLast() {
-            action.redo()
-            history.append(action)
+        for action in undoHistory.reversed() {
+            if action.isEditorAction() {
+                continue
+            }
+            return redo(action)
         }
+    }
+    
+    func redo(_ action: Action) {
+        action.redo()
+        history.append(action)
+        undoHistory.remove(action)
     }
 
     func clear() {

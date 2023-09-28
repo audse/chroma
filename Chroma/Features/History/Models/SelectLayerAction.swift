@@ -7,14 +7,10 @@
 
 import Foundation
 
-class SelectLayerAction: Action {
+class SelectLayerAction: EditorAction {
     let layer: LayerModel?
     
     init(_ layer: LayerModel?) {
         self.layer = layer
-    }
-    
-    override func isSilent() -> Bool {
-        return true
     }
 }
