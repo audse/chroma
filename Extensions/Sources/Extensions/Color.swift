@@ -6,18 +6,6 @@ import UIKit
 import AppKit
 #endif
 
-public extension String {
-    func index(of index: Int) -> String.Index {
-        self.index(startIndex, offsetBy: index)
-    }
-    func char(at index: Int) -> Character? {
-        return get(at: self.index(of: index))
-    }
-    func chars(at indices: [Int]) -> [Character] {
-        return indices.map { index in char(at: index) }.filterSome()
-    }
-}
-
 @available(macOS 10.15, *)
 public extension Color {
     init(hue: CGFloat) {
@@ -28,6 +16,9 @@ public extension Color {
     }
     init(brightness: CGFloat) {
         self.init(hue: 0, saturation: 1, brightness: brightness)
+    }
+    init(r: CGFloat? = nil, g: CGFloat? = nil, b: CGFloat? = nil, o: CGFloat? = nil) {
+        self.init(red: r ?? 0, green: g ?? 0, blue: b ?? 0, opacity: o ?? 1)
     }
     init(hex value: String) {
         var hex = value.uppercased()

@@ -55,7 +55,10 @@ extension LayerModel: Codable {
         case id
         case name
         case pixels
+        case opacity
+        case blendMode
         case isVisible
+        case isLocked
     }
     
     public convenience init(from decoder: Decoder) throws {
@@ -64,7 +67,10 @@ extension LayerModel: Codable {
             id: try values.decode(UUID.self, forKey: .id),
             name: try values.decode(String.self, forKey: .name),
             pixels: try values.decode([LayerPixelModel].self, forKey: .pixels),
-            isVisible: try values.decode(Bool.self, forKey: .isVisible)
+            opacity: try values.decode(Double.self, forKey: .opacity),
+            blendMode: try values.decode(BlendMode.self, forKey: .blendMode),
+            isVisible: try values.decode(Bool.self, forKey: .isVisible),
+            isLocked: try values.decode(Bool.self, forKey: .isLocked)
         )
     }
     
@@ -73,7 +79,10 @@ extension LayerModel: Codable {
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(pixels, forKey: .pixels)
+        try container.encode(opacity, forKey: .opacity)
+        try container.encode(blendMode, forKey: .blendMode)
         try container.encode(isVisible, forKey: .isVisible)
+        try container.encode(isLocked, forKey: .isLocked)
     }
 }
 

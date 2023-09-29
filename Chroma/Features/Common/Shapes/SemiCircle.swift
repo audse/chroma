@@ -7,16 +7,18 @@
 
 import SwiftUI
 
-struct SemiCircle: InsettableShape {
+public struct SemiCircle: InsettableShape {
     var insetAmount: CGFloat = 0
+    
+    public init() {}
 
-    func inset(by amount: CGFloat) -> some InsettableShape {
+    public func inset(by amount: CGFloat) -> some InsettableShape {
         var shape = self
         shape.insetAmount = amount
         return shape
     }
 
-    func path(in rect: CGRect) -> Path {
+    public func path(in rect: CGRect) -> Path {
         let newRect = rect.insetBy(dx: insetAmount, dy: insetAmount)
         var path = Path()
         path.move(to: newRect.bottomLeft)

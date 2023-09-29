@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7534B5792AC63B1D00175F4F /* SvgDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5782AC63B1D00175F4F /* SvgDocument.swift */; };
+		7534B57B2AC63B9C00175F4F /* SvgExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B57A2AC63B9C00175F4F /* SvgExporter.swift */; };
+		7543F0A12AC60898003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A02AC60898003D40E9 /* SVG */; };
+		7543F0A32AC608E3003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A22AC608E3003D40E9 /* SVG */; };
 		7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */; };
 		7554D10E2AAFB6B8008CEB87 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D10D2AAFB6B8008CEB87 /* EditorView.swift */; };
 		7554D1102AAFB6B9008CEB87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7554D10F2AAFB6B9008CEB87 /* Assets.xcassets */; };
@@ -145,6 +149,8 @@
 		75836D9C2AC25919007172AD /* LinesGridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9B2AC25919007172AD /* LinesGridPattern.swift */; };
 		75836D9E2AC28063007172AD /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9D2AC28063007172AD /* Polygon.swift */; };
 		75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */; };
+		75D718D82AC62BD000B8A333 /* SVG in Resources */ = {isa = PBXBuildFile; fileRef = 75D718D72AC62BD000B8A333 /* SVG */; };
+		75D718DB2AC62C2200B8A333 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 75D718DA2AC62C2200B8A333 /* SVG */; };
 		75DD39CD2AC33FBD00E5D4D3 /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 75DD39CC2AC33FBD00E5D4D3 /* Extensions */; };
 		75DD39D02AC361D800E5D4D3 /* Codextended in Frameworks */ = {isa = PBXBuildFile; productRef = 75DD39CF2AC361D800E5D4D3 /* Codextended */; };
 		75DD39D22AC3678F00E5D4D3 /* LayerOpacityControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39D12AC3678F00E5D4D3 /* LayerOpacityControl.swift */; };
@@ -164,6 +170,7 @@
 		75DD39F62AC52FAE00E5D4D3 /* PaletteDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39F52AC52FAE00E5D4D3 /* PaletteDocument.swift */; };
 		75DD39FA2AC52FE700E5D4D3 /* PaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39F92AC52FE700E5D4D3 /* PaletteModel.swift */; };
 		75DD39FD2AC5318E00E5D4D3 /* PalettePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD39FC2AC5318E00E5D4D3 /* PalettePicker.swift */; };
+		75DD3A012AC5EAAE00E5D4D3 /* SvgHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD3A002AC5EAAE00E5D4D3 /* SvgHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +204,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7534B5782AC63B1D00175F4F /* SvgDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SvgDocument.swift; sourceTree = "<group>"; };
+		7534B57A2AC63B9C00175F4F /* SvgExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SvgExporter.swift; sourceTree = "<group>"; };
 		7554D1082AAFB6B8008CEB87 /* Chroma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chroma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaApp.swift; sourceTree = "<group>"; };
 		7554D10D2AAFB6B8008CEB87 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
@@ -340,6 +349,7 @@
 		75836D9D2AC28063007172AD /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeArtboardBackgroundAction.swift; sourceTree = "<group>"; };
 		75836DB22AC33B67007172AD /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Extensions; sourceTree = "<group>"; };
+		75D718D72AC62BD000B8A333 /* SVG */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SVG; sourceTree = "<group>"; };
 		75DD39D12AC3678F00E5D4D3 /* LayerOpacityControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerOpacityControl.swift; sourceTree = "<group>"; };
 		75DD39D32AC3686000E5D4D3 /* LayerBlendModeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerBlendModeControl.swift; sourceTree = "<group>"; };
 		75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLayerOpacityAction.swift; sourceTree = "<group>"; };
@@ -357,6 +367,7 @@
 		75DD39F52AC52FAE00E5D4D3 /* PaletteDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteDocument.swift; sourceTree = "<group>"; };
 		75DD39F92AC52FE700E5D4D3 /* PaletteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteModel.swift; sourceTree = "<group>"; };
 		75DD39FC2AC5318E00E5D4D3 /* PalettePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePicker.swift; sourceTree = "<group>"; };
+		75DD3A002AC5EAAE00E5D4D3 /* SvgHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SvgHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,8 +376,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				75DD39CD2AC33FBD00E5D4D3 /* Extensions in Frameworks */,
+				7543F0A32AC608E3003D40E9 /* SVG in Frameworks */,
 				75DD39D02AC361D800E5D4D3 /* Codextended in Frameworks */,
+				75D718DB2AC62C2200B8A333 /* SVG in Frameworks */,
 				7554D29C2ABB8E8E008CEB87 /* Shapes in Frameworks */,
+				7543F0A12AC60898003D40E9 /* SVG in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +404,7 @@
 		7554D0FF2AAFB6B8008CEB87 = {
 			isa = PBXGroup;
 			children = (
+				75D718D72AC62BD000B8A333 /* SVG */,
 				7554D2C42ABCBE3F008CEB87 /* .swiftlint.yml */,
 				75836DB22AC33B67007172AD /* Extensions */,
 				7554D10A2AAFB6B8008CEB87 /* Chroma */,
@@ -1160,6 +1175,7 @@
 			isa = PBXGroup;
 			children = (
 				7554D26C2AB912B8008CEB87 /* JsonHelper.swift */,
+				75DD3A002AC5EAAE00E5D4D3 /* SvgHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1188,6 +1204,7 @@
 				7554D2732AB9429F008CEB87 /* ExportTypeControl.swift */,
 				7554D28E2ABA6207008CEB87 /* ExportScaleControl.swift */,
 				7554D2822ABA5684008CEB87 /* PngExporter.swift */,
+				7534B57A2AC63B9C00175F4F /* SvgExporter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1205,6 +1222,7 @@
 			children = (
 				7554D26B2AB912AD008CEB87 /* Helpers */,
 				7554D28C2ABA6080008CEB87 /* PngDocument.swift */,
+				7534B5782AC63B1D00175F4F /* SvgDocument.swift */,
 				75836D932AC22088007172AD /* ChromaDocument.swift */,
 				75DD39F52AC52FAE00E5D4D3 /* PaletteDocument.swift */,
 			);
@@ -1343,6 +1361,9 @@
 				7554D29B2ABB8E8E008CEB87 /* Shapes */,
 				75DD39CC2AC33FBD00E5D4D3 /* Extensions */,
 				75DD39CF2AC361D800E5D4D3 /* Codextended */,
+				7543F0A02AC60898003D40E9 /* SVG */,
+				7543F0A22AC608E3003D40E9 /* SVG */,
+				75D718DA2AC62C2200B8A333 /* SVG */,
 			);
 			productName = Chroma;
 			productReference = 7554D1082AAFB6B8008CEB87 /* Chroma.app */;
@@ -1420,6 +1441,7 @@
 				7554D29A2ABB8E8E008CEB87 /* XCRemoteSwiftPackageReference "swiftui-shapes" */,
 				75DD39CB2AC33FBD00E5D4D3 /* XCLocalSwiftPackageReference "Extensions" */,
 				75DD39CE2AC361D800E5D4D3 /* XCRemoteSwiftPackageReference "Codextended" */,
+				75D718D92AC62C2200B8A333 /* XCLocalSwiftPackageReference "SVG" */,
 			);
 			productRefGroup = 7554D1092AAFB6B8008CEB87 /* Products */;
 			projectDirPath = "";
@@ -1438,6 +1460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7554D2C52ABCBE3F008CEB87 /* .swiftlint.yml in Resources */,
+				75D718D82AC62BD000B8A333 /* SVG in Resources */,
 				7554D1142AAFB6B9008CEB87 /* Preview Assets.xcassets in Resources */,
 				7554D1102AAFB6B9008CEB87 /* Assets.xcassets in Resources */,
 				7554D26A2AB906F8008CEB87 /* TestFile1.json in Resources */,
@@ -1501,6 +1524,7 @@
 				7554D2C22ABCB883008CEB87 /* CancelToolButton.swift in Sources */,
 				7554D1792AB29A3D008CEB87 /* TintModel.swift in Sources */,
 				75836D672ABE7158007172AD /* DerivedData.swift in Sources */,
+				75DD3A012AC5EAAE00E5D4D3 /* SvgHelper.swift in Sources */,
 				7554D1592AAFECB2008CEB87 /* SemiCircle.swift in Sources */,
 				7554D26D2AB912B8008CEB87 /* JsonHelper.swift in Sources */,
 				7554D2252AB79C29008CEB87 /* ButtonColor.swift in Sources */,
@@ -1542,6 +1566,7 @@
 				7554D2B42ABCAEF7008CEB87 /* LineToolIcon.swift in Sources */,
 				75DD39EA2AC4BB1600E5D4D3 /* GradientSlider.swift in Sources */,
 				75836D9E2AC28063007172AD /* Polygon.swift in Sources */,
+				7534B5792AC63B1D00175F4F /* SvgDocument.swift in Sources */,
 				75836D812ABFA0C1007172AD /* ShortcutKey.swift in Sources */,
 				75836D8C2AC0A6E0007172AD /* BooleanShapePage.swift in Sources */,
 				75DD39EC2AC4BBF900E5D4D3 /* SaturationSlider.swift in Sources */,
@@ -1587,6 +1612,7 @@
 				7554D1752AB2888C008CEB87 /* ZoomGesture.swift in Sources */,
 				7554D28F2ABA6207008CEB87 /* ExportScaleControl.swift in Sources */,
 				75836D942AC22088007172AD /* ChromaDocument.swift in Sources */,
+				7534B57B2AC63B9C00175F4F /* SvgExporter.swift in Sources */,
 				7554D2AF2ABBF568008CEB87 /* ColorEyedropper.swift in Sources */,
 				7554D1622AAFF880008CEB87 /* DrawColorControl.swift in Sources */,
 				7554D2232AB79BB7008CEB87 /* ComposableButtonStyle.swift in Sources */,
@@ -2002,6 +2028,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		75D718D92AC62C2200B8A333 /* XCLocalSwiftPackageReference "SVG" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SVG;
+		};
 		75DD39CB2AC33FBD00E5D4D3 /* XCLocalSwiftPackageReference "Extensions" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Extensions;
@@ -2028,10 +2058,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7543F0A02AC60898003D40E9 /* SVG */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SVG;
+		};
+		7543F0A22AC608E3003D40E9 /* SVG */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SVG;
+		};
 		7554D29B2ABB8E8E008CEB87 /* Shapes */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7554D29A2ABB8E8E008CEB87 /* XCRemoteSwiftPackageReference "swiftui-shapes" */;
 			productName = Shapes;
+		};
+		75D718DA2AC62C2200B8A333 /* SVG */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SVG;
 		};
 		75DD39CC2AC33FBD00E5D4D3 /* Extensions */ = {
 			isa = XCSwiftPackageProductDependency;

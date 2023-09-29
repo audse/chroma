@@ -16,8 +16,9 @@ struct ExportTypeControl: View {
             Text("File type")
                 .font(.label)
                 .foregroundColor(.secondary)
-            MenuButton(exportType.name) {
+            MenuButton(exportType.rawValue) {
                 Button("PNG") { exportType = .png }
+                Button("SVG") { exportType = .svg }
             }.frame(width: 100).fixedSize()
         }
     }

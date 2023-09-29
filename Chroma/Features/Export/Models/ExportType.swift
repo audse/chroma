@@ -7,12 +7,7 @@
 
 import Foundation
 
-enum ExportType: Equatable {
-    case png
-    
-    var name: String {
-        switch self {
-        case .png: return "PNG"
-        }
-    }
+enum ExportType: String, Equatable {
+    case png = "PNG"
+    case svg = "SVG"
 }

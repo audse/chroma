@@ -13,6 +13,7 @@ struct ExportPage: View {
     @State var exportType: ExportType = .png
     @State var exportScale: Double = 1
     @State var isPngExporterPresented: Bool = false
+    @State var isSvgExporterPresented: Bool = false
 
     @Binding var showing: Bool
 
@@ -29,12 +30,17 @@ struct ExportPage: View {
                     exportScale: $exportScale,
                     onCompletion: { isSuccess in showing = !isSuccess }
                 )
+                SvgExporter(
+                    isPresented: $isSvgExporterPresented,
+                    onCompletion: { isSuccess in showing = !isSuccess }
+                )
                 HStack {
                     Button("Cancel") { showing = false }
                         .tinted(.primaryBackgroundDark)
                     Button("Export") {
                         switch exportType {
                         case .png: isPngExporterPresented = true
+                        case .svg: isSvgExporterPresented = true
                         }
                     }
                     .keyboardShortcut(.return, modifiers: [])
@@ -53,10 +59,8 @@ struct ExportPage: View {
     }
 }
 
-struct ExportPage_Previews: PreviewProvider {
-    static var artboard = PreviewArtboardModelBuilder().build()
-    static var previews: some View {
-        ExportPage(showing: .constant(true))
-            .environmentObject(FileModel(artboard: artboard))
-    }
+#Preview {
+    let artboard = PreviewArtboardModelBuilder().build()
+    return ExportPage(showing: .constant(true))
+        .environmentObject(FileModel(artboard: artboard))
 }

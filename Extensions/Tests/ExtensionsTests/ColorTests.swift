@@ -58,7 +58,6 @@ final class ColorContrast: XCTestCase {
     }
     func testContrast() throws {
         XCTAssert(Color.white.contrast(with: Color.white).isApprox(0))
-        print(Color.white.contrast(with: Color.black))
         XCTAssert(Color.white.contrast(with: Color.black).isApprox(1))
     }
 }
