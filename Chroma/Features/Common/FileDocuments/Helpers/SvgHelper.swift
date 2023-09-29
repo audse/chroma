@@ -30,13 +30,25 @@ extension SVGComponent {
     }
 }
 
+extension SVGFilter {
+    init(filter: LayerFilter) {
+        switch filter {
+        case .blur(let filter):
+            self = SVGFilter.blur(radius: filter.radius)
+        case .shadow(let filter):
+            self = SVGFilter.shadow(offset: filter.offset, radius: filter.radius, color: filter.color)
+        }
+    }
+}
+
 extension SVGLayer {
     init(layer: LayerModel) {
         let positivePixels = layer.pixels.filter { $0.isPositive }
         let negativePixels = layer.pixels.filter { $0.isNegative }
         self.init(
-            positivePixels.map { pixel in SVGComponent(pixel: pixel) },
-            clip: negativePixels.map { pixel in SVGComponent(pixel: pixel) },
+            positivePixels.map { SVGComponent(pixel: $0) },
+            clip: negativePixels.map { SVGComponent(pixel: $0) },
+            filters: SVGFilterSet(layer.filters.map { SVGFilter(filter: $0) }),
             style: SVGStyle(
                 opacity: layer.opacity,
                 blendMode: layer.blendMode
@@ -47,6 +59,9 @@ extension SVGLayer {
 
 extension SVGBuilder {
     init(artboard: ArtboardModel) {
-        self.init(artboard.layers.map { layer in SVGLayer(layer: layer) })
+        self.init(
+            artboard.backgroundColor,
+            artboard.layers.map { layer in SVGLayer(layer: layer) }
+        )
     }
 }

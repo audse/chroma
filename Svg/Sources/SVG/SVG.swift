@@ -258,20 +258,42 @@ public struct SVGLayer {
     public let id = UUID()
     public let components: [SVGComponent]
     public let clipComponents: [SVGComponent]
+    public let filters: SVGFilterSet?
     public let style: SVGStyle?
     
-    public init(_ components: [SVGComponent], clip: [SVGComponent], style: SVGStyle? = nil) {
+    public init(_ components: [SVGComponent], clip: [SVGComponent], filters: SVGFilterSet? = nil, style: SVGStyle? = nil) {
         self.components = components
         self.clipComponents = clip
+        self.filters = filters
         self.style = style
     }
 }
 
 @available(macOS 11.0, *)
+public enum SVGFilter {
+    case blur(radius: Double)
+    case shadow(offset: CGPoint, radius: Double, color: Color)
+}
+
+@available(macOS 11.0, *)
+public struct SVGFilterSet {
+    public let id = UUID()
+    public let components: [SVGFilter]
+    public let componentIds: [UUID]
+    
+    public init(_ components: [SVGFilter]) {
+        self.components = components
+        self.componentIds = components.map { _ in UUID() }
+    }
+}
+
+@available(macOS 11.0, *)
 public struct SVGBuilder {
+    public var backgroundColor: Color?
     public var layers: [SVGLayer]
     
-    public init(_ layers: [SVGLayer]) {
+    public init(_ backgroundColor: Color?, _ layers: [SVGLayer]) {
+        self.backgroundColor = backgroundColor
         self.layers = layers
     }
 }
@@ -284,10 +306,60 @@ extension SVGComponent {
 }
 
 @available(macOS 11.0, *)
+extension SVGFilter {
+    public func toSVG(in rect: CGRect) -> String {
+        var attrs: [SVGAttribute] = []
+        switch self {
+        case .blur(let radius):
+            attrs.append(contentsOf: [
+                .init("stdDeviation", .double(radius))
+            ])
+            return """
+            <feGaussianBlur \( attrs.map { $0.toString() }.joined(separator: " ") ) />
+            """
+        case .shadow(let offset, let radius, let color):
+            attrs.append(contentsOf: [
+                .init("dx", .double(offset.x)),
+                .init("dy", .double(offset.y)),
+                .init("stdDeviation", .double(radius)),
+                .init("flood-color", .color(color)),
+                .init("flood-opacity", .double(color.opacity))
+            ])
+            return """
+            <feDropShadow \( attrs.map { $0.toString() }.joined(separator: " ") ) />
+            """
+        }
+    }
+}
+
+@available(macOS 11.0, *)
+extension SVGFilterSet {
+    public func toSVG(in rect: CGRect) -> String {
+        let attrs: [SVGAttribute] = [
+            .init("id", .string("filter-\( self.id )")),
+            .init("filterUnits", .string("userSpaceOnUse")),
+            .init("primitiveUnits", .string("userSpaceOnUse")),
+            .init("x", .double(0)),
+            .init("y", .double(0)),
+            .init("width", .double(rect.width)),
+            .init("height", .double(rect.height)),
+            .init("color-interpolation-filters", .string("sRGB"))
+        ]
+        let components = self.components.map { $0.toSVG(in: rect) }
+        return """
+        <filter \( attrs.map { $0.toString() }.joined(separator: " ") )>
+            \( components.joined(separator: "\n") )
+        </filter>
+        """
+    }
+}
+
+@available(macOS 11.0, *)
 extension SVGLayer: ToSVG {
     public func toSVG(in rect: CGRect, style: SVGStyle) -> String {
         let components = self.components.map { $0.toSVG() }
         let clipComponents = self.clipComponents.map { $0.toSVG() }
+        let filter = if let filters { filters.toSVG(in: rect) } else { "" }
         let mask = clipComponents.isEmpty ? "" : """
             <mask id="mask-\( self.id )">
                 \( Rectangle().toSVG(in: rect, style: SVGStyle(fill: .white)) )
@@ -298,9 +370,13 @@ extension SVGLayer: ToSVG {
         if !clipComponents.isEmpty {
             attrs.append(.init("mask", .string("url(#mask-\( self.id ))")))
         }
+        if let filters {
+            attrs.append(.init("filter", .string("url(#filter-\( filters.id )")))
+        }
         return """
         <defs>
             \( mask )
+            \( filter )
         </defs>
         <g \( (self.style ?? SVGStyle()).toString(in: rect, attrs) )>
             \( components.joined(separator: "\n") )
@@ -312,7 +388,10 @@ extension SVGLayer: ToSVG {
 @available(macOS 11.0, *)
 extension SVGBuilder: ToSVG {
     public func toSVG(in rect: CGRect, style: SVGStyle) -> String {
-        let layers = self.layers.map { $0.toSVG(in: rect, style: style) }
+        var layers = self.layers.map { $0.toSVG(in: rect, style: style) }
+        if let backgroundColor {
+            layers.insert(Path(rect).toSVG(in: rect, style: SVGStyle(fill: backgroundColor)), at: 0)
+        }
         return """
         <svg viewBox="0 0 \( rect.width ) \( rect.height )" version="1.1" xmlns="http://www.w3.org/2000/svg">
             \( layers.joined(separator: "\n") )

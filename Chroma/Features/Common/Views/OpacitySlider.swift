@@ -21,7 +21,7 @@ struct OpacitySlider: View {
             value: $opacity,
             gradient: Gradient(colors: [currentColor.almostClear, currentColor.opacity(to: 1)]),
             getHandleColor: { value in
-                currentColor.opacity(to: value)
+                currentColor.opacity(to: Swift.max(value, 0.0001))
             },
             size: size,
             handleSize: handleSize
