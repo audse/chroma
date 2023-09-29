@@ -9,12 +9,16 @@ import SwiftUI
 import Extensions
 import SVG
 
-extension SVGComponent {
+extension SVGTag {
     init(pixel: PixelModel) {
+        let rect = pixel.getRect()
+        var attributes = SVGAttributeSet()
+        attributes.add(fill: pixel.color)
+        attributes.add(rotation: .rotation(pixel.rotation, origin: rect.center))
         self.init(
-            pixel.shape.shape,
-            in: pixel.getRect(),
-            style: SVGStyle(fill: pixel.color, rotation: pixel.rotation)
+            from: pixel.shape.shape,
+            in: rect,
+            attributes: attributes
         )
     }
     init(pixel: LayerPixelModel) {
@@ -22,10 +26,14 @@ extension SVGComponent {
         case .positive(let pixel): pixel.color
         default: .black
         }
+        let rect = pixel.getRect()
+        var attributes = SVGAttributeSet()
+        attributes.add(fill: fill)
+        attributes.add(rotation: .rotation(pixel.pixel.rotation, origin: rect.center))
         self.init(
-            pixel.pixel.shape.shape,
-            in: pixel.getRect(),
-            style: SVGStyle(fill: fill, rotation: pixel.pixel.rotation)
+            from: pixel.pixel.shape.shape,
+            in: rect,
+            attributes: attributes
         )
     }
 }
@@ -34,30 +42,31 @@ extension SVGFilter {
     init(filter: LayerFilter) {
         switch filter {
         case .blur(let filter):
-            self = SVGFilter.blur(radius: filter.radius)
+            self = .blur(radius: filter.radius)
         case .shadow(let filter):
-            self = SVGFilter.shadow(offset: filter.offset, radius: filter.radius, color: filter.color)
+            self = .shadow(offset: filter.offset, radius: filter.radius, color: filter.color)
         }
     }
 }
 
 extension SVGLayer {
     init(layer: LayerModel) {
+        var attributes = SVGAttributeSet([
+            .init("opacity", .number(layer.opacity))
+        ])
+        attributes.add(blendMode: layer.blendMode)
         let positivePixels = layer.pixels.filter { $0.isPositive }
         let negativePixels = layer.pixels.filter { $0.isNegative }
         self.init(
-            positivePixels.map { SVGComponent(pixel: $0) },
-            clip: negativePixels.map { SVGComponent(pixel: $0) },
+            positivePixels.map { SVGTag(pixel: $0) },
+            clip: negativePixels.map { SVGTag(pixel: $0) },
             filters: SVGFilterSet(layer.filters.map { SVGFilter(filter: $0) }),
-            style: SVGStyle(
-                opacity: layer.opacity,
-                blendMode: layer.blendMode
-            )
+            attributes: attributes
         )
     }
 }
 
-extension SVGBuilder {
+extension SVG {
     init(artboard: ArtboardModel) {
         self.init(
             artboard.backgroundColor,

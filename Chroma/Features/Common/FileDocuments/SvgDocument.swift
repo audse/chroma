@@ -25,17 +25,15 @@ struct SvgDocument: FileDocument {
     }
     
     init(_ artboard: ArtboardModel, size: CGSize) {
-        self.svg = SVGBuilder(artboard: artboard).toSVG(
-            in: CGRect(origin: CGPoint(), size: size),
-            style: SVGStyle()
-        )
+        self.svg = SVG(artboard: artboard).toSVG(
+            in: CGRect(origin: CGPoint(), size: size)
+        ).toString()
     }
     
     init(_ artboard: ArtboardModel) {
-        self.svg = SVGBuilder(artboard: artboard).toSVG(
-            in: CGRect(origin: CGPoint(), size: artboard.size),
-            style: SVGStyle()
-        )
+        self.svg = SVG(artboard: artboard).toSVG(
+            in: CGRect(origin: CGPoint(), size: artboard.size)
+        ).toString()
     }
 
     init(configuration: ReadConfiguration) throws {

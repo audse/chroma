@@ -25,7 +25,9 @@ struct Layer: View {
                     ))
                 }
             }
-            layer.draw(&context)
+            context.drawLayer { context in
+                layer.draw(&context)
+            }
         }.expand()
             .blendMode(layer.blendMode)
             .opacity(layer.opacity)
