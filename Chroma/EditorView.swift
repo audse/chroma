@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
-struct EditorView: View {
+struct EditorView: View, Identifiable {
+    let id = UUID()
+    
     @Environment(\.openDocument) var openDocument
     @EnvironmentObject var appSettings: AppSettingsModel
     @EnvironmentObject var file: FileModel
@@ -15,15 +18,14 @@ struct EditorView: View {
     @StateObject private var workspaceSettings = WorkspaceSettingsModel()
     @StateObject private var history = History()
     @StateObject private var drawSettings = DrawSettings()
-    
-    @State var hue: CGFloat = 0
-    @State var saturation: CGFloat = 1
-    @State var brightness: CGFloat = 1
+    @StateObject private var editorState = EditorState()
     
     var body: some View {
+        let bindings = editorState.getBindings()
         ZStack {
-            // Quick PNG export
-            PngExporter(isPresented: $appSettings.showingPngQuickExport, exportScale: .constant(1))
+            // Quick export
+            PngExporter(isPresented: bindings.quickFileExport.png, exportScale: .constant(1))
+            SvgExporter(isPresented: bindings.quickFileExport.svg)
             ArtboardWrapper()
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
@@ -63,7 +65,7 @@ struct EditorView: View {
         )
         .preferredColorScheme(appSettings.colorSchemeValue)
         .fileImporter(
-            isPresented: $appSettings.showingImport,
+            isPresented: bindings.fileImport,
             allowedContentTypes: [.chroma],
             allowsMultipleSelection: false,
             onCompletion: { result in
@@ -76,33 +78,34 @@ struct EditorView: View {
                 }
             }
         )
+        .if(appSettings.colorSchemeValue != nil) { view in
+            view.colorScheme(appSettings.colorSchemeValue ?? .light)
+        }
+        .toolbar { editorToolbar() }
+        .sheet(isPresented: bindings.settings) {
+            AppSettings(showing: bindings.settings)
+                .environmentObject(workspaceSettings)
+                .environmentObject(appSettings)
+        }
+        .sheet(isPresented: bindings.fileExport) {
+            ExportPage(showing: bindings.fileExport)
+                .environmentObject(file)
+                .environmentObject(appSettings)
+        }
+        .sheet(isPresented: bindings.documentation) {
+            DocumentationPage(showing: bindings.documentation)
+                .frame(minWidth: 800, minHeight: 600)
+        }
+        .environmentObject(drawSettings)
+        .environmentObject(history)
+        .environmentObject(workspaceSettings)
+        .focusedSceneValue(\.editorState, editorState)
         .onAppear {
             if let layer = file.artboard.layers.first {
                 history.add(SelectLayerAction(layer))
             }
             Task { releaseFocus() }
         }
-        .if(appSettings.colorSchemeValue != nil) { view in
-            view.colorScheme(appSettings.colorSchemeValue ?? .light)
-        }
-        .toolbar { editorToolbar() }
-        .sheet(isPresented: $appSettings.showingSettings) {
-            AppSettings(showing: $appSettings.showingSettings)
-                .environmentObject(workspaceSettings)
-                .environmentObject(appSettings)
-        }
-        .sheet(isPresented: $appSettings.showingExport) {
-            ExportPage(showing: $appSettings.showingExport)
-                .environmentObject(file)
-                .environmentObject(appSettings)
-        }
-        .sheet(isPresented: $appSettings.showingDocumentation) {
-            DocumentationPage(showing: $appSettings.showingDocumentation)
-                .frame(minWidth: 800, minHeight: 600)
-        }
-        .environmentObject(drawSettings)
-        .environmentObject(history)
-        .environmentObject(workspaceSettings)
     }
     
     @ToolbarContentBuilder
@@ -114,7 +117,7 @@ struct EditorView: View {
             Spacer()
             ZoomButtons().environmentObject(workspaceSettings)
             Button {
-                appSettings.showingSettings = true
+                editorState.showingModal = .settings
             } label: {
                 Image(systemName: "gear")
             }
@@ -123,23 +126,28 @@ struct EditorView: View {
 }
 
 struct EditorCommands: Commands {
-    @ObservedObject var appSettings: AppSettingsModel
+    @FocusedValue(\.editorState) var editorState
     
     var body: some Commands {
         CommandGroup(after: .appSettings) {
             Button("Settings") {
-                appSettings.showingSettings.toggle()
+                editorState?.showingModal = .settings
             }.keyboardShortcut(",", modifiers: .command)
         }
         CommandGroup(after: .importExport) {
             Button("Export...") {
-                appSettings.showingExport.toggle()
+                editorState?.showingModal = .fileExport
             }.keyboardShortcut("e", modifiers: .command)
         }
         CommandGroup(after: .importExport) {
             Button("Quick Export as PNG") {
-                appSettings.showingPngQuickExport.toggle()
-            }.keyboardShortcut("e", modifiers: [.command, .shift])
+                editorState?.showingModal = .quickFileExport(.png)
+            }.keyboardShortcut("1", modifiers: [.command, .shift])
+        }
+        CommandGroup(after: .importExport) {
+            Button("Quick Export as SVG") {
+                editorState?.showingModal = .quickFileExport(.svg)
+            }.keyboardShortcut("2", modifiers: [.command, .shift])
         }
         CommandGroup(replacing: .undoRedo) {
             Button("Undo") {
@@ -161,7 +169,7 @@ struct EditorCommands: Commands {
         }
         CommandGroup(replacing: .help) {
             Button("Documentation") {
-                appSettings.showingDocumentation.toggle()
+                editorState?.showingModal = .documentation
             }.keyboardShortcut("h", modifiers: [.command, .shift])
         }
     }

@@ -13,6 +13,7 @@
 		7534B57F2AC6571000175F4F /* LayerBlurFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B57E2AC6571000175F4F /* LayerBlurFilter.swift */; };
 		7534B5812AC658D800175F4F /* LayerShadowFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5802AC658D800175F4F /* LayerShadowFilter.swift */; };
 		7534B5832AC65A4800175F4F /* LayerFilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5822AC65A4800175F4F /* LayerFilterList.swift */; };
+		7534B5852AC772D200175F4F /* EditorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5842AC772D200175F4F /* EditorState.swift */; };
 		7543F0A12AC60898003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A02AC60898003D40E9 /* SVG */; };
 		7543F0A32AC608E3003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A22AC608E3003D40E9 /* SVG */; };
 		7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */; };
@@ -214,6 +215,7 @@
 		7534B57E2AC6571000175F4F /* LayerBlurFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerBlurFilter.swift; sourceTree = "<group>"; };
 		7534B5802AC658D800175F4F /* LayerShadowFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerShadowFilter.swift; sourceTree = "<group>"; };
 		7534B5822AC65A4800175F4F /* LayerFilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerFilterList.swift; sourceTree = "<group>"; };
+		7534B5842AC772D200175F4F /* EditorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorState.swift; sourceTree = "<group>"; };
 		7554D1082AAFB6B8008CEB87 /* Chroma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chroma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaApp.swift; sourceTree = "<group>"; };
 		7554D10D2AAFB6B8008CEB87 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				7554D10D2AAFB6B8008CEB87 /* EditorView.swift */,
 				7554D1B52AB7883E008CEB87 /* Features */,
 				7554D1122AAFB6B9008CEB87 /* Preview Content */,
+				7534B5842AC772D200175F4F /* EditorState.swift */,
 			);
 			path = Chroma;
 			sourceTree = "<group>";
@@ -1541,6 +1544,7 @@
 				7554D26D2AB912B8008CEB87 /* JsonHelper.swift in Sources */,
 				7554D2252AB79C29008CEB87 /* ButtonColor.swift in Sources */,
 				75836D792ABF67E1007172AD /* NewLayerButton.swift in Sources */,
+				7534B5852AC772D200175F4F /* EditorState.swift in Sources */,
 				7554D16D2AB119FD008CEB87 /* PixelCursor.swift in Sources */,
 				7554D1602AAFF3C9008CEB87 /* ShapeButton.swift in Sources */,
 				7554D2B82ABCAFAA008CEB87 /* DrawToolButton.swift in Sources */,

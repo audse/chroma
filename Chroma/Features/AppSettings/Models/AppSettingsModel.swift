@@ -58,11 +58,6 @@ class AppSettingsModel: ObservableObject {
     @Published var palettes: [PaletteModel] = [.grays] {
         didSet { saveProperty(key: "palettes", value: palettes) }
     }
-    @Published var showingSettings: Bool = false
-    @Published var showingImport: Bool = false
-    @Published var showingExport: Bool = false
-    @Published var showingPngQuickExport: Bool = false
-    @Published var showingDocumentation: Bool = false
     
     static let maximumRecentFiles = 20
     

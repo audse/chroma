@@ -47,7 +47,8 @@ struct ChromaApp: App {
         })
         .windowResizability(.automatic)
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
-        .commands { EditorCommands(appSettings: appSettings) }
+        .commands { EditorCommands() }
+        
     }
     
     func getNewDocument() -> ChromaDocument {

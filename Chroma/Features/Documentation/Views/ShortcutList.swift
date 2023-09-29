@@ -53,6 +53,16 @@ let implementedShortcuts: [Shortcut] = [
         description: "Export the current document"
     ),
     Shortcut(
+        key: "1",
+        modifiers: [.command, .shift],
+        description: "Export the current document as a PNG"
+    ),
+    Shortcut(
+        key: "2",
+        modifiers: [.command, .shift],
+        description: "Export the current document as an SVG"
+    ),
+    Shortcut(
         key: "z",
         modifiers: [.command],
         description: "Undo"
