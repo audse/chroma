@@ -106,6 +106,14 @@ struct EditorView: View, Identifiable {
             }
             Task { releaseFocus() }
         }
+        .onKeyPressEvent("g") {
+            workspaceSettings.gridMode =
+                switch workspaceSettings.gridMode {
+                case .none: .dots
+                case .dots: .lines
+                case .lines: .none
+                }
+        }
     }
     
     @ToolbarContentBuilder

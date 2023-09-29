@@ -88,6 +88,11 @@ let implementedShortcuts: [Shortcut] = [
         description: "Deselect all"
     ),
     Shortcut(
+        key: "G",
+        modifiers: [],
+        description: "Cycle through grid modes"
+    ),
+    Shortcut(
         key: ",",
         modifiers: [],
         description: "Rotate current shape left"
