@@ -24,6 +24,7 @@ public final class LayerModel: ObservableObject, Identifiable {
     @Published public var blendMode: BlendMode
     @Published public var isVisible: Bool
     @Published public var isLocked: Bool
+    @Published public var filters: [LayerFilter]
     
     init(
         id: UUID = UUID(),
@@ -32,7 +33,8 @@ public final class LayerModel: ObservableObject, Identifiable {
         opacity: CGFloat = 1.0,
         blendMode: BlendMode = .normal,
         isVisible: Bool = true,
-        isLocked: Bool = false
+        isLocked: Bool = false,
+        filters: [LayerFilter] = []
     ) {
         self.id = id
         self.name = name
@@ -41,6 +43,7 @@ public final class LayerModel: ObservableObject, Identifiable {
         self.blendMode = blendMode
         self.isVisible = isVisible
         self.isLocked = isLocked
+        self.filters = filters
     }
 }
 
@@ -59,6 +62,7 @@ extension LayerModel: Codable {
         case blendMode
         case isVisible
         case isLocked
+        case filters
     }
     
     public convenience init(from decoder: Decoder) throws {
@@ -70,7 +74,8 @@ extension LayerModel: Codable {
             opacity: try values.decode(Double.self, forKey: .opacity),
             blendMode: try values.decode(BlendMode.self, forKey: .blendMode),
             isVisible: try values.decode(Bool.self, forKey: .isVisible),
-            isLocked: try values.decode(Bool.self, forKey: .isLocked)
+            isLocked: try values.decode(Bool.self, forKey: .isLocked),
+            filters: try values.decode([LayerFilter].self, forKey: .filters)
         )
     }
     
@@ -83,6 +88,7 @@ extension LayerModel: Codable {
         try container.encode(blendMode, forKey: .blendMode)
         try container.encode(isVisible, forKey: .isVisible)
         try container.encode(isLocked, forKey: .isLocked)
+        try container.encode(filters, forKey: .filters)
     }
 }
 

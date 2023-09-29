@@ -12,6 +12,19 @@ struct Layer: View {
     
     var body: some View {
         Canvas { context, _ in
+            layer.filters.forEach { filter in
+                switch filter {
+                case .blur(let filter):
+                    context.addFilter(.blur(radius: filter.radius))
+                case .shadow(let filter):
+                    context.addFilter(.shadow(
+                        color: filter.color,
+                        radius: filter.radius,
+                        x: filter.offset.x,
+                        y: filter.offset.y
+                    ))
+                }
+            }
             layer.draw(&context)
         }.expand()
             .blendMode(layer.blendMode)

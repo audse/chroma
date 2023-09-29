@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7534B5792AC63B1D00175F4F /* SvgDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5782AC63B1D00175F4F /* SvgDocument.swift */; };
 		7534B57B2AC63B9C00175F4F /* SvgExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B57A2AC63B9C00175F4F /* SvgExporter.swift */; };
+		7534B57D2AC6564700175F4F /* LayerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B57C2AC6564700175F4F /* LayerFilter.swift */; };
+		7534B57F2AC6571000175F4F /* LayerBlurFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B57E2AC6571000175F4F /* LayerBlurFilter.swift */; };
+		7534B5812AC658D800175F4F /* LayerShadowFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5802AC658D800175F4F /* LayerShadowFilter.swift */; };
+		7534B5832AC65A4800175F4F /* LayerFilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5822AC65A4800175F4F /* LayerFilterList.swift */; };
 		7543F0A12AC60898003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A02AC60898003D40E9 /* SVG */; };
 		7543F0A32AC608E3003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A22AC608E3003D40E9 /* SVG */; };
 		7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */; };
@@ -206,6 +210,10 @@
 /* Begin PBXFileReference section */
 		7534B5782AC63B1D00175F4F /* SvgDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SvgDocument.swift; sourceTree = "<group>"; };
 		7534B57A2AC63B9C00175F4F /* SvgExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SvgExporter.swift; sourceTree = "<group>"; };
+		7534B57C2AC6564700175F4F /* LayerFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerFilter.swift; sourceTree = "<group>"; };
+		7534B57E2AC6571000175F4F /* LayerBlurFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerBlurFilter.swift; sourceTree = "<group>"; };
+		7534B5802AC658D800175F4F /* LayerShadowFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerShadowFilter.swift; sourceTree = "<group>"; };
+		7534B5822AC65A4800175F4F /* LayerFilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerFilterList.swift; sourceTree = "<group>"; };
 		7554D1082AAFB6B8008CEB87 /* Chroma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chroma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaApp.swift; sourceTree = "<group>"; };
 		7554D10D2AAFB6B8008CEB87 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
@@ -596,6 +604,9 @@
 				75836D762ABF6644007172AD /* DeleteLayerButton.swift */,
 				75DD39D12AC3678F00E5D4D3 /* LayerOpacityControl.swift */,
 				75DD39D32AC3686000E5D4D3 /* LayerBlendModeControl.swift */,
+				7534B5822AC65A4800175F4F /* LayerFilterList.swift */,
+				7534B57E2AC6571000175F4F /* LayerBlurFilter.swift */,
+				7534B5802AC658D800175F4F /* LayerShadowFilter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -604,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				7554D25E2AB8C73B008CEB87 /* LayerModel.swift */,
+				7534B57C2AC6564700175F4F /* LayerFilter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1547,6 +1559,7 @@
 				7554D1872AB3D1D4008CEB87 /* ScaleTypeButtons.swift in Sources */,
 				7554D1BB2AB789BC008CEB87 /* Action.swift in Sources */,
 				7554D1B42AB77477008CEB87 /* ActiveTint.swift in Sources */,
+				7534B5812AC658D800175F4F /* LayerShadowFilter.swift in Sources */,
 				75836D772ABF6644007172AD /* DeleteLayerButton.swift in Sources */,
 				75DD39E62AC3DD4F00E5D4D3 /* HueSlider.swift in Sources */,
 				7554D19F2AB60CE6008CEB87 /* ButtonColorStyle.swift in Sources */,
@@ -1588,6 +1601,7 @@
 				7554D1912AB4EB12008CEB87 /* Artboard.swift in Sources */,
 				75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */,
 				75836D882ABFB362007172AD /* DocumentationPage.swift in Sources */,
+				7534B57D2AC6564700175F4F /* LayerFilter.swift in Sources */,
 				75DD39F22AC526CB00E5D4D3 /* PopoverColorControl.swift in Sources */,
 				7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,
@@ -1620,6 +1634,7 @@
 				7554D1A82AB63E7C008CEB87 /* ArtboardSizeControl.swift in Sources */,
 				75DD39F42AC5283C00E5D4D3 /* OpacitySlider.swift in Sources */,
 				7554D1BD2AB789FF008CEB87 /* History.swift in Sources */,
+				7534B5832AC65A4800175F4F /* LayerFilterList.swift in Sources */,
 				7554D15C2AAFEEE8008CEB87 /* Quadrant.swift in Sources */,
 				7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */,
 				75836D6F2ABF6358007172AD /* ToggleLayerLockAction.swift in Sources */,
@@ -1628,6 +1643,7 @@
 				7554D1662AB0D508008CEB87 /* RotationControl.swift in Sources */,
 				7554D29E2ABB8EB7008CEB87 /* LinesGridView.swift in Sources */,
 				7554D1392AAFB81C008CEB87 /* EditableArtboard.swift in Sources */,
+				7534B57F2AC6571000175F4F /* LayerBlurFilter.swift in Sources */,
 				7554D2A72ABB986C008CEB87 /* WorkspaceGridColorControl.swift in Sources */,
 				7554D25F2AB8C73B008CEB87 /* LayerModel.swift in Sources */,
 				7554D2BE2ABCB048008CEB87 /* LineToolButton.swift in Sources */,

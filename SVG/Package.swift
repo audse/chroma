@@ -9,7 +9,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "SVG",
-            targets: ["SVG"]),
+            targets: ["SVG"])
     ],
     dependencies: [
         .package(name: "Extensions", path: "../../Extensions")
@@ -22,6 +22,6 @@ let package = Package(
             dependencies: ["Extensions"]),
         .testTarget(
             name: "SVGTests",
-            dependencies: ["SVG"]),
+            dependencies: ["SVG"])
     ]
 )

@@ -178,12 +178,6 @@ public extension Path {
     init?(svg string: String) {
         var path = Path()
         var svg = string
-//        if svg.starts(with: "<path") {
-//            svg.trimStart("<path")
-//        }
-//        if svg.hasSuffix("/>") {
-//            svg.trimEnd("/>")
-//        }
         svg = svg.trimmingCharacters(in: .whitespaces)
         var commands: [SVGPathCommand] = []
         var command: SVGPathCommand = .none

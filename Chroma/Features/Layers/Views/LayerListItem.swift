@@ -13,6 +13,8 @@ struct LayerListItem: View {
     
     @ObservedObject var layer: LayerModel
     
+    @State var isFiltersPresented: Bool = false
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 2) {
@@ -29,7 +31,13 @@ struct LayerListItem: View {
                 Image(systemName: "circle.lefthalf.filled")
                 LayerOpacityControl(layer)
                 Spacer()
-                Image(systemName: "camera.filters")
+                Button {
+                    isFiltersPresented.toggle()
+                } label: {
+                    Image(systemName: "camera.filters")
+                }.popover(isPresented: $isFiltersPresented) {
+                    LayerFilterList(layer: layer)
+                }
                 LayerBlendModeControl(layer)
             }
         }
