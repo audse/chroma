@@ -25,6 +25,9 @@ struct ArtboardWrapper: View {
                     .fill(getWorkspaceBgColor())
                     .ignoresSafeArea()
                     .releaseFocusOnTap()
+                
+                EditableArtboard().fixedSize()
+                
                 if workspaceSettings.tileMode == .both || workspaceSettings.tileMode == .horizontal {
                     makeArtboard(w: -1, h: 0) // Left
                     makeArtboard(w: 1, h: 0) // Right
@@ -41,7 +44,6 @@ struct ArtboardWrapper: View {
                     makeArtboard(w: -1, h: -1) // Top left
                     makeArtboard(w: -1, h: 1) // Bottom left
                 }
-                EditableArtboard().fixedSize()
             }.frame(
                 width: max(file.artboard.size.width * 6, 2000),
                 height: max(file.artboard.size.height * 6, 1400)
@@ -64,23 +66,32 @@ struct ArtboardWrapper: View {
 
     func makeArtboard(w: CGFloat = 1.0, h: CGFloat = 1.0) -> some View {
         EditableArtboard()
+            .overlay(
+                Rectangle()
+                    .fill(getWorkspaceBgColor().opacity(to: 0.5))
+                    .allowsHitTesting(false)
+                    .frame(
+                        width: file.artboard.size.width *  workspaceSettings.zoom,
+                        height: file.artboard.size.height *  workspaceSettings.zoom
+                    )
+                    .animation(.easeInOut(duration: 0.2), value: workspaceSettings.zoom)
+            )
             .fixedSize()
             .offset(
                 x: file.artboard.size.width * w *  workspaceSettings.zoom,
                 y: file.artboard.size.height * h * workspaceSettings.zoom
             )
-            .opacity(0.5)
     }
 }
 
-struct ArtboardWrapper_Previews: PreviewProvider {
-    static var previews: some View {
-        ArtboardWrapper()
-            .environmentObject(FileModel(artboard: ArtboardModel().withNewLayer([
-                PixelModel(position: CGPoint(100)).positive()
-            ])))
-            .environmentObject(WorkspaceSettingsModel())
-            .environmentObject(DrawSettings())
-            .environmentObject(History())
-    }
+#Preview {
+    ArtboardWrapper()
+        .environmentObject(FileModel(artboard: ArtboardModel().withNewLayer([
+            PixelModel(position: CGPoint(100)).positive()
+        ])))
+        .environmentObject(WorkspaceSettingsModel(
+            tileMode: .both
+        ))
+        .environmentObject(DrawSettings())
+        .environmentObject(History())
 }

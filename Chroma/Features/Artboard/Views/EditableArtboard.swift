@@ -14,7 +14,7 @@ struct EditableArtboard: View {
     @EnvironmentObject var file: FileModel
     @EnvironmentObject var history: History
 
-    @State var isHovering = true
+    @State var isHovering = false
     @State var mouseLocation = CGPoint()
 
     @State var ghostPixels: [PixelModel] = []
@@ -23,19 +23,18 @@ struct EditableArtboard: View {
     
     var body: some View {
         ZStack {
-            
-            Button("") {
-                eraseSelection()
-            }.buttonStyle(.plain)
-                .labelsHidden()
-                .keyboardShortcut("x", modifiers: [.command])
+            Rectangle()
+                .fill(Color.almostClear)
+                .onKeyPressEvent("x", modifiers: [.command]) {
+                    eraseSelection()
+                }
             
             Artboard(artboard: file.artboard)
                 .onTapGesture(perform: onTap)
                 .onHover { isHoveringValue in
                     isHovering = isHoveringValue
                 }
-                .onContinuousHover(perform: onContinuousHover)
+                .onContinuousHover(coordinateSpace: .local, perform: onContinuousHover)
                 .releaseFocusOnTap()
                 .dragPathGesture(
                     state: $dragState,
