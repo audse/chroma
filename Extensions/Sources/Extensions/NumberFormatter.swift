@@ -6,6 +6,9 @@ public extension NumberFormatter {
         guard let newValue = number(from: string) else { return nil }
         return newValue.doubleValue
     }
+    func str(_ value: Double) -> String? {
+        string(from: NSNumber(value: value))
+    }
     func format(_ value: String) -> Double? {
         guard let newValue = number(from: value) else { return nil }
         return newValue.doubleValue

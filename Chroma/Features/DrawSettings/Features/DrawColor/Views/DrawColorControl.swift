@@ -20,9 +20,6 @@ struct DrawColorControl: View {
                 palettes: appSettings.palettes
             )
             ColorEyedropper()
-                .onAppear {
-                    print(appSettings.palettes)
-                }
         }
     }
 }

@@ -27,7 +27,6 @@ class MoveLayerAction: Action {
     
     override func perform() {
         artboard.moveLayer(layer, to: newIndex)
-        print(artboard.layers.map { $0.name })
     }
     
     override func undo() {
@@ -37,7 +36,6 @@ class MoveLayerAction: Action {
                 : prevIndex
             )
             artboard.moveLayer(layer, to: actualIndex)
-            print(artboard.layers.map { $0.name })
         }
     }
     

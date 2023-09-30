@@ -159,6 +159,7 @@
 		75836D9C2AC25919007172AD /* LinesGridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9B2AC25919007172AD /* LinesGridPattern.swift */; };
 		75836D9E2AC28063007172AD /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9D2AC28063007172AD /* Polygon.swift */; };
 		75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */; };
+		7598C74C2AC89994008F7A3C /* NumberStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7598C74B2AC89994008F7A3C /* NumberStepper.swift */; };
 		75D718D82AC62BD000B8A333 /* SVG in Resources */ = {isa = PBXBuildFile; fileRef = 75D718D72AC62BD000B8A333 /* SVG */; };
 		75D718DB2AC62C2200B8A333 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 75D718DA2AC62C2200B8A333 /* SVG */; };
 		75DD39CD2AC33FBD00E5D4D3 /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 75DD39CC2AC33FBD00E5D4D3 /* Extensions */; };
@@ -369,6 +370,7 @@
 		75836D9D2AC28063007172AD /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeArtboardBackgroundAction.swift; sourceTree = "<group>"; };
 		75836DB22AC33B67007172AD /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Extensions; sourceTree = "<group>"; };
+		7598C74B2AC89994008F7A3C /* NumberStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberStepper.swift; sourceTree = "<group>"; };
 		75D718D72AC62BD000B8A333 /* SVG */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SVG; sourceTree = "<group>"; };
 		75DD39D12AC3678F00E5D4D3 /* LayerOpacityControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerOpacityControl.swift; sourceTree = "<group>"; };
 		75DD39D32AC3686000E5D4D3 /* LayerBlendModeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerBlendModeControl.swift; sourceTree = "<group>"; };
@@ -1129,6 +1131,7 @@
 				75DD39F32AC5283C00E5D4D3 /* OpacitySlider.swift */,
 				75DD39EF2AC4E42400E5D4D3 /* ColorControl.swift */,
 				75DD39F12AC526CB00E5D4D3 /* PopoverColorControl.swift */,
+				7598C74B2AC89994008F7A3C /* NumberStepper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1618,6 +1621,7 @@
 				7554D2212AB79B61008CEB87 /* SpacedTrailingIconLabelStyle.swift in Sources */,
 				7554D2A22ABB97BF008CEB87 /* DotsGridPattern.swift in Sources */,
 				7554D2E22ABD3922008CEB87 /* DrawMultipleAction.swift in Sources */,
+				7598C74C2AC89994008F7A3C /* NumberStepper.swift in Sources */,
 				7554D1522AAFE994008CEB87 /* PixelSizeControl.swift in Sources */,
 				75836D9C2AC25919007172AD /* LinesGridPattern.swift in Sources */,
 				7554D28D2ABA6080008CEB87 /* PngDocument.swift in Sources */,

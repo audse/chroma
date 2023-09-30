@@ -14,7 +14,7 @@ class DrawSettings: ObservableObject {
     @Published var shape = SquareShape
     @Published var color = Color.black
     @Published var scaleType = ScaleType.even
-    @Published var pixelSize: CGFloat = 5
+    @Published var pixelSize: Double = 5
     @Published var precisionSize: CGFloat = 1
 
     /**

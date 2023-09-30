@@ -20,6 +20,14 @@ extension CGFloat: Lerp {
     }
 }
 
+public extension Double {
+    func clamp(low: Double, high: Double) -> Double {
+        if self < low { return low }
+        if self > high { return high }
+        return self
+    }
+}
+
 extension Double: Lerp {
     public func lerp(_ other: Double, by amount: Double = 0.5) -> Double {
         return self * (1.0 - amount) + (other * amount)

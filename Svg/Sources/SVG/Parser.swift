@@ -14,7 +14,7 @@ struct SVGAttributeParser {
 @available(macOS 11.0, *)
 struct SVGTagParser {
     let name: String
-    let attributes: [String : String]
+    let attributes: [String: String]
 }
 
 class SVGParserDelegate: NSObject, XMLParserDelegate {
@@ -23,7 +23,7 @@ class SVGParserDelegate: NSObject, XMLParserDelegate {
         didStartElement elementName: String,
         namespaceURI: String?,
         qualifiedName qName: String?,
-        attributes attributeDict: [String : String] = [:]
+        attributes attributeDict: [String: String] = [:]
     ) {
         print(elementName)
         for (key, value) in attributeDict {
