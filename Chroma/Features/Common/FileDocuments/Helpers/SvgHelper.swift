@@ -70,7 +70,7 @@ extension SVG {
     init(artboard: ArtboardModel) {
         self.init(
             artboard.backgroundColor,
-            artboard.layers.map { layer in SVGLayer(layer: layer) }
+            artboard.layers.filter { $0.isVisible }.map { layer in SVGLayer(layer: layer) }
         )
     }
 }
