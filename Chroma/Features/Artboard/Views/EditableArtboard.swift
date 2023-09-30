@@ -61,8 +61,14 @@ struct EditableArtboard: View {
             DrawGhost(ghostPixels: $ghostPixels)
             
             if isHovering {
+                let cursorShouldSnap = ![.eyedropper, .fill].contains(drawSettings.tool)
                 PixelCursor()
-                    .position(drawSettings.snapped(mouseLocation) + drawSettings.getPixelSize() / 2.0)
+                    .if(!cursorShouldSnap) { view in
+                        view.position(mouseLocation)
+                    }
+                    .if(cursorShouldSnap) { view in
+                        view.position(drawSettings.snapped(mouseLocation) + drawSettings.getPixelSize() / 2.0)
+                    }
                     .animation(.easeInOut(duration: 0.1), value: mouseLocation)
             }
             if workspaceSettings.gridMode == .dots {

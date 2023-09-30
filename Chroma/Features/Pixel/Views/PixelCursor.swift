@@ -50,24 +50,26 @@ struct PixelCursor: View {
                 .frame(width: size, height: size)
                 .allowsHitTesting(false)
         case .fill:
-            Circle()
-                .size(width: size, height: size)
-                .fill(drawSettings.color)
-                .position(x: size / 2, y: size / 2)
-                .frame(width: size, height: size)
+            Image("bucket.fill")
+                .resizable()
+                .foregroundColor(drawSettings.color)
+                .frame(width: 14, height: 14)
+                .frame(width: size / 2, height: size / 2)
                 .allowsHitTesting(false)
-                .opacity(0.5)
+                .shadow(color: .white, radius: 0, x: 0.5, y: 0.5)
+                .shadow(color: .white, radius: 0, x: -0.5, y: -0.5)
+                .shadow(color: .white, radius: 0, x: 0.5, y: -0.5)
+                .shadow(color: .white, radius: 0, x: -0.5, y: 0.5)
         case .eyedropper:
             Image(systemName: "eyedropper.halffull")
-                .font(.system(size: size * 0.75))
+                .font(.system(size: 14))
                 .foregroundColor(.black)
-                .position(x: size / 2, y: size / 2)
-                .frame(width: size, height: size)
+                .frame(width: size / 2, height: size / 2)
                 .allowsHitTesting(false)
-                .shadow(color: .white, radius: 0, x: 1, y: 1)
-                .shadow(color: .white, radius: 0, x: -1, y: -1)
-                .shadow(color: .white, radius: 0, x: 1, y: -1)
-                .shadow(color: .white, radius: 0, x: -1, y: 1)
+                .shadow(color: .white, radius: 0, x: 0.5, y: 0.5)
+                .shadow(color: .white, radius: 0, x: -0.5, y: -0.5)
+                .shadow(color: .white, radius: 0, x: 0.5, y: -0.5)
+                .shadow(color: .white, radius: 0, x: -0.5, y: 0.5)
         case .rectSelect, .lassoSelect, .move:
             EmptyView().allowsHitTesting(false)
         }
@@ -79,8 +81,8 @@ struct PixelCursor_Previews: PreviewProvider {
         VStack(spacing: 12) {
             PixelCursor().environmentObject(DrawSettings())
             PixelCursor().environmentObject(DrawSettings().tool(.erase))
-            PixelCursor().environmentObject(DrawSettings().tool(.fill))
             PixelCursor().environmentObject(DrawSettings().tool(.eyedropper))
+            PixelCursor().environmentObject(DrawSettings().tool(.fill))
         }
     }
 }

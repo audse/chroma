@@ -15,8 +15,9 @@ struct FillToolButton: View {
         Button {
             history.add(SelectToolAction(.fill, drawSettings))
         } label: {
-            Image(systemName: "drop.fill")
-                .frame(width: 14)
+            Image("bucket.fill")
+                .resizable()
+                .frame(width: 14, height: 14)
         }
         .active(drawSettings.tool == .fill)
         .help("Fill Tool")
