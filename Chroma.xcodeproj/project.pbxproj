@@ -18,6 +18,7 @@
 		7534B58B2AC7A96000175F4F /* CopyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B58A2AC7A96000175F4F /* CopyAction.swift */; };
 		7534B58D2AC7A9AA00175F4F /* PasteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B58C2AC7A9AA00175F4F /* PasteAction.swift */; };
 		7534B58F2AC7AA6400175F4F /* CutAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B58E2AC7AA6400175F4F /* CutAction.swift */; };
+		7534B5922AC8887F00175F4F /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5912AC8887F00175F4F /* ColorSet.swift */; };
 		7543F0A12AC60898003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A02AC60898003D40E9 /* SVG */; };
 		7543F0A32AC608E3003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A22AC608E3003D40E9 /* SVG */; };
 		7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */; };
@@ -224,6 +225,7 @@
 		7534B58A2AC7A96000175F4F /* CopyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyAction.swift; sourceTree = "<group>"; };
 		7534B58C2AC7A9AA00175F4F /* PasteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteAction.swift; sourceTree = "<group>"; };
 		7534B58E2AC7AA6400175F4F /* CutAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutAction.swift; sourceTree = "<group>"; };
+		7534B5912AC8887F00175F4F /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
 		7554D1082AAFB6B8008CEB87 /* Chroma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chroma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaApp.swift; sourceTree = "<group>"; };
 		7554D10D2AAFB6B8008CEB87 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
@@ -419,6 +421,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7534B5902AC8887500175F4F /* ColorSet */ = {
+			isa = PBXGroup;
+			children = (
+				7534B5912AC8887F00175F4F /* ColorSet.swift */,
+			);
+			path = ColorSet;
+			sourceTree = "<group>";
+		};
 		7554D0FF2AAFB6B8008CEB87 = {
 			isa = PBXGroup;
 			children = (
@@ -1051,6 +1061,7 @@
 		7554D2152AB79825008CEB87 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				7534B5902AC8887500175F4F /* ColorSet */,
 				7554D2162AB7982C008CEB87 /* Tint */,
 			);
 			path = Features;
@@ -1620,6 +1631,7 @@
 				75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */,
 				75836D882ABFB362007172AD /* DocumentationPage.swift in Sources */,
 				7534B57D2AC6564700175F4F /* LayerFilter.swift in Sources */,
+				7534B5922AC8887F00175F4F /* ColorSet.swift in Sources */,
 				75DD39F22AC526CB00E5D4D3 /* PopoverColorControl.swift in Sources */,
 				7554D2DA2ABD38DF008CEB87 /* SelectAction.swift in Sources */,
 				7554D1AE2AB6C5CB008CEB87 /* PrecisionControl.swift in Sources */,

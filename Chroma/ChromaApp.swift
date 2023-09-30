@@ -27,14 +27,6 @@ struct ChromaApp: App {
     @StateObject private var appSettings = AppSettingsModel()
     
     var body: some Scene {
-        WindowGroup("Recent Files") {
-            FilesPage()
-                .environmentObject(appSettings)
-                .preferredColorScheme(appSettings.colorSchemeValue)
-        }
-        .windowResizability(.automatic)
-        .windowToolbarStyle(.unifiedCompact(showsTitle: true))
-        
         DocumentGroup(newDocument: getNewDocument(), editor: { configuration in
             NavigationStack { EditorView() }
                 .environmentObject(configuration.document.file)
@@ -49,6 +41,13 @@ struct ChromaApp: App {
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
         .commands { EditorCommands() }
         
+        WindowGroup("Recent Files") {
+            FilesPage()
+                .environmentObject(appSettings)
+                .preferredColorScheme(appSettings.colorSchemeValue)
+        }
+        .windowResizability(.automatic)
+        .windowToolbarStyle(.unifiedCompact(showsTitle: true))        
     }
     
     func getNewDocument() -> ChromaDocument {

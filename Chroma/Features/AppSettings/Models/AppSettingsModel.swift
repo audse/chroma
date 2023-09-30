@@ -55,7 +55,7 @@ class AppSettingsModel: ObservableObject {
     @Published var recentFiles: [URL] = [] {
         didSet { saveProperty(key: "recentFiles", value: recentFiles) }
     }
-    @Published var palettes: [PaletteModel] = [.grays] {
+    @Published var palettes: [PaletteModel] = [.grays, .pastels, .brights, .jewelTones] {
         didSet { saveProperty(key: "palettes", value: palettes) }
     }
     

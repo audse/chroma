@@ -104,7 +104,11 @@ struct EditorView: View, Identifiable {
             if let layer = file.artboard.layers.first {
                 history.add(SelectLayerAction(layer))
             }
-            Task { releaseFocus() }
+            Task {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) {
+                    releaseFocus()
+                }
+            }
         }
         .onKeyPressEvent("g") {
             workspaceSettings.gridMode =
