@@ -207,7 +207,16 @@ struct EditableArtboard: View {
         let renderer = ImageRenderer(content: Artboard(artboard: file.artboard))
         let color = renderer.cgImage?.getPixelColor(at: location) ?? .black
         drawSettings.color = color
-        history.add(SelectToolAction(history.getPreviousTool(), drawSettings))
+        
+        var previousTool: Tool = .draw(.positive)
+        for action in history.history.reversed() {
+            if let action = action as? SelectToolAction,
+               action.tool != .eyedropper {
+                previousTool = action.tool
+                break
+            }
+        }
+        history.add(SelectToolAction(previousTool, drawSettings))
     }
 
     func line(_ location: CGPoint) {

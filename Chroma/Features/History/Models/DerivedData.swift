@@ -55,11 +55,6 @@ extension History {
         return nil
     }
     
-    func getPreviousTool() -> Tool {
-        let actions = history.reversed().filterMap { $0 as? SelectToolAction }
-        return actions.get(at: 1)?.tool ?? .draw(.positive)
-    }
-    
     func getCopiedPixels() -> [LayerPixelModel] {
         for action in history.reversed() {
             if let action = action as? CopyAction {
