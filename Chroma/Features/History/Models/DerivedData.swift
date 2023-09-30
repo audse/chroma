@@ -25,6 +25,9 @@ extension History {
                     if let action = action as? SelectAction {
                         pixels = action.pixels
                     }
+                    if let action = action as? PasteAction {
+                        pixels = action.pixels
+                    }
                 }
                 return pixels.filter(currentLayer.pixels.contains)
             }
@@ -55,5 +58,17 @@ extension History {
     func getPreviousTool() -> Tool {
         let actions = history.reversed().filterMap { $0 as? SelectToolAction }
         return actions.get(at: 1)?.tool ?? .draw(.positive)
+    }
+    
+    func getCopiedPixels() -> [LayerPixelModel] {
+        for action in history.reversed() {
+            if let action = action as? CopyAction {
+                return action.pixels
+            }
+            if let action = action as? CutAction {
+                return action.pixels
+            }
+        }
+        return []
     }
 }

@@ -25,7 +25,7 @@ struct EditableArtboard: View {
         ZStack {
             Rectangle()
                 .fill(Color.almostClear)
-                .onKeyPressEvent("x", modifiers: [.command]) {
+                .onKeyPressEvent(.delete, modifiers: []) {
                     eraseSelection()
                 }
             

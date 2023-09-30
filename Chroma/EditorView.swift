@@ -142,6 +142,17 @@ struct EditorCommands: Commands {
                 editorState?.showingModal = .settings
             }.keyboardShortcut(",", modifiers: .command)
         }
+        CommandGroup(replacing: .pasteboard) {
+            Button("Cut") {
+                RequestCut.emit(())
+            }.keyboardShortcut("x", modifiers: .command)
+            Button("Copy") {
+                RequestCopy.emit(())
+            }.keyboardShortcut("c", modifiers: .command)
+            Button("Paste") {
+                RequestPaste.emit(())
+            }.keyboardShortcut("v", modifiers: .command)
+        }
         CommandGroup(after: .importExport) {
             Button("Export...") {
                 editorState?.showingModal = .fileExport

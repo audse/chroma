@@ -63,19 +63,29 @@ let implementedShortcuts: [Shortcut] = [
         description: "Export the current document as an SVG"
     ),
     Shortcut(
-        key: "z",
+        key: "Z",
         modifiers: [.command],
         description: "Undo"
     ),
     Shortcut(
-        key: "z",
+        key: "Z",
         modifiers: [.command, .shift],
         description: "Redo"
     ),
     Shortcut(
+        key: "C",
+        modifiers: [.command],
+        description: "Copy selected shapes"
+    ),
+    Shortcut(
+        key: "V",
+        modifiers: [.command],
+        description: "Paste selected shapes"
+    ),
+    Shortcut(
         key: "X",
         modifiers: [.command],
-        description: "Delete selected shapes"
+        description: "Cut selected shapes"
     ),
     Shortcut(
         key: "A",
@@ -86,6 +96,11 @@ let implementedShortcuts: [Shortcut] = [
         key: "D",
         modifiers: [.command],
         description: "Deselect all"
+    ),
+    Shortcut(
+        key: "Delete",
+        modifiers: [],
+        description: "Delete selected shapes"
     ),
     Shortcut(
         key: "G",

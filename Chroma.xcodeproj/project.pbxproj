@@ -15,6 +15,9 @@
 		7534B5832AC65A4800175F4F /* LayerFilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5822AC65A4800175F4F /* LayerFilterList.swift */; };
 		7534B5852AC772D200175F4F /* EditorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5842AC772D200175F4F /* EditorState.swift */; };
 		7534B5872AC77FEB00175F4F /* KeyEventModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B5862AC77FEB00175F4F /* KeyEventModifier.swift */; };
+		7534B58B2AC7A96000175F4F /* CopyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B58A2AC7A96000175F4F /* CopyAction.swift */; };
+		7534B58D2AC7A9AA00175F4F /* PasteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B58C2AC7A9AA00175F4F /* PasteAction.swift */; };
+		7534B58F2AC7AA6400175F4F /* CutAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534B58E2AC7AA6400175F4F /* CutAction.swift */; };
 		7543F0A12AC60898003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A02AC60898003D40E9 /* SVG */; };
 		7543F0A32AC608E3003D40E9 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 7543F0A22AC608E3003D40E9 /* SVG */; };
 		7554D10C2AAFB6B8008CEB87 /* ChromaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */; };
@@ -218,6 +221,9 @@
 		7534B5822AC65A4800175F4F /* LayerFilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerFilterList.swift; sourceTree = "<group>"; };
 		7534B5842AC772D200175F4F /* EditorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorState.swift; sourceTree = "<group>"; };
 		7534B5862AC77FEB00175F4F /* KeyEventModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyEventModifier.swift; sourceTree = "<group>"; };
+		7534B58A2AC7A96000175F4F /* CopyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyAction.swift; sourceTree = "<group>"; };
+		7534B58C2AC7A9AA00175F4F /* PasteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteAction.swift; sourceTree = "<group>"; };
+		7534B58E2AC7AA6400175F4F /* CutAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutAction.swift; sourceTree = "<group>"; };
 		7554D1082AAFB6B8008CEB87 /* Chroma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chroma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7554D10B2AAFB6B8008CEB87 /* ChromaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaApp.swift; sourceTree = "<group>"; };
 		7554D10D2AAFB6B8008CEB87 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
@@ -585,6 +591,9 @@
 				75DD39D92AC384B000E5D4D3 /* ChangeArtboardSizeAction.swift */,
 				75DD39D52AC36ABA00E5D4D3 /* ChangeLayerOpacityAction.swift */,
 				75DD39D72AC36E0600E5D4D3 /* ChangeLayerBlendModeAction.swift */,
+				7534B58A2AC7A96000175F4F /* CopyAction.swift */,
+				7534B58E2AC7AA6400175F4F /* CutAction.swift */,
+				7534B58C2AC7A9AA00175F4F /* PasteAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1534,6 +1543,7 @@
 				7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */,
 				7554D16A2AB10288008CEB87 /* Expand.swift in Sources */,
 				7554D2662AB8D2D1008CEB87 /* PixelHelpers.swift in Sources */,
+				7534B58D2AC7A9AA00175F4F /* PasteAction.swift in Sources */,
 				7554D2B12ABC098E008CEB87 /* DrawGhost.swift in Sources */,
 				7554D19B2AB54187008CEB87 /* WorkspaceSettingsPanel.swift in Sources */,
 				7554D1AA2AB63EB3008CEB87 /* NumberTextField.swift in Sources */,
@@ -1645,6 +1655,7 @@
 				7534B5832AC65A4800175F4F /* LayerFilterList.swift in Sources */,
 				7554D15C2AAFEEE8008CEB87 /* Quadrant.swift in Sources */,
 				7554D27A2AB942D4008CEB87 /* ExportType.swift in Sources */,
+				7534B58F2AC7AA6400175F4F /* CutAction.swift in Sources */,
 				75836D6F2ABF6358007172AD /* ToggleLayerLockAction.swift in Sources */,
 				7554D2A02ABB9573008CEB87 /* DotsGridView.swift in Sources */,
 				7554D2BA2ABCAFD8008CEB87 /* EraseToolButton.swift in Sources */,
@@ -1664,6 +1675,7 @@
 				7554D1992AB53D11008CEB87 /* TileModeButtons.swift in Sources */,
 				75836D712ABF63FD007172AD /* LayerVisibiltyButton.swift in Sources */,
 				7554D2E02ABD390B008CEB87 /* EraseSelectionAction.swift in Sources */,
+				7534B58B2AC7A96000175F4F /* CopyAction.swift in Sources */,
 				75836D6B2ABF4C17007172AD /* ToggleLayerVisibilityAction.swift in Sources */,
 				75DD39FD2AC5318E00E5D4D3 /* PalettePicker.swift in Sources */,
 				7554D2CB2ABCE892008CEB87 /* RectSelectToolButton.swift in Sources */,

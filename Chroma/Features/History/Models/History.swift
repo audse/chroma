@@ -12,6 +12,9 @@ let RequestUndoEvent = EmptyChromaEvent("Request Undo")
 let RequestRedoEvent = EmptyChromaEvent("Request Redo")
 let RequestSelectAll = EmptyChromaEvent("Select All")
 let RequestDeselectAll = EmptyChromaEvent("Deselect All")
+let RequestCopy = EmptyChromaEvent("Copy")
+let RequestPaste = EmptyChromaEvent("Paste")
+let RequestCut = EmptyChromaEvent("Cut")
 // swiftlint:enable identifier_name
 
 class History: ObservableObject {
@@ -22,8 +25,8 @@ class History: ObservableObject {
         history: [Action] = [],
         undoHistory: [Action] = []
     ) {
-        RequestUndoEvent.subscribe { _ in self.undo() }
-        RequestRedoEvent.subscribe { _ in self.redo() }
+        RequestUndoEvent.subscribe { self.undo() }
+        RequestRedoEvent.subscribe { self.redo() }
         RequestSelectAll.subscribe {
             if let layer = self.getCurrentLayer() {
                 self.add(SelectAction(layer.pixels, layer))
@@ -32,6 +35,22 @@ class History: ObservableObject {
         RequestDeselectAll.subscribe {
             if let layer = self.getCurrentLayer() {
                 self.add(DeselectAllAction(layer))
+            }
+        }
+        RequestCut.subscribe {
+            let pixels = self.getCurrentSelection()
+            if let layer = self.getCurrentLayer() {
+                self.add(CutAction(pixels, layer))
+            }
+        }
+        RequestCopy.subscribe {
+            let pixels = self.getCurrentSelection()
+            self.add(CopyAction(pixels))
+        }
+        RequestPaste.subscribe {
+            let pixels = self.getCopiedPixels()
+            if let layer = self.getCurrentLayer() {
+                self.add(PasteAction(pixels, layer))
             }
         }
         self.history = history
