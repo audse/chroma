@@ -5,6 +5,10 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>DocumentIcon</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Chroma</string>
 			<key>CFBundleTypeRole</key>
@@ -44,8 +48,17 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Chroma File</string>
+			<key>UTTypeIconFile</key>
+			<string>DocumentIcon</string>
 			<key>UTTypeIcons</key>
-			<dict/>
+			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>DocumentFill</string>
+				<key>UTTypeIconBadgeName</key>
+				<string>DocumentIcon</string>
+				<key>UTTypeIconText</key>
+				<string>Chroma</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>com.chroma.chroma</string>
 			<key>UTTypeTagSpecification</key>
@@ -65,8 +78,17 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Palette File</string>
+			<key>UTTypeIconFile</key>
+			<string>DocumentIcon</string>
 			<key>UTTypeIcons</key>
-			<dict/>
+			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>DocumentFill</string>
+				<key>UTTypeIconBadgeName</key>
+				<string>DocumentIcon</string>
+				<key>UTTypeIconText</key>
+				<string>Palette</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>com.chroma.palette</string>
 			<key>UTTypeTagSpecification</key>
@@ -89,8 +111,17 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Chroma File</string>
+			<key>UTTypeIconFile</key>
+			<string>DocumentIcon</string>
 			<key>UTTypeIcons</key>
-			<dict/>
+			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>DocumentFill</string>
+				<key>UTTypeIconBadgeName</key>
+				<string>DocumentIcon</string>
+				<key>UTTypeIconText</key>
+				<string>Chroma</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>com.chroma.chroma</string>
 			<key>UTTypeTagSpecification</key>
@@ -110,8 +141,17 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Chroma Palette</string>
+			<key>UTTypeIconFile</key>
+			<string>DocumentIcon</string>
 			<key>UTTypeIcons</key>
-			<dict/>
+			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>DocumentFill</string>
+				<key>UTTypeIconBadgeName</key>
+				<string>DocumentIcon</string>
+				<key>UTTypeIconText</key>
+				<string>Palette</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>com.chroma.palette</string>
 			<key>UTTypeTagSpecification</key>
