@@ -33,20 +33,19 @@ struct FilePreviewList: View {
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12)
     ]
-
-    var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 12) {
-                Button {
-                    newDocument(ChromaDocument(FileModel.Empty()))
-                } label: {
-                    Text("New")
-                        .expand()
-                        .background(Color.almostClear)
-                }
-                .foregroundStyle(.primary)
-                .buttonStyle(.plain)
-                .overlay(RoundedRectangle(cornerRadius: 12)
+    
+    var newButton: some View {
+        Text("New")
+            .expand()
+            .background(Color.almostClear)
+            .gesture(TapGesture(count: 2).onEnded {})
+            .simultaneousGesture(TapGesture(count: 1).onEnded {
+                newDocument(ChromaDocument(FileModel.Empty()))
+            })
+            .foregroundStyle(.primary)
+            .buttonStyle(.plain)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
                     .strokeBorder(
                         .tertiary,
                         style: StrokeStyle(
@@ -55,9 +54,13 @@ struct FilePreviewList: View {
                             dash: [6]
                         )
                     ))
-                .aspectRatio(1, contentMode: .fit)
-                .expand()
-                
+            .aspectRatio(1, contentMode: .fit)
+    }
+
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 12) {
+                newButton
                 ForEach(getRecentFiles(), id: \.id) { file in
                     Button {
                         open(file.url)
@@ -82,11 +85,7 @@ struct FilePreviewList: View {
     
     func open(_ url: URL) {
         Task {
-            do {
-                try await openDocument(at: url)
-            } catch {
-                print("error")
-            }
+            try await openDocument(at: url)
         }
     }
 }

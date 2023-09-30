@@ -34,6 +34,7 @@ struct ChromaApp: App {
         }
         .windowResizability(.automatic)
         .windowToolbarStyle(.unifiedCompact(showsTitle: true))
+        .commands { RecentFilesCommands() }
         
         DocumentGroup(newDocument: getNewDocument(), editor: { configuration in
             NavigationStack { EditorView() }
