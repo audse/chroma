@@ -56,6 +56,14 @@ class History: ObservableObject {
         self.history = history
         self.undoHistory = undoHistory
     }
+    
+    var nonEditorHistory: [Action] {
+        self.history.filter { !$0.isEditorAction() }
+    }
+    
+    var nonEditorUndoHistory: [Action] {
+        self.undoHistory.filter { !$0.isEditorAction() }
+    }
 
     func add(_ action: Action) {
         history.append(action)
@@ -66,7 +74,7 @@ class History: ObservableObject {
     }
     
     func addOrAccumulate(_ action: AccumulatableAction) {
-        if let last = history.last,
+        if let last = nonEditorHistory.last,
            let last = last as? AccumulatableAction,
            type(of: action) == type(of: last),
            case .success = last.accumulate(with: action) {

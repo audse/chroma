@@ -20,7 +20,7 @@ class ChangeLayerOpacityAction: AccumulatableAction {
     }
     
     override func accumulate(with next: AccumulatableAction) -> AccumulateResult {
-        if let next = next as? Self {
+        if let next = next as? Self, layer == next.layer {
             newOpacity = next.newOpacity
             return .success
         }
