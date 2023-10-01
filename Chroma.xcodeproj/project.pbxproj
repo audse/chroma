@@ -160,6 +160,9 @@
 		75836D9E2AC28063007172AD /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9D2AC28063007172AD /* Polygon.swift */; };
 		75836DA02AC299A2007172AD /* ChangeArtboardBackgroundAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */; };
 		7598C74C2AC89994008F7A3C /* NumberStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7598C74B2AC89994008F7A3C /* NumberStepper.swift */; };
+		7598C7502ACA05C7008F7A3C /* AddFilterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7598C74F2ACA05C7008F7A3C /* AddFilterAction.swift */; };
+		7598C7522ACA0646008F7A3C /* RemoveFilterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7598C7512ACA0646008F7A3C /* RemoveFilterAction.swift */; };
+		7598C7542ACA06CE008F7A3C /* ChangeFilterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7598C7532ACA06CE008F7A3C /* ChangeFilterAction.swift */; };
 		75D718D82AC62BD000B8A333 /* SVG in Resources */ = {isa = PBXBuildFile; fileRef = 75D718D72AC62BD000B8A333 /* SVG */; };
 		75D718DB2AC62C2200B8A333 /* SVG in Frameworks */ = {isa = PBXBuildFile; productRef = 75D718DA2AC62C2200B8A333 /* SVG */; };
 		75DD39CD2AC33FBD00E5D4D3 /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 75DD39CC2AC33FBD00E5D4D3 /* Extensions */; };
@@ -371,6 +374,9 @@
 		75836D9F2AC299A2007172AD /* ChangeArtboardBackgroundAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeArtboardBackgroundAction.swift; sourceTree = "<group>"; };
 		75836DB22AC33B67007172AD /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Extensions; sourceTree = "<group>"; };
 		7598C74B2AC89994008F7A3C /* NumberStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberStepper.swift; sourceTree = "<group>"; };
+		7598C74F2ACA05C7008F7A3C /* AddFilterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFilterAction.swift; sourceTree = "<group>"; };
+		7598C7512ACA0646008F7A3C /* RemoveFilterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFilterAction.swift; sourceTree = "<group>"; };
+		7598C7532ACA06CE008F7A3C /* ChangeFilterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFilterAction.swift; sourceTree = "<group>"; };
 		75D718D72AC62BD000B8A333 /* SVG */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SVG; sourceTree = "<group>"; };
 		75DD39D12AC3678F00E5D4D3 /* LayerOpacityControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerOpacityControl.swift; sourceTree = "<group>"; };
 		75DD39D32AC3686000E5D4D3 /* LayerBlendModeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerBlendModeControl.swift; sourceTree = "<group>"; };
@@ -606,6 +612,9 @@
 				7534B58A2AC7A96000175F4F /* CopyAction.swift */,
 				7534B58E2AC7AA6400175F4F /* CutAction.swift */,
 				7534B58C2AC7A9AA00175F4F /* PasteAction.swift */,
+				7598C74F2ACA05C7008F7A3C /* AddFilterAction.swift */,
+				7598C7512ACA0646008F7A3C /* RemoveFilterAction.swift */,
+				7598C7532ACA06CE008F7A3C /* ChangeFilterAction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1555,6 +1564,7 @@
 				75DD39E82AC4B9CF00E5D4D3 /* BrightnessSlider.swift in Sources */,
 				7554D2092AB78FC7008CEB87 /* ArtboardModel.swift in Sources */,
 				7554D1C92AB78B48008CEB87 /* GridMode.swift in Sources */,
+				7598C7542ACA06CE008F7A3C /* ChangeFilterAction.swift in Sources */,
 				7554D16A2AB10288008CEB87 /* Expand.swift in Sources */,
 				7554D2662AB8D2D1008CEB87 /* PixelHelpers.swift in Sources */,
 				7534B58D2AC7A9AA00175F4F /* PasteAction.swift in Sources */,
@@ -1597,12 +1607,14 @@
 				7554D2402AB7AF7B008CEB87 /* ColorSchemeControl.swift in Sources */,
 				7554D2832ABA5684008CEB87 /* PngExporter.swift in Sources */,
 				7554D2E42ABD3938008CEB87 /* FillAction.swift in Sources */,
+				7598C7502ACA05C7008F7A3C /* AddFilterAction.swift in Sources */,
 				7554D2DE2ABD38FD008CEB87 /* EraseMultipleAction.swift in Sources */,
 				75836D962AC2355C007172AD /* MoveLayerAction.swift in Sources */,
 				75836D692ABE7396007172AD /* SelectLayerAction.swift in Sources */,
 				7554D15E2AAFF149008CEB87 /* RightTriangle.swift in Sources */,
 				75DD39E42AC3A3CB00E5D4D3 /* RadialColorControl.swift in Sources */,
 				7554D2972ABB7FA3008CEB87 /* Event.swift in Sources */,
+				7598C7522ACA0646008F7A3C /* RemoveFilterAction.swift in Sources */,
 				7554D2BC2ABCB016008CEB87 /* FillToolButton.swift in Sources */,
 				7554D2722AB9423E008CEB87 /* ExportPage.swift in Sources */,
 				7554D1502AAFE61D008CEB87 /* ShapeList.swift in Sources */,

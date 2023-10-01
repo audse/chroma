@@ -8,23 +8,28 @@
 import SwiftUI
 
 struct LayerFilterList: View {
+    @EnvironmentObject var history: History
     @ObservedObject var layer: LayerModel
+    
     var body: some View {
         VStack {
             HStack {
                 Text("Filters")
                 Spacer()
                 Button {
-                    layer.filters.append(.blur(.init(radius: 0)))
+                    history.add(AddFilterAction(.blur(.init(radius: 0)), layer))
                 } label: {
                     Label("Blur", systemImage: "plus")
                 }
                 Button {
-                    layer.filters.append(.shadow(.init(
-                        offset: CGPoint(),
-                        radius: 0,
-                        color: .black.opacity(0.25)
-                    )))
+                    history.add(AddFilterAction(
+                        .shadow(.init(
+                            offset: CGPoint(),
+                            radius: 0,
+                            color: .black.opacity(0.25)
+                        )),
+                        layer
+                    ))
                 } label: {
                     Label("Shadow", systemImage: "plus")
                 }
@@ -36,28 +41,26 @@ struct LayerFilterList: View {
                         let binding = Binding(
                             get: { blur },
                             set: {
-                                blur = $0
-                                layer.filters[index] = .blur($0)
+                                history.addOrAccumulate(ChangeFilterAction(.blur($0), layer))
                             }
                         )
                         LayerBlurFilter(
                             filter: binding,
                             onRemove: { _ in
-                                layer.filters.remove(at: index)
+                                history.add(RemoveFilterAction(filter, layer))
                             }
                         )
                     case .shadow(var shadow):
                         let binding = Binding(
                             get: { shadow },
                             set: {
-                                shadow = $0
-                                layer.filters[index] = .shadow($0)
+                                history.addOrAccumulate(ChangeFilterAction(.shadow($0), layer))
                             }
                         )
                         LayerShadowFilter(
                             filter: binding,
                             onRemove: { _ in
-                                layer.filters.remove(at: index)
+                                history.add(RemoveFilterAction(filter, layer))
                             }
                         )
                     }
