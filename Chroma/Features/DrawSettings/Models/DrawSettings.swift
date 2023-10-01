@@ -15,7 +15,13 @@ class DrawSettings: ObservableObject {
     @Published var color = Color.black
     @Published var scaleType = ScaleType.even
     @Published var pixelSize: Double = 5
-    @Published var precisionSize: CGFloat = 1
+    @Published var precisionSize: CGFloat = 1 {
+        didSet {
+            if precisionSize.isApprox(1.0) {
+                pixelSize = pixelSize.rounded()
+            }
+        }
+    }
 
     /**
      Used for multi-click actions such as drawing lines, rectangles, etc.
