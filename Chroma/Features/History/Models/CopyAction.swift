@@ -11,6 +11,6 @@ class CopyAction: EditorAction {
     let pixels: [LayerPixelModel]
     
     init(_ pixels: [LayerPixelModel]) {
-        self.pixels = pixels.map { $0.duplicate() }
+        self.pixels = pixels
     }
 }
