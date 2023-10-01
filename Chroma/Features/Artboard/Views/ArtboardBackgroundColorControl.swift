@@ -11,15 +11,14 @@ struct ArtboardBackgroundColorControl: View {
     @EnvironmentObject var file: FileModel
     @EnvironmentObject var history: History
 
-    @State var color = Color.white
-
     var body: some View {
-        PopoverColorControl(color: $color, edge: .leading)
-            .onChange(of: color) { color in
-                history.addOrAccumulate(ChangeArtboardBackgroundAction(file.artboard, color))
-            }.onAppear {
-                color = file.artboard.backgroundColor
+        let colorBinding: Binding<Color> = Binding(
+            get: { file.artboard.backgroundColor },
+            set: {
+                history.addOrAccumulate(ChangeArtboardBackgroundAction(file.artboard, $0))
             }
+        )
+        PopoverColorControl(color: colorBinding, edge: .leading)
     }
 }
 

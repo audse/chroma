@@ -11,27 +11,26 @@ struct ArtboardSizeControl: View {
     @ObservedObject var artboard: ArtboardModel
     @EnvironmentObject var history: History
 
-    @State var width: Double = 512
-    @State var height: Double = 512
-    
-    init(_ artboard: ArtboardModel) {
-        self.artboard = artboard
-        self.width = artboard.size.width
-        self.height = artboard.size.height
-    }
-
     var body: some View {
         HStack {
+            let widthBinding: Binding<Double> = Binding(
+                get: { artboard.size.width },
+                set: { artboard.size.width = $0 }
+            )
+            let heightBinding: Binding<Double> = Binding(
+                get: { artboard.size.height },
+                set: { artboard.size.height = $0 }
+            )
             Text("W")
                 .font(.label)
                 .foregroundColor(.secondary.lerp(.primary))
             NumberTextField(
-                value: $width,
+                value: widthBinding,
                 min: 0,
                 step: 1,
                 rounded: true,
                 onChangeValue: { value in
-                    history.addOrAccumulate(ChangeArtboardSizeAction(artboard, CGSize(value, height)))
+                    history.addOrAccumulate(ChangeArtboardSizeAction(artboard, CGSize(value, artboard.size.height)))
                 }
             )
             Spacer()
@@ -39,12 +38,12 @@ struct ArtboardSizeControl: View {
                 .font(.label)
                 .foregroundColor(.secondary.lerp(.primary))
             NumberTextField(
-                value: $height,
+                value: heightBinding,
                 min: 0,
                 step: 1,
                 rounded: true,
                 onChangeValue: { value in
-                    history.addOrAccumulate(ChangeArtboardSizeAction(artboard, CGSize(width, value)))
+                    history.addOrAccumulate(ChangeArtboardSizeAction(artboard, CGSize(artboard.size.width, value)))
                 }
             )
         }
@@ -52,6 +51,6 @@ struct ArtboardSizeControl: View {
 }
 
 #Preview {
-    ArtboardSizeControl(ArtboardModel())
+    ArtboardSizeControl(artboard: ArtboardModel())
         .environmentObject(History())
 }

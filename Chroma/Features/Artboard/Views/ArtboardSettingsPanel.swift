@@ -15,7 +15,7 @@ struct ArtboardSettingsPanel: View {
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded.animation(.easeInOut(duration: 0.2))) {
             VStack {
-                ArtboardSizeControl(file.artboard)
+                ArtboardSizeControl(artboard: file.artboard)
                 HStack {
                     Text("Background")
                         .font(.label)
