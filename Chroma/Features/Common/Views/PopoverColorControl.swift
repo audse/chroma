@@ -19,7 +19,10 @@ struct PopoverColorControl: View {
         Button {
             isPresented.toggle()
         } label: {
-            RoundedRectangle(cornerRadius: 6).fill(color)
+            let fillColor = color.opacity.isApprox(0) 
+                ? color.opacity(to: 0.0001)
+                : color
+            RoundedRectangle(cornerRadius: 6).fill(fillColor)
         }
         .overlay(
             RoundedRectangle(cornerRadius: 6)
