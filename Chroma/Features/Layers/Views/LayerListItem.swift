@@ -51,6 +51,10 @@ struct LayerListItem: View {
             history.add(SelectLayerAction(layer))
         }
         .scaleOnTap()
+        .onReceive(layer.objectWillChange) {
+            file.objectWillChange.send()
+            file.artboard.objectWillChange.send()
+        }
     }
 }
 

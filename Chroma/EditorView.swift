@@ -49,7 +49,7 @@ struct EditorView: View, Identifiable {
                     WorkspaceSettingsPanel()
                     ArtboardSettingsPanel()
                     Spacer()
-                    Minimap()
+                    Minimap(artboard: file.artboard)
                         .shadow(color: Color(hue: 0, saturation: 0, brightness: 0, opacity: 0.1), radius: 4, y: 2)
                         .padding()
                 }

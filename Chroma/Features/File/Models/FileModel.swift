@@ -13,7 +13,7 @@ public final class FileModel: ObservableObject, Identifiable {
     @Published public var name: String
     
     private var _artboardCancellable: AnyCancellable?
-    @Published public var artboard: ArtboardModel
+    @Published public private(set) var artboard: ArtboardModel
     
     init(
         id: UUID = UUID(),
@@ -23,7 +23,9 @@ public final class FileModel: ObservableObject, Identifiable {
         self.id = id
         self.name = name
         self.artboard = artboard
-        self._artboardCancellable = artboard.objectWillChange.sink { _ in self.objectWillChange.send() }
+        self._artboardCancellable = artboard.objectWillChange.sink { _ in
+            self.objectWillChange.send()
+        }
     }
 }
 

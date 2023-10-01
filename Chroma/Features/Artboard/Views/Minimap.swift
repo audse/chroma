@@ -9,34 +9,29 @@ import SwiftUI
 import Extensions
 
 struct Minimap: View {
-    @EnvironmentObject var file: FileModel
+    @ObservedObject var artboard: ArtboardModel
 
     static let SCALE: CGFloat = 5.0
 
     var body: some View {
-        Artboard(artboard: file.artboard)
-            .allowsHitTesting(false)
-            .scaleEffect(CGSize(1.0 / Minimap.SCALE))
-            .frame(width: getSize().width, height: getSize().height)
-            .fixedSize()
+        let renderer = ImageRenderer(content: Artboard(artboard: artboard))
+        if let image = renderer.cgImage {
+            Image(image, scale: 1.0 / Minimap.SCALE, label: Text("Image"))
+                .resizable()
+                .frame(width: getSize().width, height: getSize().height)
+                .fixedSize()
+        } else {
+            EmptyView()
+        }
     }
 
     func getSize() -> CGSize {
-        return file.artboard.size / Minimap.SCALE
+        return artboard.size / Minimap.SCALE
     }
 }
 
-struct Minimap_Previews: PreviewProvider {
-    private static var currentArtboard = ArtboardModel().withNewLayer([
-        PixelModel(shape: SquareShape).positive(),
-        PixelModel(shape: CircleShape, position: CGPoint(250)).positive(),
-        PixelModel(shape: SquareShape, color: Color.blue, position: CGPoint(100)).positive()
-    ])
-
-    static var previews: some View {
-        Minimap()
-            .environmentObject(FileModel(artboard: currentArtboard))
-            .environmentObject(DrawSettings())
-            .environmentObject(History())
-    }
+#Preview {
+    Minimap(artboard: PreviewArtboardModelBuilder().build())
+        .environmentObject(DrawSettings())
+        .environmentObject(History())
 }
