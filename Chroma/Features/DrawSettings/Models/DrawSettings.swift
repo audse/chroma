@@ -15,13 +15,7 @@ class DrawSettings: ObservableObject {
     @Published var color = Color.black
     @Published var scaleType = ScaleType.even
     @Published var pixelSize: Double = 5
-    @Published var precisionSize: CGFloat = 1 {
-        didSet {
-            if precisionSize.isApprox(1.0) {
-                pixelSize = pixelSize.rounded()
-            }
-        }
-    }
+    @Published var precisionSize: CGFloat = 1
 
     /**
      Used for multi-click actions such as drawing lines, rectangles, etc.
@@ -51,20 +45,8 @@ class DrawSettings: ObservableObject {
 
     func getPixelSize() -> CGFloat {
         switch scaleType {
-        case .even: 
-            let base = pow(2, floor(pixelSize))
-            let oneUp = pow(2, floor(pixelSize) + 1)
-            if (pixelSize - floor(pixelSize)).isApprox(0.5) {
-                return base + (oneUp - base) / 2
-            }
-            return base
-        case .odd:
-            let oneUp = pow(2, floor(pixelSize) + 1)
-            let twoUp = pow(2, floor(pixelSize) + 2)
-            if (pixelSize - floor(pixelSize)).isApprox(0.5) {
-                return (oneUp + (twoUp - oneUp) / 2) * (2/3)
-            }
-            return oneUp * (2/3)
+        case .even: return pow(2, pixelSize)
+        case .odd: return pow(2, pixelSize + 1) / 3
         }
     }
 

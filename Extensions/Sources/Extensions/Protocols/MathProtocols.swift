@@ -18,3 +18,22 @@ public protocol Lerp {
      */
     func lerp(_ other: Self, by amount: Weight) -> Self
 }
+
+public protocol Clamp where Self: Comparable {
+    /**
+     Returns `self` within the bounds `low...high`
+     # Example
+     ```swift
+     CGFloat(2.0).clamp(low: 0.0, high: 1.0) // 1.0
+     ```
+     */
+    func clamp(low: Self, high: Self) -> Self
+    /**
+     Returns `self` within the bounds of `range`
+     # Example
+     ```swift
+     CGFloat(-1.0).clamp(0.0...1.0) // 1.0
+     ```
+     */
+    func clamp(to range: ClosedRange<Self>) -> Self
+}

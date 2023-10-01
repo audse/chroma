@@ -45,11 +45,11 @@ struct NumberStepper: View {
     }
     
     private func increment() {
-        value = (value + step).clamp(low: range.lowerBound, high: range.upperBound)
+        value = (value + step).clamp(to: range)
     }
     
     private func decrement() {
-        value = (value - step).clamp(low: range.lowerBound, high: range.upperBound)
+        value = (value - step).clamp(to: range)
     }
     
     private func getExpectedDigits() -> Int {

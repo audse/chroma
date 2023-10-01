@@ -21,17 +21,16 @@ struct PixelSizeControl: View {
             expectedDigits: 3
         )
         .onKeyPressEvent("[") {
-            drawSettings.pixelSize -= drawSettings.precisionSize
+            drawSettings.pixelSize -= 1
         }
         .onKeyPressEvent("]") {
-            drawSettings.pixelSize += drawSettings.precisionSize
+            drawSettings.pixelSize += 1
         }
     }
     
     func getFormatter() -> NumberFormatter {
         let fmt = NumberFormatter()
-        fmt.allowsFloats = !drawSettings.precisionSize.isApprox(1.0)
-        fmt.maximumFractionDigits = 1
+        fmt.allowsFloats = false
         return fmt
     }
 }

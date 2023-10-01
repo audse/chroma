@@ -1,10 +1,13 @@
 import Foundation
 
-public extension CGFloat {
-    func clamp(low: CGFloat, high: CGFloat) -> CGFloat {
+extension CGFloat: Clamp {
+    public func clamp(low: CGFloat, high: CGFloat) -> CGFloat {
         if self < low { return low }
         if self > high { return high }
         return self
+    }
+    public func clamp(to range: ClosedRange<CGFloat>) -> CGFloat {
+        self.clamp(low: range.lowerBound, high: range.upperBound)
     }
 }
 
@@ -16,20 +19,6 @@ extension CGFloat: IsApprox {
 
 extension CGFloat: Lerp {
     public func lerp(_ other: CGFloat, by amount: CGFloat = 0.5) -> CGFloat {
-        return self * (1.0 - amount) + (other * amount)
-    }
-}
-
-public extension Double {
-    func clamp(low: Double, high: Double) -> Double {
-        if self < low { return low }
-        if self > high { return high }
-        return self
-    }
-}
-
-extension Double: Lerp {
-    public func lerp(_ other: Double, by amount: Double = 0.5) -> Double {
         return self * (1.0 - amount) + (other * amount)
     }
 }
