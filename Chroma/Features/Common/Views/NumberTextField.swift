@@ -53,7 +53,6 @@ struct NumberTextField: View {
     }
 
     func getStep() -> Double {
-        print(rounded)
         return rounded ? round(Swift.max(step, 1)) : step
     }
 

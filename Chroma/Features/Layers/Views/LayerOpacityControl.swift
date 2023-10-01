@@ -22,6 +22,7 @@ struct LayerOpacityControl: View {
         NumberTextField(
             value: $opacity,
             min: 0.0,
+            max: 1.0,
             step: 0.01,
             formatter: getFormatter()
         ).frame(maxWidth: 55)
